@@ -9,7 +9,7 @@ import (
 )
 
 func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.SpellConfig {
-	spellId := [4]int32{0, 409532, 409534, 409535}[rank]
+	spellId := [4]int32{0, 13813, 14316, 14317}[rank]
 	dotDamage := [4]float64{0, 15, 24, 33}[rank]
 	minDamage := [4]float64{0, 104, 145, 208}[rank]
 	maxDamage := [4]float64{0, 135, 193, 265}[rank]
@@ -56,7 +56,7 @@ func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.S
 			TickLength:    time.Second * 2,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-				dot.Snapshot(target, dotDamage, isRollover)
+				// dot.Snapshot(target, dotDamage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				for _, aoeTarget := range sim.Encounter.TargetUnits {
@@ -79,13 +79,16 @@ func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.S
 				spellHit := spell.Unit.GetStat(stats.SpellHit) + target.PseudoStats.BonusSpellHitRatingTaken
 				spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit*-1)
 				for hitIndex := int32(0); hitIndex < numHits; hitIndex++ {
-					baseDamage := sim.Roll(minDamage, maxDamage)
+					baseDamage := sim.Roll(minDamage, maxDamage) + (spell.MeleeAttackPower(target) / 6.5)
 					baseDamage *= sim.Encounter.AOECapMultiplier()
-					spell.CalcAndDealDamage(sim, curTarget, baseDamage, spell.OutcomeMagicHitAndCrit)
+					spell.CalcAndDealDamage(sim, curTarget, baseDamage, spell.OutcomeMagicHit)
 					curTarget = sim.Environment.NextTargetUnit(curTarget)
 				}
 				spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit)
-				spell.AOEDot().ApplyOrReset(sim)
+				dot := spell.AOEDot()
+				tickDamage := dotDamage + (spell.MeleeAttackPower(target) / 30)
+				dot.Snapshot(target, tickDamage, false)
+				dot.ApplyOrReset(sim)
 			})
 		},
 	}

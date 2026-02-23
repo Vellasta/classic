@@ -9,7 +9,7 @@ import (
 )
 
 func (hunter *Hunter) getImmolationTrapConfig(rank int, timer *core.Timer) core.SpellConfig {
-	spellId := [6]int32{0, 409521, 409524, 409526, 409528, 409530}[rank]
+	spellId := [6]int32{0, 13795, 14302, 14303, 14304, 14305}[rank]
 	dotDamage := [6]float64{0, 105, 215, 340, 510, 690}[rank]
 	manaCost := [6]float64{0, 50, 90, 135, 190, 245}[rank]
 	level := [6]int{0, 16, 26, 36, 46, 56}[rank]
@@ -48,11 +48,11 @@ func (hunter *Hunter) getImmolationTrapConfig(rank int, timer *core.Timer) core.
 				Tag:   "ImmolationTrap",
 			},
 			NumberOfTicks: 5,
-			TickLength:    time.Millisecond * 1500,
+			TickLength:    time.Millisecond * 3000,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-				tickDamage := dotDamage / float64(dot.NumberOfTicks)
-				dot.Snapshot(target, tickDamage, isRollover)
+				// tickDamage := dotDamage / float64(dot.NumberOfTicks)
+				// dot.Snapshot(target, tickDamage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
@@ -71,7 +71,10 @@ func (hunter *Hunter) getImmolationTrapConfig(rank int, timer *core.Timer) core.
 			spell.WaitTravelTime(sim, func(s *core.Simulation) {
 				spell.DealOutcome(sim, result)
 				if result.Landed() {
-					spell.Dot(target).Apply(sim)
+					dot := spell.Dot(target)
+					tickDamage := dotDamage/float64(dot.NumberOfTicks) + spell.MeleeAttackPower(target)/10
+					dot.Snapshot(target, tickDamage, false)
+					dot.Apply(sim)
 				}
 			})
 		},
