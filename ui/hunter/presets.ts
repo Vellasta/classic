@@ -77,7 +77,7 @@ export const DefaultAPL = APLPresets[Phase.Phase1][1];
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
 export const TalentsMM = PresetUtils.makePresetTalents('Marksmanship', SavedTalents.create({ talentsString: '550000015-05252010050322251' }));
-export const TalentsSV = PresetUtils.makePresetTalents('Survival', SavedTalents.create({ talentsString: '550000015-00000000000000000-33552525100' }));
+export const TalentsSV = PresetUtils.makePresetTalents('Survival', SavedTalents.create({ talentsString: '550000004-00000000000000000-3520200111232331251' }));
 
 export const TalentPresets = {
 	[Phase.Phase1]: [TalentsMM, TalentsSV],

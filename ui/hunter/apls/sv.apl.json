@@ -6,6 +6,8 @@
   ],
   "priorityList": [
     {"action":{"autocastOtherCooldowns":{}}},
-    {"action":{"castSpell":{"spellId":{"spellId":14266}}}}
+    {"action":{"castSpell":{"spellId":{"spellId":415343}}}},
+    {"action":{"castSpell":{"spellId":{"spellId":14271}}}},
+    {"action":{"castSpell":{"spellId":{"spellId":14268}}}}
   ]
 }

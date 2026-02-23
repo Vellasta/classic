@@ -9,7 +9,7 @@ import (
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
-var TalentTreeSizes = [3]int{16, 14, 16}
+var TalentTreeSizes = [3]int{16, 17, 19}
 
 const (
 	SpellFlagShot   = core.SpellFlagAgentReserved1

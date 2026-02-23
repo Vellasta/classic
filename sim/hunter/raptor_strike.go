@@ -26,6 +26,7 @@ func (hunter *Hunter) getRaptorStrikeConfig(rank int) core.SpellConfig {
 	spellID := RaptorStrikeSpellId[rank]
 	manaCost := RaptorStrikeManaCost[rank]
 	level := RaptorStrikeLevel[rank]
+	viciousStrikesCDReduction := [3]time.Duration{0, 500 * time.Millisecond, 1000 * time.Millisecond}[hunter.Talents.ViciousStrikes]
 
 	hunter.RaptorStrikeHit = hunter.newRaptorStrikeHitSpell(rank)
 
@@ -46,7 +47,7 @@ func (hunter *Hunter) getRaptorStrikeConfig(rank int) core.SpellConfig {
 		Cast: core.CastConfig{
 			CD: core.Cooldown{
 				Timer:    hunter.NewTimer(),
-				Duration: time.Second * 6,
+				Duration: time.Second*6 - viciousStrikesCDReduction,
 			},
 		},
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
@@ -77,8 +78,8 @@ func (hunter *Hunter) newRaptorStrikeHitSpell(rank int) *core.Spell {
 		ProcMask:    core.ProcMaskMeleeMHSpecial,
 		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagNoOnCastComplete,
 
-		BonusCritRating:  float64(hunter.Talents.SavageStrikes) * 10 * core.CritRatingPerCritChance,
-		CritDamageBonus:  hunter.mortalShots(),
+		BonusCritRating:  float64(hunter.Talents.SavageStrikes) * 3 * core.CritRatingPerCritChance,
+		CritDamageBonus:  0.066 * float64(hunter.Talents.KillerInstinct),
 		DamageMultiplier: 1,
 		BonusCoefficient: 1,
 
