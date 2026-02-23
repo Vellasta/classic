@@ -44,6 +44,7 @@ const (
 	// Other
 	SpellCode_HunterMongooseBite
 	SpellCode_HunterWingClip
+	SpellCode_HunterCarve
 	SpellCode_HunterVolley
 
 	// Pet Spells
@@ -103,6 +104,7 @@ type Hunter struct {
 	RaptorStrike    *core.Spell
 	RaptorStrikeHit *core.Spell
 	MongooseBite    *core.Spell
+	Carve           *core.Spell
 	ScorpidSting    *core.Spell
 	SerpentSting    *core.Spell
 	SilencingShot   *core.Spell
@@ -168,6 +170,7 @@ func (hunter *Hunter) Initialize() {
 	hunter.registerRaptorStrikeSpell()
 	hunter.registerMongooseBiteSpell()
 	hunter.registerWingClipSpell()
+	hunter.registerCarveSpell()
 	hunter.registerVolleySpell()
 
 	traps := hunter.NewTimer()

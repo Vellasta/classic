@@ -12919,6 +12919,8 @@
 {"id":51584,"name":"Vicious Strikes","icon":"ability_hunter_swiftstrike","rank":1},
 {"id":51585,"name":"Vicious Strikes","icon":"ability_hunter_swiftstrike","rank":2},
 {"id":51586,"name":"Untamed Trapper","icon":"spell_nature_slow","rank":1},
+{"id":52415,"name":"Carve","icon":"inv_throwingknife_06","rank":2},
+{"id":52416,"name":"Carve","icon":"inv_throwingknife_06","rank":3},
 {"id":400574,"name":"Arcane Blast","icon":"spell_arcane_blast"},
 {"id":400610,"name":"Arcane Barrage","icon":"ability_mage_arcanebarrage"},
 {"id":400613,"name":"Living Bomb","icon":"ability_mage_livingbomb","hasBuff":true},
