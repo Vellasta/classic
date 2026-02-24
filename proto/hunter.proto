@@ -5,7 +5,7 @@ option go_package = "./proto";
 
 message HunterTalents {
 	// Beast Mastery
-	int32 improved_aspect_of_the_hawk = 1;
+	int32 swift_aspects = 1;
 	int32 endurance_training = 2;
 	int32 improved_eyes_of_the_beast = 3;
 	int32 improved_aspect_of_the_monkey = 4;

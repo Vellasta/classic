@@ -87,6 +87,7 @@ type Hunter struct {
 
 	// Miscellaneous set bonuses that require extra logic inside of spells
 	AspectOfTheHawkAPMultiplier float64
+	AspectOfTheWolfAPMultiplier float64
 
 	curQueueAura       *core.Aura
 	curQueuedAutoSpell *core.Spell
@@ -159,6 +160,7 @@ func (hunter *Hunter) Initialize() {
 	})
 
 	hunter.registerAspectOfTheHawkSpell()
+	hunter.registerAspectOfTheWolfSpell()
 
 	multiShotTimer := hunter.NewTimer()
 	arcaneShotTimer := hunter.NewTimer()

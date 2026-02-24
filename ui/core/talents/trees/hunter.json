@@ -4,8 +4,8 @@
     "backgroundUrl": "https://wow.zamimg.com/images/wow/talents/backgrounds/classic/361.jpg",
     "talents": [
       {
-        "fieldName": "improvedAspectOfTheHawk",
-        "fieldDesc": "",
+        "fieldName": "swiftAspects",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Swift Aspects</b></a></td></tr></table><table><tr><td><div class=\"q\">While Aspect of the Hawk is active, all normal ranged attacks have a 10% chance of increasing ranged attack speed by [3/6/9/12/15]% for 12 sec. While Aspect of the Wolf is active, all normal melee attacks have a 10% chance of increasing melee attack speed by [3/6/9/12/15]% for 12 sec.</div></td></tr></table>",
         "location": {
           "rowIdx": 0,
           "colIdx": 1

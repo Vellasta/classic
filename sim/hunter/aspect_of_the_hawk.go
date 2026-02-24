@@ -10,7 +10,7 @@ import (
 
 // Utility function to create an Improved Hawk Aura
 func (hunter *Hunter) createImprovedHawkAura(auraLabel string, actionID core.ActionID) *core.Aura {
-	bonusMultiplier := 1 + 0.03*float64(hunter.Talents.ImprovedAspectOfTheHawk)
+	bonusMultiplier := 1 + 0.03*float64(hunter.Talents.SwiftAspects)
 	return hunter.GetOrRegisterAura(core.Aura{
 		Label:    auraLabel,
 		ActionID: actionID,
@@ -57,7 +57,7 @@ func (hunter *Hunter) getAspectOfTheHawkSpellConfig(rank int) core.SpellConfig {
 	spellId := spellIds[rank]
 	level := levels[rank]
 
-	if hunter.Talents.ImprovedAspectOfTheHawk > 0 {
+	if hunter.Talents.SwiftAspects > 0 {
 		impHawkAura = hunter.createImprovedHawkAura(
 			"Quick Shots",
 			core.ActionID{SpellID: 6150},
