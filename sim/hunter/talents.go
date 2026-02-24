@@ -79,6 +79,15 @@ func (hunter *Hunter) ApplyTalents() {
 		})
 	}
 
+	if hunter.Talents.SwiftReflexes > 0 {
+		hunter.PseudoStats.MeleeSpeedMultiplier *= 1.0 + 0.01*float64(hunter.Talents.SwiftReflexes)
+		hunter.PseudoStats.RangedSpeedMultiplier *= 1.0 + 0.01*float64(hunter.Talents.SwiftReflexes)
+	}
+
+	if hunter.Talents.SavageStrikes > 0 {
+		hunter.AutoAttacks.OHConfig().DamageMultiplier *= 1.0 + 0.125*float64(hunter.Talents.SavageStrikes)
+	}
+
 	if hunter.Talents.Survivalist > 0 {
 		hunter.MultiplyStat(stats.Health, 1.0+0.02*float64(hunter.Talents.Survivalist))
 	}

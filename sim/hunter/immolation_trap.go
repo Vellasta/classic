@@ -26,7 +26,7 @@ func (hunter *Hunter) getImmolationTrapConfig(rank int, timer *core.Timer) core.
 		MissileSpeed:  24,
 
 		ManaCost: core.ManaCostOptions{
-			FlatCost: manaCost,
+			FlatCost: manaCost * (1 - 0.02*float64(hunter.Talents.Resourcefulness)),
 		},
 		Cast: core.CastConfig{
 			CD: core.Cooldown{

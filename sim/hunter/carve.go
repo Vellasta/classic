@@ -23,7 +23,7 @@ func (hunter *Hunter) getCarveConfig(rank int) core.SpellConfig {
 		RequiredLevel: level,
 
 		ManaCost: core.ManaCostOptions{
-			FlatCost: 0.08 * hunter.BaseMana,
+			FlatCost: 0.08 * hunter.BaseMana * (1 - 0.02*float64(hunter.Talents.Resourcefulness)),
 		},
 
 		Cast: core.CastConfig{
@@ -40,7 +40,7 @@ func (hunter *Hunter) getCarveConfig(rank int) core.SpellConfig {
 			return hunter.DistanceFromTarget <= core.MaxMeleeAttackDistance
 		},
 
-		BonusCritRating:  core.CritRatingPerCritChance,
+		BonusCritRating:  float64(hunter.Talents.SavageStrikes) * 3 * core.CritRatingPerCritChance,
 		CritDamageBonus:  0.066 * float64(hunter.Talents.KillerInstinct),
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,

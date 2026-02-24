@@ -23,7 +23,7 @@ func (hunter *Hunter) getWingClipConfig(rank int) core.SpellConfig {
 		RequiredLevel: level,
 
 		ManaCost: core.ManaCostOptions{
-			FlatCost: manaCost,
+			FlatCost: manaCost * (1 - 0.02*float64(hunter.Talents.Resourcefulness)),
 		},
 
 		Cast: core.CastConfig{
