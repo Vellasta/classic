@@ -75,6 +75,12 @@ func (hunter *Hunter) getImmolationTrapConfig(rank int, timer *core.Timer) core.
 					tickDamage := dotDamage/float64(dot.NumberOfTicks) + spell.MeleeAttackPower(target)/10
 					dot.Snapshot(target, tickDamage, false)
 					dot.Apply(sim)
+
+					if hunter.Talents.StingingNettle > 0 {
+						dotSerpentSting := hunter.SerpentSting.Dot(target)
+						dotSerpentSting.NumberOfTicks = hunter.Talents.StingingNettle
+						dotSerpentSting.Apply(sim)
+					}
 				}
 			})
 		},

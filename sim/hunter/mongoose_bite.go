@@ -50,7 +50,13 @@ func (hunter *Hunter) getMongooseBiteConfig(rank int) core.SpellConfig {
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			// hunter.DefensiveState.Deactivate(sim)
 			damageMH := mongooseBiteBaseDamage + mongooseBiteWeaponDamage*hunter.MHWeaponDamage(sim, spell.MeleeAttackPower(target))
-			spell.CalcAndDealDamage(sim, target, damageMH, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
+			result := spell.CalcDamage(sim, target, damageMH, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
+			spell.DealDamage(sim, result)
+			if result.Landed() && (hunter.Talents.StingingNettle > 0) {
+				dot := hunter.SerpentSting.Dot(target)
+				dot.NumberOfTicks = hunter.Talents.StingingNettle
+				dot.Apply(sim)
+			}
 			if hunter.HasOHWeapon() {
 				damageOH := mongooseBiteBaseDamage + mongooseBiteWeaponDamage*hunter.OHWeaponDamage(sim, spell.MeleeAttackPower(target))
 				spell.CalcAndDealDamage(sim, target, damageOH, spell.OutcomeMeleeWeaponSpecialHitAndCrit)

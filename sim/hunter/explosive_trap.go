@@ -82,6 +82,13 @@ func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.S
 					baseDamage := sim.Roll(minDamage, maxDamage) + (spell.MeleeAttackPower(target) / 6.5)
 					baseDamage *= sim.Encounter.AOECapMultiplier()
 					spell.CalcAndDealDamage(sim, curTarget, baseDamage, spell.OutcomeMagicHit)
+
+					if hunter.Talents.StingingNettle > 0 {
+						dotSerpentSting := hunter.SerpentSting.Dot(curTarget)
+						dotSerpentSting.NumberOfTicks = hunter.Talents.StingingNettle
+						dotSerpentSting.Apply(sim)
+					}
+
 					curTarget = sim.Environment.NextTargetUnit(curTarget)
 				}
 				spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit)
