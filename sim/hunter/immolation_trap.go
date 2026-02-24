@@ -26,7 +26,7 @@ func (hunter *Hunter) getImmolationTrapConfig(rank int, timer *core.Timer) core.
 		MissileSpeed:  24,
 
 		ManaCost: core.ManaCostOptions{
-			FlatCost: manaCost * (1 - 0.02*float64(hunter.Talents.Resourcefulness)),
+			FlatCost: manaCost * (1 - 0.02*float64(hunter.Talents.Resourcefulness) - 0.2*hunter.getUntamedTrapper()),
 		},
 		Cast: core.CastConfig{
 			CD: core.Cooldown{
@@ -72,7 +72,7 @@ func (hunter *Hunter) getImmolationTrapConfig(rank int, timer *core.Timer) core.
 				spell.DealOutcome(sim, result)
 				if result.Landed() {
 					dot := spell.Dot(target)
-					tickDamage := dotDamage/float64(dot.NumberOfTicks) + spell.MeleeAttackPower(target)/10
+					tickDamage := dotDamage/float64(dot.NumberOfTicks) + (hunter.getUntamedTrapper() * spell.MeleeAttackPower(target) / 10)
 					dot.Snapshot(target, tickDamage, false)
 					dot.Apply(sim)
 

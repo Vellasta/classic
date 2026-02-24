@@ -30,7 +30,7 @@ func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.S
 		MissileSpeed:  24,
 
 		ManaCost: core.ManaCostOptions{
-			FlatCost: manaCost * (1 - 0.02*float64(hunter.Talents.Resourcefulness)),
+			FlatCost: manaCost * (1 - 0.02*float64(hunter.Talents.Resourcefulness) - 0.2*hunter.getUntamedTrapper()),
 		},
 		Cast: core.CastConfig{
 			CD: core.Cooldown{
@@ -79,7 +79,7 @@ func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.S
 				spellHit := spell.Unit.GetStat(stats.SpellHit) + target.PseudoStats.BonusSpellHitRatingTaken
 				spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit*-1)
 				for hitIndex := int32(0); hitIndex < numHits; hitIndex++ {
-					baseDamage := sim.Roll(minDamage, maxDamage) + (spell.MeleeAttackPower(target) / 6.5)
+					baseDamage := sim.Roll(minDamage, maxDamage) + (hunter.getUntamedTrapper() * spell.MeleeAttackPower(target) / 6.5)
 					baseDamage *= sim.Encounter.AOECapMultiplier()
 					spell.CalcAndDealDamage(sim, curTarget, baseDamage, spell.OutcomeMagicHit)
 
@@ -93,7 +93,7 @@ func (hunter *Hunter) getExplosiveTrapConfig(rank int, timer *core.Timer) core.S
 				}
 				spell.Unit.AddStatDynamic(sim, stats.SpellHit, spellHit)
 				dot := spell.AOEDot()
-				tickDamage := dotDamage + (spell.MeleeAttackPower(target) / 30)
+				tickDamage := dotDamage + (hunter.getUntamedTrapper() * spell.MeleeAttackPower(target) / 30)
 				dot.Snapshot(target, tickDamage, false)
 				dot.ApplyOrReset(sim)
 			})

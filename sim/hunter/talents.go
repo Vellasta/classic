@@ -92,14 +92,18 @@ func (hunter *Hunter) ApplyTalents() {
 		hunter.MultiplyStat(stats.Health, 1.0+0.02*float64(hunter.Talents.Survivalist))
 	}
 
+	if hunter.Talents.KillerInstinct > 0 {
+		hunter.AutoAttacks.MHConfig().CritDamageBonus = 0.066 * float64(hunter.Talents.KillerInstinct)
+		hunter.AutoAttacks.OHConfig().CritDamageBonus = 0.066 * float64(hunter.Talents.KillerInstinct)
+	}
+
 	if hunter.Talents.LightningReflexes > 0 {
-		agiBonus := 0.03 * float64(hunter.Talents.LightningReflexes)
+		agiBonus := 0.02 * float64(hunter.Talents.LightningReflexes)
 		hunter.MultiplyStat(stats.Agility, 1.0+agiBonus)
 	}
 
 	hunter.applyEfficiency()
 	hunter.applyTrapMastery()
-	hunter.applyCleverTraps()
 	hunter.applyPiercingShots()
 	hunter.applyEndlessQuiver()
 }
@@ -183,6 +187,13 @@ func (hunter *Hunter) mortalShots() float64 {
 	return 0.06 * float64(hunter.Talents.MortalShots)
 }
 
+func (hunter *Hunter) getUntamedTrapper() float64 {
+	if hunter.Talents.UntamedTrapper {
+		return 1
+	}
+	return 0
+}
+
 func (hunter *Hunter) applyTrapMastery() {
 	if hunter.Talents.TrapMastery == 0 {
 		return
@@ -190,15 +201,9 @@ func (hunter *Hunter) applyTrapMastery() {
 
 	hunter.OnSpellRegistered(func(spell *core.Spell) {
 		if spell.Flags.Matches(SpellFlagTrap) {
-			spell.BonusHitRating += 5 * float64(hunter.Talents.TrapMastery)
+			spell.BonusHitRating += 3.33 * float64(hunter.Talents.TrapMastery)
 		}
 	})
-}
-
-func (hunter *Hunter) applyCleverTraps() {
-	if hunter.Talents.TrapMastery == 0 {
-		return
-	}
 
 	hunter.OnSpellRegistered(func(spell *core.Spell) {
 		if spell.Flags.Matches(SpellFlagTrap) {
