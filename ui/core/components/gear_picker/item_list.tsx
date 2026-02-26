@@ -23,6 +23,7 @@ import Toast from '../toast';
 import { Clusterize } from '../virtual_scroll/clusterize';
 import { FiltersMenu } from './filters_menu';
 import { SelectorModalTabs } from './selector_modal';
+import { createItemTooltip } from './utils';
 
 export interface ItemData<T> {
 	item: T;
@@ -563,6 +564,18 @@ export default class ItemList<T extends ItemListType> {
 		});
 
 		setItemQualityCssClass(nameElem.value!, itemData.quality);
+
+		const itemTooltip = tippy(iconElem.value!, {
+			content: `${String(createItemTooltip(itemData.item))}`, 
+			allowHTML: true, 
+			hideOnClick: false
+		});
+
+		const nameTooltip = tippy(nameElem.value!, {
+			content: `${String(createItemTooltip(itemData.item))}`, 
+			allowHTML: true, 
+			hideOnClick: false
+		});
 
 		return listItemElem;
 	}

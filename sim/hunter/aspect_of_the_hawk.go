@@ -60,7 +60,7 @@ func (hunter *Hunter) getAspectOfTheHawkSpellConfig(rank int) core.SpellConfig {
 	if hunter.Talents.SwiftAspects > 0 {
 		impHawkAura = hunter.createImprovedHawkAura(
 			"Quick Shots",
-			core.ActionID{SpellID: 6150},
+			core.ActionID{SpellID: 51551},
 		)
 	}
 	// Use utility function to get the attack power based on rank

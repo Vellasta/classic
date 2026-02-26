@@ -1,3 +1,4 @@
+import tippy from 'tippy.js';
 import { ref } from 'tsx-vanilla';
 
 import { setItemQualityCssClass } from '../../css_utils';
@@ -14,6 +15,7 @@ import { Component } from '../component';
 import { GearData } from './item_list';
 import SelectorModal, { SelectorModalTabs } from './selector_modal';
 import { getEmptySlotIconUrl } from './utils';
+import { createItemTooltip } from './utils';
 
 export default class GearPicker extends Component {
 	// ItemSlot is used as the index
@@ -130,6 +132,18 @@ export class ItemRenderer extends Component {
 				filledId.setBackgroundAndHref(this.iconElem);
 				filledId.setWowheadHref(this.nameElem);
 			});
+
+		const itemTooltip = tippy(this.iconElem, {
+			content: `${String(createItemTooltip(newItem.item))}`, 
+			allowHTML: true, 
+			hideOnClick: false
+		});
+
+		const nameTooltip = tippy(this.nameElem, {
+			content: `${String(createItemTooltip(newItem.item))}`, 
+			allowHTML: true, 
+			hideOnClick: false
+		});
 
 		if (newItem.enchant) {
 			getEnchantDescription(newItem.enchant).then(description => {
