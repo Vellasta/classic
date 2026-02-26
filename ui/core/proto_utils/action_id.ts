@@ -518,7 +518,9 @@ export class ActionId {
 	}
 
 	private static makeIconUrl(iconLabel: string): string {
-		return `https://wow.zamimg.com/images/wow/icons/large/${iconLabel}.jpg`;
+		// return `https://wow.zamimg.com/images/wow/icons/large/${iconLabel}.jpg`;
+
+		return `https://database.turtlecraft.gg/images/icons/large/${iconLabel}.png`
 	}
 
 	static async getTooltipData(actionId: ActionId): Promise<IconData> {
