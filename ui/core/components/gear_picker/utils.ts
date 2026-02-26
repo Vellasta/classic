@@ -156,6 +156,7 @@ export function createItemTooltip(item: ItemListType): string {
 	const armorTooltip = getArmorTooltip(item.stats)
 	const baseStatsTooltip = getBaseStatsTooltip(item.stats)
 	const bonusStatsTooltip = getBonusStatsTooltip(item.stats)
+	const bonusWeaponDamageTooltip = getBonusWeaponDamageTooltip(item)
 	const weaponSkillTooltip = getWeaponSkillTooltip(item)
 	const procStringTooltip = getProcStringTooltip(item)
 
@@ -167,6 +168,7 @@ export function createItemTooltip(item: ItemListType): string {
 		armorTooltip, 
 		baseStatsTooltip, 
 		bonusStatsTooltip,
+		bonusWeaponDamageTooltip,
 		weaponSkillTooltip,
 		procStringTooltip
 	]
@@ -175,7 +177,7 @@ export function createItemTooltip(item: ItemListType): string {
 }
 
 function getNameTooltip(item: any): string {
-	return `<span style="color: ${qualityToColorMap[item.quality]}; font-size: 112.5%;">${item.name} </span>`
+	return `<span style="color: ${qualityToColorMap[item.quality]}; font-size: 112.5%;">${item.name}</span>`
 }
 
 function getIlvlTooltip(item: any): string {
@@ -234,7 +236,7 @@ function getBaseStatsTooltip(stats: any): string {
 function getBonusStatsTooltip(stats: any): string {
 	const tooltipList: String[] = []
 	for (let i = 0; i < stats.length; ++i) {
-		if (stats[i] != 0 && (i > 5 && (i < 35 || i > 39)) && (i in indexToStatFunctionMap)) {
+		if (stats[i] != 0 && (i >= 5 && (i < 35 || i > 39)) && (i in indexToStatFunctionMap)) {
 			if (i == 27 && stats[i] == stats[17]) {
 				continue
 			}
@@ -269,6 +271,13 @@ function getProcStringTooltip(item: any): string {
 	}
 	if (tooltipList.length != 0) {
 		return `<span style="color: #1eff00;">${tooltipList.join('<br>')}</span>`
+	}
+	return ""
+}
+
+function getBonusWeaponDamageTooltip(item: any): string {
+	if (item.bonusPhysicalDamage > 0) {
+		return `<span style="color: #1eff00;">Equip: +${item.bonusPhysicalDamage} Weapon Damage.</span>`
 	}
 	return ""
 }
