@@ -157,6 +157,7 @@ export function createItemTooltip(item: ItemListType): string {
 	const baseStatsTooltip = getBaseStatsTooltip(item.stats)
 	const bonusStatsTooltip = getBonusStatsTooltip(item.stats)
 	const weaponSkillTooltip = getWeaponSkillTooltip(item)
+	const procStringTooltip = getProcStringTooltip(item)
 
 	const tooltipList: string[] = [
 		nameTooltip, 
@@ -166,7 +167,8 @@ export function createItemTooltip(item: ItemListType): string {
 		armorTooltip, 
 		baseStatsTooltip, 
 		bonusStatsTooltip,
-		weaponSkillTooltip
+		weaponSkillTooltip,
+		procStringTooltip
 	]
 	const filteredTooltipList = tooltipList.filter((s) => s != "")
 	return filteredTooltipList.join('<br>')
@@ -250,6 +252,19 @@ function getWeaponSkillTooltip(item: any): string {
 	for (let i = 0; i < item.weaponSkills.length; ++i) {
 		if (item.weaponSkills[i] != 0 && (i in weaponSkillToStringFunctionMap)) {
 			tooltipList.push(weaponSkillToStringFunctionMap[i](item.weaponSkills[i]))
+		}
+	}
+	if (tooltipList.length != 0) {
+		return `<span style="color: #1eff00;">${tooltipList.join('<br>')}</span>`
+	}
+	return ""
+}
+
+function getProcStringTooltip(item: any): string {
+	const tooltipList: String[] = []
+	for (let i = 0; i < item.procStrings.length; ++i) {
+		if (item.procStrings[i] != "") {
+			tooltipList.push(item.procStrings[i])
 		}
 	}
 	if (tooltipList.length != 0) {
