@@ -566,13 +566,13 @@ export default class ItemList<T extends ItemListType> {
 		setItemQualityCssClass(nameElem.value!, itemData.quality);
 
 		const itemTooltip = tippy(iconElem.value!, {
-			content: `${String(createItemTooltip(itemData.item))}`, 
+			content: `${String(createItemTooltip(itemData.item, this.player))}`, 
 			allowHTML: true, 
 			hideOnClick: false
 		});
 
 		const nameTooltip = tippy(nameElem.value!, {
-			content: `${String(createItemTooltip(itemData.item))}`, 
+			content: `${String(createItemTooltip(itemData.item, this.player))}`, 
 			allowHTML: true, 
 			hideOnClick: false
 		});

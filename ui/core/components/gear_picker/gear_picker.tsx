@@ -69,6 +69,8 @@ export class ItemRenderer extends Component {
 	readonly nameElem: HTMLAnchorElement;
 	readonly ilvlElem: HTMLSpanElement;
 	readonly enchantElem: HTMLAnchorElement;
+	private itemTooltip: any;
+	private nameTooltip: any;
 
 	constructor(parent: HTMLElement, root: HTMLElement, player: Player<any>) {
 		super(parent, 'item-picker-root', root);
@@ -95,6 +97,17 @@ export class ItemRenderer extends Component {
 		this.nameElem = nameElem.value!;
 		this.ilvlElem = ilvlElem.value!;
 		this.enchantElem = enchantElem.value!;
+
+		this.itemTooltip = tippy(this.iconElem, {
+			content: ``, 
+			allowHTML: true, 
+			hideOnClick: false
+		});
+		this.nameTooltip = tippy(this.nameElem, {
+			content: ``, 
+			allowHTML: true, 
+			hideOnClick: false
+		});
 	}
 
 	clear() {
@@ -133,17 +146,8 @@ export class ItemRenderer extends Component {
 				filledId.setWowheadHref(this.nameElem);
 			});
 
-		const itemTooltip = tippy(this.iconElem, {
-			content: `${String(createItemTooltip(newItem.item))}`, 
-			allowHTML: true, 
-			hideOnClick: false
-		});
-
-		const nameTooltip = tippy(this.nameElem, {
-			content: `${String(createItemTooltip(newItem.item))}`, 
-			allowHTML: true, 
-			hideOnClick: false
-		});
+		this.itemTooltip.setContent(`${String(createItemTooltip(newItem.item, this.player))}`);
+		this.nameTooltip.setContent(`${String(createItemTooltip(newItem.item, this.player))}`);
 
 		if (newItem.enchant) {
 			getEnchantDescription(newItem.enchant).then(description => {

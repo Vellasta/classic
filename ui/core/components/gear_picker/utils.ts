@@ -1,4 +1,5 @@
 import { ItemSlot } from '../../proto/common';
+import { Player } from '../../player';
 import ItemList, { GearData, ItemData, ItemListType } from './item_list';
 import { DatabaseFilters, RepSource, UIEnchant, UIFaction, UIItem, UIItem_FactionRestriction } from '../../proto/ui';
 import { Stat } from '../../proto/common';
@@ -147,8 +148,17 @@ const weaponSkillToStringFunctionMap: Record<number, Function> = {
 	[14]: getGunsWeaponSkillTooltip,
 }
 
+const setIDToStringFunctionMap: Record<number, Function> = {
+	[206]: getGiantstalkerTooltip,
+	// [215]: getDragonstalkerTooltip,
+	// [477]: getPredatorsTooltip,
+	// [515]: getBeastmasterTooltip,
+	// [509]: getStrikersTooltip,
+	// [530]: getCryptstalkerTooltip,
+}
 
-export function createItemTooltip(item: ItemListType): string {
+
+export function createItemTooltip(item: ItemListType, player: Player<any>): string {
 	const nameTooltip = getNameTooltip(item)
 	const ilvlTooltip = getIlvlTooltip(item)
 	const itemTypeTooltip = getitemTypeTooltip(item)
@@ -159,6 +169,7 @@ export function createItemTooltip(item: ItemListType): string {
 	const bonusWeaponDamageTooltip = getBonusWeaponDamageTooltip(item)
 	const weaponSkillTooltip = getWeaponSkillTooltip(item)
 	const procStringTooltip = getProcStringTooltip(item)
+	const setTooltip = getSetTooltip(item, player)
 
 	const tooltipList: string[] = [
 		nameTooltip, 
@@ -170,7 +181,8 @@ export function createItemTooltip(item: ItemListType): string {
 		bonusStatsTooltip,
 		bonusWeaponDamageTooltip,
 		weaponSkillTooltip,
-		procStringTooltip
+		procStringTooltip,
+		setTooltip
 	]
 	const filteredTooltipList = tooltipList.filter((s) => s != "")
 	return filteredTooltipList.join('<br>')
@@ -249,6 +261,13 @@ function getBonusStatsTooltip(stats: any): string {
 	return ""
 }
 
+function getBonusWeaponDamageTooltip(item: any): string {
+	if (item.bonusPhysicalDamage > 0) {
+		return `<span style="color: #1eff00;">Equip: +${item.bonusPhysicalDamage} Weapon Damage.</span>`
+	}
+	return ""
+}
+
 function getWeaponSkillTooltip(item: any): string {
 	const tooltipList: String[] = []
 	for (let i = 0; i < item.weaponSkills.length; ++i) {
@@ -275,11 +294,54 @@ function getProcStringTooltip(item: any): string {
 	return ""
 }
 
-function getBonusWeaponDamageTooltip(item: any): string {
-	if (item.bonusPhysicalDamage > 0) {
-		return `<span style="color: #1eff00;">Equip: +${item.bonusPhysicalDamage} Weapon Damage.</span>`
+function getSetTooltip(item: any, player: Player<any>): string {
+	if (item.setId in setIDToStringFunctionMap) {
+		return `<br>${setIDToStringFunctionMap[item.setId](player)}`
 	}
 	return ""
+}
+
+function getSetCountAndPieces(
+	setIds: number[], 
+	idToStringMap: Record<number, String>, 
+	player: Player<any>, 
+	setCountToStringMap: Record<number, String>
+): {
+	setCount: number, 
+	setPieces: String[], 
+	setString: String[]
+} {
+	const setPieces: String[] = []
+	var playerEquipped = new Set<number>()
+	for (let i = 0; i < 17; ++i) {
+		const equipItem = player.getEquippedItem(i)
+		if (equipItem) {
+			playerEquipped.add(equipItem.item.id)
+		}
+	}
+	
+	var setCount = 0
+	for (let i = 0; i < setIds.length; ++i) {
+		var setItemName = idToStringMap[setIds[i]]
+		if (playerEquipped.has(setIds[i])) {
+			setItemName = `<span style="color: #ffffad; padding-left: 10px;">${setItemName}</span>`
+			setCount += 1
+		} else {
+			setItemName = `<span style="color: gray; padding-left: 10px;">${setItemName}</span>`
+		}
+		setPieces.push(setItemName)
+	}
+
+	const setString: String[] = []
+	for (const [setIndex, setValue] of Object.entries(setCountToStringMap)) {
+		if (+setIndex <= setCount) {
+			setString.push(`<span style="color: #1eff00;">${setValue}</span>`)
+		} else {
+			setString.push(`<span style="color: gray;">${setValue}</span>`)
+		}
+	}
+
+	return {setCount, setPieces, setString}
 }
 
 function getStrengthTooltip(val: number): string {
@@ -479,5 +541,49 @@ function getCrossbowsWeaponSkillTooltip(val: number): string {
 }
 
 function getGunsWeaponSkillTooltip(val: number): string {
+	return `Equip: Increased Guns +${val}.`
+}
+
+function getGiantstalkerTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[16845]: "Giantstalker's Breastplate",
+		[16846]: "Giantstalker's Helmet",
+		[16847]: "Giantstalker's Leggings",
+		[16848]: "Giantstalker's Epaulets",
+		[16849]: "Giantstalker's Boots",
+		[16850]: "Giantstalker's Bracers",
+		[16851]: "Giantstalker's Belt",
+		[16852]: "Giantstalker's Gloves",
+	}
+	const setIds: number[] = [16851,16849,16850,16845,16848,16852,16846,16847]
+
+	const setCountToStringMap: Record<number, String> = {
+		[3]: "(3) Set : Increases the range of your Mend Pet spell by 50% and the effect by 10%.  Also reduces the cost by 30%.",
+		[5]: "(5) Set : Increases your pet's stamina by 30 and all spell resistances by 40.",
+		[8]: "(8) Set : Increases the damage of Multi-shot and Volley by 15%.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(setIds, idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Giantstalker Armor (${setCount}/8)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
+function getDragonstalkerTooltip(val: number): string {
+	return `Equip: Increased Thrown +${val}.`
+}
+
+function getPredatorsTooltip(val: number): string {
+	return `Equip: Increased Bows +${val}.`
+}
+
+function getBeastmasterTooltip(val: number): string {
+	return `Equip: Increased Crossbows +${val}.`
+}
+
+function getStrikersTooltip(val: number): string {
+	return `Equip: Increased Guns +${val}.`
+}
+
+function getCryptstalkerTooltip(val: number): string {
 	return `Equip: Increased Guns +${val}.`
 }
