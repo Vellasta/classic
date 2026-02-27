@@ -150,11 +150,11 @@ const weaponSkillToStringFunctionMap: Record<number, Function> = {
 
 const setIDToStringFunctionMap: Record<number, Function> = {
 	[206]: getGiantstalkerTooltip,
-	// [215]: getDragonstalkerTooltip,
-	// [477]: getPredatorsTooltip,
-	// [515]: getBeastmasterTooltip,
-	// [509]: getStrikersTooltip,
-	// [530]: getCryptstalkerTooltip,
+	[215]: getDragonstalkerTooltip,
+	[477]: getPredatorsTooltip,
+	[515]: getBeastmasterTooltip,
+	[509]: getStrikersTooltip,
+	[530]: getCryptstalkerTooltip,
 }
 
 
@@ -301,8 +301,7 @@ function getSetTooltip(item: any, player: Player<any>): string {
 	return ""
 }
 
-function getSetCountAndPieces(
-	setIds: number[], 
+function getSetCountAndPieces( 
 	idToStringMap: Record<number, String>, 
 	player: Player<any>, 
 	setCountToStringMap: Record<number, String>
@@ -321,13 +320,13 @@ function getSetCountAndPieces(
 	}
 	
 	var setCount = 0
-	for (let i = 0; i < setIds.length; ++i) {
-		var setItemName = idToStringMap[setIds[i]]
-		if (playerEquipped.has(setIds[i])) {
-			setItemName = `<span style="color: #ffffad; padding-left: 10px;">${setItemName}</span>`
+	for (const [itemId, itemName] of Object.entries(idToStringMap)) {
+		var setItemName
+		if (playerEquipped.has(+itemId)) {
+			setItemName = `<span style="color: #ffffad; padding-left: 10px;">${itemName}</span>`
 			setCount += 1
 		} else {
-			setItemName = `<span style="color: gray; padding-left: 10px;">${setItemName}</span>`
+			setItemName = `<span style="color: #a7a7a7; padding-left: 10px;">${itemName}</span>`
 		}
 		setPieces.push(setItemName)
 	}
@@ -337,7 +336,7 @@ function getSetCountAndPieces(
 		if (+setIndex <= setCount) {
 			setString.push(`<span style="color: #1eff00;">${setValue}</span>`)
 		} else {
-			setString.push(`<span style="color: gray;">${setValue}</span>`)
+			setString.push(`<span style="color: #a7a7a7;">${setValue}</span>`)
 		}
 	}
 
@@ -546,16 +545,15 @@ function getGunsWeaponSkillTooltip(val: number): string {
 
 function getGiantstalkerTooltip(player: Player<any>): string {
 	const idToStringMap: Record<number, String> = {
-		[16845]: "Giantstalker's Breastplate",
-		[16846]: "Giantstalker's Helmet",
-		[16847]: "Giantstalker's Leggings",
-		[16848]: "Giantstalker's Epaulets",
+		[16851]: "Giantstalker's Belt",
 		[16849]: "Giantstalker's Boots",
 		[16850]: "Giantstalker's Bracers",
-		[16851]: "Giantstalker's Belt",
+		[16845]: "Giantstalker's Breastplate",
+		[16848]: "Giantstalker's Epaulets",
 		[16852]: "Giantstalker's Gloves",
+		[16846]: "Giantstalker's Helmet",
+		[16847]: "Giantstalker's Leggings",
 	}
-	const setIds: number[] = [16851,16849,16850,16845,16848,16852,16846,16847]
 
 	const setCountToStringMap: Record<number, String> = {
 		[3]: "(3) Set : Increases the range of your Mend Pet spell by 50% and the effect by 10%.  Also reduces the cost by 30%.",
@@ -563,27 +561,118 @@ function getGiantstalkerTooltip(player: Player<any>): string {
 		[8]: "(8) Set : Increases the damage of Multi-shot and Volley by 15%.",
 	}
 
-	const {setCount, setPieces, setString} = getSetCountAndPieces(setIds, idToStringMap, player, setCountToStringMap)
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
 	
 	return `<span style="color: gold;">Giantstalker Armor (${setCount}/8)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }
 
-function getDragonstalkerTooltip(val: number): string {
-	return `Equip: Increased Thrown +${val}.`
+function getDragonstalkerTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[16936]: "Dragonstalker's Belt",
+		[16935]: "Dragonstalker's Bracers",
+		[16942]: "Dragonstalker's Breastplate",
+		[16940]: "Dragonstalker's Gauntlets",
+		[16941]: "Dragonstalker's Greaves",
+		[16939]: "Dragonstalker's Helm",
+		[16938]: "Dragonstalker's Legguards",
+		[16937]: "Dragonstalker's Spaulders",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[3]: "(3) Set : Increases the Ranged Attack Power bonus of your Aspect of the Hawk by 20%.",
+		[5]: "(5) Set : Increases your pet's stamina by 40 and all spell resistances by 60.",
+		[8]: "(8) Set : You have a chance whenever you deal ranged damage to apply an Expose Weakness effect to the target. Expose Weakness increases the Ranged Attack Power of all attackers against that target by 450 for 7 sec.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Dragonstalker Armor (${setCount}/8)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }
 
-function getPredatorsTooltip(val: number): string {
-	return `Equip: Increased Bows +${val}.`
+function getPredatorsTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[19621]: "Maelstrom's Wrath",
+		[19953]: "Renataki's Charm of Beasts",
+		[19833]: "Zandalar Predator's Bracers",
+		[19832]: "Zandalar Predator's Belt",
+		[19831]: "Zandalar Predator's Mantle",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set : +20 Attack Power.",
+		[3]: "(3) Set : Decreases the cooldown of Concussive Shot by 1 sec.",
+		[5]: "(5) Set : Increases the duration of Serpent Sting by 3 sec.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Predator's Armor (${setCount}/5)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }
 
-function getBeastmasterTooltip(val: number): string {
-	return `Equip: Increased Crossbows +${val}.`
+function getBeastmasterTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[22010]: "Beastmaster's Belt",
+		[22011]: "Beastmaster's Bindings",
+		[22061]: "Beastmaster's Boots",
+		[22013]: "Beastmaster's Cap",
+		[22015]: "Beastmaster's Gloves",
+		[22016]: "Beastmaster's Mantle",
+		[22017]: "Beastmaster's Pants",
+		[22060]: "Beastmaster's Tunic",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set : +8 All Resistances.",
+		[4]: "(4) Set : Your normal ranged attacks have a 4% chance of restoring 200 mana. (Proc chance: 4%)",
+		[6]: "(6) Set : +40 Attack Power.",
+		[8]: "(8) Set : +200 Armor.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Beastmaster Armor (${setCount}/8)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }
 
-function getStrikersTooltip(val: number): string {
-	return `Equip: Increased Guns +${val}.`
+function getStrikersTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[21366]: "Striker's Diadem",
+		[21365]: "Striker's Footguards",
+		[21370]: "Striker's Hauberk",
+		[21368]: "Striker's Leggings",
+		[21367]: "Striker's Pauldrons",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[3]: "(3) Set : Reduces the cost of your Arcane Shots by 10%. (Proc chance: 20%)",
+		[5]: "(5) Set : Reduces the cooldown of your Rapid Fire ability by 2 minutes. (Proc chance: 20%)",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Striker's Garb (${setCount}/5)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }
 
-function getCryptstalkerTooltip(val: number): string {
-	return `Equip: Increased Guns +${val}.`
+function getCryptstalkerTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[22440]: "Cryptstalker Boots",
+		[22442]: "Cryptstalker Girdle",
+		[22441]: "Cryptstalker Handguards",
+		[22438]: "Cryptstalker Headpiece",
+		[22437]: "Cryptstalker Legguards",
+		[22439]: "Cryptstalker Spaulders",
+		[22436]: "Cryptstalker Tunic",
+		[22443]: "Cryptstalker Wristguards",
+		[23067]: "Ring of the Cryptstalker",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set : Increases the duration of your Rapid Fire by 4 secs.",
+		[4]: "(4) Set : Increases Attack Power by 50 for both you and your pet.",
+		[6]: "(6) Set : Your ranged critical hits cause an Adrenaline Rush, granting you 50 mana.",
+		[8]: "(8) Set : Reduces the mana cost of your Multi-Shot and Aimed Shot by 20.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Cryptstalker Armor (${setCount}/9)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }
