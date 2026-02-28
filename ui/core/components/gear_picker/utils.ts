@@ -252,6 +252,9 @@ function getBonusStatsTooltip(stats: any): string {
 			if (i == 27 && stats[i] == stats[17]) {
 				continue
 			}
+			if (i == 20 && stats[i] == stats[15]) {
+				continue
+			}
 			tooltipList.push(indexToStatFunctionMap[i](stats[i]))
 		}
 	}

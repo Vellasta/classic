@@ -1307,7 +1307,7 @@ export const classToMaxArmorType: Record<Class, ArmorType> = {
 export const classToEligibleRangedWeaponTypes: Record<Class, Array<RangedWeaponType>> = {
 	[Class.ClassUnknown]: [],
 	[Class.ClassDruid]: [RangedWeaponType.RangedWeaponTypeIdol],
-	[Class.ClassHunter]: [RangedWeaponType.RangedWeaponTypeBow, RangedWeaponType.RangedWeaponTypeCrossbow, RangedWeaponType.RangedWeaponTypeGun],
+	[Class.ClassHunter]: [RangedWeaponType.RangedWeaponTypeBow, RangedWeaponType.RangedWeaponTypeCrossbow, RangedWeaponType.RangedWeaponTypeGun, RangedWeaponType.RangedWeaponTypeThrown],
 	[Class.ClassMage]: [RangedWeaponType.RangedWeaponTypeWand],
 	[Class.ClassPaladin]: [RangedWeaponType.RangedWeaponTypeLibram],
 	[Class.ClassPriest]: [RangedWeaponType.RangedWeaponTypeWand],

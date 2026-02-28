@@ -167,6 +167,7 @@ const (
 	MarkOfTheChampionSpell     = 23207
 	MisplacedServoArm          = 23221
 	JomGabbar                  = 23570
+	BeasthuntersBlunderbuss    = 61248
 )
 
 func init() {
@@ -3613,6 +3614,9 @@ func init() {
 			Type:  core.CooldownTypeDPS,
 		})
 	})
+
+	// +39 Attack Power when fighting Beasts.
+	core.NewMobTypeAttackPowerEffect(BeasthuntersBlunderbuss, []proto.MobType{proto.MobType_MobTypeBeast}, 39)
 
 	core.AddEffectsToTest = true
 }
