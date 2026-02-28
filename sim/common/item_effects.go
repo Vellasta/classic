@@ -170,6 +170,7 @@ const (
 	BeasthuntersBlunderbuss    = 61248
 	ClawOfTheMageweaver        = 55133
 	Rakashishi                 = 55116
+	Shadowbringer              = 61247
 )
 
 func init() {
@@ -3659,6 +3660,26 @@ func init() {
 						}
 					}
 				}
+			},
+		})
+	})
+
+	// Chance on hit: Steals 141 to 164 life from target enemy.
+	// Estimated based on data from WoW Armaments Discord
+	itemhelpers.CreateWeaponProcSpell(Shadowbringer, "Shadowbringer (Lifesteal)", 2.2, func(character *core.Character) *core.Spell {
+		actionID := core.ActionID{SpellID: 461683}
+		healthMetrics := character.NewHealthMetrics(actionID)
+		return character.RegisterSpell(core.SpellConfig{
+			ActionID:         actionID,
+			SpellSchool:      core.SpellSchoolShadow,
+			DefenseType:      core.DefenseTypeMagic,
+			ProcMask:         core.ProcMaskEmpty,
+			DamageMultiplier: 1,
+			ThreatMultiplier: 1,
+			BonusCoefficient: 1.0,
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+				result := spell.CalcAndDealDamage(sim, target, sim.Roll(141, 164), spell.OutcomeMagicHit)
+				character.GainHealth(sim, result.Damage, healthMetrics)
 			},
 		})
 	})
