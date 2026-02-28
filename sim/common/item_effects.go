@@ -168,6 +168,8 @@ const (
 	MisplacedServoArm          = 23221
 	JomGabbar                  = 23570
 	BeasthuntersBlunderbuss    = 61248
+	ClawOfTheMageweaver        = 55133
+	Rakashishi                 = 55116
 )
 
 func init() {
@@ -3617,6 +3619,49 @@ func init() {
 
 	// +39 Attack Power when fighting Beasts.
 	core.NewMobTypeAttackPowerEffect(BeasthuntersBlunderbuss, []proto.MobType{proto.MobType_MobTypeBeast}, 39)
+
+	// Chance on hit: Launches a bolt of frost at the enemy causing 30 Frost damage and slowing movement speed by 20% for 5 sec.
+	itemhelpers.CreateWeaponCoHProcDamage(ClawOfTheMageweaver, "Claw of the Mageweaver", 2.2, 13439, core.SpellSchoolFrost, 30, 0, 0, core.DefenseTypeMagic)
+
+	// Raka'shishi: Your auto-attacks have a 20% chance to strike an additional nearby opponent. This effect is disabled while shapeshifted and can only trigger once every 5 sec.
+	core.NewItemEffect(Rakashishi, func(agent core.Agent) {
+		character := agent.GetCharacter()
+		if !character.AutoAttacks.AutoSwingMelee {
+			return
+		}
+
+		icd := core.Cooldown{
+			Timer:    character.NewTimer(),
+			Duration: time.Second * 5,
+		}
+
+		character.GetOrRegisterAura(core.Aura{
+			Label:    "Raka'shishi, Spear of the Adrift Hunt",
+			Duration: core.NeverExpires,
+			OnReset: func(aura *core.Aura, sim *core.Simulation) {
+				aura.Activate(sim)
+			},
+			OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+				if spell.Flags.Matches(core.SpellFlagSuppressEquipProcs) {
+					return
+				}
+				if !spell.ProcMask.Matches(core.ProcMaskMeleeMHAuto) {
+					return
+				}
+				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(0.2, "Rakashishi") {
+					icd.Use(sim)
+					for numHits := 0; numHits < 1; numHits++ {
+						nextTarget := character.Env.NextTargetUnit(result.Target)
+						if nextTarget.Index != result.Target.Index {
+							damage := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower(nextTarget))
+							spell.CalcAndDealDamage(sim, nextTarget, damage, spell.OutcomeMeleeSpecialHitAndCrit)
+							numHits++
+						}
+					}
+				}
+			},
+		})
+	})
 
 	core.AddEffectsToTest = true
 }
