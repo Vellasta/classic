@@ -171,6 +171,9 @@ const (
 	ClawOfTheMageweaver        = 55133
 	Rakashishi                 = 55116
 	Shadowbringer              = 61247
+	Chronobreaker              = 61049
+	TheRipper                  = 60422
+	TheCruelBlade              = 60413
 )
 
 func init() {
@@ -3680,6 +3683,115 @@ func init() {
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 				result := spell.CalcAndDealDamage(sim, target, sim.Roll(141, 164), spell.OutcomeMagicHit)
 				character.GainHealth(sim, result.Damage, healthMetrics)
+			},
+		})
+	})
+
+	// PPM from Armaments discord
+	itemhelpers.CreateWeaponProcSpell(Chronobreaker, "Chronobreaker", 1.9, func(character *core.Character) *core.Spell {
+		return character.GetOrRegisterSpell(core.SpellConfig{
+			ActionID:         core.ActionID{SpellID: 18797},
+			SpellSchool:      core.SpellSchoolPhysical,
+			DefenseType:      core.DefenseTypeMelee,
+			ProcMask:         core.ProcMaskEmpty,
+			DamageMultiplier: 1,
+			ThreatMultiplier: 1,
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+				character.AutoAttacks.ExtraMHAttackProc(sim, 1, core.ActionID{SpellID: 18797}, spell)
+			},
+		})
+	})
+
+	itemhelpers.CreateWeaponProcSpell(TheRipper, "The Ripper", 1.0, func(character *core.Character) *core.Spell {
+		return character.GetOrRegisterSpell(core.SpellConfig{
+			ActionID:         core.ActionID{SpellID: 13526},
+			SpellSchool:      core.SpellSchoolNature,
+			DefenseType:      core.DefenseTypeMagic,
+			ProcMask:         core.ProcMaskEmpty,
+			Flags:            core.SpellFlagPoison | core.SpellFlagPureDot,
+			DamageMultiplier: 1,
+			ThreatMultiplier: 1,
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+				result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeMagicHit)
+				if result.Landed() {
+					spell.Dot(target).Apply(sim)
+				}
+			},
+			Dot: core.DotConfig{
+				NumberOfTicks: 6,
+				TickLength:    time.Second * 5,
+				Aura: core.Aura{
+					Label: "Corrosive Poison",
+					OnGain: func(aura *core.Aura, sim *core.Simulation) {
+						aura.Unit.AddStatsDynamic(sim, stats.Stats{stats.Armor: -60})
+					},
+					OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+						aura.Unit.AddStatsDynamic(sim, stats.Stats{stats.Armor: 60})
+					},
+				},
+				OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
+					dot.Spell.CalcAndDealPeriodicDamage(sim, target, 7, dot.OutcomeTick)
+				},
+			},
+		})
+	})
+
+	itemhelpers.CreateWeaponProcAura(TheCruelBlade, "The Cruel Blade", 1.0, func(character *core.Character) *core.Aura {
+		tickActionID := core.ActionID{SpellID: 9633}
+		procActionID := core.ActionID{SpellID: 9632}
+		//Used as part of a canceling ravager APL
+		auraActionID := core.ActionID{SpellID: 433801}
+
+		ravegerBladestormTickSpell := character.GetOrRegisterSpell(core.SpellConfig{
+			ActionID:    tickActionID,
+			SpellSchool: core.SpellSchoolPhysical,
+			DefenseType: core.DefenseTypeMelee,
+			ProcMask:    core.ProcMaskMeleeMHSpecial,
+			Flags:       core.SpellFlagNoOnCastComplete | core.SpellFlagPassiveSpell,
+
+			DamageMultiplier: 1,
+			BonusCoefficient: 1,
+
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+				damage := 5.0 + spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower(target))
+				for _, aoeTarget := range sim.Encounter.TargetUnits {
+					spell.CalcAndDealDamage(sim, aoeTarget, damage, spell.OutcomeMeleeSpecialHitAndCrit)
+				}
+			},
+		})
+
+		character.GetOrRegisterSpell(core.SpellConfig{
+			SpellSchool: core.SpellSchoolPhysical,
+			ActionID:    procActionID,
+			ProcMask:    core.ProcMaskMeleeMHSpecial,
+			Flags:       core.SpellFlagChanneled,
+			Dot: core.DotConfig{
+				IsAOE: true,
+				Aura: core.Aura{
+					Label: "Ravager Whirlwind",
+				},
+				NumberOfTicks:       3,
+				TickLength:          time.Second * 3,
+				AffectedByCastSpeed: false,
+				OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
+					ravegerBladestormTickSpell.Cast(sim, target)
+				},
+			},
+		})
+
+		return character.GetOrRegisterAura(core.Aura{
+			Label:    "Ravager Bladestorm",
+			ActionID: auraActionID,
+			Duration: time.Second * 9,
+			OnGain: func(aura *core.Aura, sim *core.Simulation) {
+				character.AutoAttacks.CancelAutoSwing(sim)
+				dotSpell := character.GetSpell(procActionID)
+				dotSpell.AOEDot().Apply(sim)
+			},
+			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+				character.AutoAttacks.EnableAutoSwing(sim)
+				dotSpell := character.GetSpell(procActionID)
+				dotSpell.AOEDot().Cancel(sim)
 			},
 		})
 	})
