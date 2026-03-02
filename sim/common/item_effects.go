@@ -176,6 +176,8 @@ const (
 	TheCruelBlade              = 60413
 	WingOfTheTimeLord          = 61010
 	CrochideWrists             = 61565
+	DeathruneLeggings          = 83454
+	MoltenEmberstone           = 58211
 )
 
 func init() {
@@ -3829,6 +3831,12 @@ func init() {
 
 	// +48 Attack Power when fighting Beasts.
 	core.NewMobTypeAttackPowerEffect(CrochideWrists, []proto.MobType{proto.MobType_MobTypeBeast}, 48)
+
+	// Equip: +45 Attack Power when fighting Undead.
+	core.NewMobTypeAttackPowerEffect(DeathruneLeggings, []proto.MobType{proto.MobType_MobTypeUndead}, 45)
+
+	// Use: Increases your melee and ranged attack power by 200.  Effect lasts for 20 sec. (2 Min Cooldown)
+	core.NewSimpleStatOffensiveTrinketEffect(MoltenEmberstone, stats.Stats{stats.AttackPower: 200, stats.RangedAttackPower: 200}, time.Second*20, time.Second*120)
 
 	core.AddEffectsToTest = true
 }
