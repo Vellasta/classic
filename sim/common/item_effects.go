@@ -174,6 +174,8 @@ const (
 	Chronobreaker              = 61049
 	TheRipper                  = 60422
 	TheCruelBlade              = 60413
+	WingOfTheTimeLord          = 61010
+	CrochideWrists             = 61565
 )
 
 func init() {
@@ -3795,6 +3797,38 @@ func init() {
 			},
 		})
 	})
+
+	core.NewItemEffect(WingOfTheTimeLord, func(agent core.Agent) {
+		character := agent.GetCharacter()
+		if !character.AutoAttacks.AutoSwingMelee {
+			return
+		}
+
+		icd := core.Cooldown{
+			Timer:    character.NewTimer(),
+			Duration: time.Second * 2,
+		}
+
+		character.GetOrRegisterAura(core.Aura{
+			Label:    "Wing of the Time-Lord",
+			Duration: core.NeverExpires,
+			OnReset: func(aura *core.Aura, sim *core.Simulation) {
+				aura.Activate(sim)
+			},
+			OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+				if spell.Flags.Matches(core.SpellFlagSuppressEquipProcs) {
+					return
+				}
+				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(0.01, "WingOfTheTimeLord") {
+					icd.Use(sim)
+					aura.Unit.AutoAttacks.ExtraMHAttackProc(sim, 1, core.ActionID{SpellID: 15600}, spell)
+				}
+			},
+		})
+	})
+
+	// +48 Attack Power when fighting Beasts.
+	core.NewMobTypeAttackPowerEffect(CrochideWrists, []proto.MobType{proto.MobType_MobTypeBeast}, 48)
 
 	core.AddEffectsToTest = true
 }
