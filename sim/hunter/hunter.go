@@ -89,6 +89,10 @@ type Hunter struct {
 	AspectOfTheHawkAPMultiplier float64
 	AspectOfTheWolfAPMultiplier float64
 
+	SwiftAspectsMultiplier float64
+	impHawkAura            *core.Aura
+	impWolfAura            *core.Aura
+
 	curQueueAura       *core.Aura
 	curQueuedAutoSpell *core.Spell
 

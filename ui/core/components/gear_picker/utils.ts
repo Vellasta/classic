@@ -155,6 +155,7 @@ const setIDToStringFunctionMap: Record<number, Function> = {
 	[515]: getBeastmasterTooltip,
 	[509]: getStrikersTooltip,
 	[530]: getCryptstalkerTooltip,
+	[697]: getRavenstalkerTooltip,
 }
 
 
@@ -678,4 +679,24 @@ function getCryptstalkerTooltip(player: Player<any>): string {
 	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
 	
 	return `<span style="color: gold;">Cryptstalker Armor (${setCount}/9)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
+function getRavenstalkerTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[47318]: "Ravenstalker Headpiece",
+		[47319]: "Ravenstalker Spaulders",
+		[47320]: "Ravenstalker Tunic",
+		[47321]: "Ravenstalker Legguards",
+		[47322]: "Ravenstalker Boots",
+		[47323]: "Ravenstalker Choker",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[3]: "(3) Set: Reduces the cooldown of Multi-Shot and Carve by 1 sec.",
+		[5]: "(5) Set: Increases the attack speed provided by Swift Aspects by an additional 5%.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Ravenstalker Armor (${setCount}/6)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }

@@ -2,10 +2,10 @@ package hunter
 
 import (
 	"time"
+
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/stats"
 )
-
 
 ///////////////////////////////////////////////////////////////////////////
 //                            Phase 1 Item Sets - Molten Core
@@ -85,7 +85,7 @@ var ItemSetDragonstalkersArmor = core.NewItemSet(core.ItemSet{
 		// (8) Set: You have a chance whenever you deal ranged damage to apply an Expose Weakness effect to the target. Expose Weakness increases the Ranged Attack Power of all attackers against that target by 450 for 7 sec.
 		8: func(agent core.Agent) {
 			hunter := agent.(HunterAgent).GetHunter()
-			
+
 			debuffAuras := hunter.NewEnemyAuraArray(core.ExposeWeaknessAura)
 
 			core.MakeProcTriggerAura(&hunter.Unit, core.ProcTrigger{
@@ -189,7 +189,7 @@ var ItemSetBeastmasterArmor = core.NewItemSet(core.ItemSet{
 var ItemSetStrikersGarb = core.NewItemSet(core.ItemSet{
 	Name: "Striker's Garb",
 	Bonuses: map[int32]core.ApplyEffect{
-		// (3) Set : Reduces the cost of your Arcane Shots by 10%. 
+		// (3) Set : Reduces the cost of your Arcane Shots by 10%.
 		3: func(agent core.Agent) {
 			hunter := agent.(HunterAgent).GetHunter()
 			core.MakePermanent(hunter.RegisterAura(core.Aura{
@@ -201,7 +201,7 @@ var ItemSetStrikersGarb = core.NewItemSet(core.ItemSet{
 				},
 			}))
 		},
-		// (5) Set : Reduces the cooldown of your Rapid Fire ability by 2 minutes. 
+		// (5) Set : Reduces the cooldown of your Rapid Fire ability by 2 minutes.
 		5: func(agent core.Agent) {
 			hunter := agent.(HunterAgent).GetHunter()
 			core.MakePermanent(hunter.RegisterAura(core.Aura{
@@ -271,7 +271,7 @@ var ItemSetCryptstalkerArmor = core.NewItemSet(core.ItemSet{
 					}
 				},
 			})
-			
+
 		},
 		// (8) Set : Reduces the mana cost of your Multi-Shot and Aimed Shot by 20.
 		8: func(agent core.Agent) {
@@ -283,6 +283,45 @@ var ItemSetCryptstalkerArmor = core.NewItemSet(core.ItemSet{
 						hunter.AimedShot.Cost.FlatModifier -= 20.0
 					}
 					hunter.MultiShot.Cost.FlatModifier -= 20.0
+				},
+			}))
+		},
+	},
+})
+
+var ItemSetRavenstalkerArmor = core.NewItemSet(core.ItemSet{
+	Name: "Ravenstalker Armor",
+	Bonuses: map[int32]core.ApplyEffect{
+		// (3) Set: Reduces the cooldown of Multi-Shot and Carve by 1 sec.
+		3: func(agent core.Agent) {
+			hunter := agent.(HunterAgent).GetHunter()
+			core.MakePermanent(hunter.RegisterAura(core.Aura{
+				Label: "Multishot and Carve Cooldown",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					hunter.MultiShot.CD.Duration -= time.Second * 1
+					if hunter.Carve != nil {
+						hunter.Carve.CD.Duration -= time.Second * 1
+					}
+				},
+			}))
+		},
+		// (5) Set: Increases the attack speed provided by Swift Aspects by an additional 5%.
+		5: func(agent core.Agent) {
+			hunter := agent.(HunterAgent).GetHunter()
+			core.MakePermanent(hunter.RegisterAura(core.Aura{
+				Label: "Improved Swift Aspects",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					if hunter.Talents.SwiftAspects > 0 {
+						hunter.SwiftAspectsMultiplier += 0.05
+						hunter.impHawkAura = hunter.createImprovedHawkAura(
+							"Quick Shots",
+							core.ActionID{SpellID: 51551},
+						)
+						hunter.impWolfAura = hunter.createImprovedWolfAura(
+							"Quick Strikes",
+							core.ActionID{SpellID: 51546},
+						)
+					}
 				},
 			}))
 		},

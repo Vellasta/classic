@@ -10,16 +10,15 @@ import (
 
 // Utility function to create an Improved Hawk Aura
 func (hunter *Hunter) createImprovedHawkAura(auraLabel string, actionID core.ActionID) *core.Aura {
-	bonusMultiplier := 1 + 0.03*float64(hunter.Talents.SwiftAspects)
 	return hunter.GetOrRegisterAura(core.Aura{
 		Label:    auraLabel,
 		ActionID: actionID,
 		Duration: time.Second * 12,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Unit.MultiplyRangedSpeed(sim, bonusMultiplier)
+			aura.Unit.MultiplyRangedSpeed(sim, hunter.SwiftAspectsMultiplier)
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Unit.MultiplyRangedSpeed(sim, 1/bonusMultiplier)
+			aura.Unit.MultiplyRangedSpeed(sim, 1/hunter.SwiftAspectsMultiplier)
 		},
 	})
 }
@@ -48,7 +47,6 @@ func (hunter *Hunter) getMaxHawkRank() int {
 }
 
 func (hunter *Hunter) getAspectOfTheHawkSpellConfig(rank int) core.SpellConfig {
-	var impHawkAura *core.Aura
 	improvedHawkProcChance := 0.1
 
 	spellIds := [8]int32{0, 13165, 14318, 14319, 14320, 14321, 14322, 25296}
@@ -58,7 +56,7 @@ func (hunter *Hunter) getAspectOfTheHawkSpellConfig(rank int) core.SpellConfig {
 	level := levels[rank]
 
 	if hunter.Talents.SwiftAspects > 0 {
-		impHawkAura = hunter.createImprovedHawkAura(
+		hunter.impHawkAura = hunter.createImprovedHawkAura(
 			"Quick Shots",
 			core.ActionID{SpellID: 51551},
 		)
@@ -82,8 +80,8 @@ func (hunter *Hunter) getAspectOfTheHawkSpellConfig(rank int) core.SpellConfig {
 			// 	return
 			// }
 
-			if impHawkAura != nil && sim.Proc(improvedHawkProcChance, "Imp Aspect of the Hawk") {
-				impHawkAura.Activate(sim)
+			if hunter.impHawkAura != nil && sim.Proc(improvedHawkProcChance, "Imp Aspect of the Hawk") {
+				hunter.impHawkAura.Activate(sim)
 			}
 		},
 	})
@@ -113,6 +111,7 @@ func (hunter *Hunter) getAspectOfTheHawkSpellConfig(rank int) core.SpellConfig {
 
 func (hunter *Hunter) registerAspectOfTheHawkSpell() {
 	hunter.AspectOfTheHawkAPMultiplier = 1.0
+	hunter.SwiftAspectsMultiplier = 1 + 0.03*float64(hunter.Talents.SwiftAspects)
 	maxRank := hunter.getMaxHawkRank()
 	config := hunter.getAspectOfTheHawkSpellConfig(maxRank)
 	hunter.GetOrRegisterSpell(config)

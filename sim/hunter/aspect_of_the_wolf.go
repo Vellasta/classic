@@ -10,16 +10,15 @@ import (
 
 // Utility function to create an Improved Wolf Aura
 func (hunter *Hunter) createImprovedWolfAura(auraLabel string, actionID core.ActionID) *core.Aura {
-	bonusMultiplier := 1 + 0.03*float64(hunter.Talents.SwiftAspects)
 	return hunter.GetOrRegisterAura(core.Aura{
 		Label:    auraLabel,
 		ActionID: actionID,
 		Duration: time.Second * 12,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Unit.MultiplyMeleeSpeed(sim, bonusMultiplier)
+			aura.Unit.MultiplyMeleeSpeed(sim, hunter.SwiftAspectsMultiplier)
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			aura.Unit.MultiplyMeleeSpeed(sim, 1/bonusMultiplier)
+			aura.Unit.MultiplyMeleeSpeed(sim, 1/hunter.SwiftAspectsMultiplier)
 		},
 	})
 }
@@ -48,7 +47,6 @@ func (hunter *Hunter) getMaxWolfRank() int {
 }
 
 func (hunter *Hunter) getAspectOfTheWolfSpellConfig(rank int) core.SpellConfig {
-	var impWolfAura *core.Aura
 	improvedWolfProcChance := 0.1
 
 	spellIds := [8]int32{0, 45650, 51496, 51497, 51498, 51499, 51500, 51501}
@@ -58,7 +56,7 @@ func (hunter *Hunter) getAspectOfTheWolfSpellConfig(rank int) core.SpellConfig {
 	level := levels[rank]
 
 	if hunter.Talents.SwiftAspects > 0 {
-		impWolfAura = hunter.createImprovedWolfAura(
+		hunter.impWolfAura = hunter.createImprovedWolfAura(
 			"Quick Strikes",
 			core.ActionID{SpellID: 51546},
 		)
@@ -82,8 +80,8 @@ func (hunter *Hunter) getAspectOfTheWolfSpellConfig(rank int) core.SpellConfig {
 			// 	return
 			// }
 
-			if impWolfAura != nil && sim.Proc(improvedWolfProcChance, "Imp Aspect of the Wolf") {
-				impWolfAura.Activate(sim)
+			if hunter.impWolfAura != nil && sim.Proc(improvedWolfProcChance, "Imp Aspect of the Wolf") {
+				hunter.impWolfAura.Activate(sim)
 			}
 		},
 	})
@@ -113,6 +111,7 @@ func (hunter *Hunter) getAspectOfTheWolfSpellConfig(rank int) core.SpellConfig {
 
 func (hunter *Hunter) registerAspectOfTheWolfSpell() {
 	hunter.AspectOfTheWolfAPMultiplier = 1.0
+	hunter.SwiftAspectsMultiplier = 1 + 0.03*float64(hunter.Talents.SwiftAspects)
 	maxRank := hunter.getMaxWolfRank()
 	config := hunter.getAspectOfTheWolfSpellConfig(maxRank)
 	hunter.GetOrRegisterSpell(config)
