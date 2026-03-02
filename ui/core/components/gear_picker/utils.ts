@@ -1,8 +1,6 @@
 import { ItemSlot } from '../../proto/common';
 import { Player } from '../../player';
-import ItemList, { GearData, ItemData, ItemListType } from './item_list';
-import { DatabaseFilters, RepSource, UIEnchant, UIFaction, UIItem, UIItem_FactionRestriction } from '../../proto/ui';
-import { Stat } from '../../proto/common';
+import { ItemListType } from './item_list';
 
 const emptySlotIcons: Record<ItemSlot, string> = {
 	[ItemSlot.ItemSlotHead]: '/classic/assets/item_slots/head.jpg',
