@@ -105,14 +105,14 @@
         "maxPoints": 2
       },
       {
-        "fieldName": "bestialSwiftness",
-        "fieldDesc": "",
+        "fieldName": "coordinatedAssault",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Coordinated Assault</b></a></td></tr></table><table><tr><td><div class=\"q\">Hitting an enemy with Arcane Shot, Steady Shot or Raptor Strike causes your pet's next attack within 6 sec to also perform an attack that deals Physical damage equal to 30% of its Attack Power. This effect can trigger only once every 3 sec.</div></td></tr></table>",
         "location": {
           "rowIdx": 2,
           "colIdx": 1
         },
         "spellIds": [
-          19596
+          49559
         ],
         "maxPoints": 1
       },

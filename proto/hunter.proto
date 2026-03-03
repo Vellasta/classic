@@ -12,7 +12,7 @@ message HunterTalents {
 	int32 thick_hide = 5;
 	int32 improved_revive_pet = 6;
 	int32 pathfinding = 7;
-	bool bestial_swiftness = 8;
+	bool coordinated_assault = 8;
 	int32 unleashed_fury = 9;
 	int32 improved_mend_pet = 10;
 	int32 ferocity = 11;

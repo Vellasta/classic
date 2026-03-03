@@ -380,3 +380,23 @@ func (hp *HunterPet) newScorpidPoison() *core.Spell {
 		},
 	})
 }
+
+func (hp *HunterPet) newCoordinatedAssault() *core.Spell {
+	return hp.RegisterSpell(core.SpellConfig{
+		SpellCode:   SpellCode_HunterPetCoordinatedAssault,
+		ActionID:    core.ActionID{SpellID: 49557},
+		SpellSchool: core.SpellSchoolPhysical,
+		DefenseType: core.DefenseTypeMelee,
+		ProcMask:    core.ProcMaskMeleeMHSpecial,
+		Flags:       core.SpellFlagMeleeMetrics,
+
+		DamageMultiplier: 1,
+		ThreatMultiplier: 1,
+		BonusCoefficient: 1,
+
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			damage := 0.3 * spell.MeleeAttackPower(target)
+			spell.CalcAndDealDamage(sim, target, damage, spell.OutcomeMeleeSpecialHitAndCrit)
+		},
+	})
+}
