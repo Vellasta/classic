@@ -151,6 +151,13 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		//player.hasRune(ItemSlot.ItemSlotFeet, HunterRune.RuneBootsDualWieldSpecialization) ||
 		//player.hasRune(ItemSlot.ItemSlotFeet, HunterRune.RuneBootsWyvernStrike);
 
+		const talentTree = player.getTalentTree();
+		if (talentTree === 1) {
+			return Presets.APLMM.rotation.rotation!;
+		} else if (talentTree === 2) {
+			return Presets.APLSV.rotation.rotation!;
+		}
+
 		return Presets.DefaultAPL.rotation.rotation!;
 
 		// COMMENTING OUT TO SAVE FOR FUTURE IMPLEMENTATION.

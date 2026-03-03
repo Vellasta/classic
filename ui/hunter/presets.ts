@@ -59,11 +59,11 @@ export const DefaultGear = GearP0BIS;
 ///////////////////////////////////////////////////////////////////////////
 
 export const APLP1 = PresetUtils.makePresetAPLRotation('Marksmanship', P1APL);
-export const APLP2 = PresetUtils.makePresetAPLRotation('Marksmanship (Steady Shot)', P2APL, { talentTree: 1 });
+export const APLMM = PresetUtils.makePresetAPLRotation('Marksmanship (Steady Shot)', P2APL, { talentTree: 1 });
 export const APLSV = PresetUtils.makePresetAPLRotation('Survival', SVAPL, { talentTree: 2 });
 
 export const APLPresets = {
-	[Phase.Phase1]: [APLP1, APLP2, APLSV],
+	[Phase.Phase1]: [APLP1, APLMM, APLSV],
 
 };
 
@@ -76,8 +76,8 @@ export const DefaultAPL = APLPresets[Phase.Phase1][1];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsMM = PresetUtils.makePresetTalents('Marksmanship', SavedTalents.create({ talentsString: '550000015-05252010050322251' }));
-export const TalentsSV = PresetUtils.makePresetTalents('Survival', SavedTalents.create({ talentsString: '550000004-00000000000000000-3520200111232331251' }));
+export const TalentsMM = PresetUtils.makePresetTalents('Marksmanship', SavedTalents.create({ talentsString: '550000013-05252010050322251-002' }));
+export const TalentsSV = PresetUtils.makePresetTalents('Survival', SavedTalents.create({ talentsString: '550000015-00000000000000000-3520200111212331251' }));
 
 export const TalentPresets = {
 	[Phase.Phase1]: [TalentsMM, TalentsSV],
