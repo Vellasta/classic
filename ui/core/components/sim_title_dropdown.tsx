@@ -236,7 +236,10 @@ export class SimTitleDropdown extends Component {
 
 	private launchStatusLabel(data: SpecOptions | RaidOptions): Element {
 		const status = data.type == 'Raid' ? raidSimStatus.status : simLaunchStatuses[data.index].status;
-		const phase = data.type == 'Raid' ? raidSimStatus.phase : simLaunchStatuses[data.index].phase;
+		var phase = data.type == 'Raid' ? `Phase ${raidSimStatus.phase}` : `Phase ${simLaunchStatuses[data.index].phase}`;
+		if (data.type !== 'Raid' && data.index === 8) {
+			var phase = `Turtle WoW 1.18`
+		}
 
 		return (
 			<span className="launch-status-label text-brand">
@@ -244,7 +247,7 @@ export class SimTitleDropdown extends Component {
 					<>Not Yet Supported</>
 				) : (
 					<>
-						Phase {phase}
+						{phase}
 						{status != LaunchStatus.Launched && <> - {LaunchStatus[status]}</>}
 					</>
 				)}
