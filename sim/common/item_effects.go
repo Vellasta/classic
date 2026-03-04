@@ -178,6 +178,8 @@ const (
 	CrochideWrists             = 61565
 	DeathruneLeggings          = 83454
 	MoltenEmberstone           = 58211
+	ZandalarPredatorsGlaive    = 55495
+	TheAbyssalPincer           = 55494
 )
 
 func init() {
@@ -3837,6 +3839,39 @@ func init() {
 
 	// Use: Increases your melee and ranged attack power by 200.  Effect lasts for 20 sec. (2 Min Cooldown)
 	core.NewSimpleStatOffensiveTrinketEffect(MoltenEmberstone, stats.Stats{stats.AttackPower: 200, stats.RangedAttackPower: 200}, time.Second*20, time.Second*120)
+
+	// Your landing ranged and melee attacks have a 5% chance to increase your Agility by 75 for 10 sec.
+	// (Proc chance: 5%)
+	core.NewItemEffect(ZandalarPredatorsGlaive, func(agent core.Agent) {
+		character := agent.GetCharacter()
+		buffAura := character.RegisterAura(core.Aura{
+			ActionID: core.ActionID{SpellID: 23303},
+			Label:    "Zandalari Vigil Passive",
+			Duration: time.Second * 10,
+			OnGain: func(aura *core.Aura, sim *core.Simulation) {
+				character.AddStatDynamic(sim, stats.Agility, 75)
+			},
+			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+				character.AddStatDynamic(sim, stats.Agility, -75)
+			},
+		})
+
+		core.MakeProcTriggerAura(&agent.GetCharacter().Unit, core.ProcTrigger{
+			Name:       "Zandalari Vigil Passive Trigger",
+			Callback:   core.CallbackOnSpellHitDealt,
+			Outcome:    core.OutcomeLanded,
+			ProcMask:   core.ProcMaskMeleeOrRanged,
+			ProcChance: 0.05,
+			Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+				if result.Landed() {
+					buffAura.Activate(sim)
+				}
+			},
+		})
+	})
+
+	// Chance on hit: Blasts the target for 120 Frost damage, reducing movement speed by 20% for 2 seconds.
+	itemhelpers.CreateWeaponCoHProcDamage(TheAbyssalPincer, "The Abyssal Pincer", 1.0, 18276, core.SpellSchoolFrost, 120, 0, 0, core.DefenseTypeMagic)
 
 	core.AddEffectsToTest = true
 }

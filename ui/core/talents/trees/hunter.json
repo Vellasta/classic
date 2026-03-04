@@ -750,7 +750,7 @@
       },
       {
         "fieldName": "lacerate",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Lacerate</b></a></td></tr></table><table><tr><td><div class=\"q\">Deepen your target's open wound, dealing damage equal to 35% of your melee Attack Power and bleeding them for 20% of the damage over 8 sec. Can only be used after critically striking your target. Using this ability from the sides of your target increases its damage by 10% and causes the bleed to deal its total damage 100% faster.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Lacerate</b></a></td></tr></table><table><tr><td><div class=\"q\">Deepen your target's open wound, dealing damage equal to 40% of your melee Attack Power and bleeding them for 20% of the damage over 8 sec. Can only be used after critically striking your target. Using this ability from the sides of your target increases its damage by 15%.</div></td></tr></table>",
         "location": {
           "rowIdx": 4,
           "colIdx": 2
