@@ -21,7 +21,7 @@
       },
       {
         "fieldName": "enduranceTraining",
-        "fieldDesc": "",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Endurance Training</b></a></td></tr></table><table><tr><td><div class=\"q\">Adds [6/12/18/24/30]% of your Stamina to the Stamina of your pets and increases the Health of your pets by [2/4/6/8/10]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 0,
           "colIdx": 2
@@ -37,7 +37,7 @@
       },
       {
         "fieldName": "improvedEyesOfTheBeast",
-        "fieldDesc": "",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Improved Eyes of the Beast</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the duration of your Eyes of the Beast by [30/60] sec.<br>While channeling Eyes of the Beast, your pet deals [15/30]% additional damage and gains [15/30]% increased Focus regeneration.</div></td></tr></table>",
         "location": {
           "rowIdx": 1,
           "colIdx": 0
@@ -49,8 +49,8 @@
         "maxPoints": 2
       },
       {
-        "fieldName": "improvedAspectOfTheMonkey",
-        "fieldDesc": "",
+        "fieldName": "improvedPrimalAspects",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Improved Primal Aspects</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the Dodge bonus of your Aspect of the Monkey by [2/4/6]%. While Aspect of the Wolf is active, you're healed for [2/4/6]% of your melee damage.</div></td></tr></table>",
         "location": {
           "rowIdx": 1,
           "colIdx": 1
@@ -58,15 +58,13 @@
         "spellIds": [
           19549,
           19550,
-          19551,
-          24386,
-          24387
+          19551
         ],
-        "maxPoints": 5
+        "maxPoints": 3
       },
       {
         "fieldName": "thickHide",
-        "fieldDesc": "",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Thick Hide</b></a></td></tr></table><table><tr><td><div class=\"q\">Adds [12/24/36]% of your armor value from items to the armor value of your pets and increases the armor value of your pets by [7/14/20]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 1,
           "colIdx": 2
@@ -80,7 +78,7 @@
       },
       {
         "fieldName": "improvedRevivePet",
-        "fieldDesc": "",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Improved Revive Pet</b></a></td></tr></table><table><tr><td><div class=\"q\">Revive Pet's casting time is reduced by [3/6] sec, mana cost is reduced by [20/40]%, and increases the health your pet returns with by an additional [15/30]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 1,
           "colIdx": 3
@@ -93,7 +91,7 @@
       },
       {
         "fieldName": "pathfinding",
-        "fieldDesc": "",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Pathfinding</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the speed bonus of your Aspect of the Cheetah and Aspect of the Pack by [3/6]% and increases your pet's movement speed by [15/30]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 2,
           "colIdx": 0
@@ -118,7 +116,7 @@
       },
       {
         "fieldName": "unleashedFury",
-        "fieldDesc": "",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Unleashed Fury</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the damage done by your pets by [4/8/12/16/20]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 2,
           "colIdx": 2
@@ -133,8 +131,21 @@
         "maxPoints": 5
       },
       {
+        "fieldName": "bestialDiscipline",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Bestial Discipline (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the Focus regeneration of your pets by [2/5] each tick and reduces the cooldown of your pets' special ability by [10/20]%.</div></td></tr></table>",
+        "location": {
+          "rowIdx": 3,
+          "colIdx": 0
+        },
+        "spellIds": [
+          19590,
+          19592
+        ],
+        "maxPoints": 2
+      },
+      {
         "fieldName": "improvedMendPet",
-        "fieldDesc": "",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Improved Mend Pet</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases amount you heal your pet with Mend Pet by [20/40]% and gives the spell a [15/50]% chance of cleansing 1 Curse, Disease, Magic or Poison effect from the pet each tick.</div></td></tr></table>",
         "location": {
           "rowIdx": 3,
           "colIdx": 1
@@ -147,7 +158,7 @@
       },
       {
         "fieldName": "ferocity",
-        "fieldDesc": "",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Ferocity</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the critical strike chance of your pets by [3/6/9/12/15]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 3,
           "colIdx": 2
@@ -162,11 +173,66 @@
         "maxPoints": 5
       },
       {
-        "fieldName": "spiritBond",
-        "fieldDesc": "",
+        "fieldName": "scentOfBlood",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Scent of Blood (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Your attacks have a [5/10/15]% chance of the send your pet into a rage causing it to deal 40% additional damage for 8 sec.</div></td></tr></table>",
         "location": {
           "rowIdx": 4,
           "colIdx": 0
+        },
+        "spellIds": [
+          19603,
+          19604,
+          19605
+        ],
+        "maxPoints": 3
+      },
+      {
+        "fieldName": "bestialWrath",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Bestial Wrath (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Send your pet into a rage, giving it the Scent of Blood effect for 18 sec. While enraged, the beast does not feel pity or remorse or fear and it cannot be stopped unless killed.<br><br>1.5 Minute Cooldown, 12% Base Mana Cost. No Global Cooldown.</div></td></tr></table>",
+        "location": {
+          "rowIdx": 4,
+          "colIdx": 1
+        },
+        "spellIds": [
+          19574
+        ],
+        "maxPoints": 1,
+        "prereqLocation": {
+          "rowIdx": 4,
+          "colIdx": 0
+        }
+      },
+      {
+        "fieldName": "intimidation",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Intimidation</b></a></td></tr></table><table><tr><td><div class=\"q\">Command your pet to intimidate the target on the next successful melee attack, stunning the target for 3 sec, and increasing the pet's threat generation by 50% for 8 sec.</div></td></tr></table>",
+        "location": {
+          "rowIdx": 4,
+          "colIdx": 3
+        },
+        "spellIds": [
+          19577
+        ],
+        "maxPoints": 1
+      },
+      {
+        "fieldName": "bestialPrecision",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Bestial Precision (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the physical hit chance of your pets by [4/8]% and the spell hit chance of your pets by [9/18]%.</div></td></tr></table>",
+        "location": {
+          "rowIdx": 5,
+          "colIdx": 0
+        },
+        "spellIds": [
+          51554,
+          51555
+        ],
+        "maxPoints": 2
+      },
+      {
+        "fieldName": "spiritBond",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Spirit Bond (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Your pet gains melee attack power equal to [12/25]% of your ranged attack power and spell power equal to [7/15]% of your ranged attack power. While your pet is active, you and your pet will regenerate [1/2]% of total health every 5 sec.</div></td></tr></table>",
+        "location": {
+          "rowIdx": 5,
+          "colIdx": 1
         },
         "spellIds": [
           19578,
@@ -175,33 +241,8 @@
         "maxPoints": 2
       },
       {
-        "fieldName": "intimidation",
-        "fieldDesc": "",
-        "location": {
-          "rowIdx": 4,
-          "colIdx": 1
-        },
-        "spellIds": [
-          19577
-        ],
-        "maxPoints": 1
-      },
-      {
-        "fieldName": "bestialDiscipline",
-        "fieldDesc": "",
-        "location": {
-          "rowIdx": 4,
-          "colIdx": 3
-        },
-        "spellIds": [
-          19590,
-          19592
-        ],
-        "maxPoints": 2
-      },
-      {
         "fieldName": "frenzy",
-        "fieldDesc": "",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Frenzy</b></a></td></tr></table><table><tr><td><div class=\"q\">Gives your pet a [20/40/60/80/100]% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.</div></td></tr></table>",
         "location": {
           "rowIdx": 5,
           "colIdx": 2
@@ -220,18 +261,18 @@
         }
       },
       {
-        "fieldName": "bestialWrath",
-        "fieldDesc": "",
+        "fieldName": "killCommand",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Kill Command (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Give the command to kill, causing your pet to instantly attack for 50% of its attack power. Can only be used after the Hunter lands a critical strike on the target.<br><br>8 Second Cooldown, 5% Base Mana Cost, 45 Yard Range, No Global Cooldown</div></td></tr></table>",
         "location": {
           "rowIdx": 6,
           "colIdx": 1
         },
         "spellIds": [
-          19574
+          41827
         ],
         "maxPoints": 1,
         "prereqLocation": {
-          "rowIdx": 4,
+          "rowIdx": 5,
           "colIdx": 1
         }
       }
