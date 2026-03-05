@@ -15,7 +15,7 @@ func addVaelastraszTheCorrupt(bossPrefix string) {
 		PathPrefix: bossPrefix,
 		Config: &proto.Target{
 			Id:        13020,
-			Name:      "Blackwing Lair Vael the Corrupt",
+			Name:      "Blackwing Lair Vaelastrasz the Corrupt",
 			Level:     63,
 			MobType:   proto.MobType_MobTypeDragonkin,
 			TankIndex: 0,
@@ -37,8 +37,8 @@ func addVaelastraszTheCorrupt(bossPrefix string) {
 		},
 		AI: NewVaelastraszTheCorruptAI(),
 	})
-	core.AddPresetEncounter("Blackwing Lair Vael the Corrupt", []string{
-		bossPrefix + "/Blackwing Lair Vael the Corrupt",
+	core.AddPresetEncounter("Blackwing Lair Vaelastrasz the Corrupt", []string{
+		bossPrefix + "/Blackwing Lair Vaelastrasz the Corrupt",
 	})
 }
 
