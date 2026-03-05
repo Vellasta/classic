@@ -3,7 +3,7 @@ package hunter
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 func (hp *HunterPet) createCoordinatedAssaultAura(auraLabel string, actionID core.ActionID) *core.Aura {

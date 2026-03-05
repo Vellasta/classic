@@ -3,7 +3,7 @@ package warlock
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 const ShadowBoltRanks = 10

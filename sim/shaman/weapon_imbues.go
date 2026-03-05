@@ -1,7 +1,7 @@
 package shaman
 
 import (
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 func (shaman *Shaman) RegisterOnItemSwapWithImbue(effectID int32, procMask *core.ProcMask, aura *core.Aura) {

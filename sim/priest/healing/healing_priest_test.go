@@ -1,8 +1,8 @@
 package healing
 
 import (
-	_ "github.com/wowsims/classic/sim/common" // imported to get caster sets included.
-	"github.com/wowsims/classic/sim/core/proto"
+	_ "github.com/Vellasta/classic/sim/common" // imported to get caster sets included.
+	"github.com/Vellasta/classic/sim/core/proto"
 )
 
 func init() {

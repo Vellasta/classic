@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 func (hunter *Hunter) getLacerateConfig(rank int) core.SpellConfig {

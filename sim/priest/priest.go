@@ -1,9 +1,9 @@
 package priest
 
 import (
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 var TalentTreeSizes = [3]int{15, 16, 16}

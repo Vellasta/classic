@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/wowsims/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/proto"
 )
 
 const (

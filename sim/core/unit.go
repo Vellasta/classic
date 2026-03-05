@@ -4,8 +4,8 @@ import (
 	"math"
 	"time"
 
-	"github.com/wowsims/classic/sim/core/proto"
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 type UnitType int

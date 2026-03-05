@@ -11,12 +11,12 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/wowsims/classic/sim"
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
-	_ "github.com/wowsims/classic/sim/encounters" // Needed for preset encounters.
-	"github.com/wowsims/classic/tools"
-	"github.com/wowsims/classic/tools/database"
+	"github.com/Vellasta/classic/sim"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/proto"
+	_ "github.com/Vellasta/classic/sim/encounters" // Needed for preset encounters.
+	"github.com/Vellasta/classic/tools"
+	"github.com/Vellasta/classic/tools/database"
 )
 
 // To do a full re-scrape, delete the previous output file first.

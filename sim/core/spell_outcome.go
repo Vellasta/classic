@@ -3,7 +3,7 @@ package core
 import (
 	"fmt"
 
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 // This function should do 3 things:

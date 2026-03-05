@@ -1,7 +1,7 @@
 package warlock
 
 import (
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 func (warlock *Warlock) getDarkPactConfig(rank int) core.SpellConfig {

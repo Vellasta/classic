@@ -1,8 +1,9 @@
 package paladin
 
 import (
-	"github.com/wowsims/classic/sim/core"
 	"time"
+
+	"github.com/Vellasta/classic/sim/core"
 )
 
 func (paladin *Paladin) registerForbearance() {

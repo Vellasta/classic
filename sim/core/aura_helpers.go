@@ -5,7 +5,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 type AuraCallback uint16

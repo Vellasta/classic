@@ -1,7 +1,7 @@
 package warrior
 
 import (
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 func (warrior *Warrior) registerSunderArmorSpell() {
@@ -12,7 +12,6 @@ func (warrior *Warrior) registerSunderArmorSpell() {
 	spell_level := 58
 
 	var canApplySunder bool
-
 
 	warrior.SunderArmor = warrior.RegisterSpell(AnyStance, core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: spellID},

@@ -5,7 +5,7 @@ package core
 import (
 	"testing"
 
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 func TestSunderArmorStacks(t *testing.T) {

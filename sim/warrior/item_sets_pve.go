@@ -3,8 +3,9 @@ package warrior
 import (
 	"slices"
 	"time"
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/stats"
+
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 ///////////////////////////////////////////////////////////////////////////
@@ -61,7 +62,7 @@ var ItemSetBattleGearOfMight = core.NewItemSet(core.ItemSet{
 var ItemSetBattleGearOfWrath = core.NewItemSet(core.ItemSet{
 	Name: "Battlegear of Wrath",
 	Bonuses: map[int32]core.ApplyEffect{
-		// Increases the attack power granted by Battle Shout by 30. 
+		// Increases the attack power granted by Battle Shout by 30.
 		3: func(agent core.Agent) {
 			// Managed in shouts.go
 		},
@@ -103,7 +104,7 @@ var ItemSetBattleGearOfWrath = core.NewItemSet(core.ItemSet{
 				Label: "Warrior's Wrath Trigger",
 				OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
 					if slices.Contains(affectedSpells, spell) {
-						if sim.Proc(0.2, "Warrior's Wrath Trigger"){
+						if sim.Proc(0.2, "Warrior's Wrath Trigger") {
 							warriorsWrathAura.Activate(sim)
 						}
 					}
@@ -119,7 +120,7 @@ var ItemSetBattleGearOfWrath = core.NewItemSet(core.ItemSet{
 				ActionID: actionID,
 				Label:    "Parry",
 				Duration: time.Second * 10,
-				OnGain: func(aura *core.Aura, sim *core.Simulation) {	
+				OnGain: func(aura *core.Aura, sim *core.Simulation) {
 					warrior.AddStatDynamic(sim, stats.Parry, 100*core.ParryRatingPerParryChance)
 				},
 				OnExpire: func(aura *core.Aura, sim *core.Simulation) {
@@ -273,7 +274,7 @@ var ItemSetDreadnaughtsBattlegear = core.NewItemSet(core.ItemSet{
 						warrior.ShieldSlam.BonusHitRating -= 5
 					}
 				},
-			}))	
+			}))
 		},
 		// When your health drops below 20%, for the next 5 seconds healing spells cast on you help you to Cheat Death, increasing healing done by up to 160.
 		8: func(agent core.Agent) {

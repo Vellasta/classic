@@ -3,10 +3,10 @@ package item_effects
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/common/itemhelpers"
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/common/itemhelpers"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 const (

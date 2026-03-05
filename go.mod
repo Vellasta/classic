@@ -1,4 +1,4 @@
-module github.com/wowsims/classic
+module github.com/Vellasta/classic
 
 go 1.23.0
 

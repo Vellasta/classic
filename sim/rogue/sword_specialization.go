@@ -3,8 +3,8 @@ package rogue
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/proto"
 )
 
 func (rogue *Rogue) registerSwordSpecialization(mask core.ProcMask) {

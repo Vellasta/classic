@@ -3,7 +3,7 @@ package core
 import (
 	"fmt"
 
-	"github.com/wowsims/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/proto"
 )
 
 type APLAction struct {

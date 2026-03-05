@@ -3,7 +3,7 @@ package hunter
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 func (hunter *Hunter) getMongooseBiteConfig(rank int) core.SpellConfig {

@@ -3,8 +3,8 @@ package hunter
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/proto"
 )
 
 func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.SpellConfig {

@@ -9,10 +9,10 @@ import (
 	"strings"
 	"syscall/js"
 
-	"github.com/wowsims/classic/sim"
-	"github.com/wowsims/classic/sim/core"
-	proto "github.com/wowsims/classic/sim/core/proto"
-	"github.com/wowsims/classic/sim/core/simsignals"
+	"github.com/Vellasta/classic/sim"
+	"github.com/Vellasta/classic/sim/core"
+	proto "github.com/Vellasta/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/simsignals"
 	protojson "google.golang.org/protobuf/encoding/protojson"
 	googleProto "google.golang.org/protobuf/proto"
 )
@@ -275,7 +275,7 @@ func bulkSimAsync(this js.Value, args []js.Value) interface{} {
 	}
 
 	reporter := make(chan *proto.ProgressMetrics, 100)
-	
+
 	go core.RunBulkSimAsync(rsr, reporter, requestId)
 	go processAsyncProgress(args[1], reporter)
 	return js.Undefined()

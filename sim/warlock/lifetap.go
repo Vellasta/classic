@@ -1,7 +1,7 @@
 package warlock
 
 import (
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 const LifeTapRanks = 6

@@ -1,10 +1,10 @@
 package mage
 
 import (
-	"github.com/wowsims/classic/sim/common/guardians"
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/common/guardians"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 const (
@@ -58,15 +58,15 @@ type Mage struct {
 	ArcaneMissilesTickSpell []*core.Spell
 	BlastWave               []*core.Spell
 	Blizzard                []*core.Spell
-	Counterspell			*core.Spell
-	Evocation				*core.Spell
+	Counterspell            *core.Spell
+	Evocation               *core.Spell
 	Fireball                []*core.Spell
 	FireBlast               []*core.Spell
 	Flamestrike             []*core.Spell
 	Frostbolt               []*core.Spell
 	IceBarrier              []*core.Spell
 	Ignite                  *core.Spell
-	igniteTick		 		*core.Spell
+	igniteTick              *core.Spell
 	ManaGem                 []*core.Spell
 	PresenceOfMind          *core.Spell
 	Pyroblast               []*core.Spell

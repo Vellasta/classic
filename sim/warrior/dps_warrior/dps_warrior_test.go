@@ -3,9 +3,9 @@ package dpswarrior
 import (
 	"testing"
 
-	_ "github.com/wowsims/classic/sim/common" // imported to get item effects included.
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
+	_ "github.com/Vellasta/classic/sim/common" // imported to get item effects included.
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/proto"
 )
 
 func init() {

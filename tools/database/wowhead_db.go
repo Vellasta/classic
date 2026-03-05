@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/Vellasta/classic/sim/core/proto"
 	"github.com/tailscale/hujson"
-	"github.com/wowsims/classic/sim/core/proto"
 )
 
 // Example db input file: https://nether.wowhead.com/classic/data/gear-planner?dv=100

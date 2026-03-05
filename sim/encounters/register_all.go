@@ -1,14 +1,18 @@
 package encounters
 
 import (
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 func init() {
 	// TODO: Classic encounters?
 	// naxxramas.Register()
+	addPatchwerk("Classic")
+	addNothThePlaguebringer("Classic")
+	addKelthuzad("Classic")
+	addKeeperGnarlmoon("Classic")
+	addKruul("Classic")
 	addLevel60("Classic")
-	addVaelastraszTheCorrupt("Classic")
 }
 
 func AddSingleTargetBossEncounter(presetTarget *core.PresetTarget) {

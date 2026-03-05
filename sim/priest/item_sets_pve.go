@@ -3,8 +3,8 @@ package priest
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 ///////////////////////////////////////////////////////////////////////////
@@ -122,7 +122,7 @@ var ItemSetVestmentsOfFaith = core.NewItemSet(core.ItemSet{
 				Name:       "Item - Epiphany Proc (Spell Cast)",
 				Callback:   core.CallbackOnCastComplete,
 				ProcMask:   core.ProcMaskSpellDamage,
-				SpellFlags:   core.SpellFlagHelpful,
+				SpellFlags: core.SpellFlagHelpful,
 				ProcChance: 0.05,
 				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
 					procAura.Activate(sim)

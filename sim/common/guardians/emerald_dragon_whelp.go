@@ -3,8 +3,8 @@ package guardians
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 var DragonsCall = int32(10847)

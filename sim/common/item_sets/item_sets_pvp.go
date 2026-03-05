@@ -1,8 +1,8 @@
 package item_sets
 
 import (
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 ///////////////////////////////////////////////////////////////////////////
@@ -108,7 +108,6 @@ var ItemSetTheDefilersWill = core.NewItemSet(core.ItemSet{
 		},
 	},
 })
-
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Mail

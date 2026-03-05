@@ -3,12 +3,12 @@ package rogue
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 const (
-	VenomousTotem                    = 19342
-	RenatakisCharmofTrickery         = 19954
+	VenomousTotem            = 19342
+	RenatakisCharmofTrickery = 19954
 )
 
 func init() {

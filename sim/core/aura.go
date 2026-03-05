@@ -8,8 +8,8 @@ import (
 
 	"golang.org/x/exp/constraints"
 
-	"github.com/wowsims/classic/sim/core/proto"
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 const NeverExpires = time.Duration(math.MaxInt64)

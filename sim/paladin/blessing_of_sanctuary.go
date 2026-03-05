@@ -1,8 +1,8 @@
 package paladin
 
 import (
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/proto"
 )
 
 func (paladin *Paladin) registerBlessingOfSanctuary() {

@@ -3,7 +3,7 @@ package druid
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 const WrathRanks = 8
@@ -49,7 +49,7 @@ func (druid *Druid) newWrathSpellConfig(rank int) core.SpellConfig {
 		MissileSpeed:  20,
 
 		ManaCost: core.ManaCostOptions{
-			FlatCost:   manaCost,
+			FlatCost: manaCost,
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

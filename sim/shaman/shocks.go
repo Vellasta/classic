@@ -3,7 +3,7 @@ package shaman
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core"
 )
 
 // Shared logic for all shocks.

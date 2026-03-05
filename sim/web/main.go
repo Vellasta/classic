@@ -18,13 +18,13 @@ import (
 	"syscall"
 	"time"
 
+	dist "github.com/Vellasta/classic/binary_dist"
+	"github.com/Vellasta/classic/sim"
+	"github.com/Vellasta/classic/sim/core"
+	proto "github.com/Vellasta/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/simsignals"
 	uuid "github.com/google/uuid"
 	"github.com/pkg/browser"
-	dist "github.com/wowsims/classic/binary_dist"
-	"github.com/wowsims/classic/sim"
-	"github.com/wowsims/classic/sim/core"
-	proto "github.com/wowsims/classic/sim/core/proto"
-	"github.com/wowsims/classic/sim/core/simsignals"
 
 	googleProto "google.golang.org/protobuf/proto"
 )

@@ -3,8 +3,8 @@ package hunter
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/proto"
 )
 
 func (hunter *Hunter) getMultiShotConfig(rank int, timer *core.Timer) core.SpellConfig {
@@ -33,9 +33,9 @@ func (hunter *Hunter) getMultiShotConfig(rank int, timer *core.Timer) core.Spell
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
-				GCD:      core.GCDDefault,
+				GCD:          core.GCDDefault,
 				BaseCastTime: time.Millisecond * 500,
-				CastTime: 0,
+				CastTime:     0,
 			},
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
 				cast.CastTime = spell.CastTime()
@@ -47,7 +47,7 @@ func (hunter *Hunter) getMultiShotConfig(rank int, timer *core.Timer) core.Spell
 				Duration: time.Second * 10,
 			},
 			CastTime: func(spell *core.Spell) time.Duration {
-				return time.Duration(float64(spell.DefaultCast.BaseCastTime) + float64(spell.DefaultCast.CastTime) / hunter.RangedSwingSpeed())
+				return time.Duration(float64(spell.DefaultCast.BaseCastTime) + float64(spell.DefaultCast.CastTime)/hunter.RangedSwingSpeed())
 			},
 		},
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
@@ -80,7 +80,7 @@ func (hunter *Hunter) getMultiShotConfig(rank int, timer *core.Timer) core.Spell
 					curTarget = sim.Environment.NextTargetUnit(curTarget)
 				}
 			})
-			
+
 		},
 	}
 }

@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/wowsims/classic/sim/core/proto"
-	"github.com/wowsims/classic/sim/core/simsignals"
+	"github.com/Vellasta/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/simsignals"
 )
 
 type Task interface {

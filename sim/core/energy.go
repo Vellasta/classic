@@ -6,7 +6,7 @@ import (
 	"slices"
 	"time"
 
-	"github.com/wowsims/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/proto"
 )
 
 type OnComboPointsSpent func(sim *Simulation, spell *Spell, comboPoints int32)

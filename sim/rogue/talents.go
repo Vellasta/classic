@@ -3,9 +3,9 @@ package rogue
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
-	"github.com/wowsims/classic/sim/core/stats"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/proto"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 func (rogue *Rogue) ApplyTalents() {
@@ -391,9 +391,9 @@ func (rogue *Rogue) registerAdrenalineRushCD() {
 	})
 
 	rogue.AdrenalineRush = rogue.RegisterSpell(core.SpellConfig{
-		SpellCode:   SpellCode_RogueAdrenalineRush,
-		ActionID: 	 AdrenalineRushActionID,
-		Cast: 		 core.CastConfig{
+		SpellCode: SpellCode_RogueAdrenalineRush,
+		ActionID:  AdrenalineRushActionID,
+		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
 				GCD: time.Second,
 			},

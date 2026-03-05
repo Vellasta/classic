@@ -10,9 +10,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
-	"github.com/wowsims/classic/tools"
+	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/proto"
+	"github.com/Vellasta/classic/tools"
 )
 
 func ReadAtlasLootData(inputsDir string) *WowDatabase {
