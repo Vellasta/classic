@@ -12,7 +12,7 @@ func init() {
 	addKelthuzad("Classic")
 	addKeeperGnarlmoon("Classic")
 	addKruul("Classic")
-	addLevel60("Classic")
+	// addLevel60("Classic")
 }
 
 func AddSingleTargetBossEncounter(presetTarget *core.PresetTarget) {
