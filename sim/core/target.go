@@ -307,13 +307,13 @@ func NewAttackTable(attacker *Unit, defender *Unit, weapon *Item) *AttackTable {
 		weaponSkill := baseWeaponSkill + GetWeaponSkill(attacker, weapon)
 		targetDefense := float64(defender.Level * 5)
 
-		if targetDefense-weaponSkill > 10 {
-			table.HitSuppression = (targetDefense - weaponSkill - 10) * 0.002
-			table.BaseMissChance = 0.05 + (targetDefense-weaponSkill)*0.002
-		} else {
-			table.HitSuppression = 0
-			table.BaseMissChance = 0.05 + (targetDefense-weaponSkill)*0.001
-		}
+		// if targetDefense-weaponSkill > 10 {
+		// 	table.HitSuppression = (targetDefense - weaponSkill - 10) * 0.002
+		// 	table.BaseMissChance = 0.05 + (targetDefense-weaponSkill)*0.002
+		// } else {
+
+		table.HitSuppression = 0
+		table.BaseMissChance = 0.05 + (targetDefense-weaponSkill)*0.002
 
 		if targetDefense-baseWeaponSkill > 10 {
 			table.BaseParryChance = 0.05 + (targetDefense-baseWeaponSkill)*0.006 // = 14
@@ -326,8 +326,11 @@ func NewAttackTable(attacker *Unit, defender *Unit, weapon *Item) *AttackTable {
 		table.BaseDodgeChance = 0.05 + (targetDefense-weaponSkill)*0.001
 		table.BaseGlanceChance = 0.1 + (targetDefense-baseWeaponSkill)*0.02
 
-		table.GlanceMultiplierMin = max(min(1.3-0.05*(targetDefense-weaponSkill), 0.91), 0.01)
-		table.GlanceMultiplierMax = max(min(1.2-0.03*(targetDefense-weaponSkill), 0.99), 0.2)
+		table.GlanceMultiplierMin = max(min(0.9-0.025*(targetDefense-weaponSkill), 0.9), 0.01)
+		table.GlanceMultiplierMax = max(min(1.0-0.015*(targetDefense-weaponSkill), 1.0), 0.2)
+
+		// table.GlanceMultiplierMin = max(min(1.3-0.05*(targetDefense-weaponSkill), 0.91), 0.01)
+		// table.GlanceMultiplierMax = max(min(1.2-0.03*(targetDefense-weaponSkill), 0.99), 0.2)
 
 		if targetDefense > baseWeaponSkill {
 			table.MeleeCritSuppression = (targetDefense - baseWeaponSkill) * 0.002
