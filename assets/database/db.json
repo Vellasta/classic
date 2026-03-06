@@ -8890,6 +8890,8 @@
 {"effectId":63,"spellId":13538,"name":"Enchant Chest - Lesser Absorption","type":5,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":1},
 {"effectId":66,"spellId":7457,"name":"Enchant Bracer - Minor Stamina","type":6,"stats":[0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":1},
 {"effectId":66,"spellId":7863,"name":"Enchant Boots - Minor Stamina","type":10,"stats":[0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":1},
+{"effectId":92,"itemId":56008,"spellId":51035,"name":"Brilliant Opal Gemstone","type":2,"extraTypes":[11],"stats":[0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2},
+{"effectId":92,"itemId":61782,"spellId":57173,"name":"Mithril Belt Buckle","type":8,"stats":[0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2},
 {"effectId":241,"spellId":7745,"name":"Enchant 2H Weapon - Minor Impact","type":13,"enchantType":1,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":1},
 {"effectId":241,"spellId":13503,"name":"Enchant Weapon - Lesser Striking","type":13,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":1},
 {"effectId":242,"spellId":7748,"name":"Enchant Chest - Lesser Health","type":5,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,0,0,0,0,0,0,0,0,0],"quality":1},
@@ -8985,6 +8987,7 @@
 {"effectId":1886,"spellId":20011,"name":"Enchant Bracer - Superior Stamina","type":6,"stats":[0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2},
 {"effectId":1887,"spellId":20012,"name":"Enchant Gloves - Greater Agility","type":7,"stats":[0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2},
 {"effectId":1887,"spellId":20023,"name":"Enchant Boots - Greater Agility","type":10,"stats":[0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2},
+{"effectId":1887,"spellId":57030,"name":"Enchant Bracer - Greater Agility","type":6,"stats":[0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":3},
 {"effectId":1888,"spellId":20014,"name":"Enchant Cloak - Greater Resistance","type":4,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,0,0,0,0],"quality":1},
 {"effectId":1889,"spellId":20015,"name":"Enchant Cloak - Superior Defense","type":4,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,70,0,0,0],"quality":1},
 {"effectId":1890,"itemId":16222,"spellId":20016,"name":"Enchant Shield - Superior Spirit","type":13,"enchantType":2,"stats":[0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2},
@@ -9000,6 +9003,7 @@
 {"effectId":1900,"spellId":20034,"name":"Enchant Weapon - Crusader","type":13,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2},
 {"effectId":1903,"spellId":20035,"name":"Enchant 2H Weapon - Major Spirit","type":13,"enchantType":1,"stats":[0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2},
 {"effectId":1904,"spellId":20036,"name":"Enchant 2H Weapon - Major Intellect","type":13,"enchantType":1,"stats":[0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2},
+{"effectId":2045,"itemId":66,"spellId":40,"name":"Gold Belt Buckle","type":8,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2},
 {"effectId":2443,"spellId":21931,"name":"Enchant Weapon - Winter's Might","type":13,"stats":[0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":1},
 {"effectId":2463,"spellId":13657,"name":"Enchant Cloak - Fire Resistance","type":4,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0],"quality":1},
 {"effectId":2503,"itemId":18251,"spellId":22725,"name":"Core Armor Kit","type":5,"extraTypes":[9,7,10],"enchantType":3,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":3},
@@ -9043,6 +9047,9 @@
 {"effectId":2716,"itemId":23549,"spellId":29480,"name":"Fortitude of the Scourge","type":3,"stats":[0,0,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,100,0,0,0],"quality":4,"phase":6},
 {"effectId":2717,"itemId":23548,"spellId":29483,"name":"Might of the Scourge","type":3,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,0,1,0,0,0,0,0,0,0,26,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":4,"phase":6},
 {"effectId":2721,"itemId":23545,"spellId":29467,"name":"Power of the Scourge","type":3,"stats":[0,0,0,0,0,15,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":4,"phase":6},
+{"effectId":3017,"itemId":61437,"spellId":57156,"name":"Sigil of Quickness","type":3,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":3,"phase":6},
+{"effectId":3038,"itemId":61438,"spellId":57157,"name":"Sigil of Penetration","type":3,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":3,"phase":6},
+{"effectId":3051,"itemId":61781,"spellId":57170,"name":"Iron Belt Buckle","type":8,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2,"phase":6},
 {"effectId":7210,"spellId":435481,"name":"Enchant Weapon - Dismantle","type":13,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":4},
 {"effectId":7223,"spellId":435903,"name":"Enchant Chest - Retricutioner","type":5,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":4},
 {"effectId":7603,"itemId":228982,"spellId":463871,"name":"Enchant Shield - Law of Nature","type":13,"enchantType":2,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,55,30,0],"quality":2}
@@ -9373,6 +9380,7 @@
 {"id":2641,"name":"Emerald Wardens","expansion":1}
 ],
 "itemIcons":[
+{"id":66,"name":"Gold Belt Buckle","icon":"inv_gold_buckle"},
 {"id":2304,"name":"Light Armor Kit","icon":"inv_misc_armorkit_17"},
 {"id":2313,"name":"Medium Armor Kit","icon":"inv_misc_armorkit_15"},
 {"id":2458,"name":"Elixir of Minor Fortitude","icon":"inv_potion_42"},
@@ -9475,6 +9483,11 @@
 {"id":23547,"name":"Resilience of the Scourge","icon":"spell_shadow_deadofnight"},
 {"id":23548,"name":"Might of the Scourge","icon":"spell_shadow_deathpact"},
 {"id":23549,"name":"Fortitude of the Scourge","icon":"spell_shadow_antishadow"},
+{"id":56008,"name":"Brilliant Opal Gemstone","icon":"inv_misc_gem_opal_01"},
+{"id":61437,"name":"Sigil of Quickness","icon":"inv_misc_rune_05"},
+{"id":61438,"name":"Sigil of Penetration","icon":"inv_misc_rune_06"},
+{"id":61781,"name":"Iron Belt Buckle","icon":"inv_misc_buckle_03"},
+{"id":61782,"name":"Mithril Belt Buckle","icon":"inv_misc_buckle_04"},
 {"id":228982,"name":"Formula: Enchant Shield - Law of Nature","icon":"inv_misc_note_01"}
 ],
 "spellIcons":[
@@ -13095,6 +13108,7 @@
 {"id":51586,"name":"Untamed Trapper","icon":"spell_nature_slow","rank":1},
 {"id":52415,"name":"Carve","icon":"inv_throwingknife_06","rank":2},
 {"id":52416,"name":"Carve","icon":"inv_throwingknife_06","rank":3},
+{"id":57030,"name":"Enchant Bracer - Greater Agility","icon":"spell_holy_greaterheal"},
 {"id":400574,"name":"Arcane Blast","icon":"spell_arcane_blast"},
 {"id":400610,"name":"Arcane Barrage","icon":"ability_mage_arcanebarrage"},
 {"id":400613,"name":"Living Bomb","icon":"ability_mage_livingbomb","hasBuff":true},
