@@ -698,3 +698,16 @@ function getRavenstalkerTooltip(player: Player<any>): string {
 	
 	return `<span style="color: gold;">Ravenstalker Armor (${setCount}/6)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }
+
+export async function getWowheadTooltipString(itemId: number, spellId: number): Promise<string> {
+	// const url = `https://database.turtlecraft.gg/ajax.php?spell=${id}`;
+	const url = itemId !== 0 ? `https://nether.wowhead.com/classic/tooltip/item/${itemId}` : `https://nether.wowhead.com/classic/tooltip/spell/${spellId}`
+	try {
+		const response = await fetch(url);
+		const json = await response.json();
+		return json['tooltip'];
+	} catch (e) {
+		console.error('Error while fetching url: ' + url + '\n\n' + e);
+		return "Error while fetching url";
+	}
+}

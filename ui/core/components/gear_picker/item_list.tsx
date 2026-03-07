@@ -23,7 +23,7 @@ import Toast from '../toast';
 import { Clusterize } from '../virtual_scroll/clusterize';
 import { FiltersMenu } from './filters_menu';
 import { SelectorModalTabs } from './selector_modal';
-import { createItemTooltip } from './utils';
+import { createItemTooltip, getWowheadTooltipString } from './utils';
 
 export interface ItemData<T> {
 	item: T;
@@ -571,12 +571,38 @@ export default class ItemList<T extends ItemListType> {
 				allowHTML: true, 
 				hideOnClick: false
 			});
-
 			const nameTooltip = tippy(nameElem.value!, {
 				content: `${String(createItemTooltip(itemData.item, this.player))}`, 
 				allowHTML: true, 
 				hideOnClick: false
 			});
+		} else if (this.label === SelectorModalTabs.Enchants) {
+			const enchantItem = itemData.item as UIEnchant
+			if (enchantItem.tooltip !== "") {
+				const itemTooltip = tippy(iconElem.value!, {
+					content: `${enchantItem.tooltip}`, 
+					allowHTML: true, 
+					hideOnClick: false
+				});
+				const nameTooltip = tippy(nameElem.value!, {
+					content: `${enchantItem.tooltip}`, 
+					allowHTML: true, 
+					hideOnClick: false
+				});
+			} else {
+				getWowheadTooltipString(enchantItem.itemId, enchantItem.spellId).then((urlToolTip: string) => {
+					const itemTooltip = tippy(iconElem.value!, {
+						content: `${urlToolTip}`, 
+						allowHTML: true, 
+						hideOnClick: false
+					});
+					const nameTooltip = tippy(nameElem.value!, {
+						content: `${urlToolTip}`, 
+						allowHTML: true, 
+						hideOnClick: false
+					});
+				});
+			}
 		}
 
 		return listItemElem;

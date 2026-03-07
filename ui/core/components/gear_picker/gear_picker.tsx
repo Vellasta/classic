@@ -15,7 +15,7 @@ import { Component } from '../component';
 import { GearData } from './item_list';
 import SelectorModal, { SelectorModalTabs } from './selector_modal';
 import { getEmptySlotIconUrl } from './utils';
-import { createItemTooltip } from './utils';
+import { createItemTooltip, getWowheadTooltipString } from './utils';
 
 export default class GearPicker extends Component {
 	// ItemSlot is used as the index
@@ -71,6 +71,7 @@ export class ItemRenderer extends Component {
 	readonly enchantElem: HTMLAnchorElement;
 	private itemTooltip: any;
 	private nameTooltip: any;
+	private enchantTooltip: any;
 
 	constructor(parent: HTMLElement, root: HTMLElement, player: Player<any>) {
 		super(parent, 'item-picker-root', root);
@@ -104,6 +105,11 @@ export class ItemRenderer extends Component {
 			hideOnClick: false
 		});
 		this.nameTooltip = tippy(this.nameElem, {
+			content: ``, 
+			allowHTML: true, 
+			hideOnClick: false
+		});
+		this.enchantTooltip = tippy(this.enchantElem, {
 			content: ``, 
 			allowHTML: true, 
 			hideOnClick: false
@@ -165,6 +171,15 @@ export class ItemRenderer extends Component {
 					this.enchantElem.dataset.wowhead = url;
 				});
 			}
+
+			if (newItem.enchant.tooltip !== "") {
+				this.enchantTooltip.setContent(`${newItem.enchant.tooltip}`);
+			} else {
+				getWowheadTooltipString(newItem.enchant.itemId, newItem.enchant.spellId).then((urlToolTip: string) => {
+					this.enchantTooltip.setContent(`${urlToolTip}`);
+				});
+			}
+
 			this.enchantElem.dataset.whtticon = 'false';
 			this.enchantElem.classList.remove('hide');
 		} else {
