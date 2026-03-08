@@ -5,6 +5,7 @@ import { ActionId } from '../proto_utils/action_id.js';
 import { TypedEvent } from '../typed_event.js';
 import { IconPickerDirection } from './icon_picker.jsx';
 import { Input, InputConfig } from './input.js';
+import { getWowheadTooltipString } from './gear_picker/utils';
 
 export interface IconEnumValueConfig<ModObject, T> {
 	value: T;
@@ -49,6 +50,7 @@ export class IconEnumPicker<ModObject, T> extends Input<ModObject, T> {
 	private readonly buttonElem: HTMLAnchorElement;
 	private readonly buttonText: HTMLElement;
 	private readonly dropdownMenu: HTMLElement;
+	private itemTooltip: any;
 
 	constructor(parent: HTMLElement, modObj: ModObject, config: IconEnumPickerConfig<ModObject, T>) {
 		super(parent, 'icon-enum-picker-root', modObj, config);
@@ -94,6 +96,12 @@ export class IconEnumPicker<ModObject, T> extends Input<ModObject, T> {
 			this.dropdownMenu.style.gridAutoFlow = 'column';
 		}
 
+		this.itemTooltip = tippy(this.buttonElem, {
+			allowHTML: true, 
+			hideOnClick: false,
+			placement: 'right-end'
+		});
+
 		this.config.values.forEach((valueConfig, _) => {
 			const optionContainer = document.createElement('li');
 			optionContainer.classList.add('icon-dropdown-option', 'dropdown-option');
@@ -104,6 +112,20 @@ export class IconEnumPicker<ModObject, T> extends Input<ModObject, T> {
 			option.dataset.whtticon = 'false';
 			option.dataset.disableWowheadTouchTooltip = 'true';
 			optionContainer.appendChild(option);
+
+			const actionId = valueConfig.actionId?.(this.modObject);
+			if (actionId) {
+				getWowheadTooltipString(actionId.itemId, actionId.spellId).then((urlToolTip: string) => {
+					if (urlToolTip) {
+						tippy(option, {
+							content: `${urlToolTip}`, 
+							allowHTML: true, 
+							hideOnClick: false,
+							placement: 'right-end'
+						});
+					}
+				});
+			}		
 
 			const updateOption = () => {
 				this.setImage(option, valueConfig);
@@ -225,6 +247,16 @@ export class IconEnumPicker<ModObject, T> extends Input<ModObject, T> {
 		const valueConfig = this.config.values.find(valueConfig => this.config.equals(valueConfig.value, this.currentValue))!;
 		if (valueConfig) {
 			this.setImage(this.buttonElem, valueConfig);
+
+			const actionId = valueConfig.actionId?.(this.modObject);
+			if (actionId) {
+				getWowheadTooltipString(actionId.itemId, actionId.spellId).then((urlToolTip: string) => {
+					if (urlToolTip) {
+						this.itemTooltip.setContent(`${urlToolTip}`);
+					}
+				});
+			}
+			
 			if (valueConfig.text != undefined) {
 				this.buttonText.style.display = 'block';
 				this.buttonText.textContent = valueConfig.text;

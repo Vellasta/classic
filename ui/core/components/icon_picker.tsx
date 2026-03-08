@@ -1,9 +1,11 @@
+import tippy from 'tippy.js';
 import { ref } from 'tsx-vanilla';
 
 import { ActionId } from '../proto_utils/action_id.js';
 import { TypedEvent } from '../typed_event.js';
 import { isRightClick } from '../utils.js';
 import { Input, InputConfig } from './input.js';
+import { getWowheadTooltipString } from './gear_picker/utils';
 
 export enum IconPickerDirection {
 	Vertical = 'vertical',
@@ -102,6 +104,20 @@ export class IconPicker<ModObject, ValueType> extends Input<ModObject, ValueType
 		}
 
 		this.init();
+
+		const tooltipActionId = this.config.actionId(this.modObject)
+		if (tooltipActionId) {
+			getWowheadTooltipString(tooltipActionId.itemId, tooltipActionId.spellId).then((urlToolTip: string) => {
+				if (urlToolTip) {
+					tippy(this.rootAnchor, {
+						content: `${urlToolTip}`, 
+						allowHTML: true, 
+						hideOnClick: false,
+						placement: 'right-end'
+					});
+				}
+			});
+		}
 
 		// This must occur after this.init() else the state will not be handled correctly
 		const updateState = () => {
