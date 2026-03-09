@@ -2,7 +2,11 @@
 	--bs-body-font-size: 14px;
 	font-size: var(--bs-body-font-size);
 
-	@include media-breakpoint-up(1080p) {
+	// @media (min-width: 1080px) {
+	// 	--bs-body-font-size: 16px;
+	// }
+
+	@include media-breakpoint-up(1080px) {
 		--bs-body-font-size: 16px;
 	}
 
