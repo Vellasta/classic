@@ -823,7 +823,7 @@ export const Windfury: ConsumableInputConfig<WeaponImbue> = {
 	actionId: () => ActionId.fromSpellId(10614),
 	value: WeaponImbue.Windfury,
 	showWhen: player => {
-		return (player.getFaction() === Faction.Horde) && !player.isSpec(Spec.SpecFeralDruid)
+		return false // (player.getFaction() === Faction.Horde) && !player.isSpec(Spec.SpecFeralDruid)
 	},
 };
 

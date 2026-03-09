@@ -557,7 +557,7 @@ enum SaygesFortune {
 }
 
 // Buffs that affect the entire raid.
-// NextIndex: 40
+// NextIndex: 41
 message RaidBuffs {
 	reserved 36, 37, 38, 39;
 	reserved "atiesh_druid", "atiesh_mage", "atiesh_priest", "atiesh_warlock";
@@ -591,6 +591,9 @@ message RaidBuffs {
 	// Crit
 	bool leader_of_the_pack = 12;
 	bool moonkin_aura = 13;
+
+	// Windfury
+	bool windfury_totem = 40;
 
 	// mp5
 	TristateEffect mana_spring_totem = 14;

@@ -241,6 +241,15 @@ export const ManaSpringTotem = withLabel(
 	'Mana Spring Totem',
 );
 
+export const WindfuryTotem = withLabel(
+	makeBooleanRaidBuffInput({
+		actionId: () => ActionId.fromSpellId(10614),
+		fieldName: 'windfuryTotem',
+		showWhen: player => true, // player.getFaction() === Faction.Horde,
+	}),
+	'Windfury Totem',
+);
+
 export const MeleeCritBuff = withLabel(
 	makeBooleanRaidBuffInput({ actionId: () => ActionId.fromSpellId(24932), fieldName: 'leaderOfThePack' }),
 	'Leader of the Pack',
@@ -648,6 +657,11 @@ export const RAID_BUFFS_CONFIG = [
 		config: MeleeCritBuff,
 		picker: IconPicker,
 		stats: [Stat.StatMeleeCrit],
+	},
+	{
+		config: WindfuryTotem,
+		picker: IconPicker,
+		stats: [],
 	},
 	// Threat Buffs
 

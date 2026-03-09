@@ -371,12 +371,18 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 			updateStats = updateStats.Multiply(1.2)
 		}
 		character.AddStats(updateStats)
-	} else if raidBuffs.ManaSpringTotem > 0 { // && isHorde {
+	}
+
+	if raidBuffs.ManaSpringTotem > 0 { // && isHorde {
 		updateStats := BuffSpellValues[ManaSpring]
 		if raidBuffs.ManaSpringTotem == proto.TristateEffect_TristateEffectImproved {
 			updateStats = updateStats.Multiply(1.25)
 		}
 		character.AddStats(updateStats)
+	}
+
+	if raidBuffs.WindfuryTotem { // && isHorde {
+		ApplyWindfury(character)
 	}
 
 	if raidBuffs.BattleSquawk > 0 {
@@ -1607,7 +1613,7 @@ func GetWindfuryAP(aura *Aura, rank int32) float64 {
 }
 
 func ApplyWindfury(character *Character) *Aura {
-	rank := int32(3)
+	rank := int32(0)
 	spellId := WindfuryBuffSpellId[rank]
 	buffActionID := ActionID{SpellID: spellId}
 
