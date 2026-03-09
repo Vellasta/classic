@@ -385,6 +385,10 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 		ApplyWindfury(character)
 	}
 
+	if raidBuffs.FlametongueTotem { // && isHorde {
+		ApplyFlametongue(character)
+	}
+
 	if raidBuffs.BattleSquawk > 0 {
 		numBattleSquawks := raidBuffs.BattleSquawk
 		BattleSquawkAura(&character.Unit, numBattleSquawks)
@@ -1619,6 +1623,57 @@ func ApplyWindfury(character *Character) *Aura {
 
 	return CreateExtraAttackAuraCommon(character, buffActionID, "Windfury", rank, GetWindfuryAP)
 
+}
+
+func newFlametongueImbueSpell(character *Character, weapon *Item) *Spell {
+	maxDamage := 48.68
+	baseDamage := maxDamage / 4
+	spellCoeff := 0.0
+
+	return character.RegisterSpell(SpellConfig{
+		ActionID:    ActionID{SpellID: 16389},
+		SpellSchool: SpellSchoolFire,
+		DefenseType: DefenseTypeMagic,
+		ProcMask:    ProcMaskSpellDamageProc,
+		Flags:       SpellFlagNoOnCastComplete | SpellFlagPassiveSpell,
+
+		DamageMultiplier: 1,
+		ThreatMultiplier: 1,
+		BonusCoefficient: spellCoeff,
+
+		ApplyEffects: func(sim *Simulation, target *Unit, spell *Spell) {
+			if weapon.SwingSpeed != 0 {
+				damage := (baseDamage * weapon.SwingSpeed)
+				spell.CalcAndDealDamage(sim, target, damage, spell.OutcomeMagicHitAndCrit)
+			}
+		},
+	})
+}
+
+func CreateFlametongueAuraCommon(character *Character, buffActionID ActionID) *Aura {
+	mhSpell := newFlametongueImbueSpell(character, character.MainHand())
+
+	flameTongueAura := character.RegisterAura(Aura{
+		Label:    "Flametongue Totem",
+		Duration: NeverExpires,
+		OnReset: func(aura *Aura, sim *Simulation) {
+			aura.Activate(sim)
+		},
+		OnSpellHitDealt: func(aura *Aura, sim *Simulation, spell *Spell, result *SpellResult) {
+			if !result.Landed() || !spell.ProcMask.Matches(ProcMaskMeleeMH) || spell.Flags.Matches(SpellFlagSuppressEquipProcs) {
+				return
+			}
+
+			mhSpell.Cast(sim, result.Target)
+		},
+	})
+
+	return flameTongueAura
+}
+
+func ApplyFlametongue(character *Character) *Aura {
+	buffActionID := ActionID{SpellID: 16387}
+	return CreateFlametongueAuraCommon(character, buffActionID)
 }
 
 ///////////////////////////////////////////////////////////////////////////

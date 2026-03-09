@@ -250,6 +250,15 @@ export const WindfuryTotem = withLabel(
 	'Windfury Totem',
 );
 
+export const FlametongueTotem = withLabel(
+	makeBooleanRaidBuffInput({
+		actionId: () => ActionId.fromSpellId(16387),
+		fieldName: 'flametongueTotem',
+		showWhen: player => true, // player.getFaction() === Faction.Horde,
+	}),
+	'Flametongue Totem',
+);
+
 export const MeleeCritBuff = withLabel(
 	makeBooleanRaidBuffInput({ actionId: () => ActionId.fromSpellId(24932), fieldName: 'leaderOfThePack' }),
 	'Leader of the Pack',
@@ -660,6 +669,11 @@ export const RAID_BUFFS_CONFIG = [
 	},
 	{
 		config: WindfuryTotem,
+		picker: IconPicker,
+		stats: [],
+	},
+	{
+		config: FlametongueTotem,
 		picker: IconPicker,
 		stats: [],
 	},

@@ -557,7 +557,7 @@ enum SaygesFortune {
 }
 
 // Buffs that affect the entire raid.
-// NextIndex: 41
+// NextIndex: 42
 message RaidBuffs {
 	reserved 36, 37, 38, 39;
 	reserved "atiesh_druid", "atiesh_mage", "atiesh_priest", "atiesh_warlock";
@@ -594,6 +594,9 @@ message RaidBuffs {
 
 	// Windfury
 	bool windfury_totem = 40;
+
+	// Flametongue
+	bool flametongue_totem = 41;
 
 	// mp5
 	TristateEffect mana_spring_totem = 14;
