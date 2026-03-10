@@ -1090,12 +1090,12 @@ export class Player<SpecType extends Spec> {
 
 		if (enchant.stats[Stat.StatMeleeHaste] > 0) {
 			ep += this.epWeights.getPseudoStat(PseudoStat.PseudoStatMeleeSpeedMultiplier) * enchant.stats[Stat.StatMeleeHaste];
-			ep += this.epWeights.getPseudoStat(PseudoStat.PseudoStatRangedSpeedMultiplier) * enchant.stats[Stat.StatMeleeHaste];
+			// ep += this.epWeights.getPseudoStat(PseudoStat.PseudoStatRangedSpeedMultiplier) * enchant.stats[Stat.StatMeleeHaste];
 		}
 
-		if (enchant.stats[Stat.StatSpellHaste] > 0) {
-			ep += this.epWeights.getPseudoStat(PseudoStat.PseudoStatCastSpeedMultiplier) * enchant.stats[Stat.StatSpellHaste];
-		}
+		// if (enchant.stats[Stat.StatSpellHaste] > 0) {
+		// 	ep += this.epWeights.getPseudoStat(PseudoStat.PseudoStatCastSpeedMultiplier) * enchant.stats[Stat.StatSpellHaste];
+		// }
 
 		this.enchantEPCache.set(enchant.effectId, ep);
 		return ep;
@@ -1149,12 +1149,12 @@ export class Player<SpecType extends Spec> {
 
 		if (item.stats[Stat.StatMeleeHaste] > 0) {
 			ep += this.epWeights.getPseudoStat(PseudoStat.PseudoStatMeleeSpeedMultiplier) * item.stats[Stat.StatMeleeHaste];
-			ep += this.epWeights.getPseudoStat(PseudoStat.PseudoStatRangedSpeedMultiplier) * item.stats[Stat.StatMeleeHaste];
+			// ep += this.epWeights.getPseudoStat(PseudoStat.PseudoStatRangedSpeedMultiplier) * item.stats[Stat.StatMeleeHaste];
 		}
 
-		if (item.stats[Stat.StatSpellHaste] > 0) {
-			ep += this.epWeights.getPseudoStat(PseudoStat.PseudoStatCastSpeedMultiplier) * item.stats[Stat.StatSpellHaste];
-		}
+		// if (item.stats[Stat.StatSpellHaste] > 0) {
+		// 	ep += this.epWeights.getPseudoStat(PseudoStat.PseudoStatCastSpeedMultiplier) * item.stats[Stat.StatSpellHaste];
+		// }
 
 		this.itemEPCache[slot].set(item.id, ep);
 		return ep;
