@@ -37,6 +37,8 @@ import MMAPL from './apls/mm.apl.json';
 import SVAPL from './apls/sv.apl.json';
 import P0BISGear from './gear_sets/p0.bis.gear.json';
 import P1BISGear from './gear_sets/p1.bis.gear.json';
+import Kara40MMGear from './gear_sets/kara40.mm.gear.json';
+import Kara40SVGear from './gear_sets/kara40.sv.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -47,12 +49,14 @@ import P1BISGear from './gear_sets/p1.bis.gear.json';
 
 export const GearP0BIS = PresetUtils.makePresetGear('Pre-BiS', P0BISGear);
 export const GearP1BIS = PresetUtils.makePresetGear('P1 BiS', P1BISGear);
+export const GearKara40MM = PresetUtils.makePresetGear('Kara40 MM BIS', Kara40MMGear);
+export const GearKara40SV = PresetUtils.makePresetGear('Kara40 SV BIS', Kara40SVGear);
 
 export const GearPresets = {
-	[Phase.Phase1]: [GearP0BIS, GearP1BIS],
+	[Phase.Phase1]: [GearP0BIS, GearP1BIS, GearKara40MM, GearKara40SV],
 };
 
-export const DefaultGear = GearP0BIS;
+export const DefaultGear = GearKara40MM;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
