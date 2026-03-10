@@ -1,3 +1,4 @@
+import { FlametongueTotem, TrueshotAuraBuff, WindfuryTotem } from '../core/components/inputs/buffs_debuffs';
 import { Phase } from '../core/constants/other.js';
 import * as PresetUtils from '../core/preset_utils.js';
 import {
@@ -32,8 +33,7 @@ import {
 	Hunter_Options_QuiverBonus,
 } from '../core/proto/hunter.js';
 import { SavedTalents } from '../core/proto/ui.js';
-import P1APL from './apls/p1.apl.json';
-import P2APL from './apls/p2.apl.json';
+import MMAPL from './apls/mm.apl.json';
 import SVAPL from './apls/sv.apl.json';
 import P0BISGear from './gear_sets/p0.bis.gear.json';
 import P1BISGear from './gear_sets/p1.bis.gear.json';
@@ -58,12 +58,11 @@ export const DefaultGear = GearP0BIS;
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLP1 = PresetUtils.makePresetAPLRotation('Marksmanship', P1APL);
-export const APLMM = PresetUtils.makePresetAPLRotation('Marksmanship (Steady Shot)', P2APL, { talentTree: 1 });
+export const APLMM = PresetUtils.makePresetAPLRotation('Marksmanship', MMAPL, { talentTree: 1 });
 export const APLSV = PresetUtils.makePresetAPLRotation('Survival', SVAPL, { talentTree: 2 });
 
 export const APLPresets = {
-	[Phase.Phase1]: [APLP1, APLMM, APLSV],
+	[Phase.Phase1]: [APLMM, APLSV],
 
 };
 
@@ -90,7 +89,7 @@ export const DefaultTalents = TalentPresets[Phase.Phase1][0];
 ///////////////////////////////////////////////////////////////////////////
 
 export const DefaultOptions = HunterOptions.create({
-	ammo: Ammo.ThoriumHeadedArrow,
+	ammo: Ammo.Doomshot,
 	quiverBonus: Hunter_Options_QuiverBonus.Speed15,
 	petAttackSpeed: PetAttackSpeed.OneTwo,
 	petType: PetType.Cat,
@@ -105,9 +104,9 @@ export const DefaultConsumes = Consumes.create({
 	defaultPotion: Potions.MajorManaPotion,
 	dragonBreathChili: true,
 	flask: Flask.FlaskOfSupremePower,
-	food: Food.FoodSmokedDesertDumpling,
+	food: Food.FoodGrilledSquid,
 	healthElixir: HealthElixir.ElixirOfFortitude,
-	mainHandImbue: WeaponImbue.Windfury,
+	mainHandImbue: WeaponImbue.ElementalSharpeningStone,
 	manaRegenElixir: ManaRegenElixir.MagebloodPotion,
 	offHandImbue: WeaponImbue.ElementalSharpeningStone,
 	petAttackPowerConsumable: 1,
@@ -126,10 +125,13 @@ export const DefaultRaidBuffs = RaidBuffs.create({
 	fireResistanceAura: true,
 	fireResistanceTotem: true,
 	giftOfTheWild: TristateEffect.TristateEffectImproved,
-	graceOfAirTotem: TristateEffect.TristateEffectImproved,
-	leaderOfThePack: false,
+	graceOfAirTotem: TristateEffect.TristateEffectMissing,
+	trueshotAura: true,
+	leaderOfThePack: true,
 	manaSpringTotem: TristateEffect.TristateEffectRegular,
 	strengthOfEarthTotem: TristateEffect.TristateEffectImproved,
+	windfuryTotem: true,
+	flametongueTotem: true
 });
 
 export const DefaultIndividualBuffs = IndividualBuffs.create({
@@ -138,10 +140,10 @@ export const DefaultIndividualBuffs = IndividualBuffs.create({
 	blessingOfWisdom: TristateEffect.TristateEffectImproved,
 	fengusFerocity: false,
 	moldarsMoxie: false,
-	rallyingCryOfTheDragonslayer: true,
-	saygesFortune: SaygesFortune.SaygesDamage,
+	rallyingCryOfTheDragonslayer: false,
+	saygesFortune: SaygesFortune.SaygesUnknown,
 	slipkiksSavvy: false,
-	songflowerSerenade: true,
+	songflowerSerenade: false,
 	spiritOfZandalar: false,
 	warchiefsBlessing: false,
 });
