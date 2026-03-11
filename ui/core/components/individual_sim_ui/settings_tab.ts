@@ -21,7 +21,7 @@ import { MultiIconPicker, MultiIconPickerItemConfig } from '../multi_icon_picker
 import { NumberPicker } from '../number_picker';
 import { SavedDataManager } from '../saved_data_manager';
 import { SimTab } from '../sim_tab';
-import { IsbConfig, StormstrikeConfig } from './../other_inputs';
+import { IsbConfig, StormstrikeConfig, weaponSkillBook } from './../other_inputs';
 import { ConsumesPicker } from './consumes_picker';
 import { ItemSwapPicker } from './item_swap_picker';
 import { PresetConfigurationPicker } from './preset_configuration_picker';
@@ -352,6 +352,7 @@ export class SettingsTab extends SimTab {
 					channelClipDelayMs: player.getChannelClipDelay(),
 					inFrontOfTarget: player.getInFrontOfTarget(),
 					distanceFromTarget: player.getDistanceFromTarget(),
+					weaponSkillBook: player.getWeaponSkillBook(),
 					healingModel: player.getHealingModel(),
 				});
 			},
@@ -373,6 +374,7 @@ export class SettingsTab extends SimTab {
 					simUI.player.setChannelClipDelay(eventID, newSettings.channelClipDelayMs);
 					simUI.player.setInFrontOfTarget(eventID, newSettings.inFrontOfTarget);
 					simUI.player.setDistanceFromTarget(eventID, newSettings.distanceFromTarget);
+					simUI.player.setWeaponSkillBook(eventID, newSettings.weaponSkillBook);
 					simUI.player.setHealingModel(eventID, newSettings.healingModel || HealingModel.create());
 				});
 			},
@@ -388,6 +390,7 @@ export class SettingsTab extends SimTab {
 				this.simUI.player.miscOptionsChangeEmitter,
 				this.simUI.player.inFrontOfTargetChangeEmitter,
 				this.simUI.player.distanceFromTargetChangeEmitter,
+				this.simUI.player.weaponSkillBookChangeEmitter,
 				this.simUI.player.healingModelChangeEmitter,
 			],
 			equals: (a: SavedSettings, b: SavedSettings) => SavedSettings.equals(a, b),

@@ -39,6 +39,7 @@ import P0BISGear from './gear_sets/p0.bis.gear.json';
 import P1BISGear from './gear_sets/p1.bis.gear.json';
 import Kara40MMGear from './gear_sets/kara40.mm.gear.json';
 import Kara40SVGear from './gear_sets/kara40.sv.gear.json';
+import { weaponSkillBook } from '../core/components/other_inputs';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -165,6 +166,7 @@ export const DefaultDebuffs = Debuffs.create({
 
 export const OtherDefaults = {
 	distanceFromTarget: 12,
+	weaponSkillBook: false,
 	profession1: Profession.Enchanting,
 	profession2: Profession.Engineering,
 	race: Race.RaceTroll,

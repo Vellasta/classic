@@ -320,6 +320,7 @@ message SavedSettings {
 	int32 channel_clip_delay_ms = 12;
 	bool in_front_of_target = 13;
 	double distance_from_target = 14;
+	bool weapon_skill_book = 16;
 	HealingModel healing_model = 15;
 
 }

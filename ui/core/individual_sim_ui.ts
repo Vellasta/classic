@@ -66,6 +66,7 @@ export interface OtherDefaults {
 	profession1?: Profession;
 	profession2?: Profession;
 	distanceFromTarget?: number;
+	weaponSkillBook?: boolean;
 	channelClipDelay?: number;
 }
 
@@ -421,6 +422,7 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 			this.player.setProfession1(eventID, this.individualConfig.defaults.other?.profession1 || Profession.Engineering);
 			this.player.setProfession2(eventID, this.individualConfig.defaults.other?.profession2 || Profession.ProfessionUnknown);
 			this.player.setDistanceFromTarget(eventID, this.individualConfig.defaults.other?.distanceFromTarget || 0);
+			this.player.setWeaponSkillBook(eventID, this.individualConfig.defaults.other?.weaponSkillBook || false);
 			this.player.setChannelClipDelay(eventID, this.individualConfig.defaults.other?.channelClipDelay || 0);
 
 			if (this.isWithinRaidSim) {

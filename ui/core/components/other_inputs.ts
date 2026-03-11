@@ -123,6 +123,18 @@ export const DistanceFromTarget = {
 	},
 };
 
+export const weaponSkillBook = {
+	id: 'weapon-skill-book',
+	type: 'boolean' as const,
+	label: '+5 Weapon Skill Book',
+	labelTooltip: 'Has learnt the +5 Weapon Skill Book for all weapons.',
+	changedEvent: (player: Player<any>) => player.weaponSkillBookChangeEmitter,
+	getValue: (player: Player<any>) => player.getWeaponSkillBook(),
+	setValue: (eventID: EventID, player: Player<any>, newValue: boolean) => {
+		player.setWeaponSkillBook(eventID, newValue);
+	},
+};
+
 export const IsbSbFrequencey = {
 	id: 'isb-sb-frequency',
 	type: 'number' as const,

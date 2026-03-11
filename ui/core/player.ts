@@ -242,6 +242,7 @@ export class Player<SpecType extends Spec> {
 	private channelClipDelay = 0;
 	private inFrontOfTarget = false;
 	private distanceFromTarget = 0;
+	private weaponSkillBook = false;
 	private healingModel: HealingModel = HealingModel.create();
 	private healingEnabled = false;
 
@@ -283,6 +284,7 @@ export class Player<SpecType extends Spec> {
 	readonly specOptionsChangeEmitter = new TypedEvent<void>('PlayerSpecOptions');
 	readonly inFrontOfTargetChangeEmitter = new TypedEvent<void>('PlayerInFrontOfTarget');
 	readonly distanceFromTargetChangeEmitter = new TypedEvent<void>('PlayerDistanceFromTarget');
+	readonly weaponSkillBookChangeEmitter = new TypedEvent<void>('PlayerWeaponSkillBook');
 	readonly healingModelChangeEmitter = new TypedEvent<void>('PlayerHealingModel');
 	readonly epWeightsChangeEmitter = new TypedEvent<void>('PlayerEpWeights');
 	readonly miscOptionsChangeEmitter = new TypedEvent<void>('PlayerMiscOptions');
@@ -336,6 +338,7 @@ export class Player<SpecType extends Spec> {
 				this.miscOptionsChangeEmitter,
 				this.inFrontOfTargetChangeEmitter,
 				this.distanceFromTargetChangeEmitter,
+				this.weaponSkillBookChangeEmitter,
 				this.healingModelChangeEmitter,
 				this.epWeightsChangeEmitter,
 				this.epRatiosChangeEmitter,
@@ -965,6 +968,17 @@ export class Player<SpecType extends Spec> {
 		this.distanceFromTargetChangeEmitter.emit(eventID);
 	}
 
+	getWeaponSkillBook(): boolean {
+		return this.weaponSkillBook;
+	}
+
+	setWeaponSkillBook(eventID: EventID, newWeaponSkillBook: boolean) {
+		if (newWeaponSkillBook === this.weaponSkillBook) return;
+
+		this.weaponSkillBook = newWeaponSkillBook;
+		this.weaponSkillBookChangeEmitter.emit(eventID);
+	}
+
 	setDefaultHealingParams(hm: HealingModel) {
 		const boss = this.sim.encounter.primaryTarget;
 		const dualWield = boss.dualWield;
@@ -1401,6 +1415,7 @@ export class Player<SpecType extends Spec> {
 				channelClipDelayMs: this.getChannelClipDelay(),
 				inFrontOfTarget: this.getInFrontOfTarget(),
 				distanceFromTarget: this.getDistanceFromTarget(),
+				weaponSkillBook: this.getWeaponSkillBook(),
 				healingModel: this.getHealingModel(),
 				isbSbFrequency: this.getIsbSbFrequency(),
 				isbCrit: this.getIsbCrit(),
@@ -1460,6 +1475,7 @@ export class Player<SpecType extends Spec> {
 				this.setChannelClipDelay(eventID, proto.channelClipDelayMs);
 				this.setInFrontOfTarget(eventID, proto.inFrontOfTarget);
 				this.setDistanceFromTarget(eventID, proto.distanceFromTarget);
+				this.setWeaponSkillBook(eventID, proto.weaponSkillBook);
 				this.setHealingModel(eventID, proto.healingModel || HealingModel.create());
 				this.setIsbSbFrequency(eventID, proto.isbSbFrequency);
 				this.setIsbCrit(eventID, proto.isbCrit);

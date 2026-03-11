@@ -696,6 +696,7 @@ class NewPlayerPicker extends Component {
 						newPlayer.setProfession1(eventID, matchingPreset.otherDefaults?.profession1 || Profession.Engineering);
 						newPlayer.setProfession2(eventID, matchingPreset.otherDefaults?.profession2 || Profession.Enchanting);
 						newPlayer.setDistanceFromTarget(eventID, matchingPreset.otherDefaults?.distanceFromTarget || 0);
+						newPlayer.setWeaponSkillBook(eventID, matchingPreset.otherDefaults?.weaponSkillBook || false);
 
 						// Need to wait because the gear might not be loaded yet.
 						this.raidPicker.raid.sim.waitForInit().then(() => {

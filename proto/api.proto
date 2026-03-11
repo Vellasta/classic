@@ -15,7 +15,7 @@ import "shaman.proto";
 import "warlock.proto";
 import "warrior.proto";
 
-// NextIndex: 49
+// NextIndex: 50
 message Player {
 	// Label used for logging.
 	string name = 1;
@@ -46,7 +46,8 @@ message Player {
 	int32 reaction_time_ms = 14;
 	int32 channel_clip_delay_ms = 15;
 	bool in_front_of_target = 16;
-	double distance_from_target = 17;
+	double distance_from_target = 49;
+	bool weapon_skill_book = 17;
 
 	// ISB Info
 	double isb_sb_frequency = 41;

@@ -164,26 +164,32 @@ func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character 
 		}
 		if player.BonusStats.PseudoStats != nil {
 			ps := player.BonusStats.PseudoStats
+
+			bonusWeaponSkill := float64(0)
+			if player.WeaponSkillBook {
+				bonusWeaponSkill += 5
+			}
+
 			character.bonusMHDps = ps[proto.PseudoStat_PseudoStatMainHandDps]
 			character.bonusOHDps = ps[proto.PseudoStat_PseudoStatOffHandDps]
 			character.bonusRangedDps = ps[proto.PseudoStat_PseudoStatRangedDps]
 			character.PseudoStats.BonusMHDps += character.bonusMHDps
 			character.PseudoStats.BonusOHDps += character.bonusOHDps
 			character.PseudoStats.BonusRangedDps += character.bonusRangedDps
-			character.PseudoStats.AxesSkill += ps[proto.PseudoStat_PseudoStatAxesSkill]
-			character.PseudoStats.SwordsSkill += ps[proto.PseudoStat_PseudoStatSwordsSkill]
-			character.PseudoStats.DaggersSkill += ps[proto.PseudoStat_PseudoStatDaggersSkill]
-			character.PseudoStats.UnarmedSkill += ps[proto.PseudoStat_PseudoStatUnarmedSkill]
-			character.PseudoStats.MacesSkill += ps[proto.PseudoStat_PseudoStatMacesSkill]
-			character.PseudoStats.TwoHandedAxesSkill += ps[proto.PseudoStat_PseudoStatTwoHandedAxesSkill]
-			character.PseudoStats.TwoHandedSwordsSkill += ps[proto.PseudoStat_PseudoStatTwoHandedSwordsSkill]
-			character.PseudoStats.TwoHandedMacesSkill += ps[proto.PseudoStat_PseudoStatTwoHandedMacesSkill]
-			character.PseudoStats.PolearmsSkill += ps[proto.PseudoStat_PseudoStatPolearmsSkill]
-			character.PseudoStats.StavesSkill += ps[proto.PseudoStat_PseudoStatStavesSkill]
-			character.PseudoStats.ThrownSkill += ps[proto.PseudoStat_PseudoStatThrownSkill]
-			character.PseudoStats.BowsSkill += ps[proto.PseudoStat_PseudoStatBowsSkill]
-			character.PseudoStats.CrossbowsSkill += ps[proto.PseudoStat_PseudoStatCrossbowsSkill]
-			character.PseudoStats.GunsSkill += ps[proto.PseudoStat_PseudoStatGunsSkill]
+			character.PseudoStats.AxesSkill += ps[proto.PseudoStat_PseudoStatAxesSkill] + bonusWeaponSkill
+			character.PseudoStats.SwordsSkill += ps[proto.PseudoStat_PseudoStatSwordsSkill] + bonusWeaponSkill
+			character.PseudoStats.DaggersSkill += ps[proto.PseudoStat_PseudoStatDaggersSkill] + bonusWeaponSkill
+			character.PseudoStats.UnarmedSkill += ps[proto.PseudoStat_PseudoStatUnarmedSkill] + bonusWeaponSkill
+			character.PseudoStats.MacesSkill += ps[proto.PseudoStat_PseudoStatMacesSkill] + bonusWeaponSkill
+			character.PseudoStats.TwoHandedAxesSkill += ps[proto.PseudoStat_PseudoStatTwoHandedAxesSkill] + bonusWeaponSkill
+			character.PseudoStats.TwoHandedSwordsSkill += ps[proto.PseudoStat_PseudoStatTwoHandedSwordsSkill] + bonusWeaponSkill
+			character.PseudoStats.TwoHandedMacesSkill += ps[proto.PseudoStat_PseudoStatTwoHandedMacesSkill] + bonusWeaponSkill
+			character.PseudoStats.PolearmsSkill += ps[proto.PseudoStat_PseudoStatPolearmsSkill] + bonusWeaponSkill
+			character.PseudoStats.StavesSkill += ps[proto.PseudoStat_PseudoStatStavesSkill] + bonusWeaponSkill
+			character.PseudoStats.ThrownSkill += ps[proto.PseudoStat_PseudoStatThrownSkill] + bonusWeaponSkill
+			character.PseudoStats.BowsSkill += ps[proto.PseudoStat_PseudoStatBowsSkill] + bonusWeaponSkill
+			character.PseudoStats.CrossbowsSkill += ps[proto.PseudoStat_PseudoStatCrossbowsSkill] + bonusWeaponSkill
+			character.PseudoStats.GunsSkill += ps[proto.PseudoStat_PseudoStatGunsSkill] + bonusWeaponSkill
 			character.PseudoStats.BonusPhysicalDamage += ps[proto.PseudoStat_BonusPhysicalDamage]
 		}
 	}

@@ -129,6 +129,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 			OtherInputs.DistanceFromTarget,
 			OtherInputs.TankAssignment,
 			OtherInputs.InFrontOfTarget,
+			OtherInputs.weaponSkillBook,
 		],
 	},
 	encounterPicker: {
