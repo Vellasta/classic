@@ -54,6 +54,19 @@ func applyRaceEffects(agent Agent) {
 	case proto.Race_RaceGnome:
 		character.AddStat(stats.ArcaneResistance, 10)
 		character.MultiplyStat(stats.Intellect, 1.05)
+
+		// Disassembler (+5% damage to mechanicals)
+		character.Env.RegisterPostFinalizeEffect(func() {
+			for _, t := range character.Env.Encounter.Targets {
+				if t.MobType == proto.MobType_MobTypeMechanical {
+					for _, at := range character.AttackTables[t.UnitIndex] {
+						at.DamageDealtMultiplier *= 1.05
+						at.CritMultiplier *= 1.05
+					}
+				}
+			}
+		})
+
 	case proto.Race_RaceHuman:
 		character.MultiplyStat(stats.Spirit, 1.05)
 		character.SwordSpecializationAura()
@@ -61,6 +74,8 @@ func applyRaceEffects(agent Agent) {
 	case proto.Race_RaceNightElf:
 		character.AddStat(stats.NatureResistance, 10)
 		character.AddStat(stats.Dodge, 1)
+		character.AddStat(stats.MeleeHaste, 1)
+		character.AddStat(stats.SpellHaste, 1)
 		// TODO: Shadowmeld?
 	case proto.Race_RaceOrc:
 		character.AxeSpecializationAura()
@@ -77,18 +92,24 @@ func applyRaceEffects(agent Agent) {
 		// Blood Fury
 		actionID := ActionID{SpellID: 20572}
 		var bloodFuryAP float64
+		var bloodFurySP float64
 		bloodFuryAura := character.RegisterAura(Aura{
 			Label:    "Blood Fury",
 			ActionID: actionID,
 			Duration: time.Second * 15,
 			// Tooltip is misleading; ap bonus is base AP plus AP from current strength, does not include +attackpower on items/buffs
 			OnGain: func(aura *Aura, sim *Simulation) {
-				bloodFuryAP = (character.GetBaseStats()[stats.AttackPower] + (character.GetStat(stats.Strength) * APPerStrength[character.Class]) + (character.GetStat(stats.Agility) * APPerAgility[character.Class])) * 0.25
+				bloodFuryAP = float64(character.Level) * 2
+				bloodFurySP = float64(character.Level)
 				character.AddStatDynamic(sim, stats.AttackPower, bloodFuryAP)
+				character.AddStatDynamic(sim, stats.RangedAttackPower, bloodFuryAP)
+				character.AddStatDynamic(sim, stats.SpellPower, bloodFurySP)
 			},
 
 			OnExpire: func(aura *Aura, sim *Simulation) {
 				character.AddStatDynamic(sim, stats.AttackPower, -bloodFuryAP)
+				character.AddStatDynamic(sim, stats.RangedAttackPower, -bloodFuryAP)
+				character.AddStatDynamic(sim, stats.SpellPower, -bloodFurySP)
 			},
 		})
 
@@ -96,9 +117,6 @@ func applyRaceEffects(agent Agent) {
 			ActionID: actionID,
 			Flags:    SpellFlagNoOnCastComplete,
 			Cast: CastConfig{
-				DefaultCast: Cast{
-					GCD: GCDDefault,
-				},
 				CD: Cooldown{
 					Timer:    character.NewTimer(),
 					Duration: time.Minute * 2,
@@ -144,6 +162,22 @@ func applyRaceEffects(agent Agent) {
 		makeBerserkingCooldown(character, .3, berserkingTimer)
 	case proto.Race_RaceUndead:
 		character.AddStat(stats.ShadowResistance, 10)
+
+		// Vengeance (+2% damage to humanoids and undead)
+		character.Env.RegisterPostFinalizeEffect(func() {
+			for _, t := range character.Env.Encounter.Targets {
+				if t.MobType == proto.MobType_MobTypeHumanoid || t.MobType == proto.MobType_MobTypeUndead {
+					for _, at := range character.AttackTables[t.UnitIndex] {
+						at.DamageDealtMultiplier *= 1.02
+						at.CritMultiplier *= 1.02
+					}
+				}
+			}
+		})
+
+	case proto.Race_RaceHighElf:
+		character.MultiplyStat(stats.Agility, 1.02)
+		character.BowSpecializationAura()
 	}
 }
 
@@ -249,9 +283,9 @@ func makeBerserkingCooldown(character *Character, customPercentage float64, time
 }
 
 func (character *Character) GetFaction() proto.Faction {
-	if slices.Contains([]proto.Race{proto.Race_RaceHuman, proto.Race_RaceDwarf, proto.Race_RaceGnome, proto.Race_RaceNightElf}, character.Race) {
+	if slices.Contains([]proto.Race{proto.Race_RaceHuman, proto.Race_RaceDwarf, proto.Race_RaceGnome, proto.Race_RaceNightElf, proto.Race_RaceHighElf}, character.Race) {
 		return proto.Faction_Alliance
-	} else if slices.Contains([]proto.Race{proto.Race_RaceOrc, proto.Race_RaceTroll, proto.Race_RaceTauren, proto.Race_RaceUndead}, character.Race) {
+	} else if slices.Contains([]proto.Race{proto.Race_RaceOrc, proto.Race_RaceTroll, proto.Race_RaceTauren, proto.Race_RaceUndead, proto.Race_RaceGoblin}, character.Race) {
 		return proto.Faction_Horde
 	} else {
 		return proto.Faction_Unknown

@@ -79,6 +79,20 @@ var RaceOffsets = map[proto.Race]stats.Stats{
 		stats.Spirit:    1,
 		stats.Stamina:   1,
 	},
+	proto.Race_RaceHighElf: {
+		stats.Agility:   2,
+		stats.Strength:  -3,
+		stats.Intellect: 4,
+		stats.Spirit:    -1,
+		stats.Stamina:   -2,
+	},
+	proto.Race_RaceGoblin: {
+		stats.Agility:   2,
+		stats.Strength:  -3,
+		stats.Intellect: 3,
+		stats.Spirit:    -2,
+		stats.Stamina:   0,
+	},
 }
 
 var ClassBaseCrit = map[proto.Class]stats.Stats{

@@ -36,6 +36,8 @@ enum Race {
 	RaceTauren = 6;
 	RaceTroll = 7;
 	RaceUndead = 8;
+	RaceHighElf = 9;
+	RaceGoblin = 10;
 }
 
 enum Faction {

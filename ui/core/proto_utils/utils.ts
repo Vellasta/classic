@@ -989,10 +989,12 @@ export const raceToFaction: Record<Race, Faction> = {
 	[Race.RaceGnome]: Faction.Alliance,
 	[Race.RaceHuman]: Faction.Alliance,
 	[Race.RaceNightElf]: Faction.Alliance,
+	[Race.RaceHighElf]: Faction.Alliance,
 	[Race.RaceOrc]: Faction.Horde,
 	[Race.RaceTauren]: Faction.Horde,
 	[Race.RaceTroll]: Faction.Horde,
 	[Race.RaceUndead]: Faction.Horde,
+	[Race.RaceGoblin]: Faction.Horde,
 };
 
 const ALLIANCE_FACTIONS = new Set([509, 730, 889]);
@@ -1028,7 +1030,7 @@ export const specToClass: Record<Spec, Class> = {
 };
 
 const druidRaces = [Race.RaceTauren, Race.RaceNightElf];
-const hunterRaces = [Race.RaceDwarf, Race.RaceNightElf, Race.RaceOrc, Race.RaceTauren, Race.RaceTroll];
+const hunterRaces = [Race.RaceDwarf, Race.RaceNightElf, Race.RaceOrc, Race.RaceTauren, Race.RaceTroll, Race.RaceHuman, Race.RaceUndead, Race.RaceGnome, Race.RaceHighElf, Race.RaceGoblin];
 const mageRaces = [Race.RaceTroll, Race.RaceGnome, Race.RaceHuman, Race.RaceUndead];
 const paladinRaces = [Race.RaceDwarf, Race.RaceHuman];
 const priestRaces = [Race.RaceTroll, Race.RaceDwarf, Race.RaceHuman, Race.RaceNightElf, Race.RaceUndead];
