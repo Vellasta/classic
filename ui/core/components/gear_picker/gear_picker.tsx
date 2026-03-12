@@ -1,4 +1,5 @@
 import tippy from 'tippy.js';
+import { hideAll } from 'tippy.js';
 import { ref } from 'tsx-vanilla';
 
 import { setItemQualityCssClass } from '../../css_utils';
@@ -102,17 +103,29 @@ export class ItemRenderer extends Component {
 		this.itemTooltip = tippy(this.iconElem, {
 			content: ``, 
 			allowHTML: true, 
-			hideOnClick: false
+			hideOnClick: true,
+			placement: 'right-end',
+			onShow() {
+				hideAll({ duration: 0 })
+			}
 		});
 		this.nameTooltip = tippy(this.nameElem, {
 			content: ``, 
 			allowHTML: true, 
-			hideOnClick: false
+			hideOnClick: true,
+			placement: 'right-end',
+			onShow() {
+				hideAll({ duration: 0 })
+			}
 		});
 		this.enchantTooltip = tippy(this.enchantElem, {
 			content: ``, 
 			allowHTML: true, 
-			hideOnClick: false
+			hideOnClick: true,
+			placement: 'right-end',
+			onShow() {
+				hideAll({ duration: 0 })
+			}
 		});
 	}
 

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import tippy from 'tippy.js';
+import { hideAll } from 'tippy.js';
 import { ref } from 'tsx-vanilla';
 
 import { SortDirection } from '../../constants/other';
@@ -569,12 +570,20 @@ export default class ItemList<T extends ItemListType> {
 			const itemTooltip = tippy(iconElem.value!, {
 				content: `${String(createItemTooltip(itemData.item, this.player))}`, 
 				allowHTML: true, 
-				hideOnClick: false
+				hideOnClick: true,
+				placement: 'right-end',
+				onShow() {
+					hideAll({ duration: 0 })
+				}
 			});
 			const nameTooltip = tippy(nameElem.value!, {
 				content: `${String(createItemTooltip(itemData.item, this.player))}`, 
 				allowHTML: true, 
-				hideOnClick: false
+				hideOnClick: true,
+				placement: 'right-end',
+				onShow() {
+					hideAll({ duration: 0 })
+				}
 			});
 		} else if (this.label === SelectorModalTabs.Enchants) {
 			const enchantItem = itemData.item as UIEnchant
@@ -582,24 +591,40 @@ export default class ItemList<T extends ItemListType> {
 				const itemTooltip = tippy(iconElem.value!, {
 					content: `${enchantItem.tooltip}`, 
 					allowHTML: true, 
-					hideOnClick: false
+					hideOnClick: true,
+					placement: 'right-end',
+					onShow() {
+						hideAll({ duration: 0 })
+					}
 				});
 				const nameTooltip = tippy(nameElem.value!, {
 					content: `${enchantItem.tooltip}`, 
 					allowHTML: true, 
-					hideOnClick: false
+					hideOnClick: true,
+					placement: 'right-end',
+					onShow() {
+						hideAll({ duration: 0 })
+					}
 				});
 			} else {
 				getWowheadTooltipString(enchantItem.itemId, enchantItem.spellId).then((urlToolTip: string) => {
 					const itemTooltip = tippy(iconElem.value!, {
 						content: `${urlToolTip}`, 
 						allowHTML: true, 
-						hideOnClick: false
+						hideOnClick: true,
+						placement: 'right-end',
+						onShow() {
+							hideAll({ duration: 0 })
+						}
 					});
 					const nameTooltip = tippy(nameElem.value!, {
 						content: `${urlToolTip}`, 
 						allowHTML: true, 
-						hideOnClick: false
+						hideOnClick: true,
+						placement: 'right-end',
+						onShow() {
+							hideAll({ duration: 0 })
+						}
 					});
 				});
 			}
