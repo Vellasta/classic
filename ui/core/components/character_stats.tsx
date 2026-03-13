@@ -34,6 +34,7 @@ const statGroups = new Map<string, Array<UnitStat>>([
 			UnitStat.fromStat(Stat.StatExpertise),
 			UnitStat.fromStat(Stat.StatMeleeCrit),
 			UnitStat.fromStat(Stat.StatMeleeHaste),
+			UnitStat.fromStat(Stat.StatArmorPenetration),
 			UnitStat.fromPseudoStat(PseudoStat.PseudoStatMeleeSpeedMultiplier),
 			UnitStat.fromPseudoStat(PseudoStat.PseudoStatRangedSpeedMultiplier),
 			UnitStat.fromPseudoStat(PseudoStat.BonusPhysicalDamage),

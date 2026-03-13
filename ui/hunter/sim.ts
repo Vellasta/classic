@@ -52,7 +52,6 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		// Attributes
 		Stat.StatStrength,
 		Stat.StatAgility,
-		Stat.StatIntellect,
 		// Physical
 		Stat.StatAttackPower,
 		Stat.StatRangedAttackPower,
@@ -63,7 +62,6 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		Stat.StatSpellDamage,
 		Stat.StatNaturePower,
 		Stat.StatArcanePower,
-		Stat.StatSpellCrit,
 		Stat.StatMP5,
 	],
 	displayPseudoStats: [PseudoStat.PseudoStatMeleeSpeedMultiplier, PseudoStat.PseudoStatRangedSpeedMultiplier],
