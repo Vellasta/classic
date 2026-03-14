@@ -153,7 +153,7 @@ export const P1Consumes = Consumes.create({
 	offHandImbue: WeaponImbue.DeadlyPoison,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
 	strengthBuff: StrengthBuff.JujuPower,
-	zanzaBuff: ZanzaBuff.GroundScorpokAssay,
+	zanzaBuff: ZanzaBuff.SpiritOfZanza,
 	sapperExplosive: SapperExplosive.SapperGoblinSapper,
 });
 

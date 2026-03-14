@@ -112,7 +112,7 @@ export const DefaultConsumes = Consumes.create({
 	offHandImbue: WeaponImbue.ElementalSharpeningStone,
 	sapperExplosive: SapperExplosive.SapperGoblinSapper,
 	strengthBuff: StrengthBuff.JujuPower,
-	zanzaBuff: ZanzaBuff.ROIDS,
+	zanzaBuff: ZanzaBuff.SpiritOfZanza,
 });
 
 export const DefaultRaidBuffs = RaidBuffs.create({

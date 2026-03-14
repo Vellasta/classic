@@ -105,7 +105,7 @@ export const DefaultConsumes = Consumes.create({
 	flask: Flask.FlaskOfDistilledWisdom,
 	food: Food.FoodGrilledSquid,
 	strengthBuff: StrengthBuff.JujuPower,
-	zanzaBuff: ZanzaBuff.GroundScorpokAssay,
+	zanzaBuff: ZanzaBuff.SpiritOfZanza,
 	sapperExplosive: SapperExplosive.SapperGoblinSapper,
 });
 

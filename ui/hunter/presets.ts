@@ -24,6 +24,7 @@ import {
 	TristateEffect,
 	WeaponImbue,
 	ZanzaBuff,
+	BlastedLandsBuff,
 } from '../core/proto/common.js';
 import {
 	Hunter_Options as HunterOptions,
@@ -120,7 +121,8 @@ export const DefaultConsumes = Consumes.create({
 	sapperExplosive: SapperExplosive.SapperUnknown,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
 	strengthBuff: StrengthBuff.JujuPower,
-	zanzaBuff: ZanzaBuff.GroundScorpokAssay,
+	zanzaBuff: ZanzaBuff.SpiritOfZanza,
+	blastedLandsBuff: BlastedLandsBuff.GroundScorpokAssay
 });
 
 export const DefaultRaidBuffs = RaidBuffs.create({
@@ -130,6 +132,7 @@ export const DefaultRaidBuffs = RaidBuffs.create({
 	fireResistanceAura: true,
 	fireResistanceTotem: true,
 	giftOfTheWild: TristateEffect.TristateEffectImproved,
+	powerWordFortitude: TristateEffect.TristateEffectImproved,
 	graceOfAirTotem: TristateEffect.TristateEffectMissing,
 	trueshotAura: true,
 	leaderOfThePack: true,

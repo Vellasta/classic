@@ -108,7 +108,7 @@ export const DefaultConsumes = Consumes.create({
 	manaRegenElixir: ManaRegenElixir.MagebloodPotion,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
 	strengthBuff: StrengthBuff.JujuPower,
-	zanzaBuff: ZanzaBuff.ROIDS,
+	zanzaBuff: ZanzaBuff.SpiritOfZanza,
 });
 
 export const DefaultRaidBuffs = RaidBuffs.create({

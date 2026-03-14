@@ -129,7 +129,7 @@ export const DefaultConsumes = Consumes.create({
 	//offHandImbue: WeaponImbue.MagnificentTrollshine,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
 	strengthBuff: StrengthBuff.JujuPower,
-	zanzaBuff: ZanzaBuff.ROIDS,
+	zanzaBuff: ZanzaBuff.SpiritOfZanza,
 });
 
 export const DefaultIndividualBuffs = IndividualBuffs.create({

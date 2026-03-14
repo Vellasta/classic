@@ -293,6 +293,22 @@ export class CharacterStats extends Component {
 						</div>
 					</div>,
 				);
+				tooltipContent.appendChild(
+					<div className="ps-2">
+						<div className="character-stats-tooltip-row">
+							<span>Bows</span>
+							<span>{this.weaponSkillDisplayString(talentsStats, PseudoStat.PseudoStatBowsSkill)}</span>
+						</div>
+						<div className="character-stats-tooltip-row">
+							<span>Crossbows</span>
+							<span>{this.weaponSkillDisplayString(talentsStats, PseudoStat.PseudoStatCrossbowsSkill)}</span>
+						</div>
+						<div className="character-stats-tooltip-row">
+							<span>Guns</span>
+							<span>{this.weaponSkillDisplayString(talentsStats, PseudoStat.PseudoStatGunsSkill)}</span>
+						</div>
+					</div>,
+				);
 			} else if (stat.isStat() && stat.getStat() === Stat.StatSpellHit) {
 				tooltipContent.appendChild(
 					<div className="ps-2">

@@ -24,6 +24,7 @@ func applyConsumeEffects(agent Agent) {
 	applyPhysicalBuffConsumes(character, consumes)
 	applySpellBuffConsumes(character, consumes)
 	applyZanzaBuffConsumes(character, consumes)
+	applyBlastedLandsBuffConsumes(character, consumes)
 	applyHitConsumableConsumes(character, consumes)
 	applyMiscConsumes(character, consumes.MiscConsumes)
 
@@ -612,27 +613,36 @@ func applyZanzaBuffConsumes(character *Character, consumes *proto.Consumes) {
 			stats.Stamina: 50,
 			stats.Spirit:  50,
 		})
-	case proto.ZanzaBuff_ROIDS:
+	}
+}
+
+func applyBlastedLandsBuffConsumes(character *Character, consumes *proto.Consumes) {
+	if consumes.BlastedLandsBuff == proto.BlastedLandsBuff_BlastedLandsBuffUnknown {
+		return
+	}
+
+	switch consumes.BlastedLandsBuff {
+	case proto.BlastedLandsBuff_ROIDS:
 		character.AddStats(stats.Stats{
 			stats.Strength: 25,
 		})
-	case proto.ZanzaBuff_GroundScorpokAssay:
+	case proto.BlastedLandsBuff_GroundScorpokAssay:
 		character.AddStats(stats.Stats{
 			stats.Agility: 25,
 		})
-	case proto.ZanzaBuff_CerebralCortexCompound:
+	case proto.BlastedLandsBuff_CerebralCortexCompound:
 		character.AddStats(stats.Stats{
 			stats.Intellect: 25,
 		})
-	case proto.ZanzaBuff_GizzardGum:
+	case proto.BlastedLandsBuff_GizzardGum:
 		character.AddStats(stats.Stats{
 			stats.Spirit: 25,
 		})
-	case proto.ZanzaBuff_LungJuiceCocktail:
+	case proto.BlastedLandsBuff_LungJuiceCocktail:
 		character.AddStats(stats.Stats{
 			stats.Stamina: 25,
 		})
-	case proto.ZanzaBuff_DarnassusGiftCollection:
+	case proto.BlastedLandsBuff_DarnassusGiftCollection:
 		character.AddStats(stats.Stats{
 			stats.Agility: 30,
 		})

@@ -84,7 +84,7 @@ export const DefaultConsumes = Consumes.create({
 
 	shadowPowerBuff: ShadowPowerBuff.ElixirOfShadowPower,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
-	zanzaBuff: ZanzaBuff.CerebralCortexCompound,
+	zanzaBuff: ZanzaBuff.SpiritOfZanza,
 });
 
 export const DefaultRaidBuffs = RaidBuffs.create({

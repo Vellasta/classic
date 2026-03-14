@@ -118,7 +118,7 @@ export const DefaultConsumes = Consumes.create({
 
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
 	strengthBuff: StrengthBuff.JujuPower,
-	zanzaBuff: ZanzaBuff.ROIDS,
+	zanzaBuff: ZanzaBuff.SpiritOfZanza,
 	attackPowerBuff: AttackPowerBuff.JujuMight,
 	defaultConjured: Conjured.ConjuredDemonicRune,
 	alcohol: Alcohol.AlcoholRumseyRumBlackLabel,

@@ -28,6 +28,7 @@ import {
 	StrengthBuff,
 	WeaponImbue,
 	ZanzaBuff,
+	BlastedLandsBuff,
 } from '../../proto/common';
 import { ActionId } from '../../proto_utils/action_id';
 import { isBluntWeaponType, isSharpWeaponType, isWeapon } from '../../proto_utils/utils';
@@ -149,7 +150,7 @@ export const CONJURED_CONFIG: ConsumableStatOption<Conjured>[] = [
 	{ config: ConjuredGreaterHealthstone, stats: [Stat.StatArmor] },
 	{ config: ConjuredHealthstone, stats: [Stat.StatArmor] },
 
-	{ config: ConjuredDemonicRune, stats: [Stat.StatIntellect] },
+	{ config: ConjuredDemonicRune, stats: [Stat.StatMana] },
 	{ config: ConjuredMinorRecombobulator, stats: [Stat.StatIntellect] },
 
 	{ config: ConjuredRogueThistleTea, stats: [] },
@@ -392,8 +393,8 @@ export const ElixirOfMinorFortitude: ConsumableInputConfig<HealthElixir> = {
 	value: HealthElixir.ElixirOfMinorFortitude,
 };
 export const HEALTH_CONSUMES_CONFIG: ConsumableStatOption<HealthElixir>[] = [
-	{ config: ElixirOfFortitude, stats: [Stat.StatStamina] },
-	{ config: ElixirOfMinorFortitude, stats: [Stat.StatStamina] },
+	{ config: ElixirOfFortitude, stats: [Stat.StatHealth] },
+	{ config: ElixirOfMinorFortitude, stats: [Stat.StatHealth] },
 ];
 
 export const makeHealthConsumeInput = makeConsumeInputFactory({ consumesFieldName: 'healthElixir' });
@@ -483,29 +484,29 @@ export const makeStrengthConsumeInput = makeConsumeInputFactory({ consumesFieldN
 ///////////////////////////////////////////////////////////////////////////
 
 // Blasted Lands Consumes
-export const ROIDS: ConsumableInputConfig<ZanzaBuff> = {
+export const ROIDS: ConsumableInputConfig<BlastedLandsBuff> = {
 	actionId: () => ActionId.fromItemId(8410),
-	value: ZanzaBuff.ROIDS,
+	value: BlastedLandsBuff.ROIDS,
 };
-export const GroundScorpokAssay: ConsumableInputConfig<ZanzaBuff> = {
+export const GroundScorpokAssay: ConsumableInputConfig<BlastedLandsBuff> = {
 	actionId: () => ActionId.fromItemId(8412),
-	value: ZanzaBuff.GroundScorpokAssay,
+	value: BlastedLandsBuff.GroundScorpokAssay,
 };
-export const LungJuiceCocktail: ConsumableInputConfig<ZanzaBuff> = {
+export const LungJuiceCocktail: ConsumableInputConfig<BlastedLandsBuff> = {
 	actionId: () => ActionId.fromItemId(8411),
-	value: ZanzaBuff.LungJuiceCocktail,
+	value: BlastedLandsBuff.LungJuiceCocktail,
 };
-export const CerebralCortexCompound: ConsumableInputConfig<ZanzaBuff> = {
+export const CerebralCortexCompound: ConsumableInputConfig<BlastedLandsBuff> = {
 	actionId: () => ActionId.fromItemId(8423),
-	value: ZanzaBuff.CerebralCortexCompound,
+	value: BlastedLandsBuff.CerebralCortexCompound,
 };
-export const GizzardGum: ConsumableInputConfig<ZanzaBuff> = {
+export const GizzardGum: ConsumableInputConfig<BlastedLandsBuff> = {
 	actionId: () => ActionId.fromItemId(8424),
-	value: ZanzaBuff.GizzardGum,
+	value: BlastedLandsBuff.GizzardGum,
 };
-export const DarnassusGiftCollection: ConsumableInputConfig<ZanzaBuff> = {
+export const DarnassusGiftCollection: ConsumableInputConfig<BlastedLandsBuff> = {
 	actionId: () => ActionId.fromItemId(22133),
-	value: ZanzaBuff.DarnassusGiftCollection,
+	value: BlastedLandsBuff.DarnassusGiftCollection,
 };
 
 // Zanza Potions
@@ -515,7 +516,11 @@ export const SpiritOfZanza: ConsumableInputConfig<ZanzaBuff> = {
 };
 
 export const ZANZA_BUFF_CONSUMES_CONFIG: ConsumableStatOption<ZanzaBuff>[] = [
-	{ config: SpiritOfZanza, stats: [Stat.StatStamina, Stat.StatSpirit] },
+	{ config: SpiritOfZanza, stats: [Stat.StatHealth, Stat.StatSpirit] },
+];
+export const makeZanzaBuffConsumesInput = makeConsumeInputFactory({ consumesFieldName: 'zanzaBuff' });
+
+export const BLASTED_LANDS_CONSUMES_CONFIG: ConsumableStatOption<BlastedLandsBuff>[] = [
 	{ config: ROIDS, stats: [Stat.StatStrength] },
 	{ config: GroundScorpokAssay, stats: [Stat.StatAgility] },
 	{ config: LungJuiceCocktail, stats: [Stat.StatStamina] },
@@ -523,7 +528,7 @@ export const ZANZA_BUFF_CONSUMES_CONFIG: ConsumableStatOption<ZanzaBuff>[] = [
 	{ config: GizzardGum, stats: [Stat.StatSpirit] },
 	{ config: DarnassusGiftCollection, stats: [Stat.StatAgility] },
 ];
-export const makeZanzaBuffConsumesInput = makeConsumeInputFactory({ consumesFieldName: 'zanzaBuff' });
+export const makeBlastedLandsConsumesInput = makeConsumeInputFactory({ consumesFieldName: 'blastedLandsBuff' });
 
 // Hit Consumables
 export const FireToastedBun: ConsumableInputConfig<HitConsumable> = {
@@ -729,10 +734,10 @@ export const POTIONS_CONFIG: ConsumableStatOption<Potions>[] = [
 	{ config: SuperiorHealingPotion, stats: [Stat.StatArmor] },
 	{ config: GreaterHealingPotion, stats: [Stat.StatArmor] },
 
-	{ config: MajorManaPotion, stats: [Stat.StatIntellect] },
-	{ config: SuperiorManaPotion, stats: [Stat.StatIntellect] },
-	{ config: GreaterManaPotion, stats: [Stat.StatIntellect] },
-	{ config: ManaPotion, stats: [Stat.StatIntellect] },
+	{ config: MajorManaPotion, stats: [Stat.StatMana] },
+	{ config: SuperiorManaPotion, stats: [Stat.StatMana] },
+	{ config: GreaterManaPotion, stats: [Stat.StatMana] },
+	{ config: ManaPotion, stats: [Stat.StatMana] },
 
 	{ config: MightRagePotion, stats: [] },
 	{ config: GreatRagePotion, stats: [] },

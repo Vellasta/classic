@@ -243,10 +243,15 @@ export class ConsumesPicker extends Component {
 			relevantStatOptions(ConsumablesInputs.ZANZA_BUFF_CONSUMES_CONFIG, this.simUI),
 			'Zanza Buffs',
 		);
+		const blastedLandsOptions = ConsumablesInputs.makeBlastedLandsConsumesInput(
+			relevantStatOptions(ConsumablesInputs.BLASTED_LANDS_CONSUMES_CONFIG, this.simUI),
+			'Blasted Lands Buffs',
+		);
 		const miscOffensiveConsumesOptions = relevantStatOptions(ConsumablesInputs.MISC_OFFENSIVE_CONSUMES_CONFIG, this.simUI);
 		const miscDefensiveConsumesOptions = relevantStatOptions(ConsumablesInputs.MISC_DEFENSIVE_CONSUMES_CONFIG, this.simUI);
 
 		const pickers = [
+			buildIconInput(miscConsumesElem, this.simUI.player, blastedLandsOptions),
 			buildIconInput(miscConsumesElem, this.simUI.player, zanzaBuffOptions),
 			ConsumablesInputs.makeMiscOffensiveConsumesInput(miscConsumesElem, this.simUI.player, this.simUI, miscOffensiveConsumesOptions),
 			ConsumablesInputs.makeMiscDefensiveConsumesInput(miscConsumesElem, this.simUI.player, this.simUI, miscDefensiveConsumesOptions),

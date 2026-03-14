@@ -461,12 +461,16 @@ enum ZanzaBuff {
 	SpiritOfZanza = 1;
 	SheenOfZanza = 2;
 	SwiftnessOfZanza = 3;
-	ROIDS = 4;
-	GroundScorpokAssay = 5;
-	CerebralCortexCompound = 6;
-	GizzardGum = 7;
-	LungJuiceCocktail = 8;
-	DarnassusGiftCollection = 9;
+}
+
+enum BlastedLandsBuff {
+	BlastedLandsBuffUnknown = 0;
+	ROIDS = 1;
+	GroundScorpokAssay = 2;
+	CerebralCortexCompound = 3;
+	GizzardGum = 4;
+	LungJuiceCocktail = 5;
+	DarnassusGiftCollection = 6;
 }
 
 enum HitConsumable {
@@ -693,10 +697,11 @@ message Consumes {
 	bool dragon_breath_chili = 19;
 	MiscConsumes misc_consumes = 20;
 	ZanzaBuff zanza_buff = 21;
-	ArmorElixir armor_elixir = 22;
-	HealthElixir health_elixir = 23;
-	Alcohol alcohol = 24;
-	int32 pet_attack_power_consumable = 25;
+	BlastedLandsBuff blasted_lands_buff = 22;
+	ArmorElixir armor_elixir = 23;
+	HealthElixir health_elixir = 24;
+	Alcohol alcohol = 25;
+	int32 pet_attack_power_consumable = 26;
 	PetMiscConsumes pet_misc_consumes = 27;
 	SapperExplosive sapper_explosive = 28;
 	HitConsumable hit_consumable = 29;
