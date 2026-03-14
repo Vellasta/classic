@@ -19,7 +19,6 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 	// All stats for which EP should be calculated.
 	epStats: [
 		// Attributes
-		Stat.StatIntellect,
 		Stat.StatStrength,
 		Stat.StatAgility,
 		// Physical
@@ -30,11 +29,6 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		Stat.StatArmorPenetration,
 		// Spell
 		Stat.StatSpellPower,
-		Stat.StatSpellDamage,
-		Stat.StatNaturePower,
-		Stat.StatArcanePower,
-		Stat.StatSpellCrit,
-		Stat.StatMP5,
 	],
 	epPseudoStats: [
 		PseudoStat.PseudoStatMainHandDps,
@@ -93,16 +87,16 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 				[PseudoStat.PseudoStatRangedDps]: 14.0,
 				[PseudoStat.PseudoStatMeleeSpeedMultiplier]: 10.0,
 				[PseudoStat.PseudoStatRangedSpeedMultiplier]: 10.0,
-				[PseudoStat.PseudoStatUnarmedSkill]: 6.0,
-				[PseudoStat.PseudoStatDaggersSkill]: 6.0,
-				[PseudoStat.PseudoStatSwordsSkill]: 6.0,
-				[PseudoStat.PseudoStatMacesSkill]: 6.0,
-				[PseudoStat.PseudoStatAxesSkill]: 6.0,
-				[PseudoStat.PseudoStatTwoHandedSwordsSkill]: 6.0,
-				[PseudoStat.PseudoStatTwoHandedMacesSkill]: 6.0,
-				[PseudoStat.PseudoStatTwoHandedAxesSkill]: 6.0,
-				[PseudoStat.PseudoStatPolearmsSkill]: 6.0,
-				[PseudoStat.PseudoStatStavesSkill]: 6.0,
+				[PseudoStat.PseudoStatUnarmedSkill]: 2.0,
+				[PseudoStat.PseudoStatDaggersSkill]: 2.0,
+				[PseudoStat.PseudoStatSwordsSkill]: 2.0,
+				[PseudoStat.PseudoStatMacesSkill]: 2.0,
+				[PseudoStat.PseudoStatAxesSkill]: 2.0,
+				[PseudoStat.PseudoStatTwoHandedSwordsSkill]: 2.0,
+				[PseudoStat.PseudoStatTwoHandedMacesSkill]: 2.0,
+				[PseudoStat.PseudoStatTwoHandedAxesSkill]: 2.0,
+				[PseudoStat.PseudoStatPolearmsSkill]: 2.0,
+				[PseudoStat.PseudoStatStavesSkill]: 2.0,
 			},
 		),
 		// Default consumes settings.

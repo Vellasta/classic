@@ -135,7 +135,6 @@ enum PseudoStat {
 	PseudoStatBlockValueMultiplier = 3;
 	PseudoStatDodge = 4;
 	PseudoStatParry = 5;
-	BonusPhysicalDamage = 30;
 
 	// Melee Weapon Skill
 	PseudoStatUnarmedSkill = 6;
@@ -169,6 +168,8 @@ enum PseudoStat {
 	PseudoStatRangedSpeedMultiplier = 28;
 	PseudoStatCastSpeedMultiplier = 34;
 	PseudoStatBlockValuePerStrength = 29;
+
+	BonusPhysicalDamage = 30;
 }
 
 message UnitStats {

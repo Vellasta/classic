@@ -1146,6 +1146,18 @@ export class Player<SpecType extends Spec> {
 		// Add pseudo stats that should be included in item EP.
 		itemStats = itemStats.addPseudoStat(PseudoStat.BonusPhysicalDamage, item.bonusPhysicalDamage);
 
+		// Weapon Skills
+		itemStats = itemStats.addPseudoStat(PseudoStat.PseudoStatAxesSkill, item.weaponSkills[1]);
+		itemStats = itemStats.addPseudoStat(PseudoStat.PseudoStatSwordsSkill, item.weaponSkills[2]);
+		itemStats = itemStats.addPseudoStat(PseudoStat.PseudoStatMacesSkill, item.weaponSkills[3]);
+		itemStats = itemStats.addPseudoStat(PseudoStat.PseudoStatDaggersSkill, item.weaponSkills[4]);
+		itemStats = itemStats.addPseudoStat(PseudoStat.PseudoStatUnarmedSkill, item.weaponSkills[5]);
+		itemStats = itemStats.addPseudoStat(PseudoStat.PseudoStatTwoHandedAxesSkill, item.weaponSkills[6]);
+		itemStats = itemStats.addPseudoStat(PseudoStat.PseudoStatTwoHandedSwordsSkill, item.weaponSkills[7]);
+		itemStats = itemStats.addPseudoStat(PseudoStat.PseudoStatTwoHandedMacesSkill, item.weaponSkills[8]);
+		itemStats = itemStats.addPseudoStat(PseudoStat.PseudoStatPolearmsSkill, item.weaponSkills[9]);
+		itemStats = itemStats.addPseudoStat(PseudoStat.PseudoStatStavesSkill, item.weaponSkills[10]);
+
 		// For random suffix items, use the suffix option with the highest EP for the purposes of ranking items in the picker.
 		let maxSuffixEP = 0;
 
