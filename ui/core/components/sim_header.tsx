@@ -37,7 +37,7 @@ export class SimHeader extends Component {
 		this.knownIssuesContent = (<ul className="text-start ps-3 mb-0"></ul>) as HTMLUListElement;
 		this.knownIssuesLink = this.addKnownIssuesLink();
 		this.addBugReportLink();
-		this.addDownloadBinaryLink();
+		// this.addDownloadBinaryLink();
 		this.addSimOptionsLink();
 		this.addSocialLinks();
 
@@ -157,7 +157,7 @@ export class SimHeader extends Component {
 
 	private addBugReportLink() {
 		this.addToolbarLink({
-			href: 'https://github.com/wowsims/classic/issues/new/choose',
+			href: 'https://github.com/Vellasta/classic/issues/new/choose',
 			parent: this.simToolbar,
 			icon: 'fas fa-bug fa-lg',
 			tooltip: 'Report a bug or<br>Request a feature',
