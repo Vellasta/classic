@@ -1,4 +1,3 @@
-import { FlametongueTotem, TrueshotAuraBuff, WindfuryTotem } from '../core/components/inputs/buffs_debuffs';
 import { Phase } from '../core/constants/other.js';
 import * as PresetUtils from '../core/preset_utils.js';
 import {
@@ -36,11 +35,18 @@ import {
 import { SavedTalents } from '../core/proto/ui.js';
 import MMAPL from './apls/mm.apl.json';
 import SVAPL from './apls/sv.apl.json';
-import P0BISGear from './gear_sets/p0.bis.gear.json';
-import P1BISGear from './gear_sets/p1.bis.gear.json';
+import PreraidMMGear from './gear_sets/preraid.mm.gear.json';
+import PreraidSVGear from './gear_sets/preraid.sv.gear.json';
+import MCMMGear from './gear_sets/mc.mm.gear.json';
+import MCSVGear from './gear_sets/mc.sv.gear.json';
+import BWLMMGear from './gear_sets/bwl.mm.gear.json';
+import BWLSVGear from './gear_sets/bwl.sv.gear.json';
+import AQ40MMGear from './gear_sets/aq40.mm.gear.json';
+import AQ40SVGear from './gear_sets/aq40.sv.gear.json';
+import NaxxMMGear from './gear_sets/naxx.mm.gear.json';
+import NaxxSVGear from './gear_sets/naxx.sv.gear.json';
 import Kara40MMGear from './gear_sets/kara40.mm.gear.json';
 import Kara40SVGear from './gear_sets/kara40.sv.gear.json';
-import { weaponSkillBook } from '../core/components/other_inputs';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -49,13 +55,21 @@ import { weaponSkillBook } from '../core/components/other_inputs';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearP0BIS = PresetUtils.makePresetGear('Pre-BiS', P0BISGear);
-export const GearP1BIS = PresetUtils.makePresetGear('P1 BiS', P1BISGear);
-export const GearKara40MM = PresetUtils.makePresetGear('Kara40 MM BIS', Kara40MMGear);
-export const GearKara40SV = PresetUtils.makePresetGear('Kara40 SV BIS', Kara40SVGear);
+export const GearPreraidMM = PresetUtils.makePresetGear('Pre-Raid MM', PreraidMMGear, { talentTree: 1 });
+export const GearPreraidSV = PresetUtils.makePresetGear('Pre-Raid SV', PreraidSVGear, { talentTree: 2 });
+export const GearMCMM = PresetUtils.makePresetGear('MC MM', MCMMGear, { talentTree: 1 });
+export const GearMCSV = PresetUtils.makePresetGear('MC SV', MCSVGear, { talentTree: 2 });
+export const GearBWLMM = PresetUtils.makePresetGear('BWL MM', BWLMMGear, { talentTree: 1 });
+export const GearBWLSV = PresetUtils.makePresetGear('BWL SV', BWLSVGear, { talentTree: 2 });
+export const GearAQ40MM = PresetUtils.makePresetGear('AQ40 MM', AQ40MMGear, { talentTree: 1 });
+export const GearAQ40SV = PresetUtils.makePresetGear('AQ40 SV', AQ40SVGear, { talentTree: 2 });
+export const GearNaxxMM = PresetUtils.makePresetGear('Naxx MM', NaxxMMGear, { talentTree: 1 });
+export const GearNaxxSV = PresetUtils.makePresetGear('Naxx SV', NaxxSVGear, { talentTree: 2 });
+export const GearKara40MM = PresetUtils.makePresetGear('Kara40 MM', Kara40MMGear, { talentTree: 1 });
+export const GearKara40SV = PresetUtils.makePresetGear('Kara40 SV', Kara40SVGear, { talentTree: 2 });
 
 export const GearPresets = {
-	[Phase.Phase1]: [GearP0BIS, GearP1BIS, GearKara40MM, GearKara40SV],
+	[Phase.Phase1]: [GearPreraidMM, GearPreraidSV, GearMCMM, GearMCSV, GearBWLMM, GearBWLSV, GearAQ40MM, GearAQ40SV, GearNaxxMM, GearNaxxSV, GearKara40MM, GearKara40SV],
 };
 
 export const DefaultGear = GearKara40MM;
