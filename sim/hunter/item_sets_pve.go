@@ -86,16 +86,31 @@ var ItemSetDragonstalkersArmor = core.NewItemSet(core.ItemSet{
 		8: func(agent core.Agent) {
 			hunter := agent.(HunterAgent).GetHunter()
 
-			debuffAuras := hunter.NewEnemyAuraArray(core.ExposeWeaknessAura)
+			hunter.detectWeaknessAura = hunter.GetOrRegisterAura(core.Aura{
+				Label:    "Detect Weakness",
+				ActionID: core.ActionID{SpellID: 23577},
+				Duration: time.Second * 7,
+				OnGain: func(aura *core.Aura, sim *core.Simulation) {
+					aura.Unit.AddStatDynamic(sim, stats.AttackPower, 450)
+					aura.Unit.AddStatDynamic(sim, stats.RangedAttackPower, 450)
+				},
+				OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+					aura.Unit.AddStatDynamic(sim, stats.AttackPower, -450)
+					aura.Unit.AddStatDynamic(sim, stats.RangedAttackPower, -450)
+				},
+			})
+
+			// debuffAuras := hunter.NewEnemyAuraArray(core.ExposeWeaknessAura)
 
 			core.MakeProcTriggerAura(&hunter.Unit, core.ProcTrigger{
 				Name:     "T2 - Hunter - Ranged 8P Bonus Trigger",
 				Callback: core.CallbackOnSpellHitDealt,
 				Outcome:  core.OutcomeLanded,
-				ProcMask: core.ProcMaskRanged,
-				PPM:      0.5,
+				ProcMask: core.ProcMaskMeleeOrRanged,
+				PPM:      1.0,
 				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-					debuffAuras.Get(result.Target).Activate(sim)
+					// debuffAuras.Get(result.Target).Activate(sim)
+					hunter.detectWeaknessAura.Activate(sim)
 				},
 			})
 		},

@@ -132,6 +132,8 @@ type Hunter struct {
 
 	RapidFireAura       *core.Aura
 	BestialWrathPetAura *core.Aura
+
+	detectWeaknessAura *core.Aura
 }
 
 func (hunter *Hunter) GetCharacter() *core.Character {
