@@ -280,7 +280,7 @@ func NewHunter(character *core.Character, options *proto.Player) *Hunter {
 		},
 		IgnoreHaste: true, // Hunter GCD is locked at 1.5s
 		CastTime: func(spell *core.Spell) time.Duration {
-			return time.Duration(float64(spell.DefaultCast.CastTime) / hunter.RangedSwingSpeed())
+			return time.Duration(float64(spell.DefaultCast.CastTime)) // / hunter.RangedSwingSpeed())
 		},
 	}
 	hunter.AutoAttacks.RangedConfig().ExtraCastCondition = func(sim *core.Simulation, target *core.Unit) bool {
