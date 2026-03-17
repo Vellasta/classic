@@ -35,16 +35,22 @@ import {
 import { SavedTalents } from '../core/proto/ui.js';
 import MMAPL from './apls/mm.apl.json';
 import SVAPL from './apls/sv.apl.json';
+import PreraidBMGear from './gear_sets/preraid.bm.gear.json';
 import PreraidMMGear from './gear_sets/preraid.mm.gear.json';
 import PreraidSVGear from './gear_sets/preraid.sv.gear.json';
+import MCBMGear from './gear_sets/mc.bm.gear.json';
 import MCMMGear from './gear_sets/mc.mm.gear.json';
 import MCSVGear from './gear_sets/mc.sv.gear.json';
+import BWLBMGear from './gear_sets/bwl.bm.gear.json';
 import BWLMMGear from './gear_sets/bwl.mm.gear.json';
 import BWLSVGear from './gear_sets/bwl.sv.gear.json';
+import AQ40BMGear from './gear_sets/aq40.bm.gear.json';
 import AQ40MMGear from './gear_sets/aq40.mm.gear.json';
 import AQ40SVGear from './gear_sets/aq40.sv.gear.json';
+import NaxxBMGear from './gear_sets/naxx.bm.gear.json';
 import NaxxMMGear from './gear_sets/naxx.mm.gear.json';
 import NaxxSVGear from './gear_sets/naxx.sv.gear.json';
+import Kara40BMGear from './gear_sets/kara40.bm.gear.json';
 import Kara40MMGear from './gear_sets/kara40.mm.gear.json';
 import Kara40SVGear from './gear_sets/kara40.sv.gear.json';
 
@@ -55,21 +61,46 @@ import Kara40SVGear from './gear_sets/kara40.sv.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
+export const GearPreraidBM = PresetUtils.makePresetGear('Pre-Raid BM', PreraidBMGear, { talentTree: 0 });
 export const GearPreraidMM = PresetUtils.makePresetGear('Pre-Raid MM', PreraidMMGear, { talentTree: 1 });
 export const GearPreraidSV = PresetUtils.makePresetGear('Pre-Raid SV', PreraidSVGear, { talentTree: 2 });
+export const GearMCBM = PresetUtils.makePresetGear('MC BM', MCBMGear, { talentTree: 0 });
 export const GearMCMM = PresetUtils.makePresetGear('MC MM', MCMMGear, { talentTree: 1 });
 export const GearMCSV = PresetUtils.makePresetGear('MC SV', MCSVGear, { talentTree: 2 });
+export const GearBWLBM = PresetUtils.makePresetGear('BWL BM', BWLBMGear, { talentTree: 0 });
 export const GearBWLMM = PresetUtils.makePresetGear('BWL MM', BWLMMGear, { talentTree: 1 });
 export const GearBWLSV = PresetUtils.makePresetGear('BWL SV', BWLSVGear, { talentTree: 2 });
+export const GearAQ40BM = PresetUtils.makePresetGear('AQ40 BM', AQ40BMGear, { talentTree: 0 });
 export const GearAQ40MM = PresetUtils.makePresetGear('AQ40 MM', AQ40MMGear, { talentTree: 1 });
 export const GearAQ40SV = PresetUtils.makePresetGear('AQ40 SV', AQ40SVGear, { talentTree: 2 });
+export const GearNaxxBM = PresetUtils.makePresetGear('Naxx BM', NaxxBMGear, { talentTree: 0 });
 export const GearNaxxMM = PresetUtils.makePresetGear('Naxx MM', NaxxMMGear, { talentTree: 1 });
 export const GearNaxxSV = PresetUtils.makePresetGear('Naxx SV', NaxxSVGear, { talentTree: 2 });
+export const GearKara40BM = PresetUtils.makePresetGear('Kara40 BM', Kara40BMGear, { talentTree: 0 });
 export const GearKara40MM = PresetUtils.makePresetGear('Kara40 MM', Kara40MMGear, { talentTree: 1 });
 export const GearKara40SV = PresetUtils.makePresetGear('Kara40 SV', Kara40SVGear, { talentTree: 2 });
 
 export const GearPresets = {
-	[Phase.Phase1]: [GearPreraidMM, GearPreraidSV, GearMCMM, GearMCSV, GearBWLMM, GearBWLSV, GearAQ40MM, GearAQ40SV, GearNaxxMM, GearNaxxSV, GearKara40MM, GearKara40SV],
+	[Phase.Phase1]: [
+		GearPreraidBM,
+		GearPreraidMM, 
+		GearPreraidSV, 
+		GearMCBM,
+		GearMCMM, 
+		GearMCSV, 
+		GearBWLBM,
+		GearBWLMM, 
+		GearBWLSV, 
+		GearAQ40BM,
+		GearAQ40MM, 
+		GearAQ40SV, 
+		GearNaxxBM,
+		GearNaxxMM, 
+		GearNaxxSV, 
+		GearKara40BM,
+		GearKara40MM, 
+		GearKara40SV
+	],
 };
 
 export const DefaultGear = GearKara40MM;
