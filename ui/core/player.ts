@@ -476,6 +476,11 @@ export class Player<SpecType extends Spec> {
 		onProgress: WorkerProgressCallback,
 	): Promise<StatWeightsResult | null> {
 		try {
+			if (this.distanceFromTarget <= 5) {
+				epReferenceStat = Stat.StatAttackPower
+			} else {
+				epReferenceStat = Stat.StatRangedAttackPower
+			}
 			const result = await this.sim.statWeights(this, epStats, epPseudoStats, epReferenceStat, onProgress);
 			if (result.error) {
 				if (result.error.type === ErrorOutcomeType.ErrorOutcomeAborted) {
