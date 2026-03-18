@@ -68,31 +68,31 @@ export class SimTitleDropdown extends Component {
 		const rootLinkArgs: SpecOptions | RaidOptions = currentSpecIndex === null ? { type: 'Raid' } : { type: 'Spec', index: currentSpecIndex };
 		const rootLink = this.buildRootSimLink(rootLinkArgs);
 
-		if (config.noDropdown) {
-			this.rootElem.innerHTML = rootLink.outerHTML;
-			return;
-		}
+		// if (config.noDropdown) {
+		this.rootElem.innerHTML = rootLink.outerHTML;
+		return;
+		// }
 
-		this.rootElem.innerHTML = `
-      <div class="dropdown sim-link-dropdown">
-        ${rootLink.outerHTML}
-        <ul class="dropdown-menu"></ul>
-      </div>
-    `;
+	// 	this.rootElem.innerHTML = `
+    //   <div class="dropdown sim-link-dropdown">
+    //     ${rootLink.outerHTML}
+    //     <ul class="dropdown-menu"></ul>
+    //   </div>
+    // `;
 
-		this.dropdownMenu = this.rootElem.getElementsByClassName('dropdown-menu')[0] as HTMLElement;
-		this.buildDropdown();
+	// 	this.dropdownMenu = this.rootElem.getElementsByClassName('dropdown-menu')[0] as HTMLElement;
+	// 	this.buildDropdown();
 
-		// Prevent Bootstrap from closing the menu instead of opening class menus
-		this.dropdownMenu.addEventListener('click', event => {
-			const target = event.target as HTMLElement;
-			const link = target.closest('a:not([href="javascript:void(0)"]');
+	// 	// Prevent Bootstrap from closing the menu instead of opening class menus
+	// 	this.dropdownMenu.addEventListener('click', event => {
+	// 		const target = event.target as HTMLElement;
+	// 		const link = target.closest('a:not([href="javascript:void(0)"]');
 
-			if (!link) {
-				event.stopPropagation();
-				event.preventDefault();
-			}
-		});
+	// 		if (!link) {
+	// 			event.stopPropagation();
+	// 			event.preventDefault();
+	// 		}
+	// 	});
 	}
 
 	private buildDropdown() {
