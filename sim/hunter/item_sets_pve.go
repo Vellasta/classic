@@ -64,6 +64,7 @@ var ItemSetDragonstalkersArmor = core.NewItemSet(core.ItemSet{
 				Label: "Improved Aspect of the Hawk",
 				OnInit: func(aura *core.Aura, sim *core.Simulation) {
 					hunter.AspectOfTheHawkAPMultiplier += 0.25
+					hunter.AspectOfTheWolfAPMultiplier += 0.25
 				},
 			}))
 		},
@@ -107,7 +108,7 @@ var ItemSetDragonstalkersArmor = core.NewItemSet(core.ItemSet{
 				Callback: core.CallbackOnSpellHitDealt,
 				Outcome:  core.OutcomeLanded,
 				ProcMask: core.ProcMaskMeleeOrRanged,
-				PPM:      1.0,
+				PPM:      1.2,
 				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 					// debuffAuras.Get(result.Target).Activate(sim)
 					hunter.detectWeaknessAura.Activate(sim)

@@ -581,9 +581,9 @@ function getDragonstalkerTooltip(player: Player<any>): string {
 	}
 
 	const setCountToStringMap: Record<number, String> = {
-		[3]: "(3) Set : Increases the Ranged Attack Power bonus of your Aspect of the Hawk by 20%.",
+		[3]: "(3) Set: Increases the Ranged Attack Power bonus of your Aspect of the Hawk by 20% and Melee Attack Power bonus of your Aspect of the Wolf by 20%.",
 		[5]: "(5) Set : Increases your pet's stamina by 40 and all spell resistances by 60.",
-		[8]: "(8) Set : You have a chance whenever you deal ranged damage to apply an Expose Weakness effect to the target. Expose Weakness increases the Ranged Attack Power of all attackers against that target by 450 for 7 sec.",
+		[8]: "(8) Set: You have a chance whenever you deal melee or ranged damage to gain the Detect Weakness effect. Detect Weakness increases your Attack Power by 450 for 7 sec.",
 	}
 
 	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)

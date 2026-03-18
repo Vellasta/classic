@@ -27,6 +27,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		Stat.StatMeleeHit,
 		Stat.StatMeleeCrit,
 		Stat.StatArmorPenetration,
+		Stat.StatMeleeHaste,
 		// Spell
 		Stat.StatSpellPower,
 	],
@@ -34,8 +35,6 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		PseudoStat.PseudoStatMainHandDps,
 		PseudoStat.PseudoStatOffHandDps,
 		PseudoStat.PseudoStatRangedDps,
-		PseudoStat.PseudoStatMeleeSpeedMultiplier,
-		PseudoStat.PseudoStatRangedSpeedMultiplier,
 	],
 	// Reference stat against which to calculate EP.
 	epReferenceStat: Stat.StatRangedAttackPower,
@@ -76,6 +75,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 				[Stat.StatMeleeHit]: 20.0,
 				[Stat.StatMeleeCrit]: 33.0,
 				[Stat.StatArmorPenetration]: 0.3,
+				[Stat.StatMeleeHaste]: 20.0,
 				[Stat.StatSpellPower]: 0.03,
 				[Stat.StatNaturePower]: 0.01,
 				[Stat.StatArcanePower]: 0.01,
@@ -85,8 +85,6 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 				[PseudoStat.PseudoStatMainHandDps]: 10.0,
 				[PseudoStat.PseudoStatOffHandDps]: 10.0,
 				[PseudoStat.PseudoStatRangedDps]: 14.0,
-				[PseudoStat.PseudoStatMeleeSpeedMultiplier]: 10.0,
-				[PseudoStat.PseudoStatRangedSpeedMultiplier]: 10.0,
 				[PseudoStat.PseudoStatUnarmedSkill]: 2.0,
 				[PseudoStat.PseudoStatDaggersSkill]: 2.0,
 				[PseudoStat.PseudoStatSwordsSkill]: 2.0,
