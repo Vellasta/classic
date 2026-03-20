@@ -22,7 +22,6 @@ type HunterPet struct {
 	uptimePercent    float64
 	hasOwnerCooldown bool
 
-	CoordinatedAssault     *core.Spell
 	coordinatedAssaultAura *core.Aura
 }
 
@@ -124,7 +123,6 @@ func (hp *HunterPet) GetPet() *core.Pet {
 func (hp *HunterPet) Initialize() {
 	hp.specialAbility = hp.NewPetAbility(hp.config.SpecialAbility, true)
 	hp.focusDump = hp.NewPetAbility(hp.config.FocusDump, false)
-	hp.CoordinatedAssault = hp.newCoordinatedAssault()
 
 	hp.EnableFocusBar(1, func(sim *core.Simulation) {
 		if hp.GCD.IsReady(sim) {

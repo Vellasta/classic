@@ -33,6 +33,8 @@ const (
 	SpellCode_HunterRaptorStrike
 	SpellCode_HunterRaptorStrikeHit
 
+	SpellCode_HunterCoordinatedAssault
+
 	// Stings
 	SpellCode_HunterSerpentSting
 
@@ -54,8 +56,6 @@ const (
 	SpellCode_HunterPetLightningBreath
 	SpellCode_HunterPetScreech
 	SpellCode_HunterPetScorpidPoison
-
-	SpellCode_HunterPetCoordinatedAssault
 )
 
 func RegisterHunter() {
@@ -132,6 +132,8 @@ type Hunter struct {
 
 	RapidFireAura       *core.Aura
 	BestialWrathPetAura *core.Aura
+
+	CoordinatedAssault *core.Spell
 
 	detectWeaknessAura *core.Aura
 }
