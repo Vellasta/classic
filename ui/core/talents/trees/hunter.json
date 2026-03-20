@@ -104,7 +104,7 @@
       },
       {
         "fieldName": "coordinatedAssault",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Coordinated Assault</b></a></td></tr></table><table><tr><td><div class=\"q\">Hitting an enemy with Arcane Shot, Steady Shot or Raptor Strike causes your pet's next attack within 6 sec to also perform an attack that deals Physical damage equal to 30% of its Attack Power. This effect can trigger only once every 3 sec.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Coordinated Assault</b></a></td></tr></table><table><tr><td><div class=\"q\">Hitting an enemy with Arcane Shot, Steady Shot or Raptor Strike causes your pet's next attack within 6 sec to also perform an attack that deals Physical damage equal to 20% of your Attack Power. This effect can trigger only once every 3 sec.</div></td></tr></table>",
         "location": {
           "rowIdx": 2,
           "colIdx": 1
@@ -262,7 +262,7 @@
       },
       {
         "fieldName": "killCommand",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Kill Command (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Give the command to kill, causing your pet to instantly attack for 50% of its attack power. Can only be used after the Hunter lands a critical strike on the target.<br><br>8 Second Cooldown, 5% Base Mana Cost, 45 Yard Range, No Global Cooldown</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Kill Command (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Give the command to kill, causing your pet to instantly attack for 80% of its attack power. Can only be used after the Hunter lands a critical strike on the target.<br><br>8 Second Cooldown, 5% Base Mana Cost, 45 Yard Range, No Global Cooldown</div></td></tr></table>",
         "location": {
           "rowIdx": 6,
           "colIdx": 1
@@ -766,7 +766,7 @@
       },
       {
         "fieldName": "viciousStrikes",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Vicious Strikes</b></a></td></tr></table><table><tr><td><div class=\"q\">Reduces the cooldown of your Raptor Strike and Mongoose Bite abilities by [0.5/1] sec.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Vicious Strikes</b></a></td></tr></table><table><tr><td><div class=\"q\">Reduces the cooldown of your Raptor Strike and Mongoose Bite abilities by [0.5/1] sec and increases the damage they deal by [5/10]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 5,
           "colIdx": 0
