@@ -137,7 +137,7 @@ func (hp *HunterPet) Reset(_ *core.Simulation) {
 
 func (hp *HunterPet) ExecuteCustomRotation(sim *core.Simulation) {
 	percentRemaining := sim.GetRemainingDurationPercent()
-	if percentRemaining < 1.0-hp.uptimePercent { // once fight is % completed, disable pet.
+	if percentRemaining <= 1.0-hp.uptimePercent { // once fight is % completed, disable pet.
 		hp.Disable(sim)
 		return
 	}

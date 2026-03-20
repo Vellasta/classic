@@ -628,6 +628,19 @@
         "maxPoints": 3
       },
       {
+        "fieldName": "aloneAgainstTheWorld",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Alone Against The World</b></a></td></tr></table><table><tr><td><div class=\"q\">While you have no pet under your control, all damage dealt is increased by [3/6]%.</div></td></tr></table>",
+        "location": {
+          "rowIdx": 1,
+          "colIdx": 3
+        },
+        "spellIds": [
+          52417,
+          52418
+        ],
+        "maxPoints": 2
+      },
+      {
         "fieldName": "planningAhead",
         "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Planning Ahead</b></a></td></tr></table><table><tr><td><div class=\"q\">The duration of Freezing and Frost Trap effects and the damage of Immolation and Explosive Trap effects are increased by [13/25]% if the traps are not triggered within the first 5 sec after being placed.</div></td></tr></table>",
         "location": {

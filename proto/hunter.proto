@@ -51,19 +51,20 @@ message HunterTalents {
 	int32 entrapment = 40;
 	int32 savage_strikes = 41;
 	int32 improved_wing_clip = 42;
-	int32 planning_ahead = 43;
-	int32 survivalist = 44;
-	bool carve = 45;
-	bool deterrence = 46;
-	int32 stinging_nettle = 47;
-	int32 surefooted = 48;
-	int32 improved_feign_death = 49;
-	int32 killer_instinct = 50;
-	int32 trap_mastery = 51;
-	bool lacerate = 52;
-	int32 vicious_strikes = 53;
-	int32 lightning_reflexes = 54;
-	bool untamed_trapper = 55;
+	int32 alone_against_the_world = 43;
+	int32 planning_ahead = 44;
+	int32 survivalist = 45;
+	bool carve = 46;
+	bool deterrence = 47;
+	int32 stinging_nettle = 48;
+	int32 surefooted = 49;
+	int32 improved_feign_death = 50;
+	int32 killer_instinct = 51;
+	int32 trap_mastery = 52;
+	bool lacerate = 53;
+	int32 vicious_strikes = 54;
+	int32 lightning_reflexes = 55;
+	bool untamed_trapper = 56;
 }
 
 message Hunter {

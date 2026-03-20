@@ -13110,6 +13110,8 @@
 {"id":51586,"name":"Untamed Trapper","icon":"spell_nature_slow","rank":1},
 {"id":52415,"name":"Carve","icon":"inv_throwingknife_06","rank":2},
 {"id":52416,"name":"Carve","icon":"inv_throwingknife_06","rank":3},
+{"id":52417,"name":"Alone Against The World","icon":"ability_hunter_improvedtracking","rank":1},
+{"id":52418,"name":"Alone Against The World","icon":"ability_hunter_improvedtracking","rank":2},
 {"id":57030,"name":"Enchant Bracer - Greater Agility","icon":"spell_holy_greaterheal"},
 {"id":400574,"name":"Arcane Blast","icon":"spell_arcane_blast"},
 {"id":400610,"name":"Arcane Barrage","icon":"ability_mage_arcanebarrage"},

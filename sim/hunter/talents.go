@@ -44,6 +44,13 @@ func (hunter *Hunter) ApplyTalents() {
 		})
 	}
 
+	if hunter.Talents.AloneAgainstTheWorld > 0 {
+		if hunter.pet != nil {
+			hunter.Options.PetUptime = 0
+		}
+		hunter.PseudoStats.DamageDealtMultiplier *= 1 + 0.03*float64(hunter.Talents.AloneAgainstTheWorld)
+	}
+
 	if hunter.Talents.BestialDiscipline > 0 {
 		core.MakePermanent(hunter.RegisterAura(core.Aura{
 			Label: "Bestial Discipline",
@@ -56,6 +63,9 @@ func (hunter *Hunter) ApplyTalents() {
 	}
 
 	hunter.AddStat(stats.MeleeHit, float64(hunter.Talents.Surefooted)*1*core.MeleeHitRatingPerHitChance)
+	if hunter.AutoAttacks.IsDualWielding {
+		hunter.AddStat(stats.MeleeHit, float64(hunter.Talents.Surefooted)*1*core.MeleeHitRatingPerHitChance)
+	}
 	hunter.AddStat(stats.SpellHit, float64(hunter.Talents.Surefooted)*1*core.SpellHitRatingPerHitChance)
 
 	hunter.AddStat(stats.MeleeCrit, float64(hunter.Talents.KillerInstinct)*1*core.CritRatingPerCritChance)
