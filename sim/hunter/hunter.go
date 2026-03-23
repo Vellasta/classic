@@ -130,6 +130,8 @@ type Hunter struct {
 	// The aura that allows you to cast Lacerate
 	LacerateAura *core.Aura
 
+	lockAndLoadAura *core.Aura
+
 	RapidFireAura       *core.Aura
 	BestialWrathPetAura *core.Aura
 

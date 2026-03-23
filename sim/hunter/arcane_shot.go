@@ -36,7 +36,7 @@ func (hunter *Hunter) getArcaneShotConfig(rank int, timer *core.Timer) core.Spel
 			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    timer,
-				Duration: time.Second*6 - time.Millisecond*333*time.Duration(hunter.Talents.Swiftshot),
+				Duration: time.Second*6 - time.Millisecond*500*time.Duration(hunter.Talents.Swiftshot),
 			},
 		},
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {

@@ -465,7 +465,7 @@
       },
       {
         "fieldName": "barrage",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Barrage</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the damage done by your Multi-Shot and Volley spells by [5/10/15]%.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Barrage</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the damage of Multi-Shot and Volley spells by [5/10/15]% and reduces the cast time of Volley by [1/1.5/2] sec.</div></td></tr></table>",
         "location": {
           "rowIdx": 4,
           "colIdx": 3

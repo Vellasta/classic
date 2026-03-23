@@ -21,9 +21,18 @@ func (hunter *Hunter) registerRapidFire() {
 
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Unit.MultiplyAttackSpeed(sim, 1.4)
+			if hunter.AimedShot != nil {
+				hunter.AimedShot.DefaultCast.CastTime = time.Duration(int(float64(hunter.AimedShot.DefaultCast.CastTime.Nanoseconds()) * float64(1/1.4)))
+			}
+			hunter.SteadyShot.DefaultCast.CastTime = time.Duration(int(float64(hunter.SteadyShot.DefaultCast.CastTime.Nanoseconds()) * float64(1/1.4)))
+
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Unit.MultiplyAttackSpeed(sim, 1/1.4)
+			if hunter.AimedShot != nil {
+				hunter.AimedShot.DefaultCast.CastTime = time.Duration(int(float64(hunter.AimedShot.DefaultCast.CastTime.Nanoseconds()) * float64(1.4)))
+			}
+			hunter.SteadyShot.DefaultCast.CastTime = time.Duration(int(float64(hunter.SteadyShot.DefaultCast.CastTime.Nanoseconds()) * float64(1.4)))
 		},
 	})
 

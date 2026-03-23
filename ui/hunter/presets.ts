@@ -33,6 +33,7 @@ import {
 	Hunter_Options_QuiverBonus,
 } from '../core/proto/hunter.js';
 import { SavedTalents } from '../core/proto/ui.js';
+import MMOldAPL from './apls/mm.old.apl.json';
 import MMAPL from './apls/mm.apl.json';
 import SVAPL from './apls/sv.apl.json';
 import PreraidBMGear from './gear_sets/preraid.bm.gear.json';
@@ -110,10 +111,11 @@ export const DefaultGear = GearKara40MM;
 ///////////////////////////////////////////////////////////////////////////
 
 export const APLMM = PresetUtils.makePresetAPLRotation('Marksmanship', MMAPL, { talentTree: 1 });
+export const APLMMOld = PresetUtils.makePresetAPLRotation('Marksmanship (Old)', MMOldAPL, { talentTree: 1 });
 export const APLSV = PresetUtils.makePresetAPLRotation('Survival', SVAPL, { talentTree: 2 });
 
 export const APLPresets = {
-	[Phase.Phase1]: [APLMM, APLSV],
+	[Phase.Phase1]: [APLMM, APLSV, APLMMOld],
 
 };
 

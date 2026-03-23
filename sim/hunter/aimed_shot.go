@@ -36,7 +36,7 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 			},
 			CD: core.Cooldown{
 				Timer:    timer,
-				Duration: time.Second * 6,
+				Duration: time.Second*26 - time.Millisecond*2000*time.Duration(hunter.Talents.Swiftshot),
 			},
 			ModifyCast: func(sim *core.Simulation, spell *core.Spell, cast *core.Cast) {
 				cast.CastTime = spell.CastTime()
@@ -65,6 +65,9 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeRangedHitAndCrit)
 			hunter.Unit.AutoAttacks.EnableAutoSwing(sim)
 			spell.WaitTravelTime(sim, func(s *core.Simulation) {
+				if result.Landed() && hunter.lockAndLoadAura.IsActive() {
+					hunter.lockAndLoadAura.Deactivate(sim)
+				}
 				spell.DealDamage(sim, result)
 			})
 		},
@@ -72,9 +75,9 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 }
 
 func (hunter *Hunter) registerAimedShotSpell(timer *core.Timer) {
-	// if !hunter.Talents.AimedShot {
-	// 	return
-	// }
+	if !hunter.Talents.AimedShot {
+		return
+	}
 
 	maxRank := 6
 

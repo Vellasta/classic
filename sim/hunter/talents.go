@@ -117,6 +117,7 @@ func (hunter *Hunter) ApplyTalents() {
 	hunter.applyPiercingShots()
 	hunter.applyEndlessQuiver()
 	hunter.applyCoordinatedAssault()
+	hunter.applyLockAndLoad()
 }
 
 func (hunter *Hunter) applyFrenzy() {
