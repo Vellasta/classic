@@ -9,7 +9,7 @@ import (
 	"github.com/Vellasta/classic/sim/core/stats"
 )
 
-var TalentTreeSizes = [3]int{19, 17, 20}
+var TalentTreeSizes = [3]int{19, 16, 20}
 
 const (
 	SpellFlagShot   = core.SpellFlagAgentReserved1

@@ -537,9 +537,8 @@ export const CurseOfShadow = makeBooleanDebuffInput({
 export const WarlockCursesConfig = InputHelpers.makeMultiIconInput({ values: [CurseOfElements, CurseOfShadow], label: 'Warlock Curses' });
 
 export const HuntersMark = withLabel(
-	makeTristateDebuffInput({
+	makeBooleanDebuffInput({
 		actionId: () => ActionId.fromSpellId(14325),
-		impId: ActionId.fromSpellId(19425),
 		fieldName: 'huntersMark',
 	}),
 	`Hunter's Mark`,

@@ -316,7 +316,7 @@
       },
       {
         "fieldName": "improvedStings",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Improved Stings</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the damage done by your Serpent Sting by [6/12/18/24/30]% and increases the mana drained by Viper Sting by [1/2/3/4/5]%.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Improved Stings</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the damage done by your Serpent Sting by [6/12/18/24/30]%, increases the mana drained by Viper Sting by [1/2/3/4/5]%, and causes Scorpid Sting to reduce attack speed by an additional [2/4/6/8/10]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 1,
           "colIdx": 1
@@ -360,50 +360,23 @@
         "maxPoints": 2
       },
       {
-        "fieldName": "improvedScorpidSting",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Improved Scorpid Sting</b></a></td></tr></table><table><tr><td><div class=\"q\">Scorpid Sting reduces enemy attack speed by an additional [5/10]% and reduces their damage done by an additional [1/2]%.</div></td></tr></table>",
+        "fieldName": "aimedShot",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Aimed Shot</b></a></td></tr></table><table><tr><td><div class=\"q\">An aimed shot that increases ranged damage by 70.</div></td></tr></table>",
         "location": {
           "rowIdx": 2,
           "colIdx": 1
         },
         "spellIds": [
-          19491,
-          19493
-        ],
-        "maxPoints": 2
-      },
-      {
-        "fieldName": "steadyShot",
-        "fieldDesc": "<table><tr><td><table width=\"100%\"><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19434/aimed-shot\"><b class=\"whtt-name\">Steady Shot</b></a></td><th><b class=\"q0\">Rank 1</b></th></tr></table><div class=\"q0\">Talent</div><table width=\"100%\"><tr><td>5% Base Mana</td><th>8 - 35 yd range</th></tr></table><table width=\"100%\"><tr><td>1 sec cast</td></tr></table><div class=\"wowhead-tooltip-requirements\">Requires Hunter</div></td></tr></table><table><tr><td><span class=\"wowhead-tooltip-requirements\">Requires Ranged Weapon</span><div class=\"q\">A precise shot with a ranged weapon that strikes the target for 60% weapon damage plus an additional 10 damage.</div></td></tr></table>",
-        "location": {
-          "rowIdx": 2,
-          "colIdx": 3
-        },
-        "spellIds": [
-          3035
+          19434
         ],
         "maxPoints": 1
       },
       {
-        "fieldName": "improvedHuntersMark",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Improved Hunter's Mark</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the Ranged Attack Power bonus of your Hunter's Mark spell by [5/10/15]%.</div></td></tr></table>",
-        "location": {
-          "rowIdx": 3,
-          "colIdx": 0
-        },
-        "spellIds": [
-          19421,
-          19422,
-          19423
-        ],
-        "maxPoints": 3
-      },
-      {
         "fieldName": "swiftshot",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Swiftshot</b></a></td></tr></table><table><tr><td><div class=\"q\">Reduces the cooldown of your Arcane Shot and Aimed Shot by [0.3/0.6/1] sec.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Swiftshot</b></a></td></tr></table><table><tr><td><div class=\"q\">Reduces the cooldown of Arcane Shot by [0.5/1/1.5] sec and the cooldown of Aimed Shot by [2/4/6] sec.</div></td></tr></table>",
         "location": {
-          "rowIdx": 3,
-          "colIdx": 1
+          "rowIdx": 2,
+          "colIdx": 3
         },
         "spellIds": [
           19454,
@@ -411,6 +384,19 @@
           19456
         ],
         "maxPoints": 3
+      },
+      {
+        "fieldName": "endlessQuiver",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Endless Quiver</b></a></td></tr></table><table><tr><td><div class=\"q\">Your Auto Shot, Arcane Shot, Steady Shot and Multi-Shot have a [3/6]% chance to fire an additional normal ranged attack. This additional shot does not spend ammo.</div></td></tr></table>",
+        "location": {
+          "rowIdx": 3,
+          "colIdx": 0
+        },
+        "spellIds": [
+          51517,
+          51518
+        ],
+        "maxPoints": 2
       },
       {
         "fieldName": "mortalShots",
@@ -445,18 +431,20 @@
         "maxPoints": 1
       },
       {
-        "fieldName": "barrage",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Barrage</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the damage done by your Multi-Shot and Volley spells by [5/10/15]%.</div></td></tr></table>",
+        "fieldName": "experimentalAmmunition",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19503/scatter-shot\"><b class=\"whtt-name\">Experimental Ammunition</b></a><div class=\"q0\">Talent</div><table width=\"100%\"><tr><td>8% of base mana</td><th>15 yd range</th></tr></table><!--cooldownText-->30 sec cooldown<!--cooldownText--><!--baseCooldown:30 sec cooldown--><div class=\"wowhead-tooltip-requirements\">Requires Hunter</div></td></tr></table><table><tr><td><span class=\"wowhead-tooltip-requirements\">Requires Ranged Weapon</span><div class=\"q\">Your Aimed Shot deals an additional 5% of its damage as Fire, Arcane, or Nature damage, based on the active effect. Grants a further benefit depending on the element:<br><br>Explosive Ammunition: Your next Multi-Shot causes hits to explode, dealing 20% ranged weapon damage to enemies within 5 yards of the targets.<br><br>Poisonous Ammunition: Your next Serpent Sting deals 100% increased damage and applies a corrosive poison that reduces the target's armor by 240 for 15 sec.<br><br>Enchanted Ammunition: Your next Arcane Shot deals 100% increased damage and weakens the target's resistance to magic, increasing magic damage taken by 3% for 6 sec.</div></td></tr></table>",
         "location": {
           "rowIdx": 4,
           "colIdx": 1
         },
         "spellIds": [
-          19461,
-          19462,
-          24691
+          52419
         ],
-        "maxPoints": 3
+        "maxPoints": 1,
+        "prereqLocation": {
+          "rowIdx": 2,
+          "colIdx": 1
+        }
       },
       {
         "fieldName": "piercingShots",
@@ -476,38 +464,35 @@
         }
       },
       {
-        "fieldName": "improvedSteadyShot",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Improved Steady Shot</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the damage done by your Steady Shot by [8/15]%.</div></td></tr></table>",
+        "fieldName": "barrage",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Barrage</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the damage done by your Multi-Shot and Volley spells by [5/10/15]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 4,
           "colIdx": 3
         },
         "spellIds": [
-          51515,
-          51516
+          19461,
+          19462,
+          24691
         ],
-        "maxPoints": 2,
-        "prereqLocation": {
-          "rowIdx": 2,
-          "colIdx": 3
-        }
+        "maxPoints": 3
       },
       {
-        "fieldName": "endlessQuiver",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Endless Quiver</b></a></td></tr></table><table><tr><td><div class=\"q\">Your Auto Shot, Arcane Shot, Steady Shot and Multi-Shot have a [3/6]% chance to fire an additional normal ranged attack. This additional shot does not spend ammo.</div></td></tr></table>",
+        "fieldName": "improvedMarksmanship",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Improved Marksmanship</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the damage done by Steady Shot and Aimed Shot by [5/10]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 5,
           "colIdx": 0
         },
         "spellIds": [
-          51517,
-          51518
+          51515,
+          51516
         ],
         "maxPoints": 2
       },
       {
         "fieldName": "rangedWeaponSpecialization",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Ranged Weapon Specialization</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the damage you deal with ranged weapons by [1/2/3/4/5]%.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Ranged Weapon Specialization</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the damage you deal with ranged weapons by [2/4/6/8/10]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 5,
           "colIdx": 2
@@ -522,14 +507,14 @@
         "maxPoints": 5
       },
       {
-        "fieldName": "trueshotAura",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Trueshot Aura</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the attack power of party members within 45 yards by 3%, plus an additional 30. The aura lasts until cancelled.</div></td></tr></table>",
+        "fieldName": "lockAndLoad",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Lock and Load</b></a></td></tr></table><table><tr><td><div class=\"q\">Your Steady Shot, Aimed Shot, and Arcane Shot critical strikes have a 100% chance to reset the cooldown of Aimed Shot and trigger Lock and Load. Lock and Load reduces the cast time of Aimed Shot by 1 sec and causes Aimed Shot to hit all enemies between you and the target. Lasts 10 sec or until Aimed Shot is cast.</div></td></tr></table>",
         "location": {
           "rowIdx": 6,
           "colIdx": 1
         },
         "spellIds": [
-          19506
+          52420
         ],
         "maxPoints": 1,
         "prereqLocation": {
@@ -708,7 +693,7 @@
       },
       {
         "fieldName": "surefooted",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Surefooted</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases hit chance by [1/2/3]% and increases the chance movement impairing effects will be resisted by an additional [5/10/15]%.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Surefooted</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases hit chance by [1/2/3]%, and by an additional [1/2/3]% while dual wielding. In addition, increases the chance movement impairing effects will be resisted by an additional [5/10/15]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 3,
           "colIdx": 1

@@ -159,22 +159,22 @@ export class ActionId {
 	}
 
 	static makeItemUrl(id: number, randomSuffixId?: number): string {
-		// const langPrefix = getWowheadLanguagePrefix();
-		// const url = new URL(`https://wowhead.com/classic/${langPrefix}item=${id}`);
-		// url.searchParams.set('level', String(MAX_CHARACTER_LEVEL));
-		// url.searchParams.set('rand', String(randomSuffixId || 0));
+		const langPrefix = getWowheadLanguagePrefix();
+		const url = new URL(`https://wowhead.com/classic/${langPrefix}item=${id}`);
+		url.searchParams.set('level', String(MAX_CHARACTER_LEVEL));
+		url.searchParams.set('rand', String(randomSuffixId || 0));
 
-		const url = new URL(`https://database.turtlecraft.gg/?item=${id}`);
+		// const url = new URL(`https://database.turtlecraft.gg/?item=${id}`);
 		return url.toString();
 	}
 	static makeSpellUrl(id: number): string {
-		// const langPrefix = getWowheadLanguagePrefix();
-		// const showBuff = spellIDsToShowBuffs.has(id);
+		const langPrefix = getWowheadLanguagePrefix();
+		const showBuff = spellIDsToShowBuffs.has(id);
 
-		// let url = `https://wowhead.com/classic/${langPrefix}spell=${id}`;
-		// if (showBuff) url = `${url}?buff=1`;
+		let url = `https://wowhead.com/classic/${langPrefix}spell=${id}`;
+		if (showBuff) url = `${url}?buff=1`;
 		
-		let url = `https://database.turtlecraft.gg/?spell=${id}`;
+		// let url = `https://database.turtlecraft.gg/?spell=${id}`;
 
 		return url;
 	}
@@ -522,9 +522,9 @@ export class ActionId {
 	}
 
 	private static makeIconUrl(iconLabel: string): string {
-		// return `https://wow.zamimg.com/images/wow/icons/large/${iconLabel}.jpg`;
+		return `https://wow.zamimg.com/images/wow/icons/large/${iconLabel}.jpg`;
 
-		return `https://database.turtlecraft.gg/images/icons/large/${iconLabel}.png`;
+		// return `https://database.turtlecraft.gg/images/icons/large/${iconLabel}.png`;
 	}
 
 	static async getTooltipData(actionId: ActionId): Promise<IconData> {

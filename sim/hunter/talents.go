@@ -81,7 +81,7 @@ func (hunter *Hunter) ApplyTalents() {
 	}
 
 	if hunter.Talents.RangedWeaponSpecialization > 0 {
-		mult := 1 + 0.01*float64(hunter.Talents.RangedWeaponSpecialization)
+		mult := 1 + 0.02*float64(hunter.Talents.RangedWeaponSpecialization)
 		hunter.OnSpellRegistered(func(spell *core.Spell) {
 			if spell.ProcMask.Matches(core.ProcMaskRanged) && spell.SpellCode != SpellCode_HunterSerpentSting {
 				spell.DamageMultiplier *= mult

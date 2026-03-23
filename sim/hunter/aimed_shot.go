@@ -10,7 +10,7 @@ import (
 func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.SpellConfig {
 	spellId := [7]int32{0, 19434, 20900, 20901, 20902, 20903, 20904}[rank]
 	baseDamage := [7]float64{0, 70, 125, 200, 330, 460, 600}[rank]
-	manaCost := [7]float64{0, 75, 115, 160, 210, 260, 310}[rank]
+	manaCost := [7]float64{0, 50, 75, 105, 140, 170, 205}[rank]
 	level := [7]int{0, 0, 28, 36, 44, 52, 60}[rank]
 
 	return core.SpellConfig{
@@ -30,9 +30,9 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
-				GCD:          core.GCDDefault,
+				GCD:          core.GCDMin,
 				BaseCastTime: time.Millisecond * 500,
-				CastTime:     time.Millisecond * 3000,
+				CastTime:     time.Millisecond * 2000,
 			},
 			CD: core.Cooldown{
 				Timer:    timer,
@@ -53,7 +53,7 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 
 		CritDamageBonus: hunter.mortalShots(),
 
-		DamageMultiplier: 1,
+		DamageMultiplier: 1 + 0.05*float64(hunter.Talents.ImprovedMarksmanship),
 		ThreatMultiplier: 1,
 		BonusCoefficient: 1,
 

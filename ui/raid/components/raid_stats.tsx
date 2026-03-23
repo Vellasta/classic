@@ -484,7 +484,7 @@ const RAID_STATS_OPTIONS: RaidStatsOptions = {
 						{
 							label: 'Trueshot Aura',
 							actionId: ActionId.fromSpellId(19506),
-							playerData: playerClassAndTalent(Class.ClassHunter, 'trueshotAura'),
+							playerData: playerClass(Class.ClassHunter),
 						},
 					],
 				},

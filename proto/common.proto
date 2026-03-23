@@ -743,7 +743,7 @@ message Debuffs {
 	bool insect_swarm = 17;
 	bool scorpid_sting = 18;
 
-	TristateEffect hunters_mark = 19;
+	bool hunters_mark = 19;
 
 	// Misc Debuffs
 	bool gift_of_arthas = 9;

@@ -11,7 +11,7 @@ func (hunter *Hunter) getArcaneShotConfig(rank int, timer *core.Timer) core.Spel
 	spellId := [9]int32{0, 3044, 14281, 14282, 14283, 14284, 14285, 14286, 14287}[rank]
 	baseDamage := [9]float64{0, 13, 21, 33, 59, 83, 115, 145, 183}[rank]
 	spellCoeff := [9]float64{0, .204, .3, .429, .429, .429, .429, .429, .429}[rank]
-	manaCost := [9]float64{0, 25, 35, 50, 80, 105, 135, 160, 190}[rank]
+	manaCost := [9]float64{0, 20, 25, 35, 55, 70, 90, 105, 125}[rank]
 	level := [9]int{0, 6, 12, 20, 28, 36, 44, 52, 60}[rank]
 
 	return core.SpellConfig{
@@ -50,7 +50,10 @@ func (hunter *Hunter) getArcaneShotConfig(rank int, timer *core.Timer) core.Spel
 		BonusCoefficient: spellCoeff,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeRangedHitAndCrit)
+			damage := 0.45 * (hunter.AutoAttacks.Ranged().CalculateNormalizedWeaponDamage(sim, spell.RangedAttackPower(target, false)) +
+				hunter.NormalizedAmmoDamageBonus +
+				baseDamage)
+			result := spell.CalcDamage(sim, target, damage, spell.OutcomeRangedHitAndCrit)
 
 			spell.WaitTravelTime(sim, func(sim *core.Simulation) {
 				spell.DealDamage(sim, result)
