@@ -58,17 +58,33 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 		BonusCoefficient: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			baseDamage := hunter.AutoAttacks.Ranged().CalculateNormalizedWeaponDamage(sim, spell.RangedAttackPower(target, false)) +
-				hunter.NormalizedAmmoDamageBonus +
-				baseDamage
+			curTarget := target
+			numHits := int32(1)
+			if hunter.lockAndLoadAura.IsActive() {
+				numHits = hunter.Env.GetNumTargets()
+			}
+			results := make([]*core.SpellResult, numHits)
 
-			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeRangedHitAndCrit)
+			if hunter.lockAndLoadAura.IsActive() {
+				hunter.lockAndLoadAura.Deactivate(sim)
+			}
+
+			for hitIndex := int32(0); hitIndex < numHits; hitIndex++ {
+				baseDamage := hunter.AutoAttacks.Ranged().CalculateNormalizedWeaponDamage(sim, spell.RangedAttackPower(curTarget, false)) +
+					hunter.NormalizedAmmoDamageBonus +
+					baseDamage
+
+				results[hitIndex] = spell.CalcDamage(sim, curTarget, baseDamage, spell.OutcomeRangedHitAndCrit)
+
+				curTarget = sim.Environment.NextTargetUnit(curTarget)
+			}
 			hunter.Unit.AutoAttacks.EnableAutoSwing(sim)
 			spell.WaitTravelTime(sim, func(s *core.Simulation) {
-				if result.Landed() && hunter.lockAndLoadAura.IsActive() {
-					hunter.lockAndLoadAura.Deactivate(sim)
+				for hitIndex := int32(0); hitIndex < numHits; hitIndex++ {
+					spell.DealDamage(sim, results[hitIndex])
+
+					curTarget = sim.Environment.NextTargetUnit(curTarget)
 				}
-				spell.DealDamage(sim, result)
 			})
 		},
 	}

@@ -40,7 +40,9 @@ func (hunter *Hunter) applyLockAndLoad() {
 
 			if result.DidCrit() {
 				hunter.AimedShot.CD.Reset()
-				hunter.lockAndLoadAura.Activate(sim)
+				if !hunter.lockAndLoadAura.IsActive() {
+					hunter.lockAndLoadAura.Activate(sim)
+				}
 			}
 		},
 	}))

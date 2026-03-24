@@ -76,9 +76,9 @@ func (hunter *Hunter) getAspectOfTheHawkSpellConfig(rank int) core.SpellConfig {
 			aura.Unit.AddStatDynamic(sim, stats.RangedAttackPower, -rap*hunter.AspectOfTheHawkAPMultiplier)
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			// if !spell.ProcMask.Matches(core.ProcMaskRangedAuto) {
-			// 	return
-			// }
+			if spell.ProcMask.Matches(core.ProcMaskEmpty) || !(spell.ProcMask.Matches(core.ProcMaskRangedAuto) || spell.SpellCode == SpellCode_HunterAimedShot || spell.SpellCode == SpellCode_HunterSteadyShot || spell.SpellCode == SpellCode_HunterMultiShot || spell.SpellCode == SpellCode_HunterArcaneShot) {
+				return
+			}
 
 			if hunter.impHawkAura != nil && sim.Proc(improvedHawkProcChance, "Imp Aspect of the Hawk") {
 				hunter.impHawkAura.Activate(sim)

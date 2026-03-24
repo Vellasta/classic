@@ -76,9 +76,9 @@ func (hunter *Hunter) getAspectOfTheWolfSpellConfig(rank int) core.SpellConfig {
 			aura.Unit.AddStatDynamic(sim, stats.AttackPower, -meleeap*hunter.AspectOfTheWolfAPMultiplier)
 		},
 		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			// if !spell.ProcMask.Matches(core.ProcMaskRangedAuto) {
-			// 	return
-			// }
+			if spell.ProcMask.Matches(core.ProcMaskEmpty) || !spell.ProcMask.Matches(core.ProcMaskMelee) {
+				return
+			}
 
 			if hunter.impWolfAura != nil && sim.Proc(improvedWolfProcChance, "Imp Aspect of the Wolf") {
 				hunter.impWolfAura.Activate(sim)
