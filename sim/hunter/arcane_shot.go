@@ -56,6 +56,12 @@ func (hunter *Hunter) getArcaneShotConfig(rank int, timer *core.Timer) core.Spel
 			result := spell.CalcDamage(sim, target, damage, spell.OutcomeRangedHitAndCrit)
 
 			spell.WaitTravelTime(sim, func(sim *core.Simulation) {
+				if hunter.EnchantedAmmunitionAura.IsActive() {
+					damage *= 2
+					result = spell.CalcDamage(sim, target, damage, spell.OutcomeRangedHitAndCrit)
+					hunter.EnchantedAmmunitionDebuff.Get(target).Activate(sim)
+					hunter.EnchantedAmmunitionAura.Deactivate(sim)
+				}
 				spell.DealDamage(sim, result)
 			})
 		},

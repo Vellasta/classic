@@ -850,6 +850,49 @@ func ExposeWeaknessAura(target *Unit) *Aura {
 	return aura
 }
 
+func PoisonousAmmunitionAura(target *Unit) *Aura {
+	arpen := 240.0
+	aura := target.GetOrRegisterAura(Aura{
+		ActionID: ActionID{SpellID: 52425},
+		Label:    "Poisonous Ammunition (Armor Debuff)",
+		Duration: time.Second * 15,
+		OnGain: func(aura *Aura, sim *Simulation) {
+			aura.Unit.AddStatDynamic(sim, stats.Armor, -arpen)
+		},
+		OnExpire: func(aura *Aura, sim *Simulation) {
+			aura.Unit.AddStatDynamic(sim, stats.Armor, arpen)
+		},
+	})
+
+	return aura
+}
+
+func EnchantedAmmunitionAura(target *Unit) *Aura {
+	aura := target.GetOrRegisterAura(Aura{
+		ActionID: ActionID{SpellID: 52426},
+		Label:    "Enchanted Ammunition (Magic Debuff)",
+		Duration: time.Second * 6,
+		OnGain: func(aura *Aura, sim *Simulation) {
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexArcane] *= 1.03
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexFire] *= 1.03
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexFrost] *= 1.03
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexHoly] *= 1.03
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexNature] *= 1.03
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexShadow] *= 1.03
+		},
+		OnExpire: func(aura *Aura, sim *Simulation) {
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexArcane] /= 1.03
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexFire] /= 1.03
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexFrost] /= 1.03
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexHoly] /= 1.03
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexNature] /= 1.03
+			aura.Unit.PseudoStats.SchoolBonusDamageTaken[stats.SchoolIndexShadow] /= 1.03
+		},
+	})
+
+	return aura
+}
+
 func DemoralizingRoarAura(target *Unit, points int32) *Aura {
 	baseAPReduction := 138.0
 

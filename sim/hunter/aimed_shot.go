@@ -65,10 +65,6 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 			}
 			results := make([]*core.SpellResult, numHits)
 
-			if hunter.lockAndLoadAura.IsActive() {
-				hunter.lockAndLoadAura.Deactivate(sim)
-			}
-
 			for hitIndex := int32(0); hitIndex < numHits; hitIndex++ {
 				baseDamage := hunter.AutoAttacks.Ranged().CalculateNormalizedWeaponDamage(sim, spell.RangedAttackPower(curTarget, false)) +
 					hunter.NormalizedAmmoDamageBonus +
@@ -80,8 +76,15 @@ func (hunter *Hunter) getAimedShotConfig(rank int, timer *core.Timer) core.Spell
 			}
 			hunter.Unit.AutoAttacks.EnableAutoSwing(sim)
 			spell.WaitTravelTime(sim, func(s *core.Simulation) {
+				if hunter.lockAndLoadAura.IsActive() {
+					hunter.lockAndLoadAura.Deactivate(sim)
+				}
 				for hitIndex := int32(0); hitIndex < numHits; hitIndex++ {
 					spell.DealDamage(sim, results[hitIndex])
+
+					// Apply experimental ammo damage (calculated independently)
+					ammo := hunter.ExperimentalAmmunitionTypes[hunter.ExperimentalAmmunitionState]
+					ammo.Cast(sim, curTarget)
 
 					curTarget = sim.Environment.NextTargetUnit(curTarget)
 				}

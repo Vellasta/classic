@@ -64,11 +64,11 @@ func (hunter *Hunter) getMultiShotConfig(rank int, timer *core.Timer) core.Spell
 			curTarget := target
 
 			for hitIndex := int32(0); hitIndex < numHits; hitIndex++ {
-				baseDamage := baseDamage +
+				damage := baseDamage +
 					hunter.AutoAttacks.Ranged().CalculateNormalizedWeaponDamage(sim, spell.RangedAttackPower(target, false)) +
 					hunter.NormalizedAmmoDamageBonus
 
-				results[hitIndex] = spell.CalcDamage(sim, curTarget, baseDamage, spell.OutcomeRangedHitAndCrit)
+				results[hitIndex] = spell.CalcDamage(sim, curTarget, damage, spell.OutcomeRangedHitAndCrit)
 
 				curTarget = sim.Environment.NextTargetUnit(curTarget)
 			}
@@ -77,7 +77,14 @@ func (hunter *Hunter) getMultiShotConfig(rank int, timer *core.Timer) core.Spell
 				for hitIndex := int32(0); hitIndex < numHits; hitIndex++ {
 					spell.DealDamage(sim, results[hitIndex])
 
+					if hunter.ExplosiveAmmunitionAura.IsActive() {
+						hunter.ExplosiveAmmunitionAOE.Cast(sim, target)
+					}
+
 					curTarget = sim.Environment.NextTargetUnit(curTarget)
+				}
+				if hunter.ExplosiveAmmunitionAura.IsActive() {
+					hunter.ExplosiveAmmunitionAura.Deactivate(sim)
 				}
 			})
 

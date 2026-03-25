@@ -54,6 +54,11 @@ func (hunter *Hunter) getSerpentStingConfig(rank int) core.SpellConfig {
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
 				damage := baseDamage
+				if hunter.PoisonousAmmunitionAura.IsActive() {
+					damage *= 2
+					hunter.PoisonousAmmunitionDebuff.Get(target).Activate(sim)
+					hunter.PoisonousAmmunitionAura.Deactivate(sim)
+				}
 				dot.Snapshot(target, damage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {

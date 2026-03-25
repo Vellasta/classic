@@ -49,6 +49,10 @@ const (
 	SpellCode_HunterCarve
 	SpellCode_HunterLacerate
 	SpellCode_HunterVolley
+	SpellCode_HunterExplosiveAmmunition
+	SpellCode_HunterPoisonousAmmunition
+	SpellCode_HunterEnchantedAmmunition
+	SpellCode_HunterExplosiveAmmunitionAOE
 
 	// Pet Spells
 	SpellCode_HunterPetClaw
@@ -138,6 +142,22 @@ type Hunter struct {
 	CoordinatedAssault *core.Spell
 
 	detectWeaknessAura *core.Aura
+
+	// The ammo which will be triggered by the next aimed shot (0: explosive, 1: poisonous, 2: enchanted)
+	ExperimentalAmmunitionTypes []*core.Spell
+	ExperimentalAmmunitionState int
+
+	ExplosiveAmmunition *core.Spell
+	PoisonousAmmunition *core.Spell
+	EnchantedAmmunition *core.Spell
+
+	ExplosiveAmmunitionAura *core.Aura
+	PoisonousAmmunitionAura *core.Aura
+	EnchantedAmmunitionAura *core.Aura
+
+	ExplosiveAmmunitionAOE    *core.Spell
+	PoisonousAmmunitionDebuff core.AuraArray
+	EnchantedAmmunitionDebuff core.AuraArray
 }
 
 func (hunter *Hunter) GetCharacter() *core.Character {
@@ -176,13 +196,14 @@ func (hunter *Hunter) Initialize() {
 
 	multiShotTimer := hunter.NewTimer()
 	arcaneShotTimer := hunter.NewTimer()
+	aimedShotTimer := hunter.NewTimer()
 
 	hunter.registerSerpentStingSpell()
 
 	hunter.registerSteadyShotSpell()
 
 	hunter.registerArcaneShotSpell(arcaneShotTimer)
-	hunter.registerAimedShotSpell(arcaneShotTimer)
+	hunter.registerAimedShotSpell(aimedShotTimer)
 	hunter.registerMultiShotSpell(multiShotTimer)
 
 	hunter.registerRaptorStrikeSpell()
@@ -199,6 +220,8 @@ func (hunter *Hunter) Initialize() {
 	hunter.registerFreezingTrapSpell(traps)
 
 	hunter.registerRapidFire()
+
+	hunter.registerExperimentalAmmunition()
 }
 
 func (hunter *Hunter) Reset(sim *core.Simulation) {
