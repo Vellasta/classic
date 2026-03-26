@@ -30,7 +30,7 @@ func (hunter *Hunter) getSteadyShotConfig(rank int) core.SpellConfig {
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
-				GCD:          core.GCDMin,
+				GCD:          core.GCDDefault,
 				BaseCastTime: time.Millisecond * 500,
 				CastTime:     time.Millisecond * 1000,
 			},
