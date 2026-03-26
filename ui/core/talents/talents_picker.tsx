@@ -363,7 +363,8 @@ class TalentPicker<TalentsProto> extends Component {
 		this.instance = tippy(this.rootElem, { 
 			content: `Rank ${this.getPoints()}/${this.config.maxPoints}\n${String(this.config.fieldDesc)}`, 
 			allowHTML: true, 
-			hideOnClick: false
+			hideOnClick: false,
+			placement: 'right-end'
 		});
 
 		this.rootElem.addEventListener('click', event => {
