@@ -19,6 +19,8 @@ type HunterPet struct {
 	specialAbility *core.Spell
 	focusDump      *core.Spell
 
+	killCommand *core.Spell
+
 	uptimePercent    float64
 	hasOwnerCooldown bool
 
@@ -124,6 +126,8 @@ func (hp *HunterPet) GetPet() *core.Pet {
 func (hp *HunterPet) Initialize() {
 	hp.specialAbility = hp.NewPetAbility(hp.config.SpecialAbility, true)
 	hp.focusDump = hp.NewPetAbility(hp.config.FocusDump, false)
+
+	hp.killCommand = hp.newKillCommand()
 
 	hp.EnableFocusBar(1, func(sim *core.Simulation) {
 		if hp.GCD.IsReady(sim) {

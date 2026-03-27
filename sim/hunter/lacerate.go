@@ -42,7 +42,7 @@ func (hunter *Hunter) getLacerateConfig(rank int) core.SpellConfig {
 
 		BonusCritRating:  float64(hunter.Talents.SavageStrikes) * 3 * core.CritRatingPerCritChance,
 		CritDamageBonus:  0.066 * float64(hunter.Talents.KillerInstinct),
-		DamageMultiplier: 1.15,
+		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
 
 		Dot: core.DotConfig{

@@ -33,8 +33,6 @@ const (
 	SpellCode_HunterRaptorStrike
 	SpellCode_HunterRaptorStrikeHit
 
-	SpellCode_HunterCoordinatedAssault
-
 	// Stings
 	SpellCode_HunterSerpentSting
 
@@ -54,7 +52,12 @@ const (
 	SpellCode_HunterEnchantedAmmunition
 	SpellCode_HunterExplosiveAmmunitionAOE
 
+	SpellCode_HunterCoordinatedAssault
+	SpellCode_HunterKillCommand
+
 	// Pet Spells
+	SpellCode_HunterPetKillCommand
+
 	SpellCode_HunterPetClaw
 	SpellCode_HunterPetBite
 	SpellCode_HunterPetLightningBreath
@@ -140,6 +143,8 @@ type Hunter struct {
 
 	CoordinatedAssault *core.Spell
 
+	KillCommandAura *core.Aura
+
 	detectWeaknessAura *core.Aura
 
 	// The ammo which will be triggered by the next aimed shot (0: explosive, 1: poisonous, 2: enchanted)
@@ -217,6 +222,8 @@ func (hunter *Hunter) Initialize() {
 	hunter.registerExplosiveTrapSpell(traps)
 	hunter.registerImmolationTrapSpell(traps)
 	hunter.registerFreezingTrapSpell(traps)
+
+	hunter.registerKillCommandSpell()
 
 	hunter.registerRapidFire()
 

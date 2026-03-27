@@ -262,7 +262,7 @@
       },
       {
         "fieldName": "killCommand",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Kill Command (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Give the command to kill, causing your pet to instantly attack for 80% of its attack power. Can only be used after the Hunter lands a critical strike on the target.<br><br>8 Second Cooldown, 5% Base Mana Cost, 45 Yard Range, No Global Cooldown</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Kill Command</b></a></td></tr></table><table><tr><td><div class=\"q\">Give the command to kill, causing your pet to instantly attack for 80% of its attack power. Can only be used after the Hunter lands a critical strike on the target.<br><br>8 Second Cooldown, 5% Base Mana Cost, 45 Yard Range, No Global Cooldown</div></td></tr></table>",
         "location": {
           "rowIdx": 6,
           "colIdx": 1
