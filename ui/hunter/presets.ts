@@ -33,6 +33,7 @@ import {
 	Hunter_Options_QuiverBonus,
 } from '../core/proto/hunter.js';
 import { SavedTalents } from '../core/proto/ui.js';
+import BMAPL from './apls/bm.apl.json';
 import MMOldAPL from './apls/mm.old.apl.json';
 import MMAPL from './apls/mm.apl.json';
 import MMAPLTest from './apls/mm.test.apl.json';
@@ -111,13 +112,14 @@ export const DefaultGear = GearKara40MM;
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
+export const APLBM = PresetUtils.makePresetAPLRotation('Beast Mastery', BMAPL, { talentTree: 0 });
 export const APLMM = PresetUtils.makePresetAPLRotation('Marksmanship', MMAPL, { talentTree: 1 });
 export const APLMMTest = PresetUtils.makePresetAPLRotation('Marksmanship (Advanced)', MMAPLTest, { talentTree: 1 });
 export const APLMMOld = PresetUtils.makePresetAPLRotation('Marksmanship (Old)', MMOldAPL, { talentTree: 1 });
 export const APLSV = PresetUtils.makePresetAPLRotation('Survival', SVAPL, { talentTree: 2 });
 
 export const APLPresets = {
-	[Phase.Phase1]: [APLMM, APLMMTest, APLSV, APLMMOld],
+	[Phase.Phase1]: [APLBM, APLMM, APLMMTest, APLSV, APLMMOld],
 
 };
 
@@ -130,11 +132,12 @@ export const DefaultAPL = APLPresets[Phase.Phase1][1];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
+export const TalentsBM = PresetUtils.makePresetTalents('Beast Mastery', SavedTalents.create({ talentsString: '5500000150053102221-050520322' }));
 export const TalentsMM = PresetUtils.makePresetTalents('Marksmanship', SavedTalents.create({ talentsString: '550000012-0525210250123251-002' }));
 export const TalentsSV = PresetUtils.makePresetTalents('Survival', SavedTalents.create({ talentsString: '550000015-0000000000000000-35202000111212331251' }));
 
 export const TalentPresets = {
-	[Phase.Phase1]: [TalentsMM, TalentsSV],
+	[Phase.Phase1]: [TalentsBM, TalentsMM, TalentsSV],
 };
 
 export const DefaultTalents = TalentPresets[Phase.Phase1][0];
