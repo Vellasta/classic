@@ -17,6 +17,11 @@ func (hunter *Hunter) ApplyTalents() {
 		hunter.pet.AddStat(stats.MeleeCrit, core.CritRatingPerCritChance*3*float64(hunter.Talents.Ferocity))
 		hunter.pet.AddStat(stats.SpellCrit, core.SpellCritRatingPerCritChance*3*float64(hunter.Talents.Ferocity))
 
+		hunter.pet.AddStat(stats.MeleeHit, 4*float64(hunter.Talents.BestialPrecision))
+		hunter.pet.AddStat(stats.SpellHit, 9*float64(hunter.Talents.BestialPrecision))
+		hunter.pet.PseudoStats.FeralCombatEnabled = true
+		hunter.pet.PseudoStats.FeralCombatSkill += 5 * float64(hunter.Talents.BestialPrecision)
+
 		hunter.pet.PseudoStats.DamageDealtMultiplier *= 1 + 0.04*float64(hunter.Talents.UnleashedFury)
 
 		if hunter.Talents.EnduranceTraining > 0 {

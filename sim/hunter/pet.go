@@ -192,8 +192,10 @@ func (hp *HunterPet) ExecuteCustomRotation(sim *core.Simulation) {
 
 func (hunter *Hunter) makeStatInheritance() core.PetStatInheritance {
 	return func(ownerStats stats.Stats) stats.Stats {
-		// No stat inheritance in classic
-		return stats.Stats{}
+		return stats.Stats{
+			stats.AttackPower: 0.125 * float64(hunter.Talents.SpiritBond) * ownerStats[stats.RangedAttackPower],
+			stats.SpellPower:  0.075 * float64(hunter.Talents.SpiritBond) * ownerStats[stats.RangedAttackPower],
+		}
 	}
 }
 

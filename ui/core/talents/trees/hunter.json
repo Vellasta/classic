@@ -216,7 +216,7 @@
       },
       {
         "fieldName": "bestialPrecision",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Bestial Precision (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the physical hit chance of your pets by [4/8]% and the spell hit chance of your pets by [9/18]%.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Bestial Precision</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the physical hit chance of your pets by [4/8]% and the spell hit chance of your pets by [9/18]%. In addition, increases the weapon skill of your pets by [5/10].</div></td></tr></table>",
         "location": {
           "rowIdx": 5,
           "colIdx": 0
@@ -229,7 +229,7 @@
       },
       {
         "fieldName": "spiritBond",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Spirit Bond (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Your pet gains melee attack power equal to [12/25]% of your ranged attack power and spell power equal to [7/15]% of your ranged attack power. While your pet is active, you and your pet will regenerate [1/2]% of total health every 5 sec.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Spirit Bond</b></a></td></tr></table><table><tr><td><div class=\"q\">Your pet gains melee attack power equal to [12/25]% of your ranged attack power and spell power equal to [7/15]% of your ranged attack power. While your pet is active, you and your pet will regenerate [1/2]% of total health every 5 sec.</div></td></tr></table>",
         "location": {
           "rowIdx": 5,
           "colIdx": 1

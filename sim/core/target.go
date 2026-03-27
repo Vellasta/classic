@@ -190,12 +190,12 @@ func (character *Character) IsTanking() bool {
 }
 
 func GetWeaponSkill(unit *Unit, weapon *Item) float64 {
-	if weapon == nil {
-		return 0
-	}
-
 	if unit.PseudoStats.FeralCombatEnabled && unit.PseudoStats.FeralCombatSkill != 0 {
 		return unit.PseudoStats.FeralCombatSkill
+	}
+
+	if weapon == nil {
+		return 0
 	}
 
 	if weapon.HandType == proto.HandType_HandTypeTwoHand {
