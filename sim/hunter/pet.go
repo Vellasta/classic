@@ -247,8 +247,8 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 		Name:    "Wind Serpent",
 		MobType: proto.MobType_MobTypeBeast,
 
-		SpecialAbility: Bite,
-		FocusDump:      LightningBreath,
+		SpecialAbility: LightningBreath,
+		FocusDump:      Bite,
 
 		Health: 1.00,
 		Armor:  1.00,

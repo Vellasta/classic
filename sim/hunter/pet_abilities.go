@@ -90,7 +90,8 @@ func (hp *HunterPet) newClaw() *core.Spell {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(baseDamageMin, baseDamageMax)
-			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
+			APDamage := spell.MeleeAttackPower(target) / 42.0
+			spell.CalcAndDealDamage(sim, target, baseDamage+APDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 		},
 	})
 }
@@ -145,7 +146,8 @@ func (hp *HunterPet) newBite() *core.Spell {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(baseDamageMin, baseDamageMax)
-			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
+			APDamage := spell.MeleeAttackPower(target) / 20.0
+			spell.CalcAndDealDamage(sim, target, baseDamage+APDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 		},
 	})
 }
@@ -191,11 +193,10 @@ func (hp *HunterPet) newLightningBreath() *core.Spell {
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
-		BonusCoefficient: 1,
+		BonusCoefficient: 0.5,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(baseDamageMin, baseDamageMax)
-
 			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMagicHitAndCrit)
 		},
 	})
@@ -316,8 +317,8 @@ func (hp *HunterPet) newScorpidPoison() *core.Spell {
 		ActionID:    core.ActionID{SpellID: spellID},
 		SpellCode:   SpellCode_HunterPetScorpidPoison,
 		SpellSchool: core.SpellSchoolNature,
-		DefenseType: core.DefenseTypeMelee,
-		ProcMask:    core.ProcMaskMeleeMHSpecial,
+		DefenseType: core.DefenseTypeMagic,
+		ProcMask:    core.ProcMaskSpellDamage,
 		Flags:       core.SpellFlagPassiveSpell | core.SpellFlagPoison,
 
 		FocusCost: core.FocusCostOptions{
@@ -358,7 +359,7 @@ func (hp *HunterPet) newScorpidPoison() *core.Spell {
 					dot.SnapshotBaseDamage = 0
 				}
 
-				dot.SnapshotBaseDamage += baseDamageTick
+				dot.SnapshotBaseDamage += baseDamageTick + 0.1*dot.Spell.GetBonusDamage(target)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
