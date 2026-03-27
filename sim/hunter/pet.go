@@ -23,6 +23,7 @@ type HunterPet struct {
 	hasOwnerCooldown bool
 
 	coordinatedAssaultAura *core.Aura
+	ScentOfBloodPetAura    *core.Aura
 }
 
 func (hunter *Hunter) NewHunterPet() *HunterPet {
@@ -225,7 +226,7 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 		Damage: 1.10,
 
 		CustomRotation: func(sim *core.Simulation, hp *HunterPet, tryCast func(*core.Spell) bool) {
-			if hp.specialAbility.CD.IsReady(sim) && hp.CurrentFocusPerSecond() > hp.focusDump.Cost.BaseCost/1.6 {
+			if hp.specialAbility.CD.IsReady(sim) { // && hp.CurrentFocusPerSecond() > hp.focusDump.Cost.BaseCost/1.6 {
 				if !tryCast(hp.specialAbility) && hp.GCD.IsReady(sim) {
 					hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
 				}

@@ -136,8 +136,7 @@ type Hunter struct {
 
 	lockAndLoadAura *core.Aura
 
-	RapidFireAura       *core.Aura
-	BestialWrathPetAura *core.Aura
+	RapidFireAura *core.Aura
 
 	CoordinatedAssault *core.Spell
 

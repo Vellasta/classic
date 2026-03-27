@@ -132,7 +132,7 @@
       },
       {
         "fieldName": "bestialDiscipline",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Bestial Discipline (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the Focus regeneration of your pets by [2/5] each tick and reduces the cooldown of your pets' special ability by [10/20]%.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Bestial Discipline</b></a></td></tr></table><table><tr><td><div class=\"q\">Increases the Focus regeneration of your pets by [2/5] each tick and reduces the cooldown of your pets' special ability by [10/20]%.</div></td></tr></table>",
         "location": {
           "rowIdx": 3,
           "colIdx": 0
@@ -174,7 +174,7 @@
       },
       {
         "fieldName": "scentOfBlood",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Scent of Blood (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Your attacks have a [5/10/15]% chance of the send your pet into a rage causing it to deal 40% additional damage for 8 sec.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Scent of Blood</b></a></td></tr></table><table><tr><td><div class=\"q\">Your attacks have a [5/10/15]% chance of the send your pet into a rage causing it to deal 40% additional damage for 8 sec.</div></td></tr></table>",
         "location": {
           "rowIdx": 4,
           "colIdx": 0
@@ -188,7 +188,7 @@
       },
       {
         "fieldName": "bestialWrath",
-        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Bestial Wrath (NOT YET IMPLEMENTED)</b></a></td></tr></table><table><tr><td><div class=\"q\">Send your pet into a rage, giving it the Scent of Blood effect for 18 sec. While enraged, the beast does not feel pity or remorse or fear and it cannot be stopped unless killed.<br><br>1.5 Minute Cooldown, 12% Base Mana Cost. No Global Cooldown.</div></td></tr></table>",
+        "fieldDesc": "<table><tr><td><a class=\"whtt-name\" href=\"/classic/spell=19412/improved-concussive-shot\"><b class=\"whtt-name\">Bestial Wrath</b></a></td></tr></table><table><tr><td><div class=\"q\">Send your pet into a rage, giving it the Scent of Blood effect for 18 sec. While enraged, the beast does not feel pity or remorse or fear and it cannot be stopped unless killed.<br><br>1.5 Minute Cooldown, 12% Base Mana Cost. No Global Cooldown.</div></td></tr></table>",
         "location": {
           "rowIdx": 4,
           "colIdx": 1

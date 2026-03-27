@@ -12,6 +12,7 @@ func (hunter *Hunter) ApplyTalents() {
 	if hunter.pet != nil {
 		hunter.applyFrenzy()
 		hunter.registerBestialWrathCD()
+		hunter.registerScentOfBlood()
 
 		hunter.pet.AddStat(stats.MeleeCrit, core.CritRatingPerCritChance*3*float64(hunter.Talents.Ferocity))
 		hunter.pet.AddStat(stats.SpellCrit, core.SpellCritRatingPerCritChance*3*float64(hunter.Talents.Ferocity))
@@ -57,6 +58,13 @@ func (hunter *Hunter) ApplyTalents() {
 			OnInit: func(aura *core.Aura, sim *core.Simulation) {
 				if hunter.pet != nil {
 					hunter.pet.AddFocusRegenMultiplier(0.1 * float64(hunter.Talents.BestialDiscipline))
+					reducedCDFraction := float64(1.0 - (0.1 * float64(hunter.Talents.BestialDiscipline) / 1.0))
+					if hunter.pet.specialAbility != nil {
+						hunter.pet.specialAbility.CD.Duration = time.Duration(int(float64(hunter.pet.specialAbility.CD.Duration.Nanoseconds()) * reducedCDFraction))
+					}
+					if hunter.pet.focusDump != nil {
+						hunter.pet.focusDump.CD.Duration = time.Duration(int(float64(hunter.pet.focusDump.CD.Duration.Nanoseconds()) * reducedCDFraction))
+					}
 				}
 			},
 		}))
@@ -163,12 +171,6 @@ func (hunter *Hunter) registerBestialWrathCD() {
 
 	actionID := core.ActionID{SpellID: 19574}
 
-	hunter.BestialWrathPetAura = hunter.pet.RegisterAura(core.Aura{
-		Label:    "Bestial Wrath Pet",
-		ActionID: actionID,
-		Duration: time.Second * 18,
-	}).AttachMultiplicativePseudoStatBuff(&hunter.pet.PseudoStats.DamageDealtMultiplier, 1.5)
-
 	bwSpell := hunter.RegisterSpell(core.SpellConfig{
 		ActionID: actionID,
 		Flags:    core.SpellFlagAPL,
@@ -180,12 +182,13 @@ func (hunter *Hunter) registerBestialWrathCD() {
 		Cast: core.CastConfig{
 			CD: core.Cooldown{
 				Timer:    hunter.NewTimer(),
-				Duration: time.Minute * 2,
+				Duration: time.Second * 90,
 			},
 		},
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
-			hunter.BestialWrathPetAura.Activate(sim)
+			hunter.pet.ScentOfBloodPetAura.Activate(sim)
+			hunter.pet.ScentOfBloodPetAura.UpdateExpires(sim, sim.CurrentTime+time.Second*18)
 		},
 	})
 
@@ -193,6 +196,34 @@ func (hunter *Hunter) registerBestialWrathCD() {
 		Spell: bwSpell,
 		Type:  core.CooldownTypeDPS,
 	})
+}
+
+func (hunter *Hunter) registerScentOfBlood() {
+	if hunter.Talents.ScentOfBlood == 0 {
+		return
+	}
+
+	actionID := core.ActionID{SpellID: 19605}
+
+	hunter.pet.ScentOfBloodPetAura = hunter.pet.RegisterAura(core.Aura{
+		Label:    "Scent of Blood Pet",
+		ActionID: actionID,
+		Duration: time.Second * 8,
+	}).AttachMultiplicativePseudoStatBuff(&hunter.pet.PseudoStats.DamageDealtMultiplier, 1.4)
+
+	core.MakePermanent(hunter.GetOrRegisterAura(core.Aura{
+		Label:    "Scent of Blood",
+		Duration: core.NeverExpires,
+		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if spell.ProcMask.Matches(core.ProcMaskEmpty) || !(spell.ProcMask.Matches(core.ProcMaskRanged) || spell.ProcMask.Matches(core.ProcMaskMelee)) {
+				return
+			}
+
+			if hunter.pet.ScentOfBloodPetAura.RemainingDuration(sim) < time.Second*8 && sim.Proc(0.05*float64(hunter.Talents.ScentOfBlood), "Scent of Blood") {
+				hunter.pet.ScentOfBloodPetAura.Activate(sim)
+			}
+		},
+	}))
 }
 
 func (hunter *Hunter) mortalShots() float64 {

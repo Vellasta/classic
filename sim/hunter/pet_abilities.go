@@ -134,7 +134,7 @@ func (hp *HunterPet) newBite() *core.Spell {
 			},
 			CD: core.Cooldown{
 				Timer:    hp.NewTimer(),
-				Duration: 10 * time.Second,
+				Duration: 6 * time.Second,
 			},
 			IgnoreHaste: true,
 		},
