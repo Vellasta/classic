@@ -3606,6 +3606,10 @@ func init() {
 			},
 		})
 
+		trinketAura.OnExpire = func(aura *core.Aura, sim *core.Simulation) {
+			procAura.Deactivate(sim)
+		}
+
 		spell := character.RegisterSpell(core.SpellConfig{
 			ActionID: actionID,
 			Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagOffensiveEquipment,

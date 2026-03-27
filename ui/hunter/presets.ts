@@ -121,7 +121,7 @@ export const APLMMOld = PresetUtils.makePresetAPLRotation('Marksmanship (Old)', 
 export const APLSV = PresetUtils.makePresetAPLRotation('Survival', SVAPL, { talentTree: 2 });
 
 export const APLPresets = {
-	[Phase.Phase1]: [APLBM, APLMM, APLMMBasic, APLMMAdvanced, APLSV, APLMMOld],
+	[Phase.Phase1]: [APLBM, APLMMBasic, APLMM, APLMMAdvanced, APLSV, APLMMOld],
 
 };
 
