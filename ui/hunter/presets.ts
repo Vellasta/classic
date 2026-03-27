@@ -36,7 +36,8 @@ import { SavedTalents } from '../core/proto/ui.js';
 import BMAPL from './apls/bm.apl.json';
 import MMOldAPL from './apls/mm.old.apl.json';
 import MMAPL from './apls/mm.apl.json';
-import MMAPLTest from './apls/mm.test.apl.json';
+import MMAPLBasic from './apls/mm.basic.apl.json';
+import MMAPLAdvanced from './apls/mm.advanced.apl.json';
 import SVAPL from './apls/sv.apl.json';
 import PreraidBMGear from './gear_sets/preraid.bm.gear.json';
 import PreraidMMGear from './gear_sets/preraid.mm.gear.json';
@@ -113,13 +114,14 @@ export const DefaultGear = GearKara40MM;
 ///////////////////////////////////////////////////////////////////////////
 
 export const APLBM = PresetUtils.makePresetAPLRotation('Beast Mastery', BMAPL, { talentTree: 0 });
-export const APLMM = PresetUtils.makePresetAPLRotation('Marksmanship', MMAPL, { talentTree: 1 });
-export const APLMMTest = PresetUtils.makePresetAPLRotation('Marksmanship (Advanced)', MMAPLTest, { talentTree: 1 });
+export const APLMM = PresetUtils.makePresetAPLRotation('Marksmanship (Standard)', MMAPL, { talentTree: 1 });
+export const APLMMBasic = PresetUtils.makePresetAPLRotation('Marksmanship (Basic)', MMAPLBasic, { talentTree: 1 });
+export const APLMMAdvanced = PresetUtils.makePresetAPLRotation('Marksmanship (Advanced)', MMAPLAdvanced, { talentTree: 1 });
 export const APLMMOld = PresetUtils.makePresetAPLRotation('Marksmanship (Old)', MMOldAPL, { talentTree: 1 });
 export const APLSV = PresetUtils.makePresetAPLRotation('Survival', SVAPL, { talentTree: 2 });
 
 export const APLPresets = {
-	[Phase.Phase1]: [APLBM, APLMM, APLMMTest, APLSV, APLMMOld],
+	[Phase.Phase1]: [APLBM, APLMM, APLMMBasic, APLMMAdvanced, APLSV, APLMMOld],
 
 };
 

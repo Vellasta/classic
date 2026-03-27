@@ -152,7 +152,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		//player.hasRune(ItemSlot.ItemSlotFeet, HunterRune.RuneBootsWyvernStrike);
 
 		const talentTree = player.getTalentTree();
-		if (talentTree === 1) {
+		if (talentTree === 0) {
+			return Presets.APLBM.rotation.rotation!;
+		} else if (talentTree === 1) {
 			return Presets.APLMM.rotation.rotation!;
 		} else if (talentTree === 2) {
 			return Presets.APLSV.rotation.rotation!;
