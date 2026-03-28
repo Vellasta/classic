@@ -9492,6 +9492,9 @@
 {"id":61781,"name":"Iron Belt Buckle","icon":"inv_misc_buckle_03"},
 {"id":61782,"name":"Mithril Belt Buckle","icon":"inv_misc_buckle_04"},
 {"id":61783,"name":"Facetted Crystal Scope","icon":"inv_misc_spyglass_02"},
+{"id":61784,"name":"Squid Eel Skewer","icon":"inv_misc_food_68"},
+{"id":61785,"name":"Danonzo's Tel'abim Surprise","icon":"inv_misc_food_92"},
+{"id":61786,"name":"Danonzo's Tel'abim Medley","icon":"inv_misc_food_73"},
 {"id":228982,"name":"Formula: Enchant Shield - Law of Nature","icon":"inv_misc_note_01"}
 ],
 "spellIcons":[

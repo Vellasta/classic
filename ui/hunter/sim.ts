@@ -51,13 +51,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		Stat.StatMeleeHit,
 		Stat.StatMeleeCrit,
 		Stat.StatArmorPenetration,
+		Stat.StatMeleeHaste,
 		// Spell
 		Stat.StatSpellDamage,
 		Stat.StatNaturePower,
 		Stat.StatArcanePower,
 		Stat.StatMP5,
 	],
-	displayPseudoStats: [PseudoStat.PseudoStatMeleeSpeedMultiplier, PseudoStat.PseudoStatRangedSpeedMultiplier],
+	displayPseudoStats: [PseudoStat.PseudoStatRangedSpeedMultiplier],
 
 	defaults: {
 		race: Presets.OtherDefaults.race,

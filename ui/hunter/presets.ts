@@ -142,7 +142,7 @@ export const TalentPresets = {
 	[Phase.Phase1]: [TalentsBM, TalentsMM, TalentsSV],
 };
 
-export const DefaultTalents = TalentPresets[Phase.Phase1][0];
+export const DefaultTalents = TalentPresets[Phase.Phase1][1];
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
@@ -151,7 +151,7 @@ export const DefaultTalents = TalentPresets[Phase.Phase1][0];
 export const DefaultOptions = HunterOptions.create({
 	ammo: Ammo.Doomshot,
 	quiverBonus: Hunter_Options_QuiverBonus.Speed15,
-	petAttackSpeed: PetAttackSpeed.OneTwo,
+	petAttackSpeed: PetAttackSpeed.Two,
 	petType: PetType.Cat,
 	petUptime: 1,
 });
@@ -164,7 +164,7 @@ export const DefaultConsumes = Consumes.create({
 	defaultPotion: Potions.MajorManaPotion,
 	dragonBreathChili: true,
 	flask: Flask.FlaskOfSupremePower,
-	food: Food.FoodGrilledSquid,
+	food: Food.FoodSquidEelSkewer,
 	healthElixir: HealthElixir.ElixirOfFortitude,
 	mainHandImbue: WeaponImbue.ElementalSharpeningStone,
 	manaRegenElixir: ManaRegenElixir.MagebloodPotion,

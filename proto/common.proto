@@ -538,7 +538,7 @@ enum WeaponImbue {
 	WoundPoison = 7;
 }
 
-// NextIndex: 13
+// NextIndex: 15
 enum Food {
 	FoodUnknown = 0;
 	FoodGrilledSquid = 1;
@@ -552,6 +552,9 @@ enum Food {
 	FoodTenderWolfSteak = 9;
 	FoodSmokedSagefish = 10;
 	FoodSagefishDelight = 11;
+	FoodSquidEelSkewer = 12;
+	FoodDanonzosTelabimSurprise = 13;
+	FoodDanonzosTelabimMedley = 14;
 }
 
 enum SaygesFortune {

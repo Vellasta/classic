@@ -294,11 +294,26 @@ export const SmokedSagefish: ConsumableInputConfig<Food> = {
 	actionId: () => ActionId.fromItemId(21072),
 	value: Food.FoodSmokedSagefish,
 };
+export const SquidEelSkewer: ConsumableInputConfig<Food> = {
+	actionId: () => ActionId.fromItemId(61784),
+	value: Food.FoodSquidEelSkewer,
+};
+export const DanonzosTelabimSurprise: ConsumableInputConfig<Food> = {
+	actionId: () => ActionId.fromItemId(61785),
+	value: Food.FoodDanonzosTelabimSurprise,
+};
+export const DanonzosTelabimMedley: ConsumableInputConfig<Food> = {
+	actionId: () => ActionId.fromItemId(61786),
+	value: Food.FoodDanonzosTelabimMedley,
+};
 
 // Ordered by level
 export const FOOD_CONFIG: ConsumableStatOption<Food>[] = [
 	{ config: DirgesKickChimaerokChops, stats: [Stat.StatStamina] },
+	{ config: SquidEelSkewer, stats: [Stat.StatAgility] },
 	{ config: GrilledSquid, stats: [Stat.StatAgility] },
+	{ config: DanonzosTelabimSurprise, stats: [Stat.StatRangedAttackPower] },
+	{ config: DanonzosTelabimMedley, stats: [Stat.StatMeleeHaste] },
 	{ config: SmokedDesertDumpling, stats: [Stat.StatStrength] },
 	{ config: RunnTumTuberSurprise, stats: [Stat.StatIntellect] },
 	{ config: BlessSunfruit, stats: [Stat.StatStrength] },
