@@ -387,7 +387,7 @@ func (hp *HunterPet) newScorpidPoison() *core.Spell {
 
 func (hp *HunterPet) newPoisonSpit() *core.Spell {
 	baseDamageTick := map[int32]float64{
-		60: 30,
+		60: 35,
 	}[hp.Owner.Level]
 	spellID := map[int32]int32{
 		60: 52427,
@@ -402,7 +402,7 @@ func (hp *HunterPet) newPoisonSpit() *core.Spell {
 		Flags:       core.SpellFlagPassiveSpell | core.SpellFlagPoison,
 
 		FocusCost: core.FocusCostOptions{
-			Cost: 30,
+			Cost: 35,
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
@@ -411,7 +411,7 @@ func (hp *HunterPet) newPoisonSpit() *core.Spell {
 			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    hp.NewTimer(),
-				Duration: time.Second * 4,
+				Duration: time.Second * 8,
 			},
 		},
 
@@ -421,9 +421,9 @@ func (hp *HunterPet) newPoisonSpit() *core.Spell {
 		Dot: core.DotConfig{
 			Aura: core.Aura{
 				Label:    "PoisonSpit",
-				Duration: time.Second * 10,
+				Duration: time.Second * 8,
 			},
-			NumberOfTicks:    5,
+			NumberOfTicks:    4,
 			TickLength:       time.Second * 2,
 			BonusCoefficient: 0.25,
 
