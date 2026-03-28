@@ -9052,6 +9052,7 @@
 {"effectId":3017,"itemId":61437,"spellId":57156,"name":"Sigil of Quickness","type":3,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":3,"phase":6,"tooltip":"<table><tr><td><b class=\"q3\">Sigil of Quickness<\/b><br />Binds when picked up<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=57156\" class=\"q2\">Permanently adds 2% haste to a shoulder slot item.<\/a><\/span><br /><\/td><\/tr><\/table>"},
 {"effectId":3038,"itemId":61438,"spellId":57157,"name":"Sigil of Penetration","type":3,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":3,"phase":6,"tooltip":"<table><tr><td><b class=\"q3\">Sigil of Penetration<\/b><br />Binds when picked up<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=57157\" class=\"q2\">Permanently adds 40 armor penetration to a shoulder slot item.<\/a><\/span><br /><\/td><\/tr><\/table>"},
 {"effectId":3051,"itemId":61781,"spellId":57170,"name":"Iron Belt Buckle","type":8,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":2,"phase":6,"tooltip":"<table><tr><td><b class=\"q2\">Iron Belt Buckle<\/b><br />Binds when picked up<table width=\"100%\"><tr><td><\/td><\/tr><\/table>Requires Blacksmithing (140)<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=57170\" class=\"q2\">Attaches a buckle to your belt that increases your armor penetration by 25.<\/a><\/span><br /><\/td><\/tr><\/table>"},
+{"effectId":3052,"itemId":61783,"spellId":57031,"name":"Facetted Crystal Scope","type":14,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":3,"tooltip":"<table><tr><td><b class=\"q2\">Facetted Crystal Scope<\/b><br />Binds when picked up<table width=\"100%\"><tr><td><\/td><\/tr><\/table><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=57173\" class=\"q2\">Attaches a permanent scope to a bow or gun that increases its chance to crit by 2%.<\/a><\/span><br /><\/td><\/tr><\/table>"},
 {"effectId":7210,"spellId":435481,"name":"Enchant Weapon - Dismantle","type":13,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":4},
 {"effectId":7223,"spellId":435903,"name":"Enchant Chest - Retricutioner","type":5,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"quality":4},
 {"effectId":7603,"itemId":228982,"spellId":463871,"name":"Enchant Shield - Law of Nature","type":13,"enchantType":2,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,55,30,0],"quality":2}
@@ -9490,6 +9491,7 @@
 {"id":61438,"name":"Sigil of Penetration","icon":"inv_misc_rune_06"},
 {"id":61781,"name":"Iron Belt Buckle","icon":"inv_misc_buckle_03"},
 {"id":61782,"name":"Mithril Belt Buckle","icon":"inv_misc_buckle_04"},
+{"id":61783,"name":"Facetted Crystal Scope","icon":"inv_misc_spyglass_02"},
 {"id":228982,"name":"Formula: Enchant Shield - Law of Nature","icon":"inv_misc_note_01"}
 ],
 "spellIcons":[
@@ -13122,6 +13124,7 @@
 {"id":52426,"name":"Enchanted Ammunition (Magic Debuff)","icon":"ability_theblackarrow"},
 {"id":52427,"name":"Poison Spit","icon":"inv_misc_slime_01","hasBuff":true},
 {"id":57030,"name":"Enchant Bracer - Greater Agility","icon":"spell_holy_greaterheal"},
+{"id":57031,"name":"Facetted Crystal Scope","icon":"classic_temp"},
 {"id":400574,"name":"Arcane Blast","icon":"spell_arcane_blast"},
 {"id":400610,"name":"Arcane Barrage","icon":"ability_mage_arcanebarrage"},
 {"id":400613,"name":"Living Bomb","icon":"ability_mage_livingbomb","hasBuff":true},

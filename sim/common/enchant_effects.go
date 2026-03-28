@@ -337,6 +337,12 @@ func init() {
 		character.AddBonusRangedHitRating(3)
 	})
 
+	// Facetted Crystal Scope
+	core.AddWeaponEffect(3052, func(agent core.Agent, _ proto.ItemSlot) {
+		character := agent.GetCharacter()
+		character.AddBonusRangedCritRating(2)
+	})
+
 	// Gloves - Threat
 	core.NewEnchantEffect(2613, func(agent core.Agent) {
 		character := agent.GetCharacter()
