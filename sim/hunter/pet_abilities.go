@@ -19,6 +19,7 @@ const (
 	FuriousHowl
 	LightningBreath
 	ScorpidPoison
+	PoisonSpit
 )
 
 func (hp *HunterPet) NewPetAbility(abilityType PetAbilityType, isPrimary bool) *core.Spell {
@@ -35,6 +36,8 @@ func (hp *HunterPet) NewPetAbility(abilityType PetAbilityType, isPrimary bool) *
 		return hp.newLightningBreath()
 	case ScorpidPoison:
 		return hp.newScorpidPoison()
+	case PoisonSpit:
+		return hp.newPoisonSpit()
 	// case Swipe:
 	// 	return hp.newSwipe()
 	case Unknown:
@@ -378,6 +381,66 @@ func (hp *HunterPet) newScorpidPoison() *core.Spell {
 				dot.AddStack(sim)
 				dot.TakeSnapshot(sim, true)
 			}
+		},
+	})
+}
+
+func (hp *HunterPet) newPoisonSpit() *core.Spell {
+	baseDamageTick := map[int32]float64{
+		60: 30,
+	}[hp.Owner.Level]
+	spellID := map[int32]int32{
+		60: 52427,
+	}[hp.Owner.Level]
+
+	return hp.RegisterSpell(core.SpellConfig{
+		ActionID:    core.ActionID{SpellID: spellID},
+		SpellCode:   SpellCode_HunterPetPoisonSpit,
+		SpellSchool: core.SpellSchoolNature,
+		DefenseType: core.DefenseTypeMagic,
+		ProcMask:    core.ProcMaskSpellDamage,
+		Flags:       core.SpellFlagPassiveSpell | core.SpellFlagPoison,
+
+		FocusCost: core.FocusCostOptions{
+			Cost: 30,
+		},
+		Cast: core.CastConfig{
+			DefaultCast: core.Cast{
+				GCD: PetGCD,
+			},
+			IgnoreHaste: true,
+			CD: core.Cooldown{
+				Timer:    hp.NewTimer(),
+				Duration: time.Second * 4,
+			},
+		},
+
+		DamageMultiplier: 1,
+		ThreatMultiplier: 1,
+
+		Dot: core.DotConfig{
+			Aura: core.Aura{
+				Label:    "PoisonSpit",
+				Duration: time.Second * 10,
+			},
+			NumberOfTicks:    5,
+			TickLength:       time.Second * 2,
+			BonusCoefficient: 0.25,
+
+			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
+				dot.Snapshot(target, baseDamageTick, isRollover)
+			},
+			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
+				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+			},
+		},
+
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeMeleeSpecialHit)
+			if !result.Landed() {
+				return
+			}
+			spell.Dot(target).Apply(sim)
 		},
 	})
 }

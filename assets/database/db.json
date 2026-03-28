@@ -13120,6 +13120,7 @@
 {"id":52424,"name":"Explosive Ammunition (Multi-Shot)","icon":"ability_searingarrow"},
 {"id":52425,"name":"Poisonous Ammunition (Armor Debuff)","icon":"ability_poisonarrow"},
 {"id":52426,"name":"Enchanted Ammunition (Magic Debuff)","icon":"ability_theblackarrow"},
+{"id":52427,"name":"Poison Spit","icon":"inv_misc_slime_01","hasBuff":true},
 {"id":57030,"name":"Enchant Bracer - Greater Agility","icon":"spell_holy_greaterheal"},
 {"id":400574,"name":"Arcane Blast","icon":"spell_arcane_blast"},
 {"id":400610,"name":"Arcane Barrage","icon":"ability_mage_arcanebarrage"},

@@ -29,6 +29,7 @@ export function makePetTypeInputConfig(_: boolean): InputHelpers.TypedIconEnumPi
 			{ actionId: () => ActionId.fromPetName('Tallstrider'), tooltip: 'Tallstrider', value: PetType.Tallstrider },
 			{ actionId: () => ActionId.fromPetName('Boar'), tooltip: 'Boar', value: PetType.Boar },
 			{ actionId: () => ActionId.fromPetName('Turtle'), tooltip: 'Turtle', value: PetType.Turtle },
+			{ actionId: () => ActionId.fromPetName('Serpent'), tooltip: 'Serpent', value: PetType.Serpent },
 		],
 	});
 }

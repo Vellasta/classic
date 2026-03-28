@@ -138,6 +138,7 @@ message Hunter {
 			Spider = 15;
 			Tallstrider = 16;
 			Turtle = 17;
+			Serpent = 18;
 		}
 
 		enum PetAttackSpeed {

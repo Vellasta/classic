@@ -440,4 +440,15 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 		Armor:  1.05,
 		Damage: 1.00,
 	},
+	proto.Hunter_Options_Serpent: {
+		Name:    "Serpent",
+		MobType: proto.MobType_MobTypeBeast,
+
+		SpecialAbility: PoisonSpit,
+		FocusDump:      Bite,
+
+		Health: 1.03,
+		Armor:  1.03,
+		Damage: 1.135,
+	},
 }
