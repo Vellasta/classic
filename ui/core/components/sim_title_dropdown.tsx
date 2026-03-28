@@ -238,7 +238,7 @@ export class SimTitleDropdown extends Component {
 		const status = data.type == 'Raid' ? raidSimStatus.status : simLaunchStatuses[data.index].status;
 		var phase = data.type == 'Raid' ? `Phase ${raidSimStatus.phase}` : `Phase ${simLaunchStatuses[data.index].phase}`;
 		if (data.type !== 'Raid' && data.index === 8) {
-			var phase = `Turtle WoW 1.18`
+			var phase = `Turtle WoW 1.18.1`
 		}
 
 		return (

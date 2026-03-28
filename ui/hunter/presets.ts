@@ -39,6 +39,7 @@ import MMAPL from './apls/mm.apl.json';
 import MMAPLBasic from './apls/mm.basic.apl.json';
 import MMAPLAdvanced from './apls/mm.advanced.apl.json';
 import SVAPL from './apls/sv.apl.json';
+import SVAOEAPL from './apls/sv.aoe.apl.json';
 import PreraidBMGear from './gear_sets/preraid.bm.gear.json';
 import PreraidMMGear from './gear_sets/preraid.mm.gear.json';
 import PreraidSVGear from './gear_sets/preraid.sv.gear.json';
@@ -119,13 +120,14 @@ export const APLMMBasic = PresetUtils.makePresetAPLRotation('Marksmanship (Basic
 export const APLMMAdvanced = PresetUtils.makePresetAPLRotation('Marksmanship (Advanced)', MMAPLAdvanced, { talentTree: 1 });
 export const APLMMOld = PresetUtils.makePresetAPLRotation('Marksmanship (Old)', MMOldAPL, { talentTree: 1 });
 export const APLSV = PresetUtils.makePresetAPLRotation('Survival', SVAPL, { talentTree: 2 });
+export const APLSVAOE = PresetUtils.makePresetAPLRotation('Survival (AOE)', SVAOEAPL, { talentTree: 2 });
 
 export const APLPresets = {
-	[Phase.Phase1]: [APLBM, APLMMBasic, APLMM, APLMMAdvanced, APLSV, APLMMOld],
+	[Phase.Phase1]: [APLBM, APLMMBasic, APLMM, APLMMAdvanced, APLMMOld, APLSV, APLSVAOE],
 
 };
 
-export const DefaultAPL = APLPresets[Phase.Phase1][1];
+export const DefaultAPL = APLPresets[Phase.Phase1][2];
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent Presets
