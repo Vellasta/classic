@@ -156,6 +156,9 @@ func buildStatWeightRequests(swr *proto.StatWeightsRequest) *proto.StatWeightReq
 		if stat.EqualsStat(stats.Armor) || stat.EqualsStat(stats.BonusArmor) || stat.EqualsStat(stats.Mana) {
 			statMod = defaultStatMod * 20
 		}
+		if stat.EqualsStat(stats.MeleeHaste) {
+			statMod = defaultStatMod * 20
+		}
 		statModsHigh[stat] = statMod
 		statModsLow[stat] = -statMod
 	}
