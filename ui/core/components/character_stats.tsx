@@ -490,7 +490,7 @@ export class CharacterStats extends Component {
 				displayStr = `${(rawValue / Mechanics.SPELL_CRIT_RATING_PER_CRIT_CHANCE).toFixed(2)}%`;
 			} else if (stat === Stat.StatMeleeHaste) {
 				// Melee Haste doesn't actually exist in vanilla so use the melee speed pseudostat
-				displayStr = `${(deltaStats.getPseudoStat(PseudoStat.PseudoStatMeleeSpeedMultiplier) * 100).toFixed(2)}%`;
+				displayStr = `${(rawValue).toFixed(2)}%`;
 			} else if (stat === Stat.StatSpellHaste) {
 				displayStr = `${(rawValue / Mechanics.HASTE_RATING_PER_HASTE_PERCENT).toFixed(2)}%`;
 			} else if (stat === Stat.StatArmorPenetration) {

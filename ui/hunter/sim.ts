@@ -58,7 +58,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		Stat.StatArcanePower,
 		Stat.StatMP5,
 	],
-	displayPseudoStats: [PseudoStat.PseudoStatRangedSpeedMultiplier],
+	displayPseudoStats: [PseudoStat.PseudoStatMeleeSpeedMultiplier, PseudoStat.PseudoStatRangedSpeedMultiplier],
 
 	defaults: {
 		race: Presets.OtherDefaults.race,
