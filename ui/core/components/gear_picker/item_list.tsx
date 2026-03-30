@@ -24,7 +24,7 @@ import Toast from '../toast';
 import { Clusterize } from '../virtual_scroll/clusterize';
 import { FiltersMenu } from './filters_menu';
 import { SelectorModalTabs } from './selector_modal';
-import { createItemTooltip, getWowheadTooltipString } from './utils';
+import { createItemTooltip, getTooltipString } from './utils';
 
 export interface ItemData<T> {
 	item: T;
@@ -607,7 +607,7 @@ export default class ItemList<T extends ItemListType> {
 					}
 				});
 			} else {
-				getWowheadTooltipString(enchantItem.itemId, enchantItem.spellId).then((urlToolTip: string) => {
+				getTooltipString(enchantItem.itemId, enchantItem.spellId).then((urlToolTip: string) => {
 					const itemTooltip = tippy(iconElem.value!, {
 						content: `${urlToolTip}`, 
 						allowHTML: true, 

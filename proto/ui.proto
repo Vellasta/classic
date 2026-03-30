@@ -43,7 +43,7 @@ message UIFaction {
 // Contains all information about an Item needed by the UI.
 // Generally this will include everything needed by the sim, plus some
 // additional data for displaying / filtering.
-// NextIndex: 32
+// NextIndex: 33
 message UIItem {
 	int32 id = 1;
 	string name = 2;
@@ -66,6 +66,7 @@ message UIItem {
 	double bonus_physical_damage = 30;
 
 	repeated string procStrings = 31;
+	string tooltip = 32;
 
 	int32 ilvl = 16;
 	int32 phase = 17;
@@ -187,6 +188,7 @@ message IconData {
 	string icon = 3;
 	int32 rank = 4;
 	bool has_buff = 5;
+	string tooltip = 6;
 }
 
 enum SourceFilterOption {

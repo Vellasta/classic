@@ -5,7 +5,7 @@ import { ActionId } from '../proto_utils/action_id.js';
 import { TypedEvent } from '../typed_event.js';
 import { IconPickerDirection } from './icon_picker.jsx';
 import { Input, InputConfig } from './input.js';
-import { getWowheadTooltipString } from './gear_picker/utils';
+import { getTooltipString } from './gear_picker/utils';
 
 export interface IconEnumValueConfig<ModObject, T> {
 	value: T;
@@ -115,7 +115,7 @@ export class IconEnumPicker<ModObject, T> extends Input<ModObject, T> {
 
 			const actionId = valueConfig.actionId?.(this.modObject);
 			if (actionId) {
-				getWowheadTooltipString(actionId.itemId, actionId.spellId).then((urlToolTip: string) => {
+				getTooltipString(actionId.itemId, actionId.spellId).then((urlToolTip: string) => {
 					if (urlToolTip) {
 						tippy(option, {
 							content: `${urlToolTip}`, 
@@ -250,7 +250,7 @@ export class IconEnumPicker<ModObject, T> extends Input<ModObject, T> {
 
 			const actionId = valueConfig.actionId?.(this.modObject);
 			if (actionId) {
-				getWowheadTooltipString(actionId.itemId, actionId.spellId).then((urlToolTip: string) => {
+				getTooltipString(actionId.itemId, actionId.spellId).then((urlToolTip: string) => {
 					if (urlToolTip) {
 						this.itemTooltip.setContent(`${urlToolTip}`);
 					}

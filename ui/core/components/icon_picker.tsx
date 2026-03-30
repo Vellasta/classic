@@ -5,7 +5,7 @@ import { ActionId } from '../proto_utils/action_id.js';
 import { TypedEvent } from '../typed_event.js';
 import { isRightClick } from '../utils.js';
 import { Input, InputConfig } from './input.js';
-import { getWowheadTooltipString } from './gear_picker/utils';
+import { getTooltipString } from './gear_picker/utils';
 
 export enum IconPickerDirection {
 	Vertical = 'vertical',
@@ -107,7 +107,7 @@ export class IconPicker<ModObject, ValueType> extends Input<ModObject, ValueType
 
 		const tooltipActionId = this.config.actionId(this.modObject)
 		if (tooltipActionId) {
-			getWowheadTooltipString(tooltipActionId.itemId, tooltipActionId.spellId).then((urlToolTip: string) => {
+			getTooltipString(tooltipActionId.itemId, tooltipActionId.spellId).then((urlToolTip: string) => {
 				if (urlToolTip) {
 					tippy(this.rootAnchor, {
 						content: `${urlToolTip}`, 
@@ -116,9 +116,8 @@ export class IconPicker<ModObject, ValueType> extends Input<ModObject, ValueType
 						placement: 'right-end'
 					});
 				}
-			});
+			})
 		}
-
 		// This must occur after this.init() else the state will not be handled correctly
 		const updateState = () => {
 			this.config.actionId(this.modObject)?.fillAndSet(this.rootAnchor, true, true);

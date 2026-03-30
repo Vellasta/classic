@@ -107,6 +107,7 @@ export class Database {
 						id: item.id,
 						name: item.name,
 						icon: item.icon,
+						tooltip: item.tooltip,
 					}),
 				)),
 		);
@@ -233,6 +234,11 @@ export class Database {
 		}
 		return await db.spellIcons[spellId];
 	}
+
+	// static async getItemData(itemId: number): Promise<Item | undefined> {
+	// 	const db = await Database.get();
+	// 	return await db.getItemById(itemId);
+	// }
 
 	static async getSpellRankData(spellId: number): Promise<IconData> {
 		const db = await Database.get();

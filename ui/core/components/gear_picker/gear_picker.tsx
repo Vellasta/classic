@@ -16,7 +16,7 @@ import { Component } from '../component';
 import { GearData } from './item_list';
 import SelectorModal, { SelectorModalTabs } from './selector_modal';
 import { getEmptySlotIconUrl } from './utils';
-import { createItemTooltip, getWowheadTooltipString } from './utils';
+import { createItemTooltip, getTooltipString } from './utils';
 
 export default class GearPicker extends Component {
 	// ItemSlot is used as the index
@@ -188,7 +188,7 @@ export class ItemRenderer extends Component {
 			if (newItem.enchant.tooltip !== "") {
 				this.enchantTooltip.setContent(`${newItem.enchant.tooltip}`);
 			} else {
-				getWowheadTooltipString(newItem.enchant.itemId, newItem.enchant.spellId).then((urlToolTip: string) => {
+				getTooltipString(newItem.enchant.itemId, newItem.enchant.spellId).then((urlToolTip: string) => {
 					this.enchantTooltip.setContent(`${urlToolTip}`);
 				});
 			}
