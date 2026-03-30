@@ -174,7 +174,7 @@ export const statNames: Map<Stat, string> = new Map([
 	[Stat.StatAttackPower, 'Melee AP'],
 	[Stat.StatFeralAttackPower, 'Feral AP'],
 	[Stat.StatMeleeHit, 'Physical Hit'],
-	[Stat.StatMeleeCrit, 'Melee Crit'],
+	[Stat.StatMeleeCrit, 'Physical Crit'],
 	[Stat.StatMeleeHaste, 'Physical Haste'],
 	[Stat.StatArmorPenetration, 'Armor Pen'],
 	[Stat.StatExpertise, 'Expertise'],

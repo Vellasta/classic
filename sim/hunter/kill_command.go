@@ -74,7 +74,7 @@ func (hunter *Hunter) registerKillCommandSpell() {
 	hunter.KillCommandAura = hunter.RegisterAura(core.Aura{
 		Label:    "Kill Command Aura",
 		ActionID: core.ActionID{SpellID: 41827},
-		Duration: time.Second * 5,
+		Duration: time.Second * 4,
 	})
 
 	hunter.RegisterAura(core.Aura{
