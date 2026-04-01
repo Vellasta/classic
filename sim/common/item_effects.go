@@ -82,104 +82,105 @@ const (
 	TheCruelHandOfTimmy       = 13401
 	RunebladeOfBaronRivendare = 13505
 	// HeadmastersCharge      = 13937
-	GravestoneWarAxe           = 13983
-	Darrowspike                = 13984
-	Frightalon                 = 14024
-	BonechillHammer            = 14487
-	EbonHiltOfMarduk           = 14576
-	FrightskullShaft           = 14531
-	BarovianFamilySword        = 14541
-	CloudkeeperLegplates       = 14554
-	AlcorsSunrazor             = 14555
-	HameyasSlayer              = 15814
-	JoonhosMercy               = 17054
-	DrillborerDisk             = 17066
-	Deathbringer               = 17068
-	GutgoreRipper              = 17071
-	Shadowstrike               = 17074
-	ViskagTheBloodletter       = 17075
-	BonereaversEdge            = 17076
-	BlazefuryMedallion         = 17111
-	EmpyreanDemolisher         = 17112
-	SulfurasHandOfRagnaros     = 17182
-	SulfuronHammer             = 17193
-	Thunderstrike              = 17223
-	ThrashBlade                = 17705
-	SatyrsLash                 = 17752
-	MarkOfTheChosen            = 17774
-	BladeOfEternalDarkness     = 17780
-	ForceReactiveDisk          = 18168
-	EskhandarsLeftClaw         = 18202
-	EskhandarsRightClaw        = 18203
-	FiendishMachete            = 18310
-	RazorGauntlets             = 18326
-	QuelSerrar                 = 18348
-	BaronCharrsSceptre         = 18671
-	TalismanOfEphemeralPower   = 18820
-	EssenceOfThePureFlame      = 18815
-	PerditionsBlade            = 18816
-	Thunderfury                = 19019
-	GlacialBlade               = 19099
-	ElectrifiedDagger          = 19100
-	Nightfall                  = 19169
-	EbonHand                   = 19170
-	DarkmoonCardHeroism        = 19287
-	DarkmoonCardBlueDragon     = 19288
-	DarkmoonCardMaelstrom      = 19289
-	TheLobotomizer             = 19324
-	TheUntamedBlade            = 19334
-	DrakeTalonCleaver          = 19353
-	RuneOfTheDawn              = 19812
-	HalberdOfSmiting           = 19874
-	ZulianSlicer               = 19901
-	JekliksCrusher             = 19918
-	TigulesHarpoon             = 19946
-	NatPaglesBrokenReel        = 19947
-	ZandalariHeroBadge         = 19948
-	ZandalariHeroMedallion     = 19949
-	ZandalariHeroCharm         = 19950
-	GrileksGrinder             = 19961
-	GrileksCarver              = 19962
-	PitchforkOfMadness         = 19963
-	EmeraldDragonfang          = 20578
-	Earthstrike                = 21180
-	WrathOfCenarius            = 21190
-	EyeOfMoam                  = 21473
-	ScarabBrooch               = 21625
-	BadgeOfTheSwarmguard       = 21670
-	KalimdorsRevenge           = 21679
-	DraconicInfusedEmblem      = 22268
-	HeartOfWyrmthalak          = 22321
-	TalismanOfAscendance       = 22678
-	GauntletsOfUndeadSlaying   = 23078
-	HandwrapsOfUndeadSlaying   = 23081
-	HandguardsOfUndeadSlaying  = 23082
-	GlovesOfUndeadCleansing    = 23084
-	RobeOfUndeadCleansing      = 23085
-	BreastplateOfUndeadSlaying = 23087
-	ChestguardOfUndeadSlaying  = 23088
-	TunicOfUndeadSlaying       = 23089
-	BracersOfUndeadSlaying     = 23090
-	BracersOfUndeadCleansing   = 23091
-	WristguardsOfUndeadSlaying = 23092
-	WristwrapsOfUndeadSlaying  = 23093
-	MarkOfTheChampionPhys      = 23206
-	MarkOfTheChampionSpell     = 23207
-	MisplacedServoArm          = 23221
-	JomGabbar                  = 23570
-	BeasthuntersBlunderbuss    = 61248
-	ClawOfTheMageweaver        = 55133
-	Rakashishi                 = 55116
-	Shadowbringer              = 61247
-	Chronobreaker              = 61049
-	TheRipper                  = 60422
-	TheCruelBlade              = 60413
-	WingOfTheTimeLord          = 61010
-	CrochideWrists             = 61565
-	DeathruneLeggings          = 83454
-	MoltenEmberstone           = 58211
-	ZandalarPredatorsGlaive    = 55495
-	TheAbyssalPincer           = 55494
+	GravestoneWarAxe                  = 13983
+	Darrowspike                       = 13984
+	Frightalon                        = 14024
+	BonechillHammer                   = 14487
+	EbonHiltOfMarduk                  = 14576
+	FrightskullShaft                  = 14531
+	BarovianFamilySword               = 14541
+	CloudkeeperLegplates              = 14554
+	AlcorsSunrazor                    = 14555
+	HameyasSlayer                     = 15814
+	JoonhosMercy                      = 17054
+	DrillborerDisk                    = 17066
+	Deathbringer                      = 17068
+	GutgoreRipper                     = 17071
+	Shadowstrike                      = 17074
+	ViskagTheBloodletter              = 17075
+	BonereaversEdge                   = 17076
+	BlazefuryMedallion                = 17111
+	EmpyreanDemolisher                = 17112
+	SulfurasHandOfRagnaros            = 17182
+	SulfuronHammer                    = 17193
+	Thunderstrike                     = 17223
+	ThrashBlade                       = 17705
+	SatyrsLash                        = 17752
+	MarkOfTheChosen                   = 17774
+	BladeOfEternalDarkness            = 17780
+	ForceReactiveDisk                 = 18168
+	EskhandarsLeftClaw                = 18202
+	EskhandarsRightClaw               = 18203
+	FiendishMachete                   = 18310
+	RazorGauntlets                    = 18326
+	QuelSerrar                        = 18348
+	BaronCharrsSceptre                = 18671
+	TalismanOfEphemeralPower          = 18820
+	EssenceOfThePureFlame             = 18815
+	PerditionsBlade                   = 18816
+	Thunderfury                       = 19019
+	GlacialBlade                      = 19099
+	ElectrifiedDagger                 = 19100
+	Nightfall                         = 19169
+	EbonHand                          = 19170
+	DarkmoonCardHeroism               = 19287
+	DarkmoonCardBlueDragon            = 19288
+	DarkmoonCardMaelstrom             = 19289
+	TheLobotomizer                    = 19324
+	TheUntamedBlade                   = 19334
+	DrakeTalonCleaver                 = 19353
+	RuneOfTheDawn                     = 19812
+	HalberdOfSmiting                  = 19874
+	ZulianSlicer                      = 19901
+	JekliksCrusher                    = 19918
+	TigulesHarpoon                    = 19946
+	NatPaglesBrokenReel               = 19947
+	ZandalariHeroBadge                = 19948
+	ZandalariHeroMedallion            = 19949
+	ZandalariHeroCharm                = 19950
+	GrileksGrinder                    = 19961
+	GrileksCarver                     = 19962
+	PitchforkOfMadness                = 19963
+	EmeraldDragonfang                 = 20578
+	Earthstrike                       = 21180
+	WrathOfCenarius                   = 21190
+	EyeOfMoam                         = 21473
+	ScarabBrooch                      = 21625
+	BadgeOfTheSwarmguard              = 21670
+	KalimdorsRevenge                  = 21679
+	DraconicInfusedEmblem             = 22268
+	HeartOfWyrmthalak                 = 22321
+	TalismanOfAscendance              = 22678
+	GauntletsOfUndeadSlaying          = 23078
+	HandwrapsOfUndeadSlaying          = 23081
+	HandguardsOfUndeadSlaying         = 23082
+	GlovesOfUndeadCleansing           = 23084
+	RobeOfUndeadCleansing             = 23085
+	BreastplateOfUndeadSlaying        = 23087
+	ChestguardOfUndeadSlaying         = 23088
+	TunicOfUndeadSlaying              = 23089
+	BracersOfUndeadSlaying            = 23090
+	BracersOfUndeadCleansing          = 23091
+	WristguardsOfUndeadSlaying        = 23092
+	WristwrapsOfUndeadSlaying         = 23093
+	MarkOfTheChampionPhys             = 23206
+	MarkOfTheChampionSpell            = 23207
+	MisplacedServoArm                 = 23221
+	JomGabbar                         = 23570
+	BattleStandardOfTheBroodcommander = 33149
+	BeasthuntersBlunderbuss           = 61248
+	ClawOfTheMageweaver               = 55133
+	Rakashishi                        = 55116
+	Shadowbringer                     = 61247
+	Chronobreaker                     = 61049
+	TheRipper                         = 60422
+	TheCruelBlade                     = 60413
+	WingOfTheTimeLord                 = 61010
+	CrochideWrists                    = 61565
+	DeathruneLeggings                 = 83454
+	MoltenEmberstone                  = 58211
+	ZandalarPredatorsGlaive           = 55495
+	TheAbyssalPincer                  = 55494
 )
 
 func init() {
@@ -3869,6 +3870,37 @@ func init() {
 			Outcome:    core.OutcomeLanded,
 			ProcMask:   core.ProcMaskMeleeOrRanged,
 			ProcChance: 0.05,
+			Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+				if result.Landed() {
+					buffAura.Activate(sim)
+				}
+			},
+		})
+	})
+
+	// Your melee attacks have a 2% chance to increase attack and casting speed for you and your party by 3% for 15 sec.
+	core.NewItemEffect(BattleStandardOfTheBroodcommander, func(agent core.Agent) {
+		character := agent.GetCharacter()
+		buffAura := character.RegisterAura(core.Aura{
+			ActionID: core.ActionID{SpellID: 20554},
+			Label:    "Battle Standard Haste Buff",
+			Duration: time.Second * 15,
+			OnGain: func(aura *core.Aura, sim *core.Simulation) {
+				character.AddStatDynamic(sim, stats.MeleeHaste, 3)
+				character.AddStatDynamic(sim, stats.SpellHaste, 3)
+			},
+			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+				character.AddStatDynamic(sim, stats.MeleeHaste, -3)
+				character.AddStatDynamic(sim, stats.SpellHaste, -3)
+			},
+		})
+
+		core.MakeProcTriggerAura(&agent.GetCharacter().Unit, core.ProcTrigger{
+			Name:       "Battle Standard Trigger",
+			Callback:   core.CallbackOnSpellHitDealt,
+			Outcome:    core.OutcomeLanded,
+			ProcMask:   core.ProcMaskMeleeOrRanged,
+			ProcChance: 0.02,
 			Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 				if result.Landed() {
 					buffAura.Activate(sim)
