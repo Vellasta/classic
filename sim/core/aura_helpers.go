@@ -79,7 +79,7 @@ func ApplyProcTriggerCallback(unit *Unit, aura *Aura, config ProcTrigger) {
 		if icd.Duration != 0 && !icd.IsReady(sim) {
 			return
 		}
-		if config.ProcChance != 1 && sim.RandomFloat(config.Name) > config.ProcChance {
+		if config.ProcChance != 1 && sim.RandomFloat(config.Name) > (config.ProcChance*(1+(spell.Unit.PseudoStats.Fortune/100))) {
 			return
 		} else if config.PPM != 0 && !ppmm.ProcWithWeaponSpecials(sim, spell.ProcMask, config.Name) {
 			return

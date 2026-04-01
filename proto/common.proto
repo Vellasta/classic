@@ -127,7 +127,7 @@ enum Stat {
 // between the UI and backend.
 //
 // It's also OK to include things here which aren't in the PseudoStats struct.
-// NextIndex: 31
+// NextIndex: 32
 enum PseudoStat {
 	PseudoStatMainHandDps = 0;
 	PseudoStatOffHandDps = 1;
@@ -170,6 +170,8 @@ enum PseudoStat {
 	PseudoStatBlockValuePerStrength = 29;
 
 	BonusPhysicalDamage = 30;
+
+	Fortune = 31;
 }
 
 message UnitStats {
@@ -865,7 +867,7 @@ message SimDatabase {
 }
 
 // Contains only the Item info needed by the sim.
-// NextIndex: 20
+// NextIndex: 21
 message SimItem {
 	int32 id = 1;
 	repeated Class class_allowlist = 17;
@@ -883,6 +885,7 @@ message SimItem {
 	double weapon_damage_max = 12;
 	double weapon_speed = 13;
 	double bonus_physical_damage = 19;
+	double fortune = 20;
 
 	string set_name = 14;
 	int32 set_id = 18;

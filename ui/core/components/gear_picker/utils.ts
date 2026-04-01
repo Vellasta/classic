@@ -167,6 +167,7 @@ export function createItemTooltip(item: ItemListType, player: Player<any>): stri
 	const baseStatsTooltip = getBaseStatsTooltip(item.stats)
 	const bonusStatsTooltip = getBonusStatsTooltip(item.stats)
 	const bonusWeaponDamageTooltip = getBonusWeaponDamageTooltip(item)
+	const FortuneTooltip = getFortuneTooltip(item)
 	const weaponSkillTooltip = getWeaponSkillTooltip(item)
 	const procStringTooltip = getProcStringTooltip(item)
 	const setTooltip = getSetTooltip(item, player)
@@ -180,6 +181,7 @@ export function createItemTooltip(item: ItemListType, player: Player<any>): stri
 		baseStatsTooltip, 
 		bonusStatsTooltip,
 		bonusWeaponDamageTooltip,
+		FortuneTooltip,
 		weaponSkillTooltip,
 		procStringTooltip,
 		setTooltip
@@ -267,6 +269,13 @@ function getBonusStatsTooltip(stats: any): string {
 function getBonusWeaponDamageTooltip(item: any): string {
 	if (item.bonusPhysicalDamage > 0) {
 		return `<span style="color: #1eff00;">Equip: +${item.bonusPhysicalDamage} Weapon Damage.</span>`
+	}
+	return ""
+}
+
+function getFortuneTooltip(item: any): string {
+	if (item.fortune > 0) {
+		return `<span style="color: #1eff00;">Equip: Increases your chance to trigger effects from equipped items by ${item.fortune}%.</span>`
 	}
 	return ""
 }

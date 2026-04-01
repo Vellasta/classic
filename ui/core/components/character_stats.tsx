@@ -80,7 +80,9 @@ const statGroups = new Map<string, Array<UnitStat>>([
 			UnitStat.fromStat(Stat.StatShadowResistance),
 		],
 	],
-	['Misc', []],
+	['Misc', [
+		UnitStat.fromPseudoStat(PseudoStat.Fortune),
+	]],
 ]);
 
 export class CharacterStats extends Component {

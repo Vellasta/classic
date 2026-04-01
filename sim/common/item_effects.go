@@ -2834,7 +2834,8 @@ func init() {
 				if spell.Flags.Matches(core.SpellFlagSuppressEquipProcs) {
 					return
 				}
-				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(0.02, "HandOfJustice") {
+				procChance := 0.02 * (1 + (spell.Unit.PseudoStats.Fortune / 100))
+				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(procChance, "HandOfJustice") {
 					icd.Use(sim)
 					aura.Unit.AutoAttacks.ExtraMHAttackProc(sim, 1, core.ActionID{SpellID: 15600}, spell)
 				}
@@ -3662,7 +3663,8 @@ func init() {
 				if !spell.ProcMask.Matches(core.ProcMaskMeleeMHAuto) {
 					return
 				}
-				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(0.2, "Rakashishi") {
+				procChance := 0.2 * (1 + (spell.Unit.PseudoStats.Fortune / 100))
+				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(procChance, "Rakashishi") {
 					icd.Use(sim)
 					for numHits := 0; numHits < 1; numHits++ {
 						nextTarget := character.Env.NextTargetUnit(result.Target)
@@ -3827,7 +3829,8 @@ func init() {
 				if spell.Flags.Matches(core.SpellFlagSuppressEquipProcs) {
 					return
 				}
-				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(0.01, "WingOfTheTimeLord") {
+				procChance := 0.01 * (1 + (spell.Unit.PseudoStats.Fortune / 100))
+				if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMelee) && icd.IsReady(sim) && sim.Proc(procChance, "WingOfTheTimeLord") {
 					icd.Use(sim)
 					aura.Unit.AutoAttacks.ExtraMHAttackProc(sim, 1, core.ActionID{SpellID: 15600}, spell)
 				}

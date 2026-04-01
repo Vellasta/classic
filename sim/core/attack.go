@@ -941,6 +941,10 @@ func (aa *AutoAttacks) NewPPMManager(ppm float64, procMask ProcMask) PPMManager 
 		return PPMManager{}
 	}
 
+	character := aa.mh.agent.GetCharacter()
+
+	ppm *= 1 + (character.PseudoStats.Fortune / 100)
+
 	ppmm := PPMManager{ppm: ppm, procMasks: make([]ProcMask, 0, 2), procChances: make([]float64, 0, 2)}
 
 	mergeOrAppend := func(speed float64, mask ProcMask) {
@@ -965,7 +969,6 @@ func (aa *AutoAttacks) NewPPMManager(ppm float64, procMask ProcMask) PPMManager 
 		ppmm.procChances[i] *= ppm / 60
 	}
 
-	character := aa.mh.agent.GetCharacter()
 	if procMask.Matches(ProcMaskMeleeMH) {
 		if character != nil {
 			if mhWeapon := character.GetMHWeapon(); mhWeapon != nil {

@@ -191,6 +191,7 @@ func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character 
 			character.PseudoStats.CrossbowsSkill += ps[proto.PseudoStat_PseudoStatCrossbowsSkill] + bonusWeaponSkill
 			character.PseudoStats.GunsSkill += ps[proto.PseudoStat_PseudoStatGunsSkill] + bonusWeaponSkill
 			character.PseudoStats.BonusPhysicalDamage += ps[proto.PseudoStat_BonusPhysicalDamage]
+			character.PseudoStats.Fortune += ps[proto.PseudoStat_Fortune]
 		}
 	}
 
@@ -280,6 +281,8 @@ func (character *Character) applyEquipment() {
 		}
 
 		character.PseudoStats.BonusPhysicalDamage += item.BonusPhysicalDamage
+
+		character.PseudoStats.Fortune += item.Fortune
 	}
 
 }
@@ -660,6 +663,7 @@ func (character *Character) GetPseudoStatsProto() []float64 {
 		proto.PseudoStat_PseudoStatBlockValuePerStrength: float64(character.PseudoStats.BlockValuePerStrength),
 
 		proto.PseudoStat_BonusPhysicalDamage: float64(character.PseudoStats.BonusPhysicalDamage),
+		proto.PseudoStat_Fortune:             float64(character.PseudoStats.Fortune),
 	}
 }
 

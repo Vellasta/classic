@@ -32,6 +32,7 @@ func init() {
 			RangedWeaponType:    item.RangedWeaponType,
 			Stats:               item.Stats,
 			BonusPhysicalDamage: item.BonusPhysicalDamage,
+			Fortune:             item.Fortune,
 			WeaponDamageMin:     item.WeaponDamageMin,
 			WeaponDamageMax:     item.WeaponDamageMax,
 			WeaponSpeed:         item.WeaponSpeed,

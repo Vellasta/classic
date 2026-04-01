@@ -418,6 +418,8 @@ type PseudoStats struct {
 	//  This includes almost all "(Normalized) Weapon Damage", but also some "School Damage (Physical)" abilities.
 	BonusPhysicalDamage float64 // Comes from '+X Weapon Damage' effects
 
+	Fortune float64
+
 	BonusMHDps     float64
 	BonusOHDps     float64
 	BonusRangedDps float64

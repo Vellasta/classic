@@ -60,6 +60,7 @@ type Item struct {
 	Name                string
 	Stats               stats.Stats // Stats applied to wearer
 	BonusPhysicalDamage float64
+	Fortune             float64
 	Quality             proto.ItemQuality
 	SetName             string // Empty string if not part of a set.
 	SetID               int32  // 0 if not part of a set.
@@ -88,6 +89,7 @@ func ItemFromProto(pData *proto.SimItem) Item {
 		SwingSpeed:          pData.WeaponSpeed,
 		Stats:               stats.FromFloatArray(pData.Stats),
 		BonusPhysicalDamage: pData.BonusPhysicalDamage,
+		Fortune:             pData.Fortune,
 		SetName:             pData.SetName,
 		SetID:               pData.SetId,
 		WeaponSkills:        stats.WeaponSkillsFloatArray(pData.WeaponSkills),
