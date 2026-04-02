@@ -181,6 +181,11 @@ const (
 	MoltenEmberstone                  = 58211
 	ZandalarPredatorsGlaive           = 55495
 	TheAbyssalPincer                  = 55494
+	AncientCornerstoneGrimoire        = 17067
+	BeastmastersBoots                 = 22061
+	BeastmastersGloves                = 22015
+	FerrasCollar                      = 18355
+	BreastplateOfBeastMastery         = 60784
 )
 
 func init() {
@@ -3848,6 +3853,9 @@ func init() {
 	// Use: Increases your melee and ranged attack power by 200.  Effect lasts for 20 sec. (2 Min Cooldown)
 	core.NewSimpleStatOffensiveTrinketEffect(MoltenEmberstone, stats.Stats{stats.AttackPower: 200, stats.RangedAttackPower: 200}, time.Second*20, time.Second*120)
 
+	// Chance on hit: Blasts the target for 120 Frost damage, reducing movement speed by 20% for 2 seconds.
+	itemhelpers.CreateWeaponCoHProcDamage(TheAbyssalPincer, "The Abyssal Pincer", 1.0, 18276, core.SpellSchoolFrost, 120, 0, 0, core.DefenseTypeMagic)
+
 	// Your landing ranged and melee attacks have a 5% chance to increase your Agility by 75 for 10 sec.
 	// (Proc chance: 5%)
 	core.NewItemEffect(ZandalarPredatorsGlaive, func(agent core.Agent) {
@@ -3909,8 +3917,82 @@ func init() {
 		})
 	})
 
-	// Chance on hit: Blasts the target for 120 Frost damage, reducing movement speed by 20% for 2 seconds.
-	itemhelpers.CreateWeaponCoHProcDamage(TheAbyssalPincer, "The Abyssal Pincer", 1.0, 18276, core.SpellSchoolFrost, 120, 0, 0, core.DefenseTypeMagic)
+	core.NewItemEffect(AncientCornerstoneGrimoire, func(agent core.Agent) {
+		character := agent.GetCharacter()
+		for _, petAgent := range character.PetAgents {
+			hp := petAgent.GetPet()
+			hp.GetOrRegisterAura(core.Aura{
+				Label:    "Ancient Cornerstone Grimoire Pet Bonus",
+				Duration: core.NeverExpires,
+				OnReset: func(aura *core.Aura, sim *core.Simulation) {
+					aura.Activate(sim)
+					hp.PseudoStats.DamageDealtMultiplier *= 1.05
+				},
+			})
+		}
+	})
+
+	core.NewItemEffect(BeastmastersBoots, func(agent core.Agent) {
+		character := agent.GetCharacter()
+		for _, petAgent := range character.PetAgents {
+			hp := petAgent.GetPet()
+			hp.GetOrRegisterAura(core.Aura{
+				Label:    "Beastmaster's Boots Pet Bonus",
+				Duration: core.NeverExpires,
+				OnReset: func(aura *core.Aura, sim *core.Simulation) {
+					aura.Activate(sim)
+					hp.PseudoStats.DamageDealtMultiplier *= 1.03
+				},
+			})
+		}
+	})
+
+	core.NewItemEffect(BeastmastersGloves, func(agent core.Agent) {
+		character := agent.GetCharacter()
+		for _, petAgent := range character.PetAgents {
+			hp := petAgent.GetPet()
+			hp.GetOrRegisterAura(core.Aura{
+				Label:    "Beastmaster's Gloves Pet Bonus",
+				Duration: core.NeverExpires,
+				OnReset: func(aura *core.Aura, sim *core.Simulation) {
+					aura.Activate(sim)
+					hp.AddStatDynamic(sim, stats.MeleeCrit, 2)
+					hp.AddStatDynamic(sim, stats.SpellCrit, 2)
+				},
+			})
+		}
+	})
+
+	core.NewItemEffect(FerrasCollar, func(agent core.Agent) {
+		character := agent.GetCharacter()
+		for _, petAgent := range character.PetAgents {
+			hp := petAgent.GetPet()
+			hp.GetOrRegisterAura(core.Aura{
+				Label:    "Ferra's Collar Pet Bonus",
+				Duration: core.NeverExpires,
+				OnReset: func(aura *core.Aura, sim *core.Simulation) {
+					aura.Activate(sim)
+					hp.PseudoStats.DamageDealtMultiplier *= 1.04
+				},
+			})
+		}
+	})
+
+	core.NewItemEffect(BreastplateOfBeastMastery, func(agent core.Agent) {
+		character := agent.GetCharacter()
+		for _, petAgent := range character.PetAgents {
+			hp := petAgent.GetPet()
+			hp.GetOrRegisterAura(core.Aura{
+				Label:    "Breastplate of Beast Mastery Pet Bonus",
+				Duration: core.NeverExpires,
+				OnReset: func(aura *core.Aura, sim *core.Simulation) {
+					aura.Activate(sim)
+					hp.PseudoStats.DamageDealtMultiplier *= 1.03
+					hp.AddStatDynamic(sim, stats.MeleeCrit, 2)
+				},
+			})
+		}
+	})
 
 	core.AddEffectsToTest = true
 }
