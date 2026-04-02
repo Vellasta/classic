@@ -295,7 +295,7 @@ export const SmokedSagefish: ConsumableInputConfig<Food> = {
 	value: Food.FoodSmokedSagefish,
 };
 export const SquidEelSkewer: ConsumableInputConfig<Food> = {
-	actionId: () => ActionId.fromItemId(61784),
+	actionId: () => ActionId.fromItemId(42163),
 	value: Food.FoodSquidEelSkewer,
 };
 export const DanonzosTelabimSurprise: ConsumableInputConfig<Food> = {
