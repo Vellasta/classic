@@ -152,6 +152,7 @@ const setIDToStringFunctionMap: Record<number, Function> = {
 	[215]: getDragonstalkerTooltip,
 	[477]: getPredatorsTooltip,
 	[515]: getBeastmasterTooltip,
+	[510]: getTrappingsTooltip,
 	[509]: getStrikersTooltip,
 	[530]: getCryptstalkerTooltip,
 	[697]: getRavenstalkerTooltip,
@@ -644,6 +645,24 @@ function getBeastmasterTooltip(player: Player<any>): string {
 	
 	return `<span style="color: gold;">Beastmaster Armor (${setCount}/8)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }
+
+function getTrappingsTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[21401]: "Scythe of the Unseen Path",
+		[21402]: "Signet of the Unseen Path",
+		[21403]: "Cloak of the Unseen Path",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set: Increases your pet's damage by 3%.",
+		[3]: "(3) Set: Increases pet Focus regeneration by 2.<br>(3) Set: Increases the critical strike chance of Steady Shot, Raptor Strike and Mongoose Bite by 2%.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Trappings of the Unseen Path (${setCount}/3)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
 
 function getStrikersTooltip(player: Player<any>): string {
 	const idToStringMap: Record<number, String> = {

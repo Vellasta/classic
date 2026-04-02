@@ -202,6 +202,51 @@ var ItemSetBeastmasterArmor = core.NewItemSet(core.ItemSet{
 })
 
 // https://www.wowhead.com/classic/item-set=509/strikers-garb
+var ItemSetTrappings = core.NewItemSet(core.ItemSet{
+	Name: "Trappings of the Unseen Path",
+	Bonuses: map[int32]core.ApplyEffect{
+		// (2) Set: Increases your pet's damage by 3%.
+		2: func(agent core.Agent) {
+			hunter := agent.(HunterAgent).GetHunter()
+			if hunter.pet == nil {
+				return
+			}
+			hp := hunter.pet
+			core.MakePermanent(hp.RegisterAura(core.Aura{
+				Label: "Trappings Pet Damage Bonus",
+				OnReset: func(aura *core.Aura, sim *core.Simulation) {
+					hp.PseudoStats.DamageDealtMultiplier *= 1.03
+				},
+			}))
+		},
+		// (3) Set: Increases pet Focus regeneration by 2.
+		// (3) Set: Increases the critical strike chance of Steady Shot, Raptor Strike and Mongoose Bite by 2%.
+		3: func(agent core.Agent) {
+			hunter := agent.(HunterAgent).GetHunter()
+			if hunter.pet == nil {
+				return
+			}
+			hp := hunter.pet
+			core.MakePermanent(hp.RegisterAura(core.Aura{
+				Label: "Trappings Pet Focus Regen Bonus",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					hp.AddFocusRegenMultiplier(float64(2.0 / hp.CurrentFocusPerTick()))
+				},
+			}))
+
+			core.MakePermanent(hunter.RegisterAura(core.Aura{
+				Label: "Trappings Steady Shot, Raptor Strike, and Mongoose Bite Bonus",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					hunter.SteadyShot.BonusCritRating += 2
+					hunter.RaptorStrike.BonusCritRating += 2
+					hunter.MongooseBite.BonusCritRating += 2
+				},
+			}))
+		},
+	},
+})
+
+// https://www.wowhead.com/classic/item-set=509/strikers-garb
 var ItemSetStrikersGarb = core.NewItemSet(core.ItemSet{
 	Name: "Striker's Garb",
 	Bonuses: map[int32]core.ApplyEffect{
