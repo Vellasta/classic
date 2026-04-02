@@ -46,7 +46,7 @@ func (hunter *Hunter) createEnchantedAmmunitionAura(auraLabel string, actionID c
 func (hunter *Hunter) applyExplosiveAmmunition() {
 	hunter.ExplosiveAmmunition = hunter.RegisterSpell(core.SpellConfig{
 		SpellCode:    SpellCode_HunterExplosiveAmmunition,
-		ActionID:     core.ActionID{SpellID: 52421},
+		ActionID:     core.ActionID{SpellID: 58109},
 		SpellSchool:  core.SpellSchoolFire,
 		DefenseType:  core.DefenseTypeRanged,
 		ProcMask:     core.ProcMaskRangedSpecial,
@@ -76,7 +76,7 @@ func (hunter *Hunter) applyExplosiveAmmunition() {
 func (hunter *Hunter) applyPoisonousAmmunition() {
 	hunter.PoisonousAmmunition = hunter.RegisterSpell(core.SpellConfig{
 		SpellCode:    SpellCode_HunterPoisonousAmmunition,
-		ActionID:     core.ActionID{SpellID: 52422},
+		ActionID:     core.ActionID{SpellID: 58110},
 		SpellSchool:  core.SpellSchoolNature,
 		DefenseType:  core.DefenseTypeRanged,
 		ProcMask:     core.ProcMaskRangedSpecial,
@@ -106,7 +106,7 @@ func (hunter *Hunter) applyPoisonousAmmunition() {
 func (hunter *Hunter) applyEnchantedAmmunition() {
 	hunter.EnchantedAmmunition = hunter.RegisterSpell(core.SpellConfig{
 		SpellCode:    SpellCode_HunterEnchantedAmmunition,
-		ActionID:     core.ActionID{SpellID: 52423},
+		ActionID:     core.ActionID{SpellID: 58111},
 		SpellSchool:  core.SpellSchoolArcane,
 		DefenseType:  core.DefenseTypeRanged,
 		ProcMask:     core.ProcMaskRangedSpecial,
@@ -136,7 +136,7 @@ func (hunter *Hunter) applyEnchantedAmmunition() {
 func (hunter *Hunter) applyExplosiveAmmunitionAOE() {
 	hunter.ExplosiveAmmunitionAOE = hunter.RegisterSpell(core.SpellConfig{
 		SpellCode:   SpellCode_HunterExplosiveAmmunitionAOE,
-		ActionID:    core.ActionID{SpellID: 52424},
+		ActionID:    core.ActionID{SpellID: 58112},
 		SpellSchool: core.SpellSchoolFire,
 		DefenseType: core.DefenseTypeMagic,
 		ProcMask:    core.ProcMaskSpellDamage,
@@ -172,15 +172,15 @@ func (hunter *Hunter) registerExperimentalAmmunition() {
 
 	hunter.ExplosiveAmmunitionAura = hunter.createExplosiveAmmunitionAura(
 		"Explosive Ammunition Aura",
-		core.ActionID{SpellID: 52421},
+		core.ActionID{SpellID: 58109},
 	)
 	hunter.PoisonousAmmunitionAura = hunter.createPoisonousAmmunitionAura(
 		"Poisonous Ammunition Aura",
-		core.ActionID{SpellID: 52422},
+		core.ActionID{SpellID: 58110},
 	)
 	hunter.EnchantedAmmunitionAura = hunter.createEnchantedAmmunitionAura(
 		"Enchanted Ammunition Aura",
-		core.ActionID{SpellID: 52423},
+		core.ActionID{SpellID: 58111},
 	)
 
 	hunter.applyExplosiveAmmunitionAOE()

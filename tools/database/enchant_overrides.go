@@ -229,5 +229,5 @@ var EnchantOverrides = []*proto.UIEnchant{
 	{EffectId: 663, ItemId: 10546, SpellId: 12459, Name: "Deadly Scope", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeRanged},
 	{EffectId: 664, ItemId: 10548, SpellId: 12460, Name: "Sniper Scope", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeRanged},
 	{EffectId: 2523, ItemId: 18283, SpellId: 22779, Name: "Biznicks 247x128 Accurascope", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeRanged},
-	{EffectId: 3052, ItemId: 61783, SpellId: 57031, Name: "Facetted Crystal Scope", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeRanged},
+	{EffectId: 450, ItemId: 33146, SpellId: 36945, Name: "Facetted Crystal Scope", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeRanged},
 }

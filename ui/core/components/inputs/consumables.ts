@@ -299,11 +299,11 @@ export const SquidEelSkewer: ConsumableInputConfig<Food> = {
 	value: Food.FoodSquidEelSkewer,
 };
 export const DanonzosTelabimSurprise: ConsumableInputConfig<Food> = {
-	actionId: () => ActionId.fromItemId(61785),
+	actionId: () => ActionId.fromItemId(60976),
 	value: Food.FoodDanonzosTelabimSurprise,
 };
 export const DanonzosTelabimMedley: ConsumableInputConfig<Food> = {
-	actionId: () => ActionId.fromItemId(61786),
+	actionId: () => ActionId.fromItemId(60978),
 	value: Food.FoodDanonzosTelabimMedley,
 };
 

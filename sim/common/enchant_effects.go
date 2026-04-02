@@ -338,7 +338,7 @@ func init() {
 	})
 
 	// Facetted Crystal Scope
-	core.AddWeaponEffect(3052, func(agent core.Agent, _ proto.ItemSlot) {
+	core.AddWeaponEffect(450, func(agent core.Agent, _ proto.ItemSlot) {
 		character := agent.GetCharacter()
 		character.AddBonusRangedCritRating(2)
 	})

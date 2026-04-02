@@ -390,7 +390,7 @@ func (hp *HunterPet) newPoisonSpit() *core.Spell {
 		60: 35,
 	}[hp.Owner.Level]
 	spellID := map[int32]int32{
-		60: 52427,
+		60: 46273,
 	}[hp.Owner.Level]
 
 	return hp.RegisterSpell(core.SpellConfig{

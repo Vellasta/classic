@@ -28,7 +28,7 @@ func (hunter *Hunter) applyLockAndLoad() {
 
 	hunter.lockAndLoadAura = hunter.createLockAndLoadAura(
 		"Lock and Load",
-		core.ActionID{SpellID: 52420},
+		core.ActionID{SpellID: 52920},
 	)
 
 	core.MakePermanent(hunter.RegisterAura(core.Aura{

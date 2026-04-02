@@ -853,7 +853,7 @@ func ExposeWeaknessAura(target *Unit) *Aura {
 func PoisonousAmmunitionAura(target *Unit) *Aura {
 	arpen := 240.0
 	aura := target.GetOrRegisterAura(Aura{
-		ActionID: ActionID{SpellID: 52425},
+		ActionID: ActionID{SpellID: 58113},
 		Label:    "Poisonous Ammunition (Armor Debuff)",
 		Duration: time.Second * 15,
 		OnGain: func(aura *Aura, sim *Simulation) {
@@ -869,7 +869,7 @@ func PoisonousAmmunitionAura(target *Unit) *Aura {
 
 func EnchantedAmmunitionAura(target *Unit) *Aura {
 	aura := target.GetOrRegisterAura(Aura{
-		ActionID: ActionID{SpellID: 52426},
+		ActionID: ActionID{SpellID: 58114},
 		Label:    "Enchanted Ammunition (Magic Debuff)",
 		Duration: time.Second * 6,
 		OnGain: func(aura *Aura, sim *Simulation) {

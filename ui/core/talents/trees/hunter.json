@@ -438,7 +438,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          52419
+          58108
         ],
         "maxPoints": 1,
         "prereqLocation": {
@@ -514,7 +514,7 @@
           "colIdx": 1
         },
         "spellIds": [
-          52420
+          52920
         ],
         "maxPoints": 1,
         "prereqLocation": {
@@ -620,8 +620,8 @@
           "colIdx": 3
         },
         "spellIds": [
-          52417,
-          52418
+          52891,
+          52892
         ],
         "maxPoints": 2
       },
