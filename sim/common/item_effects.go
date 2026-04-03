@@ -186,6 +186,7 @@ const (
 	BeastmastersGloves                = 22015
 	FerrasCollar                      = 18355
 	BreastplateOfBeastMastery         = 60784
+	EyesoftheSightless                = 33314
 )
 
 func init() {
@@ -3993,6 +3994,9 @@ func init() {
 			})
 		}
 	})
+
+	// Equip: +30 Attack Power when fighting Demons.
+	core.NewMobTypeAttackPowerEffect(EyesoftheSightless, []proto.MobType{proto.MobType_MobTypeDemon}, 30)
 
 	core.AddEffectsToTest = true
 }

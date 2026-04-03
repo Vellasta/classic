@@ -520,7 +520,7 @@ function getDaggersWeaponSkillTooltip(val: number): string {
 }
 
 function getUnarmedWeaponSkillTooltip(val: number): string {
-	return `Equip: Increased Unarmed +${val}.`
+	return `Equip: Increased Fist Weapons +${val}.`
 }
 
 function getTwoHandedAxesWeaponSkillTooltip(val: number): string {
