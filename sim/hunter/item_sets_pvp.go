@@ -1,6 +1,8 @@
 package hunter
 
 import (
+	"time"
+
 	"github.com/Vellasta/classic/sim/core"
 	"github.com/Vellasta/classic/sim/core/stats"
 )
@@ -133,6 +135,115 @@ var ItemSetFieldMarshalsPursuit = core.NewItemSet(core.ItemSet{
 		6: func(agent core.Agent) {
 			c := agent.GetCharacter()
 			c.AddStat(stats.Agility, 20)
+		},
+	},
+})
+
+///////////////////////////////////////////////////////////////////////////
+//                            New PvP Sets
+///////////////////////////////////////////////////////////////////////////
+
+var ItemSetCombatantsPursuit = core.NewItemSet(core.ItemSet{
+	Name: "Combatant's Pursuit",
+	Bonuses: map[int32]core.ApplyEffect{
+		// (2) Set: Increases the damage done by your Multi-Shot and Carve by 4%.
+		2: func(agent core.Agent) {
+			hunter := agent.(HunterAgent).GetHunter()
+			hunter.RegisterAura(core.Aura{
+				Label: "Combatant's Multishot And Carve Damage Increase",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					hunter.MultiShot.BaseDamageMultiplierAdditive += 0.04
+					if hunter.Carve != nil {
+						hunter.Carve.BaseDamageMultiplierAdditive += 0.04
+					}
+				},
+			})
+		},
+		// (4) Set: Reduces the cooldown of Concussive Shot by 1000 sec and Wing Clip by 500 sec.
+		4: func(agent core.Agent) {
+			hunter := agent.(HunterAgent).GetHunter()
+			core.MakePermanent(hunter.RegisterAura(core.Aura{
+				Label: "Combatant's Wing Clip Cooldown",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					hunter.WingClip.CD.Duration -= time.Millisecond * 500
+				},
+			}))
+		},
+		// (6) Set: +20 Stamina.
+		// (6) Set: Reduces damage taken from critical hits and damage over time effects by 3%.
+		6: func(agent core.Agent) {
+			c := agent.GetCharacter()
+			c.AddStat(stats.Stamina, 20)
+		},
+	},
+})
+
+var ItemSetPartisansPursuit = core.NewItemSet(core.ItemSet{
+	Name: "Partisan's Pursuit",
+	Bonuses: map[int32]core.ApplyEffect{
+		// (2) Set: Increases the damage done by your Multi-Shot and Carve by 4%.
+		2: func(agent core.Agent) {
+			hunter := agent.(HunterAgent).GetHunter()
+			hunter.RegisterAura(core.Aura{
+				Label: "Partisan's Multishot And Carve Damage Increase",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					hunter.MultiShot.BaseDamageMultiplierAdditive += 0.04
+					if hunter.Carve != nil {
+						hunter.Carve.BaseDamageMultiplierAdditive += 0.04
+					}
+				},
+			})
+		},
+		// (4) Set: Reduces the cooldown of Concussive Shot by 1000 sec and Wing Clip by 500 sec.
+		4: func(agent core.Agent) {
+			hunter := agent.(HunterAgent).GetHunter()
+			core.MakePermanent(hunter.RegisterAura(core.Aura{
+				Label: "Partisan's Wing Clip Cooldown",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					hunter.WingClip.CD.Duration -= time.Millisecond * 500
+				},
+			}))
+		},
+		// (6) Set: +30 Stamina.
+		// (6) Set: Reduces damage taken from critical hits and damage over time effects by 3%.
+		6: func(agent core.Agent) {
+			c := agent.GetCharacter()
+			c.AddStat(stats.Stamina, 30)
+		},
+	},
+})
+
+var ItemSetVeteransPursuit = core.NewItemSet(core.ItemSet{
+	Name: "Veteran's Pursuit",
+	Bonuses: map[int32]core.ApplyEffect{
+		// (2) Set: Increases the damage done by your Multi-Shot and Carve by 4%.
+		2: func(agent core.Agent) {
+			hunter := agent.(HunterAgent).GetHunter()
+			hunter.RegisterAura(core.Aura{
+				Label: "Veteran's Multishot And Carve Damage Increase",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					hunter.MultiShot.BaseDamageMultiplierAdditive += 0.04
+					if hunter.Carve != nil {
+						hunter.Carve.BaseDamageMultiplierAdditive += 0.04
+					}
+				},
+			})
+		},
+		// (4) Set: Reduces the cooldown of Concussive Shot by 1000 sec and Wing Clip by 500 sec.
+		4: func(agent core.Agent) {
+			hunter := agent.(HunterAgent).GetHunter()
+			core.MakePermanent(hunter.RegisterAura(core.Aura{
+				Label: "Veteran's Wing Clip Cooldown",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					hunter.WingClip.CD.Duration -= time.Millisecond * 500
+				},
+			}))
+		},
+		// (6) Set: +35 Stamina.
+		// (6) Set: Reduces damage taken from critical hits and damage over time effects by 6%.
+		6: func(agent core.Agent) {
+			c := agent.GetCharacter()
+			c.AddStat(stats.Stamina, 35)
 		},
 	},
 })

@@ -156,6 +156,9 @@ const setIDToStringFunctionMap: Record<number, Function> = {
 	[509]: getStrikersTooltip,
 	[530]: getCryptstalkerTooltip,
 	[697]: getRavenstalkerTooltip,
+	[719]: getCombatantsTooltip,
+	[720]: getPartisansTooltip,
+	[721]: getVeteransTooltip,
 }
 
 
@@ -726,6 +729,69 @@ function getRavenstalkerTooltip(player: Player<any>): string {
 	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
 	
 	return `<span style="color: gold;">Ravenstalker Armor (${setCount}/6)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
+function getCombatantsTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[33440]: "Combatant's Chain Helm",
+		[33441]: "Combatant's Chain Spaulders",
+		[33442]: "Combatant's Chain Breastplate",
+		[33443]: "Combatant's Chain Grips",
+		[33444]: "Combatant's Chain Legguards",
+		[33445]: "Combatant's Chain Boots",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set: Increases the damage done by your Multi-Shot and Carve by 4%.",
+		[4]: "(4) Set: Reduces the cooldown of Concussive Shot by 1000 sec and Wing Clip by 500 sec.",
+		[6]: "(6) Set: +20 Stamina.<br>(6) Set: Reduces damage taken from critical hits and damage over time effects by 3%.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Combatant's Pursuit (${setCount}/6)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
+function getPartisansTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[33446]: "Partisan's Chain Helm",
+		[33447]: "Partisan's Chain Spaulders",
+		[33448]: "Partisan's Chain Breastplate",
+		[33449]: "Partisan's Chain Grips",
+		[33450]: "Partisan's Chain Legguards",
+		[33451]: "Partisan's Chain Boots",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set: Increases the damage done by your Multi-Shot and Carve by 4%.",
+		[4]: "(4) Set: Reduces the cooldown of Concussive Shot by 1000 sec and Wing Clip by 500 sec.",
+		[6]: "(6) Set: +30 Stamina.<br>(6) Set: Reduces damage taken from critical hits and damage over time effects by 3%.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Partisan's Pursuit (${setCount}/6)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
+function getVeteransTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[33452]: "Veteran's Chain Helm",
+		[33453]: "Veteran's Chain Spaulders",
+		[33454]: "Veteran's Chain Breastplate",
+		[33455]: "Veteran's Chain Grips",
+		[33456]: "Veteran's Chain Legguards",
+		[33457]: "Veteran's Chain Boots",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set: Increases the damage done by your Multi-Shot and Carve by 4%.",
+		[4]: "(4) Set: Reduces the cooldown of Concussive Shot by 1000 sec and Wing Clip by 500 sec.",
+		[6]: "(6) Set: +35 Stamina.<br>(6) Set: Reduces damage taken from critical hits and damage over time effects by 6%.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Veteran's Pursuit (${setCount}/6)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }
 
 export async function getTooltipString(itemId: number, spellId: number): Promise<string> {
