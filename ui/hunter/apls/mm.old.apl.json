@@ -5,7 +5,7 @@
   ],
   "priorityList": [
     {"action":{"autocastOtherCooldowns":{}}},
-    {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLt","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"1.6"}}}},{"cmp":{"op":"OpGt","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"0.5"}}}}]}},"castSpell":{"spellId":{"spellId":25294}}}},
-    {"action":{"condition":{"cmp":{"op":"OpLt","lhs":{"spellCastTime":{"spellId":{"spellId":3668}}},"rhs":{"math":{"op":"OpAdd","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"0.4"}}}}}},"castSpell":{"spellId":{"spellId":3668}}}}
+    {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLt","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"1.6"}}}},{"cmp":{"op":"OpGt","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"0.2"}}}}]}},"castSpell":{"spellId":{"spellId":25294}}}},
+    {"action":{"condition":{"cmp":{"op":"OpLt","lhs":{"spellCastTime":{"spellId":{"spellId":3668}}},"rhs":{"math":{"op":"OpAdd","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"0.8"}}}}}},"castSpell":{"spellId":{"spellId":3668}}}}
   ]
 }

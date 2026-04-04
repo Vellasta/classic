@@ -115,15 +115,15 @@ export const DefaultGear = GearKara40MM;
 ///////////////////////////////////////////////////////////////////////////
 
 export const APLBM = PresetUtils.makePresetAPLRotation('Beast Mastery', BMAPL, { talentTree: 0 });
-export const APLMM = PresetUtils.makePresetAPLRotation('Marksmanship (Standard)', MMAPL, { talentTree: 1 });
-export const APLMMBasic = PresetUtils.makePresetAPLRotation('Marksmanship (Basic)', MMAPLBasic, { talentTree: 1 });
-export const APLMMAdvanced = PresetUtils.makePresetAPLRotation('Marksmanship (Advanced)', MMAPLAdvanced, { talentTree: 1 });
+export const APLMM = PresetUtils.makePresetAPLRotation('Marksmanship', MMAPL, { talentTree: 1 });
+export const APLMMBasic = PresetUtils.makePresetAPLRotation('Marksmanship (Ignore Ammo Procs)', MMAPLBasic, { talentTree: 1 });
+export const APLMMAdvanced = PresetUtils.makePresetAPLRotation('Marksmanship (Predictive Ammo Casting)', MMAPLAdvanced, { talentTree: 1 });
 export const APLMMOld = PresetUtils.makePresetAPLRotation('Marksmanship (Old)', MMOldAPL, { talentTree: 1 });
 export const APLSV = PresetUtils.makePresetAPLRotation('Survival', SVAPL, { talentTree: 2 });
 export const APLSVAOE = PresetUtils.makePresetAPLRotation('Survival (AOE)', SVAOEAPL, { talentTree: 2 });
 
 export const APLPresets = {
-	[Phase.Phase1]: [APLBM, APLMMBasic, APLMM, APLMMAdvanced, APLMMOld, APLSV, APLSVAOE],
+	[Phase.Phase1]: [APLBM, APLMM, APLMMBasic, APLMMAdvanced, APLMMOld, APLSV, APLSVAOE],
 
 };
 
@@ -228,5 +228,5 @@ export const OtherDefaults = {
 	weaponSkillBook: false,
 	profession1: Profession.Enchanting,
 	profession2: Profession.Engineering,
-	race: Race.RaceTroll,
+	race: Race.RaceHighElf,
 };
