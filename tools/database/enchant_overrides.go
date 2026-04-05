@@ -73,6 +73,7 @@ var EnchantOverrides = []*proto.UIEnchant{
 
 	// Back
 	{EffectId: 2, SpellId: 7454, Name: "Enchant Cloak - Minor Resistance", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.ArcaneResistance: 1, stats.FrostResistance: 1, stats.FireResistance: 1, stats.NatureResistance: 1, stats.ShadowResistance: 1}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
+	{EffectId: 93, SpellId: 49016, Name: "Enchant Cloak - Agility", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.Agility: 7}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
 	{EffectId: 783, SpellId: 7771, Name: "Enchant Cloak - Minor Protection", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.BonusArmor: 10}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
 	{EffectId: 247, SpellId: 13419, Name: "Enchant Cloak - Minor Agility", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.Agility: 1}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
 	{EffectId: 744, SpellId: 13421, Name: "Enchant Cloak - Lesser Protection", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.BonusArmor: 20}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
