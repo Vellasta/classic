@@ -58,7 +58,7 @@ export const simLaunchStatuses: Record<Spec, SimStatus> = {
 	},
 	[Spec.SpecHunter]: {
 		phase: Phase.Phase5,
-		status: LaunchStatus.Alpha,
+		status: LaunchStatus.Beta,
 	},
 	[Spec.SpecMage]: {
 		phase: Phase.Phase1,
