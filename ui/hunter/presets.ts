@@ -225,7 +225,7 @@ export const DefaultDebuffs = Debuffs.create({
 
 export const OtherDefaults = {
 	distanceFromTarget: 12,
-	weaponSkillBook: false,
+	weaponSkillBook: true,
 	profession1: Profession.Enchanting,
 	profession2: Profession.Engineering,
 	race: Race.RaceHighElf,
