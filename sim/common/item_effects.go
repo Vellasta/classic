@@ -187,6 +187,8 @@ const (
 	FerrasCollar                      = 18355
 	BreastplateOfBeastMastery         = 60784
 	EyesoftheSightless                = 33314
+	ShieldrenderTalisman              = 55131
+	VialofPotentVenoms                = 61243
 )
 
 func init() {
@@ -3997,6 +3999,127 @@ func init() {
 
 	// Equip: +30 Attack Power when fighting Demons.
 	core.NewMobTypeAttackPowerEffect(EyesoftheSightless, []proto.MobType{proto.MobType_MobTypeDemon}, 30)
+
+	// Equip: Your physical attacks have a chance to cause your next 4 physical attacks to ignore armor. Lasts 10 sec.
+	itemhelpers.CreateItemProcSpell(ShieldrenderTalisman, "Shieldrender Talisman", 2.5, func(character *core.Character) *core.Spell {
+		actionID := core.ActionID{SpellID: 21153}
+		buffAura := character.RegisterAura(core.Aura{
+			ActionID:  actionID,
+			Label:     "Shieldrender Talisman Armor Ignore Passive",
+			Duration:  time.Second * 10,
+			MaxStacks: 4,
+			OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+				if aura.IsActive() && spell.ProcMask.Matches(core.ProcMaskMeleeOrRanged) {
+					aura.RemoveStack(sim)
+					if aura.GetStacks() == 0 {
+						aura.Deactivate(sim)
+					}
+				}
+			},
+			OnGain: func(aura *core.Aura, sim *core.Simulation) {
+				for _, target := range sim.Encounter.TargetUnits {
+					target.AddStatDynamic(sim, stats.Armor, -20000)
+				}
+			},
+			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+				for _, target := range sim.Encounter.TargetUnits {
+					target.AddStatDynamic(sim, stats.Armor, 20000)
+				}
+			},
+		})
+
+		return character.RegisterSpell(core.SpellConfig{
+			ActionID:    actionID,
+			SpellSchool: core.SpellSchoolShadow,
+			ProcMask:    core.ProcMaskEmpty,
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+				buffAura.Activate(sim)
+				buffAura.SetStacks(sim, 4)
+			},
+		})
+	})
+
+	core.NewItemEffect(VialofPotentVenoms, func(agent core.Agent) {
+		character := agent.GetCharacter()
+
+		procSpell := character.GetOrRegisterSpell(core.SpellConfig{
+			ActionID:         core.ActionID{SpellID: 13526},
+			SpellSchool:      core.SpellSchoolNature,
+			DefenseType:      core.DefenseTypeMagic,
+			ProcMask:         core.ProcMaskSpellDamage,
+			Flags:            core.SpellFlagPoison | core.SpellFlagPureDot,
+			DamageMultiplier: 1,
+			ThreatMultiplier: 1,
+
+			Dot: core.DotConfig{
+				Aura: core.Aura{
+					Label:     "Corrosive Poison",
+					MaxStacks: 2,
+					Duration:  time.Second * 12,
+				},
+				NumberOfTicks: 4,
+				TickLength:    time.Second * 3,
+
+				OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, applyStack bool) {
+					if !applyStack {
+						return
+					}
+					if dot.GetStacks() == 1 {
+						attackTable := dot.Spell.Unit.AttackTables[target.UnitIndex][dot.Spell.CastType]
+						dot.SnapshotAttackerMultiplier = dot.Spell.AttackerDamageMultiplier(attackTable, true)
+						dot.SnapshotBaseDamage = 0
+					}
+					dot.SnapshotBaseDamage += 120
+				},
+				OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
+					dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+				},
+			},
+
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+				result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeMagicHit)
+				if result.Landed() {
+					dot := spell.Dot(target)
+					dot.ApplyOrRefresh(sim)
+					if dot.GetStacks() < dot.MaxStacks {
+						dot.AddStack(sim)
+						dot.TakeSnapshot(sim, true)
+					}
+				}
+			},
+		})
+
+		core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			Name:              "Vial of Potent Venoms Trigger",
+			Callback:          core.CallbackOnSpellHitDealt,
+			Outcome:           core.OutcomeLanded,
+			ProcMask:          core.ProcMaskMeleeOrRanged,
+			SpellFlagsExclude: core.SpellFlagSuppressEquipProcs,
+			Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+				procChance := 0.5
+				if sim.Proc(procChance, "VialofPotentVenoms") {
+					procSpell.Cast(sim, result.Target)
+				}
+			},
+		})
+
+		// character.GetOrRegisterAura(core.Aura{
+		// 	Label:    "Vial of Potent Venoms Aura",
+		// 	Duration: core.NeverExpires,
+		// 	OnReset: func(aura *core.Aura, sim *core.Simulation) {
+		// 		aura.Activate(sim)
+		// 	},
+		// 	OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+		// 		if spell.Flags.Matches(core.SpellFlagSuppressEquipProcs) {
+		// 			return
+		// 		}
+		// 		procChance := 0.5
+		// 		if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMeleeOrRanged) && sim.Proc(procChance, "VialofPotentVenoms") {
+		// 			procSpell.Cast(sim, result.Target)
+		// 		}
+		// 	},
+		// })
+	})
 
 	core.AddEffectsToTest = true
 }
