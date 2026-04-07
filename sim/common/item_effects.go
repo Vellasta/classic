@@ -4069,7 +4069,7 @@ func init() {
 						dot.SnapshotAttackerMultiplier = dot.Spell.AttackerDamageMultiplier(attackTable, true)
 						dot.SnapshotBaseDamage = 0
 					}
-					dot.SnapshotBaseDamage += 120
+					dot.SnapshotBaseDamage += 30
 				},
 				OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 					dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
