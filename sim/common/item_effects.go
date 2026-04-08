@@ -189,6 +189,9 @@ const (
 	EyesoftheSightless                = 33314
 	ShieldrenderTalisman              = 55131
 	VialofPotentVenoms                = 61243
+	OpalGuidedBangles                 = 56068
+	DarkIronDesecrator                = 61068
+	CharmOfDarkDomination             = 83233
 )
 
 func init() {
@@ -4102,23 +4105,58 @@ func init() {
 				}
 			},
 		})
+	})
 
-		// character.GetOrRegisterAura(core.Aura{
-		// 	Label:    "Vial of Potent Venoms Aura",
-		// 	Duration: core.NeverExpires,
-		// 	OnReset: func(aura *core.Aura, sim *core.Simulation) {
-		// 		aura.Activate(sim)
-		// 	},
-		// 	OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-		// 		if spell.Flags.Matches(core.SpellFlagSuppressEquipProcs) {
-		// 			return
-		// 		}
-		// 		procChance := 0.5
-		// 		if result.Landed() && spell.ProcMask.Matches(core.ProcMaskMeleeOrRanged) && sim.Proc(procChance, "VialofPotentVenoms") {
-		// 			procSpell.Cast(sim, result.Target)
-		// 		}
-		// 	},
-		// })
+	core.NewItemEffect(OpalGuidedBangles, func(agent core.Agent) {
+		character := agent.GetCharacter()
+		character.AddBonusRangedCritRating(1)
+	})
+
+	core.NewItemEffect(DarkIronDesecrator, func(agent core.Agent) {
+		character := agent.GetCharacter()
+
+		spell := character.RegisterSpell(core.SpellConfig{
+			ActionID:         core.ActionID{SpellID: 13441},
+			SpellSchool:      core.SpellSchoolFire,
+			DefenseType:      core.DefenseTypeMagic,
+			Flags:            core.SpellFlagNoOnCastComplete | core.SpellFlagOffensiveEquipment,
+			ProcMask:         core.ProcMaskSpellDamage,
+			DamageMultiplier: 1,
+			ThreatMultiplier: 1,
+			Cast: core.CastConfig{
+				CD: core.Cooldown{
+					Timer:    character.NewTimer(),
+					Duration: time.Second * 8,
+				},
+			},
+
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+				minDamage := 50.0
+				maxDamage := 71.0
+				damage := sim.Roll(minDamage, maxDamage)
+				spell.CalcAndDealDamage(sim, target, damage, spell.OutcomeMagicHit)
+			},
+		})
+
+		character.AddMajorCooldown(core.MajorCooldown{
+			Type:  core.CooldownTypeDPS,
+			Spell: spell,
+		})
+	})
+
+	core.NewItemEffect(CharmOfDarkDomination, func(agent core.Agent) {
+		character := agent.GetCharacter()
+		for _, petAgent := range character.PetAgents {
+			hp := petAgent.GetPet()
+			hp.GetOrRegisterAura(core.Aura{
+				Label:    "Charm of Dark Domination Pet Bonus",
+				Duration: core.NeverExpires,
+				OnReset: func(aura *core.Aura, sim *core.Simulation) {
+					aura.Activate(sim)
+					hp.PseudoStats.DamageDealtMultiplier *= 1.03
+				},
+			})
+		}
 	})
 
 	core.AddEffectsToTest = true
