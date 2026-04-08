@@ -192,6 +192,7 @@ const (
 	OpalGuidedBangles                 = 56068
 	DarkIronDesecrator                = 61068
 	CharmOfDarkDomination             = 83233
+	FistOfTheFlamewaker               = 58207
 )
 
 func init() {
@@ -4157,6 +4158,37 @@ func init() {
 				},
 			})
 		}
+	})
+
+	// Equip: Adds 4 fire damage to your weapon attack.
+	core.NewItemEffect(FistOfTheFlamewaker, func(agent core.Agent) {
+		character := agent.GetCharacter()
+
+		procSpell := character.RegisterSpell(core.SpellConfig{
+			ActionID:         core.ActionID{SpellID: 7712},
+			SpellSchool:      core.SpellSchoolFire,
+			DefenseType:      core.DefenseTypeMagic,
+			ProcMask:         core.ProcMaskMeleeDamageProc,
+			Flags:            core.SpellFlagNoOnCastComplete | core.SpellFlagPassiveSpell,
+			DamageMultiplier: 1,
+			ThreatMultiplier: 1,
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+				spell.CalcAndDealDamage(sim, target, 4, spell.OutcomeMagicCrit)
+			},
+		})
+
+		core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			Name:              "Fist of the Flamewaker Trigger",
+			Callback:          core.CallbackOnSpellHitDealt,
+			Outcome:           core.OutcomeLanded,
+			ProcMask:          core.ProcMaskMelee,
+			SpellFlagsExclude: core.SpellFlagSuppressEquipProcs,
+			Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+				if spell.ProcMask.Matches(core.ProcMaskMeleeOH) {
+					procSpell.Cast(sim, result.Target)
+				}
+			},
+		})
 	})
 
 	core.AddEffectsToTest = true
