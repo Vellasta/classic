@@ -433,12 +433,25 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 		Name:    "Wolf",
 		MobType: proto.MobType_MobTypeBeast,
 
-		// SpecialAbility: FuriousHowl,
-		FocusDump: Bite,
+		SpecialAbility: FuriousHowl,
+		// FocusDump:      Bite,
 
 		Health: 1.00,
 		Armor:  1.05,
 		Damage: 1.00,
+
+		CustomRotation: func(sim *core.Simulation, hp *HunterPet, tryCast func(*core.Spell) bool) {
+			if hp.specialAbility.IsReady(sim) {
+				if !tryCast(hp.specialAbility) && hp.GCD.IsReady(sim) {
+					hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
+				}
+			}
+			// } else if hp.focusDump.IsReady(sim) && hp.CurrentFocus() >= 85 {
+			// 	if !tryCast(hp.focusDump) && hp.GCD.IsReady(sim) {
+			// 		hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
+			// 	}
+			// }
+		},
 	},
 	proto.Hunter_Options_Serpent: {
 		Name:    "Serpent",

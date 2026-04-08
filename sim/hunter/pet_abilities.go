@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/Vellasta/classic/sim/core"
+	"github.com/Vellasta/classic/sim/core/stats"
 )
 
 type PetAbilityType int
@@ -30,8 +31,8 @@ func (hp *HunterPet) NewPetAbility(abilityType PetAbilityType, isPrimary bool) *
 		return hp.newClaw()
 	case Screech:
 		return hp.newScreech()
-	// case FuriousHowl:
-	// 	return hp.newFuriousHowl()
+	case FuriousHowl:
+		return hp.newFuriousHowl()
 	case LightningBreath:
 		return hp.newLightningBreath()
 	case ScorpidPoison:
@@ -256,51 +257,89 @@ func (hp *HunterPet) newScreech() *core.Spell {
 	})
 }
 
-// func (hp *HunterPet) newFuriousHowl() *core.Spell {
-// 	actionID := core.ActionID{SpellID: 64495}
+func (hp *HunterPet) newFuriousHowl() *core.Spell {
+	actionID := core.ActionID{SpellID: 24597}
 
-// 	petAura := hp.NewTemporaryStatsAura("FuriousHowl", actionID, stats.Stats{stats.AttackPower: 320, stats.RangedAttackPower: 320}, time.Second*20)
-// 	ownerAura := hp.hunterOwner.NewTemporaryStatsAura("FuriousHowl", actionID, stats.Stats{stats.AttackPower: 320, stats.RangedAttackPower: 320}, time.Second*20)
+	baseMinIncrease := 45.0
+	baseMaxIncrease := 57.0
+	currentDmgBonus := 0.0
 
-// 	howlSpell := hp.RegisterSpell(core.SpellConfig{
-// 		ActionID: actionID,
+	petAura := hp.RegisterAura(core.Aura{
+		ActionID: actionID,
+		Label:    "Furious Howl Damage Increase",
+		Duration: time.Second * 10,
+		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if aura.IsActive() && spell.ProcMask.Matches(core.ProcMaskMeleeOrRanged) {
+				aura.Deactivate(sim)
+			}
+		},
+		OnGain: func(aura *core.Aura, sim *core.Simulation) {
+			hp.PseudoStats.BonusPhysicalDamage += currentDmgBonus
+		},
+		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+			hp.PseudoStats.BonusPhysicalDamage -= currentDmgBonus
+		},
+	})
 
-// 		FocusCost: core.FocusCostOptions{
-// 			Cost: 20,
-// 		},
-// 		Cast: core.CastConfig{
-// 			CD: core.Cooldown{
-// 				Timer:    hp.NewTimer(),
-// 				Duration: time.Second * 40,
-// 			},
-// 		},
-// 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-// 			return hp.IsEnabled()
-// 		},
-// 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
-// 			petAura.Activate(sim)
-// 			ownerAura.Activate(sim)
-// 		},
-// 	})
+	ownerAura := hp.hunterOwner.RegisterAura(core.Aura{
+		ActionID: actionID,
+		Label:    "Furious Howl Damage Increase",
+		Duration: time.Second * 10,
+		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if aura.IsActive() && spell.ProcMask.Matches(core.ProcMaskMeleeOrRanged) {
+				aura.Deactivate(sim)
+			}
+		},
+		OnGain: func(aura *core.Aura, sim *core.Simulation) {
+			hp.hunterOwner.PseudoStats.BonusPhysicalDamage += currentDmgBonus
+		},
+		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+			hp.hunterOwner.PseudoStats.BonusPhysicalDamage -= currentDmgBonus
+		},
+	})
 
-// 	hp.hunterOwner.RegisterSpell(core.SpellConfig{
-// 		ActionID: actionID,
-// 		Flags:    core.SpellFlagAPL | core.SpellFlagMCD,
-// 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-// 			return howlSpell.CanCast(sim, target)
-// 		},
-// 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, _ *core.Spell) {
-// 			howlSpell.Cast(sim, target)
-// 		},
-// 	})
+	howlSpell := hp.RegisterSpell(core.SpellConfig{
+		ActionID: actionID,
 
-// 	hp.hunterOwner.AddMajorCooldown(core.MajorCooldown{
-// 		Spell: howlSpell,
-// 		Type:  core.CooldownTypeDPS,
-// 	})
+		FocusCost: core.FocusCostOptions{
+			Cost: 50,
+		},
+		Cast: core.CastConfig{
+			CD: core.Cooldown{
+				Timer:    hp.NewTimer(),
+				Duration: time.Second * 10,
+			},
+		},
+		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
+			return hp.IsEnabled()
+		},
+		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, _ *core.Spell) {
+			dmgRoll := sim.RandomFloat("Furious Howl Damage Roll")
+			APBonus := hp.GetStat(stats.AttackPower)
+			currentDmgBonus = baseMinIncrease + dmgRoll*(baseMaxIncrease-baseMinIncrease) + (APBonus / 25)
+			petAura.Activate(sim)
+			ownerAura.Activate(sim)
+		},
+	})
 
-// 	return nil
-// }
+	hp.hunterOwner.RegisterSpell(core.SpellConfig{
+		ActionID: actionID,
+		Flags:    core.SpellFlagAPL | core.SpellFlagMCD,
+		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
+			return howlSpell.CanCast(sim, target)
+		},
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, _ *core.Spell) {
+			howlSpell.Cast(sim, target)
+		},
+	})
+
+	hp.hunterOwner.AddMajorCooldown(core.MajorCooldown{
+		Spell: howlSpell,
+		Type:  core.CooldownTypeDPS,
+	})
+
+	return nil
+}
 
 func (hp *HunterPet) newScorpidPoison() *core.Spell {
 	baseDamageTick := map[int32]float64{
