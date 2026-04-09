@@ -213,13 +213,25 @@ export class ConsumesPicker extends Component {
 			relevantStatOptions(ConsumablesInputs.SHADOW_POWER_CONFIG, this.simUI),
 			'Shadow Damage',
 		);
+		const natureBuffOptions = ConsumablesInputs.makeNaturePowerConsumeInput(
+			relevantStatOptions(ConsumablesInputs.NATURE_POWER_CONFIG, this.simUI),
+			'Nature Damage',
+		);
+		const arcaneBuffOptions = ConsumablesInputs.makeArcanePowerConsumeInput(
+			relevantStatOptions(ConsumablesInputs.ARCANE_POWER_CONFIG, this.simUI),
+			'Arcane Damage',
+		);
 		const mp5BuffOptions = ConsumablesInputs.makeMp5ConsumeInput(relevantStatOptions(ConsumablesInputs.MP5_CONFIG, this.simUI), 'Mana Regen');
 
 		const pickers = [
 			buildIconInput(spellsCnsumesElem, this.simUI.player, spBuffOptions),
+			buildIconInput(spellsCnsumesElem, this.simUI.player, ConsumablesInputs.Dreamtonic),
+			buildIconInput(spellsCnsumesElem, this.simUI.player, ConsumablesInputs.DreamshardElixir),
 			buildIconInput(spellsCnsumesElem, this.simUI.player, fireBuffOptions),
 			buildIconInput(spellsCnsumesElem, this.simUI.player, frostBuffOptions),
 			buildIconInput(spellsCnsumesElem, this.simUI.player, shadowBuffOptions),
+			buildIconInput(spellsCnsumesElem, this.simUI.player, natureBuffOptions),
+			buildIconInput(spellsCnsumesElem, this.simUI.player, arcaneBuffOptions),
 			buildIconInput(spellsCnsumesElem, this.simUI.player, mp5BuffOptions),
 		];
 

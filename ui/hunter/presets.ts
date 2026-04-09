@@ -19,6 +19,8 @@ import {
 	SapperExplosive,
 	SaygesFortune,
 	SpellPowerBuff,
+	NaturePowerBuff,
+	ArcanePowerBuff,
 	StrengthBuff,
 	TristateEffect,
 	WeaponImbue,
@@ -58,6 +60,7 @@ import NaxxSVGear from './gear_sets/naxx.sv.gear.json';
 import Kara40BMGear from './gear_sets/kara40.bm.gear.json';
 import Kara40MMGear from './gear_sets/kara40.mm.gear.json';
 import Kara40SVGear from './gear_sets/kara40.sv.gear.json';
+import { DreamshardElixir } from '../core/components/inputs/consumables';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -175,6 +178,10 @@ export const DefaultConsumes = Consumes.create({
 	petStrengthConsumable: 1,
 	sapperExplosive: SapperExplosive.SapperUnknown,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
+	dreamtonic: true,
+	dreamshardElixir: true,
+	naturePowerBuff: NaturePowerBuff.ElixirOfGreaterNaturePower,
+	arcanePowerBuff: ArcanePowerBuff.ElixirOfGreaterArcanePower,
 	strengthBuff: StrengthBuff.JujuPower,
 	zanzaBuff: ZanzaBuff.SpiritOfZanza,
 	blastedLandsBuff: BlastedLandsBuff.GroundScorpokAssay

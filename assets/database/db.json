@@ -9493,7 +9493,7 @@
 {"id":7676,"name":"Thistle Tea","icon":"inv_drink_milk_05"},
 {"id":8173,"name":"Thick Armor Kit","icon":"inv_misc_armorkit_07"},
 {"id":8411,"name":"Lung Juice Cocktail","icon":"inv_drink_12"},
-{"id":8412,"name":"Ground Scorpok Assay","icon":"inv_misc_dust_02"},
+{"id":8412,"name":"Ground Scorpok Assay","icon":"inv_misc_dust_07"},
 {"id":8423,"name":"Cerebral Cortex Compound","icon":"inv_potion_32"},
 {"id":8424,"name":"Gizzard Gum","icon":"inv_misc_food_30"},
 {"id":8951,"name":"Elixir of Greater Defense","icon":"inv_potion_65"},
@@ -9585,6 +9585,8 @@
 {"id":23549,"name":"Fortitude of the Scourge","icon":"spell_shadow_antishadow"},
 {"id":33146,"name":"Facetted Crystal Scope","icon":"inv_misc_spyglass_02"},
 {"id":42163,"name":"Squid Eel Skewer","icon":"inv_misc_food_68","tooltip":"<table><tr><td><b class=\"q1\">Squid Eel Skewer<\/b><br />Requires Level 55<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=33432\" class=\"q2\">Restores 874.8 health over 27 sec.   Must remain seated while eating.   If you eat for 10 seconds will also increase your Agility by 20 for 900 sec. <\/a><\/span><br /><\/td><\/tr><\/table>"},
+{"id":50237,"name":"Elixir of Greater Nature Power","icon":"inv_potion_106","tooltip":"<table><tr><td><b class=\"q1\">Elixir of Greater Nature Power<\/b><br />Requires Level 48<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=45988\" class=\"q2\">Increases nature spell damage by up to 55 for 3600 sec.<\/a><\/span><br /><\/td><\/tr><\/table>"},
+{"id":55048,"name":"Elixir of Greater Arcane Power","icon":"inv_potion_81","tooltip":"<table><tr><td><b class=\"q1\">Elixir of Greater Arcane Power<\/b><br />Requires Level 40<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=56545\" class=\"q2\">Increases arcane spell damage by up to 40 for 3600 sec.<\/a><\/span><br /><\/td><\/tr><\/table>"},
 {"id":56008,"name":"Brilliant Opal Gemstone","icon":"inv_misc_gem_opal_01"},
 {"id":61437,"name":"Sigil of Quickness","icon":"inv_misc_rune_05"},
 {"id":61438,"name":"Sigil of Penetration","icon":"inv_misc_rune_06"},
@@ -9592,6 +9594,8 @@
 {"id":61782,"name":"Mithril Belt Buckle","icon":"inv_misc_buckle_04"},
 {"id":60976,"name":"Danonzo's Tel'abim Surprise","icon":"inv_misc_food_92","tooltip":"<table><tr><td><b class=\"q1\">Danonzo's Tel'Abim Surprise<\/b><br />Requires Level 55<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=57055\" class=\"q2\">Restores 3186 health over 30 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 45 Ranged Attack Power for 900 sec.<\/a><\/span><br /><\/td><\/tr><\/table>"},
 {"id":60978,"name":"Danonzo's Tel'abim Medley","icon":"inv_misc_food_73","tooltip":"<table><tr><td><b class=\"q1\">Danonzo's Tel'Abim Medley<\/b><br />Requires Level 55<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=57045\" class=\"q2\">Restores 3186 health over 30 sec.  Must remain seated while eating.  If you spend at least 10 seconds eating you will become well fed and gain 2% Haste for 900 sec.<\/a><\/span><br /><\/td><\/tr><\/table>"},
+{"id":61224,"name":"Dreamshard Elixir","icon":"inv_potion_113","tooltip":"<table><tr><td><b class=\"q1\">Dreamshard Elixir<\/b><br />Requires Level 46<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=45427\" class=\"q2\">Grants 2% spell critical and 15 spell power for 3600 sec.<\/a><\/span><br /><\/td><\/tr><\/table>"},
+{"id":61423,"name":"Dreamtonic","icon":"inv_potion_114","tooltip":"<table><tr><td><b class=\"q1\">Dreamtonic<\/b><br />Requires Level 50<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=45489\" class=\"q2\">Increases spell damage by up to 35 for 1200 sec.<\/a><\/span><br /><\/td><\/tr><\/table>"},
 {"id":228982,"name":"Formula: Enchant Shield - Law of Nature","icon":"inv_misc_note_01"}
 ],
 "spellIcons":[

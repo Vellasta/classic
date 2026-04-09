@@ -567,6 +567,19 @@ func applySpellBuffConsumes(character *Character, consumes *proto.Consumes) {
 		}
 	}
 
+	if consumes.Dreamtonic {
+		character.AddStats(stats.Stats{
+			stats.SpellDamage: 35,
+		})
+	}
+
+	if consumes.DreamshardElixir {
+		character.AddStats(stats.Stats{
+			stats.SpellDamage: 15,
+			stats.SpellCrit:   2,
+		})
+	}
+
 	if consumes.FirePowerBuff != proto.FirePowerBuff_FirePowerBuffUnknown {
 		switch consumes.FirePowerBuff {
 		case proto.FirePowerBuff_ElixirOfFirepower:
@@ -594,6 +607,24 @@ func applySpellBuffConsumes(character *Character, consumes *proto.Consumes) {
 		case proto.FrostPowerBuff_ElixirOfFrostPower:
 			character.AddStats(stats.Stats{
 				stats.FrostPower: 15,
+			})
+		}
+	}
+
+	if consumes.NaturePowerBuff != proto.NaturePowerBuff_NaturePowerBuffUnknown {
+		switch consumes.NaturePowerBuff {
+		case proto.NaturePowerBuff_ElixirOfGreaterNaturePower:
+			character.AddStats(stats.Stats{
+				stats.NaturePower: 55,
+			})
+		}
+	}
+
+	if consumes.ArcanePowerBuff != proto.ArcanePowerBuff_ArcanePowerBuffUnknown {
+		switch consumes.ArcanePowerBuff {
+		case proto.ArcanePowerBuff_ElixirOfGreaterArcanePower:
+			character.AddStats(stats.Stats{
+				stats.ArcanePower: 40,
 			})
 		}
 	}

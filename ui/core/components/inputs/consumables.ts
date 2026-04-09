@@ -22,6 +22,8 @@ import {
 	Profession,
 	SapperExplosive,
 	ShadowPowerBuff,
+	NaturePowerBuff,
+	ArcanePowerBuff,
 	Spec,
 	SpellPowerBuff,
 	Stat,
@@ -784,6 +786,15 @@ export const ArcaneElixir: ConsumableInputConfig<SpellPowerBuff> = {
 	value: SpellPowerBuff.ArcaneElixir,
 };
 
+export const Dreamtonic = makeBooleanConsumeInput({
+	actionId: () => ActionId.fromItemId(61423),
+	fieldName: 'dreamtonic',
+})
+export const DreamshardElixir = makeBooleanConsumeInput({
+	actionId: () => ActionId.fromItemId(61224),
+	fieldName: 'dreamshardElixir',
+})
+
 export const SPELL_POWER_CONFIG: ConsumableStatOption<SpellPowerBuff>[] = [
 	{ config: GreaterArcaneElixir, stats: [Stat.StatSpellPower, Stat.StatSpellDamage] },
 	{ config: ArcaneElixir, stats: [Stat.StatSpellPower, Stat.StatSpellDamage] },
@@ -828,6 +839,26 @@ export const ElixirOfShadowPower: ConsumableInputConfig<ShadowPowerBuff> = {
 export const SHADOW_POWER_CONFIG: ConsumableStatOption<ShadowPowerBuff>[] = [{ config: ElixirOfShadowPower, stats: [Stat.StatShadowPower] }];
 
 export const makeShadowPowerConsumeInput = makeConsumeInputFactory({ consumesFieldName: 'shadowPowerBuff' });
+
+// Nature
+export const ElixirOfGreaterNaturePower: ConsumableInputConfig<NaturePowerBuff> = {
+	actionId: () => ActionId.fromItemId(50237),
+	value: NaturePowerBuff.ElixirOfGreaterNaturePower,
+};
+
+export const NATURE_POWER_CONFIG: ConsumableStatOption<NaturePowerBuff>[] = [{ config: ElixirOfGreaterNaturePower, stats: [Stat.StatNaturePower] }];
+
+export const makeNaturePowerConsumeInput = makeConsumeInputFactory({ consumesFieldName: 'naturePowerBuff' });
+
+// Arcane
+export const ElixirOfGreaterArcanePower: ConsumableInputConfig<ArcanePowerBuff> = {
+	actionId: () => ActionId.fromItemId(55048),
+	value: ArcanePowerBuff.ElixirOfGreaterArcanePower,
+};
+
+export const ARCANE_POWER_CONFIG: ConsumableStatOption<ArcanePowerBuff>[] = [{ config: ElixirOfGreaterArcanePower, stats: [Stat.StatArcanePower] }];
+
+export const makeArcanePowerConsumeInput = makeConsumeInputFactory({ consumesFieldName: 'arcanePowerBuff' });
 
 // MP5
 export const MagebloodPotion: ConsumableInputConfig<ManaRegenElixir> = {

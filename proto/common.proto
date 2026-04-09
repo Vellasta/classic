@@ -459,6 +459,16 @@ enum FrostPowerBuff {
 	ElixirOfFrostPower = 1;
 }
 
+enum NaturePowerBuff {
+	NaturePowerBuffUnknown = 0;
+	ElixirOfGreaterNaturePower = 1;
+}
+
+enum ArcanePowerBuff {
+	ArcanePowerBuffUnknown = 0;
+	ElixirOfGreaterArcanePower = 1;
+}
+
 enum ZanzaBuff {
 	ZanzaBuffUnknown = 0;
 	SpiritOfZanza = 1;
@@ -681,7 +691,7 @@ message IndividualBuffs {
 	bool slipkiks_savvy = 14;
 }
 
-// NextIndex: 34
+// NextIndex: 33
 message Consumes {
 	Flask flask = 1;
 	Food food = 2;
@@ -690,27 +700,31 @@ message Consumes {
 	StrengthBuff strength_buff = 5;
 	AttackPowerBuff attack_power_buff = 6;
 	SpellPowerBuff spell_power_buff = 7;
-	ShadowPowerBuff shadow_power_buff = 8;
-	FirePowerBuff fire_power_buff = 9;
-	FrostPowerBuff frost_power_buff = 10;
-	Explosive filler_explosive = 11;
-	WeaponImbue main_hand_imbue = 12;
-	WeaponImbue off_hand_imbue = 13;
-	Potions default_potion = 14;
-	Conjured default_conjured = 15;
-	bool bogling_root = 16 [deprecated=true];
-	int32 pet_agility_consumable = 17;
-	int32 pet_strength_consumable = 18;
-	MiscConsumes misc_consumes = 20;
-	ZanzaBuff zanza_buff = 21;
-	BlastedLandsBuff blasted_lands_buff = 22;
-	ArmorElixir armor_elixir = 23;
-	HealthElixir health_elixir = 24;
-	Alcohol alcohol = 25;
-	int32 pet_attack_power_consumable = 26;
-	PetMiscConsumes pet_misc_consumes = 27;
-	SapperExplosive sapper_explosive = 28;
-	HitConsumable hit_consumable = 29;
+	bool dreamtonic = 8;
+	bool dreamshard_elixir = 9;
+	ShadowPowerBuff shadow_power_buff = 10;
+	FirePowerBuff fire_power_buff = 11;
+	FrostPowerBuff frost_power_buff = 12;
+	NaturePowerBuff nature_power_buff = 13;
+	ArcanePowerBuff arcane_power_buff = 14;
+	Explosive filler_explosive = 15;
+	WeaponImbue main_hand_imbue = 16;
+	WeaponImbue off_hand_imbue = 17;
+	Potions default_potion = 18;
+	Conjured default_conjured = 19;
+	bool bogling_root = 20 [deprecated=true];
+	int32 pet_agility_consumable = 21;
+	int32 pet_strength_consumable = 22;
+	MiscConsumes misc_consumes = 23;
+	ZanzaBuff zanza_buff = 24;
+	BlastedLandsBuff blasted_lands_buff = 25;
+	ArmorElixir armor_elixir = 26;
+	HealthElixir health_elixir = 27;
+	Alcohol alcohol = 28;
+	int32 pet_attack_power_consumable = 29;
+	PetMiscConsumes pet_misc_consumes = 30;
+	SapperExplosive sapper_explosive = 31;
+	HitConsumable hit_consumable = 32;
 }
 
 // NextIndex: 26
