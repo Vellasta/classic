@@ -167,6 +167,7 @@ export const DefaultConsumes = Consumes.create({
 	attackPowerBuff: AttackPowerBuff.JujuMight,
 	defaultConjured: Conjured.ConjuredDemonicRune,
 	defaultPotion: Potions.PotionOfQuickness,
+	nordanaarHerbalTea: true,
 	flask: Flask.FlaskOfSupremePower,
 	food: Food.FoodSquidEelSkewer,
 	healthElixir: HealthElixir.ElixirOfFortitude,

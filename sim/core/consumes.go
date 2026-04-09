@@ -29,6 +29,7 @@ func applyConsumeEffects(agent Agent) {
 	applyMiscConsumes(character, consumes.MiscConsumes)
 
 	registerPotionCD(agent, consumes)
+	registerTeaCD(agent, consumes)
 	registerConjuredCD(agent, consumes)
 	registerExplosivesCD(agent, consumes)
 }
@@ -1053,6 +1054,7 @@ func makeManaConsumableMCD(itemId int32, character *Character, cdTimer *Timer) M
 		12662: 900.0,
 		13443: 900.0,
 		13444: 1350.0,
+		61675: 810.0,
 	}[itemId]
 
 	maxRoll := map[int32]float64{
@@ -1062,6 +1064,7 @@ func makeManaConsumableMCD(itemId int32, character *Character, cdTimer *Timer) M
 		12662: 1500.0,
 		13443: 1500.0,
 		13444: 2250.0,
+		61675: 1351.0,
 	}[itemId]
 
 	cdDuration := time.Minute * 2
@@ -1298,6 +1301,17 @@ func makePotionActivationInternal(potionType proto.Potions, character *Character
 	default:
 		return MajorCooldown{}
 	}
+}
+
+func registerTeaCD(agent Agent, consumes *proto.Consumes) {
+	character := agent.GetCharacter()
+
+	timer := character.NewTimer()
+
+	var mcd MajorCooldown
+	mcd = makeManaConsumableMCD(61675, character, timer)
+
+	character.AddMajorCooldown(mcd)
 }
 
 func registerConjuredCD(agent Agent, consumes *proto.Consumes) {

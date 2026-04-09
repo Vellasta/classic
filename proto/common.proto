@@ -694,7 +694,7 @@ message IndividualBuffs {
 	bool slipkiks_savvy = 14;
 }
 
-// NextIndex: 33
+// NextIndex: 34
 message Consumes {
 	Flask flask = 1;
 	Food food = 2;
@@ -714,20 +714,21 @@ message Consumes {
 	WeaponImbue main_hand_imbue = 16;
 	WeaponImbue off_hand_imbue = 17;
 	Potions default_potion = 18;
-	Conjured default_conjured = 19;
-	bool bogling_root = 20 [deprecated=true];
-	int32 pet_agility_consumable = 21;
-	int32 pet_strength_consumable = 22;
-	MiscConsumes misc_consumes = 23;
-	ZanzaBuff zanza_buff = 24;
-	BlastedLandsBuff blasted_lands_buff = 25;
-	ArmorElixir armor_elixir = 26;
-	HealthElixir health_elixir = 27;
-	Alcohol alcohol = 28;
-	int32 pet_attack_power_consumable = 29;
-	PetMiscConsumes pet_misc_consumes = 30;
-	SapperExplosive sapper_explosive = 31;
-	HitConsumable hit_consumable = 32;
+	bool nordanaar_herbal_tea = 19;
+	Conjured default_conjured = 20;
+	bool bogling_root = 21 [deprecated=true];
+	int32 pet_agility_consumable = 22;
+	int32 pet_strength_consumable = 23;
+	MiscConsumes misc_consumes = 24;
+	ZanzaBuff zanza_buff = 25;
+	BlastedLandsBuff blasted_lands_buff = 26;
+	ArmorElixir armor_elixir = 27;
+	HealthElixir health_elixir = 28;
+	Alcohol alcohol = 29;
+	int32 pet_attack_power_consumable = 30;
+	PetMiscConsumes pet_misc_consumes = 31;
+	SapperExplosive sapper_explosive = 32;
+	HitConsumable hit_consumable = 33;
 }
 
 // NextIndex: 26

@@ -9597,6 +9597,7 @@
 {"id":61181,"name":"Potion of Quickness","icon":"inv_potion_08","tooltip":"<table><tr><td><b class=\"q1\">Potion of Quickness<\/b><br />Requires Level 50<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=45425\" class=\"q2\">Increases haste by 5% for 30 sec.<\/a><\/span><br /><\/td><\/tr><\/table>"},
 {"id":61224,"name":"Dreamshard Elixir","icon":"inv_potion_113","tooltip":"<table><tr><td><b class=\"q1\">Dreamshard Elixir<\/b><br />Requires Level 46<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=45427\" class=\"q2\">Grants 2% spell critical and 15 spell power for 3600 sec.<\/a><\/span><br /><\/td><\/tr><\/table>"},
 {"id":61423,"name":"Dreamtonic","icon":"inv_potion_114","tooltip":"<table><tr><td><b class=\"q1\">Dreamtonic<\/b><br />Requires Level 50<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=45489\" class=\"q2\">Increases spell damage by up to 35 for 1200 sec.<\/a><\/span><br /><\/td><\/tr><\/table>"},
+{"id":61675,"name":"Nordanaar Herbal Tea","icon":"inv_drink_waterskin_03","tooltip":"<table><tr><td><b class=\"q2\">Nordanaar Herbal Tea<\/b><br />Binds when picked up<br />Requires Level 50<br /><\/td><\/tr><\/table><table><tr><td><span class=\"q2\">Use: <a href=\"?spell=19398\" class=\"q2\">Restores 525 to 876 health and 810 to 1351 mana.<\/a><\/span><br /><\/td><\/tr><\/table>"},
 {"id":228982,"name":"Formula: Enchant Shield - Law of Nature","icon":"inv_misc_note_01"}
 ],
 "spellIcons":[

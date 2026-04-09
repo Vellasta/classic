@@ -119,6 +119,11 @@ export const makeMultiIconConsumesInputFactory = <ModObject>(
 //                                 CONJURED
 ///////////////////////////////////////////////////////////////////////////
 
+export const NordanaarHerbalTea = makeBooleanConsumeInput({
+	actionId: () => ActionId.fromItemId(61675),
+	fieldName: 'nordanaarHerbalTea',
+})
+
 export const ConjuredHealthstone: ConsumableInputConfig<Conjured> = {
 	actionId: () => ActionId.fromItemId(5509),
 	value: Conjured.ConjuredHealthstone,

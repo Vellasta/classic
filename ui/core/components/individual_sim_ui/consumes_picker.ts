@@ -46,7 +46,12 @@ export class ConsumesPicker extends Component {
 		const potionsOptions = ConsumablesInputs.makePotionsInput(relevantStatOptions(ConsumablesInputs.POTIONS_CONFIG, this.simUI), 'Potions');
 		const conjuredOptions = ConsumablesInputs.makeConjuredInput(relevantStatOptions(ConsumablesInputs.CONJURED_CONFIG, this.simUI));
 
-		const pickers = [buildIconInput(potionsElem, this.simUI.player, potionsOptions), buildIconInput(potionsElem, this.simUI.player, conjuredOptions)];
+		
+		const pickers = [
+			buildIconInput(potionsElem, this.simUI.player, potionsOptions), 
+			buildIconInput(potionsElem, this.simUI.player, ConsumablesInputs.NordanaarHerbalTea),
+			buildIconInput(potionsElem, this.simUI.player, conjuredOptions)
+		];
 
 		TypedEvent.onAny([this.simUI.player.professionChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
