@@ -798,13 +798,13 @@ export async function getTooltipString(itemId: number, spellId: number): Promise
 	// const url = `https://database.turtlecraft.gg/ajax.php?spell=${id}`;
 	const url = itemId !== 0 ? `https://nether.wowhead.com/classic/tooltip/item/${itemId}` : `https://nether.wowhead.com/classic/tooltip/spell/${spellId}`
 	try {
+		const itemIcon = await Database.getItemIconData(itemId);
+		if (itemIcon && itemIcon.tooltip) {
+			return itemIcon.tooltip
+		}
 		const response = await fetch(url);
 		const json = await response.json();
 		if (!json['tooltip']) {
-			const itemIcon = await Database.getItemIconData(itemId);
-			if (itemIcon) {
-				return itemIcon.tooltip
-			}
 			return "Item not found"
 		}
 		return json['tooltip'];

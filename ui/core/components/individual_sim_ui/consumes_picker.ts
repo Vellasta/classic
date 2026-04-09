@@ -113,7 +113,6 @@ export class ConsumesPicker extends Component {
 
 		const pickers = [
 			buildIconInput(foodsElem, this.simUI.player, foodOptions),
-			buildIconInput(foodsElem, this.simUI.player, ConsumablesInputs.DragonBreathChili),
 			buildIconInput(foodsElem, this.simUI.player, alcoholOptions),
 		];
 

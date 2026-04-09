@@ -540,7 +540,7 @@ enum WeaponImbue {
 	WoundPoison = 7;
 }
 
-// NextIndex: 15
+// NextIndex: 16
 enum Food {
 	FoodUnknown = 0;
 	FoodGrilledSquid = 1;
@@ -557,6 +557,7 @@ enum Food {
 	FoodSquidEelSkewer = 12;
 	FoodDanonzosTelabimSurprise = 13;
 	FoodDanonzosTelabimMedley = 14;
+	FoodDragonBreathChili = 15;
 }
 
 enum SaygesFortune {
@@ -700,7 +701,6 @@ message Consumes {
 	bool bogling_root = 16 [deprecated=true];
 	int32 pet_agility_consumable = 17;
 	int32 pet_strength_consumable = 18;
-	bool dragon_breath_chili = 19;
 	MiscConsumes misc_consumes = 20;
 	ZanzaBuff zanza_buff = 21;
 	BlastedLandsBuff blasted_lands_buff = 22;

@@ -369,6 +369,8 @@ func applyFoodConsumes(character *Character, consumes *proto.Consumes) {
 			character.AddStats(stats.Stats{
 				stats.MeleeHaste: 2,
 			})
+		case proto.Food_FoodDragonBreathChili:
+			MakePermanent(DragonBreathChiliAura(character))
 		}
 	}
 
@@ -396,10 +398,6 @@ func applyFoodConsumes(character *Character, consumes *proto.Consumes) {
 				stats.Intellect: -5,
 			})
 		}
-	}
-
-	if consumes.DragonBreathChili {
-		MakePermanent(DragonBreathChiliAura(character))
 	}
 }
 

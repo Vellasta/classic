@@ -306,6 +306,10 @@ export const DanonzosTelabimMedley: ConsumableInputConfig<Food> = {
 	actionId: () => ActionId.fromItemId(60978),
 	value: Food.FoodDanonzosTelabimMedley,
 };
+export const DragonBreathChili: ConsumableInputConfig<Food> = {
+	actionId: () => ActionId.fromItemId(12217),
+	value: Food.FoodDragonBreathChili,
+};
 
 // Ordered by level
 export const FOOD_CONFIG: ConsumableStatOption<Food>[] = [
@@ -323,14 +327,15 @@ export const FOOD_CONFIG: ConsumableStatOption<Food>[] = [
 	{ config: SagefishDelight, stats: [Stat.StatMP5] },
 	{ config: HotWolfRibs, stats: [Stat.StatSpirit] },
 	{ config: SmokedSagefish, stats: [Stat.StatMP5] },
+	{ config: DragonBreathChili, stats: [] },
 ];
 
 export const makeFoodInput = makeConsumeInputFactory({ consumesFieldName: 'food' });
 
-export const DragonBreathChili = makeBooleanConsumeInput({
-	actionId: () => ActionId.fromItemId(12217),
-	fieldName: 'dragonBreathChili',
-});
+// export const DragonBreathChili = makeBooleanConsumeInput({
+// 	actionId: () => ActionId.fromItemId(12217),
+// 	fieldName: 'dragonBreathChili',
+// });
 
 export const RumseyRumBlackLabel: ConsumableInputConfig<Alcohol> = {
 	actionId: () => ActionId.fromItemId(21151),

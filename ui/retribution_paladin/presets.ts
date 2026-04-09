@@ -120,7 +120,6 @@ export const DefaultConsumes = Consumes.create({
 	boglingRoot: false,
 	defaultConjured: Conjured.ConjuredDemonicRune,
 	defaultPotion: Potions.MajorManaPotion,
-	dragonBreathChili: true,
 	fillerExplosive: Explosive.ExplosiveUnknown,
 	firePowerBuff: FirePowerBuff.ElixirOfGreaterFirepower,
 	food: Food.FoodBlessSunfruit,

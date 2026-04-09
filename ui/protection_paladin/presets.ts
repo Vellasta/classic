@@ -108,7 +108,6 @@ export const DefaultConsumes = Consumes.create({
 	healthElixir: HealthElixir.ElixirOfFortitude,
 	armorElixir: ArmorElixir.ElixirOfSuperiorDefense,
 	defaultPotion: Potions.GreaterStoneshieldPotion,
-	dragonBreathChili: true,
 	food: Food.FoodTenderWolfSteak,
 	flask: Flask.FlaskOfTheTitans,
 	firePowerBuff: FirePowerBuff.ElixirOfGreaterFirepower,
