@@ -373,11 +373,8 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 		character.AddStats(updateStats)
 	}
 
-	if raidBuffs.ManaSpringTotem > 0 { // && isHorde {
+	if raidBuffs.ManaSpringTotem { // && isHorde {
 		updateStats := BuffSpellValues[ManaSpring]
-		if raidBuffs.ManaSpringTotem == proto.TristateEffect_TristateEffectImproved {
-			updateStats = updateStats.Multiply(1.25)
-		}
 		character.AddStats(updateStats)
 	}
 

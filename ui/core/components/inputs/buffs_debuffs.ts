@@ -232,9 +232,8 @@ export const BlessingOfWisdom = withLabel(
 	'Blessing of Wisdom',
 );
 export const ManaSpringTotem = withLabel(
-	makeTristateRaidBuffInput({
+	makeBooleanRaidBuffInput({
 		actionId: () => ActionId.fromSpellId(10497),
-		impId: ActionId.fromSpellId(16208),
 		fieldName: 'manaSpringTotem',
 		showWhen: player => true, // player.getFaction() === Faction.Horde,
 	}),

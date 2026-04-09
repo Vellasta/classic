@@ -118,7 +118,7 @@ export const DefaultRaidBuffs = RaidBuffs.create({
 	fireResistanceTotem: true,
 	giftOfTheWild: TristateEffect.TristateEffectImproved,
 	leaderOfThePack: true,
-	manaSpringTotem: TristateEffect.TristateEffectRegular,
+	manaSpringTotem: true,
 	powerWordFortitude: TristateEffect.TristateEffectImproved,
 });
 

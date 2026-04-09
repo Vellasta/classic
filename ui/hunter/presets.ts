@@ -198,7 +198,7 @@ export const DefaultRaidBuffs = RaidBuffs.create({
 	graceOfAirTotem: TristateEffect.TristateEffectMissing,
 	trueshotAura: true,
 	leaderOfThePack: true,
-	manaSpringTotem: TristateEffect.TristateEffectRegular,
+	manaSpringTotem: true,
 	strengthOfEarthTotem: TristateEffect.TristateEffectImproved,
 	windfuryTotem: true,
 	flametongueTotem: true

@@ -114,7 +114,7 @@ export const DefaultRaidBuffs = RaidBuffs.create({
 	divineSpirit: true,
 	giftOfTheWild: TristateEffect.TristateEffectImproved,
 	leaderOfThePack: true,
-	manaSpringTotem: TristateEffect.TristateEffectRegular,
+	manaSpringTotem: true,
 	strengthOfEarthTotem: TristateEffect.TristateEffectImproved,
 	powerWordFortitude: TristateEffect.TristateEffectImproved,
 });

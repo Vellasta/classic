@@ -47,7 +47,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHolyPaladin, {
 			strengthOfEarthTotem: TristateEffect.TristateEffectRegular,
 			arcaneBrilliance: true,
 			moonkinAura: true,
-			manaSpringTotem: TristateEffect.TristateEffectRegular,
+			manaSpringTotem: true,
 			thorns: TristateEffect.TristateEffectImproved,
 			devotionAura: TristateEffect.TristateEffectImproved,
 			shadowProtection: true,

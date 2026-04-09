@@ -622,7 +622,7 @@ message RaidBuffs {
 	bool flametongue_totem = 41;
 
 	// mp5
-	TristateEffect mana_spring_totem = 14;
+	bool mana_spring_totem = 14;
 	TristateEffect blessing_of_wisdom = 15;
 
 	// Resistances
