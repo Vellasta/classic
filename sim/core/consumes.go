@@ -1096,6 +1096,32 @@ func makeManaConsumableMCD(itemId int32, character *Character, cdTimer *Timer) M
 	}
 }
 
+func makeHasteConsumableMCD(itemId int32, character *Character, cdTimer *Timer) MajorCooldown {
+	actionID := ActionID{ItemID: itemId}
+	cdDuration := time.Minute * 2
+	potionOfQuicknessAura := character.NewTemporaryStatsAura("Potion of Quickness", actionID, stats.Stats{stats.MeleeHaste: 5, stats.SpellHaste: 5}, time.Second*30)
+
+	return MajorCooldown{
+		Type: CooldownTypeDPS,
+		Spell: character.GetOrRegisterSpell(SpellConfig{
+			ActionID: actionID,
+			Flags:    SpellFlagNoOnCastComplete,
+			Cast: CastConfig{
+				CD: Cooldown{
+					Timer:    cdTimer,
+					Duration: cdDuration,
+				},
+			},
+			ApplyEffects: func(sim *Simulation, _ *Unit, _ *Spell) {
+				switch itemId {
+				case 61181:
+					potionOfQuicknessAura.Activate(sim)
+				}
+			},
+		}),
+	}
+}
+
 func makeArmorConsumableMCD(itemId int32, character *Character, cdTimer *Timer) MajorCooldown {
 	actionID := ActionID{ItemID: itemId}
 	cdDuration := time.Minute * 2
@@ -1246,6 +1272,9 @@ func makePotionActivationInternal(potionType proto.Potions, character *Character
 		return makeRageConsumableMCD(5633, character, potionCD)
 	case proto.Potions_MightyRagePotion:
 		return makeRageConsumableMCD(13442, character, potionCD)
+
+	case proto.Potions_PotionOfQuickness:
+		return makeHasteConsumableMCD(61181, character, potionCD)
 
 	case proto.Potions_LesserStoneshieldPotion:
 		return makeArmorConsumableMCD(4623, character, potionCD)

@@ -712,6 +712,11 @@ export const RagePotion: ConsumableInputConfig<Potions> = {
 	showWhen: player => player.getClass() == Class.ClassWarrior,
 };
 
+export const potionOfQuickness: ConsumableInputConfig<Potions> = {
+	actionId: () => ActionId.fromItemId(61181),
+	value: Potions.PotionOfQuickness,
+};
+
 export const MagicResistancePotion: ConsumableInputConfig<Potions> = {
 	actionId: () => ActionId.fromItemId(9036),
 	value: Potions.MagicResistancePotion,
@@ -751,7 +756,9 @@ export const LesserStoneshieldPotion: ConsumableInputConfig<Potions> = {
 	value: Potions.LesserStoneshieldPotion,
 };
 
-export const POTIONS_CONFIG: ConsumableStatOption<Potions>[] = [
+export const POTIONS_CONFIG: ConsumableStatOption<Potions>[] = [	
+	{ config: potionOfQuickness, stats: [Stat.StatMeleeHaste, Stat.StatSpellHaste] },
+	
 	{ config: MajorHealingPotion, stats: [Stat.StatArmor] },
 	{ config: SuperiorHealingPotion, stats: [Stat.StatArmor] },
 	{ config: GreaterHealingPotion, stats: [Stat.StatArmor] },

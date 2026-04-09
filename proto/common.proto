@@ -327,7 +327,7 @@ enum Explosive {
 	ExplosiveGoblinLandMine = 4;
 }
 
-// NextIndex: 28
+// NextIndex: 24
 enum Potions {
 	UnknownPotion = 0;
 
@@ -342,25 +342,28 @@ enum Potions {
 	GreatRagePotion = 7;
 	MightyRagePotion = 8;
 
+	// Haste Pots
+	PotionOfQuickness = 9;
+
 	// Armor Pots
-	LesserStoneshieldPotion = 9;
-	GreaterStoneshieldPotion = 10;
+	LesserStoneshieldPotion = 10;
+	GreaterStoneshieldPotion = 11;
 
 	// Healing Pots
-	LesserHealingPotion = 11;
-	HealingPotion = 12;
-	GreaterHealingPotion = 13;
-	SuperiorHealingPotion = 14;
-	MajorHealingPotion = 15;
+	LesserHealingPotion = 12;
+	HealingPotion = 13;
+	GreaterHealingPotion = 14;
+	SuperiorHealingPotion = 15;
+	MajorHealingPotion = 16;
 
 	// Resistance Pots
-	MagicResistancePotion = 16;
-	GreaterArcaneProtectionPotion = 17;
-	GreaterFireProtectionPotion = 18;
-	GreaterFrostProtectionPotion = 19;
-	GreaterHolyProtectionPotion = 20;
-	GreaterNatureProtectionPotion = 21;
-	GreaterShadowProtectionPotion = 22;
+	MagicResistancePotion = 17;
+	GreaterArcaneProtectionPotion = 18;
+	GreaterFireProtectionPotion = 19;
+	GreaterFrostProtectionPotion = 20;
+	GreaterHolyProtectionPotion = 21;
+	GreaterNatureProtectionPotion = 22;
+	GreaterShadowProtectionPotion = 23;
 
 	LesserManaPotion = 1 [deprecated = true];
 }
