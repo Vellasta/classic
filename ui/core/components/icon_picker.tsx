@@ -113,7 +113,7 @@ export class IconPicker<ModObject, ValueType> extends Input<ModObject, ValueType
 						content: `${urlToolTip}`, 
 						allowHTML: true, 
 						hideOnClick: false,
-						placement: 'right-end'
+						placement: 'right-start'
 					});
 				}
 			})

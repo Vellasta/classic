@@ -805,7 +805,7 @@ export async function getTooltipString(itemId: number, spellId: number): Promise
 		const response = await fetch(url);
 		const json = await response.json();
 		if (!json['tooltip']) {
-			return "Item not found"
+			return ""
 		}
 		return json['tooltip'];
 	} catch (e) {

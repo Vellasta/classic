@@ -99,7 +99,7 @@ export class IconEnumPicker<ModObject, T> extends Input<ModObject, T> {
 		this.itemTooltip = tippy(this.buttonElem, {
 			allowHTML: true, 
 			hideOnClick: false,
-			placement: 'right-end'
+			placement: 'right-start'
 		});
 
 		this.config.values.forEach((valueConfig, _) => {
@@ -121,7 +121,7 @@ export class IconEnumPicker<ModObject, T> extends Input<ModObject, T> {
 							content: `${urlToolTip}`, 
 							allowHTML: true, 
 							hideOnClick: false,
-							placement: 'right-end'
+							placement: 'right-start'
 						});
 					}
 				});
@@ -253,8 +253,16 @@ export class IconEnumPicker<ModObject, T> extends Input<ModObject, T> {
 				getTooltipString(actionId.itemId, actionId.spellId).then((urlToolTip: string) => {
 					if (urlToolTip) {
 						this.itemTooltip.setContent(`${urlToolTip}`);
+						this.itemTooltip.enable();
+					} else {
+						this.itemTooltip.setContent(``);
+						this.itemTooltip.disable();
 					}
 				});
+			}
+			else {
+				this.itemTooltip.setContent(``);
+				this.itemTooltip.disable();
 			}
 			
 			if (valueConfig.text != undefined) {
