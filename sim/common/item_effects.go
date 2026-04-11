@@ -193,6 +193,7 @@ const (
 	DarkIronDesecrator                = 61068
 	CharmOfDarkDomination             = 83233
 	FistOfTheFlamewaker               = 58207
+	GhoulslayerShotgun                = 51780
 )
 
 func init() {
@@ -915,7 +916,7 @@ func init() {
 	// https://www.wowhead.com/classic/item=20578/emerald-dragonfang
 	// Chance on hit: Blasts the enemy with acid for 87 to 105 Nature damage.
 	// Chance on Hit Assumed: 1 PPM
-	itemhelpers.CreateWeaponCoHProcDamage(EmeraldDragonfang, "Emerald Dragonfang", 1.0, 24993, core.SpellSchoolNature, 87, 18, 0, core.DefenseTypeMagic)
+	itemhelpers.CreateWeaponCoHProcDamage(EmeraldDragonfang, "Emerald Dragonfang", 1.0, 24993, core.SpellSchoolNature, 87, 19, 0, core.DefenseTypeMagic)
 
 	// https://www.wowhead.com/classic/item=17112/empyrean-demolisher
 	// Chance on hit: Increases your attack speed by 20% for 10 sec.
@@ -4190,6 +4191,9 @@ func init() {
 			},
 		})
 	})
+
+	// Equip: +15 Attack Power when fighting Undead.
+	core.NewMobTypeAttackPowerEffect(GhoulslayerShotgun, []proto.MobType{proto.MobType_MobTypeUndead}, 15)
 
 	core.AddEffectsToTest = true
 }

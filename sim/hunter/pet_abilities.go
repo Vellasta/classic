@@ -255,8 +255,9 @@ func (hp *HunterPet) newScreech() *core.Spell {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(baseDamageMin, baseDamageMax)
+			APDamage := spell.MeleeAttackPower(target) / 25.0
 			// This ability also applies a melee attack power reduction similar to demoralizing shout - left it out for now
-			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
+			spell.CalcAndDealDamage(sim, target, baseDamage+APDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 		},
 	})
 }
