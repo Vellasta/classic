@@ -143,6 +143,11 @@ export class ItemRenderer extends Component {
 		this.nameElem.innerText = '';
 		this.ilvlElem.innerText = '';
 		this.enchantElem.innerText = '';
+
+		this.itemTooltip.setContent(``);
+		this.nameTooltip.setContent(``);
+		this.itemTooltip.disable();
+		this.nameTooltip.disable();
 	}
 
 	update(newItem: EquippedItem) {
@@ -165,6 +170,8 @@ export class ItemRenderer extends Component {
 				filledId.setWowheadHref(this.nameElem);
 			});
 
+		this.itemTooltip.enable();
+		this.nameTooltip.enable();
 		this.itemTooltip.setContent(`${String(createItemTooltip(newItem.item, this.player))}`);
 		this.nameTooltip.setContent(`${String(createItemTooltip(newItem.item, this.player))}`);
 

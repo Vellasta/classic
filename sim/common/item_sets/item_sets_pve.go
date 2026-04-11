@@ -145,6 +145,33 @@ var ItemSetBloodmailRegalia = core.NewItemSet(core.ItemSet{
 	},
 })
 
+var ItemSetTheGladiator = core.NewItemSet(core.ItemSet{
+	Name: "The Gladiator",
+	Bonuses: map[int32]core.ApplyEffect{
+		// (2) Set: +100 Armor.
+		2: func(agent core.Agent) {
+			character := agent.GetCharacter()
+			character.AddStat(stats.Armor, 100)
+		},
+		// (3) Set: Increased Defense +6.
+		3: func(agent core.Agent) {
+			character := agent.GetCharacter()
+			character.AddStat(stats.Defense, 6)
+		},
+		// (4) Set: +30 Attack Power.
+		4: func(agent core.Agent) {
+			character := agent.GetCharacter()
+			character.AddStat(stats.AttackPower, 30)
+			character.AddStat(stats.RangedAttackPower, 30)
+		},
+		// (5) Set: Improves your chance to get a critical strike by 2%.
+		5: func(agent core.Agent) {
+			character := agent.GetCharacter()
+			character.AddStat(stats.MeleeCrit, 2)
+		},
+	},
+})
+
 ///////////////////////////////////////////////////////////////////////////
 //                                 Plate
 ///////////////////////////////////////////////////////////////////////////

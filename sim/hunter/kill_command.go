@@ -32,7 +32,7 @@ func (hunter *Hunter) getKillCommandConfig(rank int) core.SpellConfig {
 		},
 
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-			return hunter.KillCommandAura.IsActive()
+			return hunter.KillCommandAura.IsActive() && hunter.pet.IsActive()
 		},
 
 		DamageMultiplier: 1,

@@ -51,9 +51,6 @@ func (hunter *Hunter) ApplyTalents() {
 	}
 
 	if hunter.Talents.AloneAgainstTheWorld > 0 {
-		if hunter.pet != nil {
-			hunter.Options.PetUptime = 0
-		}
 		hunter.PseudoStats.DamageDealtMultiplier *= 1 + 0.03*float64(hunter.Talents.AloneAgainstTheWorld)
 	}
 

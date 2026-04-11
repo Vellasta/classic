@@ -148,8 +148,14 @@ const weaponSkillToStringFunctionMap: Record<number, Function> = {
 }
 
 const setIDToStringFunctionMap: Record<number, Function> = {
+	[1]: getTheGladiatorTooltip,
+	[41]: getDalRendsArmsTooltip,
+	[121]: getCadaverousGarbTooltip,
 	[206]: getGiantstalkerTooltip,
+	[261]: getSpiritOfEskhandarTooltip,
 	[215]: getDragonstalkerTooltip,
+	[461]: getTheTwinBladesOfHakkariTooltip,
+	[466]: getMajorMojoInfusionTooltip,
 	[477]: getPredatorsTooltip,
 	[515]: getBeastmasterTooltip,
 	[510]: getTrappingsTooltip,
@@ -793,6 +799,111 @@ function getVeteransTooltip(player: Player<any>): string {
 	
 	return `<span style="color: gold;">Veteran's Pursuit (${setCount}/6)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }
+
+function getMajorMojoInfusionTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[19898]: "Seal of Jin",
+		[19925]: "Band of Jin",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set: +30 Attack Power.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Major Mojo Infusion (${setCount}/2)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
+function getTheTwinBladesOfHakkariTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[19865]: "Warblade of the Hakkari",
+		[19866]: "Warblade of the Hakkari",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set: Increased Swords +6.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">The Twin Blades of Hakkari (${setCount}/2)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
+function getDalRendsArmsTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[12939]: "Dal'Rend's Tribal Guardian",
+		[12940]: "Dal'Rend's Sacred Charge",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set: +50 Attack Power.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Dal'Rend's Arms (${setCount}/2)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
+function getCadaverousGarbTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[14636]: "Cadaverous Belt",
+		[14637]: "Cadaverous Armor",
+		[14638]: "Cadaverous Leggings",
+		[14640]: "Cadaverous Gloves",
+		[14641]: "Cadaverous Walkers",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set: Increased Defense +3.",
+		[3]: "(3) Set: +10 Attack Power.",
+		[4]: "(4) Set: +15 All Resistances.",
+		[5]: "(5) Set: Improves your chance to hit by 2%.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Cadaverous Garb (${setCount}/5)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
+function getSpiritOfEskhandarTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[18202]: "Eskhandar's Left Claw",
+		[18203]: "Eskhandar's Right Claw",
+		[18204]: "Eskhandar's Pelt",
+		[18205]: "Eskhandar's Collar",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[4]: "(4) Set: 1% chance on a melee critical hit to call forth the spirit of Eskhandar to protect you in battle for 120 sec.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Spirit of Eskhandar (${setCount}/4)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
+function getTheGladiatorTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[11726]: "Savage Gladiator Chain",
+		[11728]: "Savage Gladiator Leggings",
+		[11729]: "Savage Gladiator Helm",
+		[11730]: "Savage Gladiator Grips",
+		[11731]: "Savage Gladiator Greaves",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set: +100 Armor.",
+		[3]: "(3) Set: Increased Defense +6.",
+		[4]: "(4) Set: +30 Attack Power.",
+		[5]: "(5) Set: Improves your chance to get a critical strike by 2%.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">The Gladiator (${setCount}/5)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
 
 export async function getTooltipString(itemId: number, spellId: number): Promise<string> {
 	// const url = `https://database.turtlecraft.gg/ajax.php?spell=${id}`;

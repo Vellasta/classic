@@ -79,8 +79,13 @@ func (hunter *Hunter) NewHunterPet() *HunterPet {
 		stats.AttackPower: -20,
 	}
 
+	enabledOnStart := true
+	if hunter.Talents.AloneAgainstTheWorld > 0 {
+		enabledOnStart = false
+	}
+
 	hp := &HunterPet{
-		Pet:         core.NewPet(petConfig.Name, &hunter.Character, hunterPetBaseStats, hunter.makeStatInheritance(), true, false),
+		Pet:         core.NewPet(petConfig.Name, &hunter.Character, hunterPetBaseStats, hunter.makeStatInheritance(), enabledOnStart, false),
 		config:      petConfig,
 		hunterOwner: hunter,
 
