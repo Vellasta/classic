@@ -65,6 +65,7 @@ const (
 	SpellCode_HunterPetScorpidPoison
 	SpellCode_HunterPetPoisonSpit
 	SpellCode_HunterPetSavageRend
+	SpellCode_HunterPetThunderstomp
 )
 
 func RegisterHunter() {

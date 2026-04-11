@@ -345,8 +345,8 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 		Name:    "Gorilla",
 		MobType: proto.MobType_MobTypeBeast,
 
-		// SpecialAbility: Thunderstomp,
-		FocusDump: Bite,
+		SpecialAbility: Thunderstomp,
+		FocusDump:      Bite,
 
 		Health: 1.04,
 		Armor:  1.00,

@@ -13186,6 +13186,7 @@
 {"id":49557,"name":"Strike Together","icon":"spell_coordinated_assault_1"},
 {"id":49558,"name":"Strike Together","icon":"spell_coordinated_assault_1"},
 {"id":49559,"name":"Coordinated Assault","icon":"spell_coordinated_assault_1"},
+{"id":51156,"name":"Thunderstomp","icon":"ability_hunter_pet_gorilla","hasBuff":true,"rank":4},
 {"id":51496,"name":"Aspect of the Wolf","icon":"ability_mount_whitedirewolf","rank":2,"hasBuff":true},
 {"id":51497,"name":"Aspect of the Wolf","icon":"ability_mount_whitedirewolf","rank":3,"hasBuff":true},
 {"id":51498,"name":"Aspect of the Wolf","icon":"ability_mount_whitedirewolf","rank":4,"hasBuff":true},

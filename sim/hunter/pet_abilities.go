@@ -22,6 +22,7 @@ const (
 	ScorpidPoison
 	PoisonSpit
 	SavageRend
+	Thunderstomp
 )
 
 func (hp *HunterPet) NewPetAbility(abilityType PetAbilityType, isPrimary bool) *core.Spell {
@@ -42,6 +43,8 @@ func (hp *HunterPet) NewPetAbility(abilityType PetAbilityType, isPrimary bool) *
 		return hp.newPoisonSpit()
 	case SavageRend:
 		return hp.newSavageRend()
+	case Thunderstomp:
+		return hp.newThunderstomp()
 	// case Swipe:
 	// 	return hp.newSwipe()
 	case Unknown:
@@ -365,7 +368,7 @@ func (hp *HunterPet) newScorpidPoison() *core.Spell {
 		Flags:       core.SpellFlagPassiveSpell | core.SpellFlagPoison,
 
 		FocusCost: core.FocusCostOptions{
-			Cost: 30,
+			Cost: 25,
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
@@ -374,7 +377,7 @@ func (hp *HunterPet) newScorpidPoison() *core.Spell {
 			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    hp.NewTimer(),
-				Duration: time.Second * 4,
+				Duration: time.Second * 3,
 			},
 		},
 
@@ -555,6 +558,59 @@ func (hp *HunterPet) newSavageRend() *core.Spell {
 			}
 			spell.Dot(target).Apply(sim)
 			spell.Dot(target).NumberOfTicks = 4
+		},
+	})
+}
+
+func (hp *HunterPet) newThunderstomp() *core.Spell {
+	baseDamageMin := map[int32]float64{
+		60: 153,
+	}[hp.Owner.Level]
+
+	baseDamageMax := map[int32]float64{
+		60: 179,
+	}[hp.Owner.Level]
+
+	spellID := map[int32]int32{
+		60: 51156,
+	}[hp.Owner.Level]
+
+	numHits := hp.Env.GetNumTargets()
+
+	return hp.RegisterSpell(core.SpellConfig{
+		ActionID:    core.ActionID{SpellID: spellID},
+		SpellCode:   SpellCode_HunterPetThunderstomp,
+		SpellSchool: core.SpellSchoolNature,
+		DefenseType: core.DefenseTypeMagic,
+		ProcMask:    core.ProcMaskSpellDamage,
+
+		FocusCost: core.FocusCostOptions{
+			Cost: 60,
+		},
+		Cast: core.CastConfig{
+			DefaultCast: core.Cast{
+				GCD: PetGCD,
+			},
+			IgnoreHaste: true,
+			CD: core.Cooldown{
+				Timer:    hp.NewTimer(),
+				Duration: time.Second * 40,
+			},
+		},
+
+		DamageMultiplier: 1,
+		ThreatMultiplier: 1.5,
+		BonusCoefficient: 0.21,
+
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			curTarget := target
+			for hitIndex := int32(0); hitIndex < numHits; hitIndex++ {
+				baseDamage := sim.Roll(baseDamageMin, baseDamageMax)
+				baseDamage *= sim.Encounter.AOECapMultiplier()
+				spell.CalcAndDealDamage(sim, curTarget, baseDamage, spell.OutcomeMagicHit)
+
+				curTarget = sim.Environment.NextTargetUnit(curTarget)
+			}
 		},
 	})
 }
