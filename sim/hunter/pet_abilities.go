@@ -21,6 +21,7 @@ const (
 	LightningBreath
 	ScorpidPoison
 	PoisonSpit
+	SavageRend
 )
 
 func (hp *HunterPet) NewPetAbility(abilityType PetAbilityType, isPrimary bool) *core.Spell {
@@ -39,6 +40,8 @@ func (hp *HunterPet) NewPetAbility(abilityType PetAbilityType, isPrimary bool) *
 		return hp.newScorpidPoison()
 	case PoisonSpit:
 		return hp.newPoisonSpit()
+	case SavageRend:
+		return hp.newSavageRend()
 	// case Swipe:
 	// 	return hp.newSwipe()
 	case Unknown:
@@ -90,7 +93,6 @@ func (hp *HunterPet) newClaw() *core.Spell {
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
-		BonusCoefficient: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(baseDamageMin, baseDamageMax)
@@ -146,7 +148,6 @@ func (hp *HunterPet) newBite() *core.Spell {
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
-		BonusCoefficient: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(baseDamageMin, baseDamageMax)
@@ -480,6 +481,80 @@ func (hp *HunterPet) newPoisonSpit() *core.Spell {
 				return
 			}
 			spell.Dot(target).Apply(sim)
+		},
+	})
+}
+
+func (hp *HunterPet) newSavageRend() *core.Spell {
+	baseDamageMin := map[int32]float64{
+		60: 27,
+	}[hp.Owner.Level]
+
+	baseDamageMax := map[int32]float64{
+		60: 37,
+	}[hp.Owner.Level]
+
+	baseDamageTick := map[int32]float64{
+		60: 16,
+	}[hp.Owner.Level]
+
+	spellID := map[int32]int32{
+		60: 36541,
+	}[hp.Owner.Level]
+
+	return hp.RegisterSpell(core.SpellConfig{
+		ActionID:    core.ActionID{SpellID: spellID},
+		SpellCode:   SpellCode_HunterPetSavageRend,
+		SpellSchool: core.SpellSchoolPhysical,
+		DefenseType: core.DefenseTypeMelee,
+		ProcMask:    core.ProcMaskMeleeMHSpecial,
+		Flags:       core.SpellFlagMeleeMetrics,
+
+		FocusCost: core.FocusCostOptions{
+			Cost: 35,
+		},
+		Cast: core.CastConfig{
+			DefaultCast: core.Cast{
+				GCD: PetGCD,
+			},
+			IgnoreHaste: true,
+			CD: core.Cooldown{
+				Timer:    hp.NewTimer(),
+				Duration: time.Second * 10,
+			},
+		},
+
+		DamageMultiplier: 1,
+		ThreatMultiplier: 1,
+
+		Dot: core.DotConfig{
+			Aura: core.Aura{
+				Label: "SavageRend",
+			},
+			NumberOfTicks: 4,
+			TickLength:    time.Second * 1,
+
+			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
+				APTickDamage := dot.Spell.MeleeAttackPower(target) / 10.0
+				dot.Snapshot(target, baseDamageTick+APTickDamage, isRollover)
+			},
+			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
+				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+			},
+		},
+
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			baseDamage := sim.Roll(baseDamageMin, baseDamageMax)
+			APDamage := spell.MeleeAttackPower(target) / 20.0
+			result := spell.CalcAndDealDamage(sim, target, baseDamage+APDamage, spell.OutcomeMeleeSpecialHitAndCrit)
+			if !result.Landed() {
+				return
+			}
+			if result.DidCrit() {
+				spell.Dot(target).NumberOfTicks = 5
+			}
+			spell.Dot(target).Apply(sim)
+			spell.Dot(target).NumberOfTicks = 4
 		},
 	})
 }

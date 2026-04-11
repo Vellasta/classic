@@ -366,8 +366,8 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 		Name:    "Raptor",
 		MobType: proto.MobType_MobTypeBeast,
 
-		SpecialAbility: Bite,
-		FocusDump:      Claw,
+		SpecialAbility: SavageRend,
+		FocusDump:      Bite,
 
 		Health: 0.95,
 		Armor:  1.03,

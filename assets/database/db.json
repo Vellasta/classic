@@ -13173,6 +13173,7 @@
 {"id":30919,"name":"Weapon Expertise","icon":"spell_holy_blessingofstrength","rank":1},
 {"id":30920,"name":"Weapon Expertise","icon":"spell_holy_blessingofstrength","rank":2},
 {"id":31016,"name":"Eviscerate","icon":"ability_rogue_eviscerate"},
+{"id":36541,"name":"Savage Rend","icon":"ability_druid_disembowel","hasBuff":true,"rank":6},
 {"id":36945,"name":"Facetted Crystal Scope","icon":"classic_temp"},
 {"id":41827,"name":"Kill Command","icon":"ability_hunter_killcommand"},
 {"id":45650,"name":"Aspect of the Wolf","icon":"ability_mount_whitedirewolf","rank":1,"hasBuff":true},
