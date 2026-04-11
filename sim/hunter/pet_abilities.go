@@ -539,7 +539,7 @@ func (hp *HunterPet) newSavageRend() *core.Spell {
 			TickLength:    time.Second * 1,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-				APTickDamage := dot.Spell.MeleeAttackPower(target) / 10.0
+				APTickDamage := dot.Spell.MeleeAttackPower(target) / 14.0
 				dot.Snapshot(target, baseDamageTick+APTickDamage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
@@ -549,7 +549,7 @@ func (hp *HunterPet) newSavageRend() *core.Spell {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(baseDamageMin, baseDamageMax)
-			APDamage := spell.MeleeAttackPower(target) / 20.0
+			APDamage := spell.MeleeAttackPower(target) / 25.0
 			result := spell.CalcAndDealDamage(sim, target, baseDamage+APDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 			if !result.Landed() {
 				return
