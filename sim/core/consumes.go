@@ -217,7 +217,7 @@ func registerShadowOil(character *Character, isMh bool, icd Cooldown) {
 		ActionID:    ActionID{SpellID: 1382},
 		SpellSchool: SpellSchoolShadow,
 		DefenseType: DefenseTypeMagic,
-		ProcMask:    ProcMaskEmpty,
+		ProcMask:    ProcMaskSpellDamage,
 		Flags:       SpellFlagNoOnCastComplete | SpellFlagPassiveSpell,
 
 		DamageMultiplier: 1,
@@ -267,7 +267,7 @@ func registerFrostOil(character *Character, isMh bool) {
 		ActionID:    ActionID{SpellID: 1191},
 		SpellSchool: SpellSchoolFrost,
 		DefenseType: DefenseTypeMagic,
-		ProcMask:    ProcMaskEmpty,
+		ProcMask:    ProcMaskSpellDamage,
 		Flags:       SpellFlagNoOnCastComplete | SpellFlagPassiveSpell,
 
 		DamageMultiplier: 1,

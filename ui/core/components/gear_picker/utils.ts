@@ -161,6 +161,7 @@ const setIDToStringFunctionMap: Record<number, Function> = {
 	[510]: getTrappingsTooltip,
 	[509]: getStrikersTooltip,
 	[530]: getCryptstalkerTooltip,
+	[612]: getIncendosaurSkinArmorTooltip,
 	[697]: getRavenstalkerTooltip,
 	[719]: getCombatantsTooltip,
 	[720]: getPartisansTooltip,
@@ -902,6 +903,23 @@ function getTheGladiatorTooltip(player: Player<any>): string {
 	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
 	
 	return `<span style="color: gold;">The Gladiator (${setCount}/5)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
+}
+
+function getIncendosaurSkinArmorTooltip(player: Player<any>): string {
+	const idToStringMap: Record<number, String> = {
+		[60568]: "Incendosaur Skin Boots",
+		[60572]: "Incendosaur Skin Pauldrons",
+		[60582]: "Incendosaur Skin Gloves",
+	}
+
+	const setCountToStringMap: Record<number, String> = {
+		[2]: "(2) Set: Adds 2 fire damage to your melee attacks.",
+		[3]: "(3) Set: 5% chance of dealing 15 to 26 Fire damage on a successful melee attack.",
+	}
+
+	const {setCount, setPieces, setString} = getSetCountAndPieces(idToStringMap, player, setCountToStringMap)
+	
+	return `<span style="color: gold;">Incendosaur Skin Armor (${setCount}/3)</span><br>${setPieces.join('<br>')}<br><br>${setString.join('<br>')}`
 }
 
 

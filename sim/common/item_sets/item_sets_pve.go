@@ -114,6 +114,73 @@ var ItemSetCadaverousGarb = core.NewItemSet(core.ItemSet{
 	},
 })
 
+var ItemSetIncendosaurSkinArmor = core.NewItemSet(core.ItemSet{
+	Name: "Incendosaur Skin Armor",
+	Bonuses: map[int32]core.ApplyEffect{
+		// (2) Set: Adds 2 fire damage to your melee attacks.
+		2: func(agent core.Agent) {
+			character := agent.GetCharacter()
+
+			procSpell := character.RegisterSpell(core.SpellConfig{
+				ActionID:         core.ActionID{SpellID: 7712},
+				SpellSchool:      core.SpellSchoolNature,
+				DefenseType:      core.DefenseTypeMagic,
+				ProcMask:         core.ProcMaskDamageProc,
+				Flags:            core.SpellFlagNoOnCastComplete | core.SpellFlagPassiveSpell,
+				DamageMultiplier: 1,
+				ThreatMultiplier: 1,
+				ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+					spell.CalcAndDealDamage(sim, target, 3, spell.OutcomeMagicCrit)
+				},
+			})
+
+			core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+				Name:              "Incendosaur Skin Armor Trigger",
+				Callback:          core.CallbackOnSpellHitDealt,
+				Outcome:           core.OutcomeLanded,
+				ProcMask:          core.ProcMaskMelee,
+				SpellFlagsExclude: core.SpellFlagSuppressEquipProcs,
+				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+					procSpell.Cast(sim, result.Target)
+				},
+			})
+		},
+		// (3) Set: 5% chance of dealing 15 to 26 Fire damage on a successful melee attack.
+		3: func(agent core.Agent) {
+			character := agent.GetCharacter()
+
+			actionID := core.ActionID{SpellID: 9057}
+
+			procSpell := character.GetOrRegisterSpell(core.SpellConfig{
+				ActionID:    actionID,
+				SpellSchool: core.SpellSchoolFire,
+				DefenseType: core.DefenseTypeMagic,
+				ProcMask:    core.ProcMaskDamageProc,
+				Flags:       core.SpellFlagNoOnCastComplete | core.SpellFlagPassiveSpell,
+
+				DamageMultiplier: 1,
+				ThreatMultiplier: 1,
+
+				ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+					spell.CalcAndDealDamage(sim, target, sim.Roll(15, 26), spell.OutcomeMagicHitAndCrit)
+				},
+			})
+
+			core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+				Name:              "Incendosaur Skin Armor Firebolt Trigger",
+				Callback:          core.CallbackOnSpellHitDealt,
+				Outcome:           core.OutcomeLanded,
+				ProcMask:          core.ProcMaskMelee,
+				SpellFlagsExclude: core.SpellFlagSuppressEquipProcs,
+				ProcChance:        0.05,
+				Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+					procSpell.Cast(sim, result.Target)
+				},
+			})
+		},
+	},
+})
+
 ///////////////////////////////////////////////////////////////////////////
 //                                 Mail
 ///////////////////////////////////////////////////////////////////////////
