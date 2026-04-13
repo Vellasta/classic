@@ -171,18 +171,18 @@ func (hp *HunterPet) ExecuteCustomRotation(sim *core.Simulation) {
 		return true
 	}
 
-	if hp.focusDump == nil {
-		if !tryCast(hp.specialAbility) && hp.GCD.IsReady(sim) {
-			hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
-		}
-		return
-	}
-	if hp.specialAbility == nil {
-		if !tryCast(hp.focusDump) && hp.GCD.IsReady(sim) {
-			hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
-		}
-		return
-	}
+	// if hp.focusDump == nil {
+	// 	if !tryCast(hp.specialAbility) && hp.GCD.IsReady(sim) {
+	// 		hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
+	// 	}
+	// 	return
+	// }
+	// if hp.specialAbility == nil {
+	// 	if !tryCast(hp.focusDump) && hp.GCD.IsReady(sim) {
+	// 		hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
+	// 	}
+	// 	return
+	// }
 
 	if hp.config.CustomRotation != nil {
 		hp.config.CustomRotation(sim, hp, tryCast)
@@ -439,7 +439,7 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 		MobType: proto.MobType_MobTypeBeast,
 
 		SpecialAbility: FuriousHowl,
-		// FocusDump:      Bite,
+		FocusDump:      Bite,
 
 		Health: 1.00,
 		Armor:  1.05,
@@ -450,12 +450,11 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 				if !tryCast(hp.specialAbility) && hp.GCD.IsReady(sim) {
 					hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
 				}
+			} else if hp.focusDump.IsReady(sim) && hp.CurrentFocus() >= 85 {
+				if !tryCast(hp.focusDump) && hp.GCD.IsReady(sim) {
+					hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
+				}
 			}
-			// } else if hp.focusDump.IsReady(sim) && hp.CurrentFocus() >= 85 {
-			// 	if !tryCast(hp.focusDump) && hp.GCD.IsReady(sim) {
-			// 		hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
-			// 	}
-			// }
 		},
 	},
 	proto.Hunter_Options_Serpent: {

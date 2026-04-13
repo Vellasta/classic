@@ -11,6 +11,7 @@ import (
 func (hunter *Hunter) ApplyTalents() {
 	if hunter.pet != nil {
 		hunter.applyFrenzy()
+		hunter.applyCoordinatedAssault()
 		hunter.registerBestialWrathCD()
 		hunter.registerScentOfBlood()
 
@@ -126,7 +127,6 @@ func (hunter *Hunter) ApplyTalents() {
 	hunter.applyTrapMastery()
 	hunter.applyPiercingShots()
 	hunter.applyEndlessQuiver()
-	hunter.applyCoordinatedAssault()
 	hunter.applyLockAndLoad()
 }
 
